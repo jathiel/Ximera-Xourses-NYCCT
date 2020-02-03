@@ -1,5 +1,5 @@
 \documentclass{ximera}  
-\title{Flowcharts}  
+\title{Flowcharts with Operators}  
 \usepackage{tikz}
 \usetikzlibrary{shapes.geometric, arrows}
 \tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30]
@@ -36,21 +36,21 @@ Here is an example of an algorithm that computes the sum $1+2+3+\cdots+n$ for an
 	\centering
 	\begin{tikzpicture}
 		\node (start) [startstop] {Start};
-		\node (input) [io, below of = start, yshift = -1cm] {Input $n$.};
-		\node (setup) [process, below of = input, yshift = -1cm] {$sum:= 0$, $i = 1$};
-		\node (add) [process, below of = setup, yshift = -1cm] {$sum:= sum + 1$};
-		\node (check) [decision, below of = add, yshift = -1cm] {$i=n$};
-		\node (return) [process, below of = check, yshift = -1cm] {Return $sum$.};
-		\node (increase) [process, right of = check, xshift = 3cm] {$i:=i+1$};
-		\node (stop) [startstop, below of = return, yshift = -1cm] {Stop};
-		\draw [arrow] (start) -- (input);
-		\draw [arrow] (input) -- (setup);
-		\draw [arrow] (setup) -- (add);
-		\draw [arrow] (add) -- (check);
-		\draw [arrow] (check) -- node[anchor=north] {no} (increase);
-		\draw [arrow] (check) -- node[anchor=east] {yes} (return);
-		\draw [arrow] (increase) -- (add);
-		\draw [arrow] (return) -- (stop);
+		%\node (input) [io, below of = start, yshift = -1cm] {Input $n$};
+		%\node (setup) [process, below of = input, yshift = -1cm] {$sum:= 0$, $i = 1$};
+		%\node (add) [process, below of = setup, yshift = -1cm] {$sum:= sum + 1$};
+		%\node (check) [decision, below of = add, yshift = -1cm] {$i=n$};
+		%\node (return) [process, below of = check, yshift = -1cm] {Return $sum$};
+		%\node (increase) [process, right of = check, xshift = 3cm] {$i:=i+1$};
+		%\node (stop) [startstop, below of = return, yshift = -1cm] {Stop};
+		%\draw [arrow] (start) -- (input);
+		%\draw [arrow] (input) -- (setup);
+		%\draw [arrow] (setup) -- (add);
+		%\draw [arrow] (add) -- (check);
+		%\draw [arrow] (check) -- node[anchor=north] {no} (increase);
+		%\draw [arrow] (check) -- node[anchor=east] {yes} (return);
+		%\draw [arrow] (increase) -- (add);
+		%\draw [arrow] (return) -- (stop);
 	\end{tikzpicture}
 	\caption{Example of an algorithm that computes $1+2+3+\cdots+n$.}
 \end{figure}
