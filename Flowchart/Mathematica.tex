@@ -32,28 +32,28 @@ When creating algorithms to solve these types of problems, we will often need to
 
 Here is an example of an algorithm that computes the sum $1+2+3+\cdots+n$ for any integer $n>0$.
 
-%\begin{figure}[!ht]
-%	\centering
-%	\begin{tikzpicture}
-%		\node (start) [startstop] {Start};
-%		\node (input) [io, below of = start, yshift = -1cm] {Input $n$};
-%		\node (setup) [process, below of = input, yshift = -1cm] {$sum:= 0$, $i = 1$};
-%		\node (add) [process, below of = setup, yshift = -1cm] {$sum:= sum + 1$};
-%		\node (check) [decision, below of = add, yshift = -1cm] {$i=n$};
-%		\node (return) [process, below of = check, yshift = -1cm] {Return $sum$};
-%		\node (increase) [process, right of = check, xshift = 3cm] {$i:=i+1$};
-%		\node (stop) [startstop, below of = return, yshift = -1cm] {Stop};
-%		\draw [arrow] (start) -- (input);
-%		\draw [arrow] (input) -- (setup);
-%		\draw [arrow] (setup) -- (add);
-%		\draw [arrow] (add) -- (check);
-%		\draw [arrow] (check) -- node[anchor=north] {false} (increase);
-%		\draw [arrow] (check) -- node[anchor=east] {true} (return);
-%		\draw [arrow] (increase) -- (add);
-%		\draw [arrow] (return) -- (stop);
-%	\end{tikzpicture}
-%	\caption{Example of an algorithm that computes $1+2+3+\cdots+n$.}
-%\end{figure}
+\begin{figure}[!ht]
+	\centering
+	\begin{tikzpicture}
+		\node (start) [startstop] {Start};
+		\node (input) [io, below of = start, yshift = -1cm] {Input $n$};
+		\node (setup) [process, below of = input, yshift = -1cm] {$sum:= 0$, $i = 1$};
+		\node (add) [process, below of = setup, yshift = -1cm] {$sum:= sum + 1$};
+		\node (check) [decision, below of = add, yshift = -1cm] {$i=n$};
+		\node (return) [process, below of = check, yshift = -1cm] {Return $sum$};
+		\node (increase) [process, right of = check, xshift = 3cm] {$i:=i+1$};
+		\node (stop) [startstop, below of = return, yshift = -1cm] {Stop};
+		\draw [arrow] (start) -- (input);
+		\draw [arrow] (input) -- (setup);
+		\draw [arrow] (setup) -- (add);
+		\draw [arrow] (add) -- (check);
+		\draw [arrow] (check) -- node[anchor=north] {false} (increase);
+		\draw [arrow] (check) -- node[anchor=east] {true} (return);
+		\draw [arrow] (increase) -- (add);
+		\draw [arrow] (return) -- (stop);
+	\end{tikzpicture}
+	\caption{Example of an algorithm that computes $1+2+3+\cdots+n$.}
+\end{figure}
 
 Here is an example of an algorithm that counts the number of divisors of $n$ for any integer $n>0$.
 
@@ -69,16 +69,16 @@ Here is an example of an algorithm that counts the number of divisors of $n$ for
 		\node (return) [process, below of = check, yshift = -1cm] {Return $count$};
 		\node (increase) [process, right of = div, xshift = 3cm] {$i:=i+1$};
 		\node (stop) [startstop, below of = return, yshift = -1cm] {Stop};
-		\draw [arrow] (start) -- (input);
-		\draw [arrow] (input) -- (setup);
-		\draw [arrow] (setup) -- (div);
-		\draw [arrow] (div) -- node[anchor=east] {false} (check);
-		\draw [arrow] (div) -- node[anchor=north] {true} (add);
-		\draw [arrow] (add) -- (check);
-		\draw [arrow] (check) -- node[anchor=north] {false} (increase);
-		\draw [arrow] (check) -- node[anchor=east] {true} (return);
-		\draw [arrow] (increase) -- (div);
-		\draw [arrow] (return) -- (stop);
+		%\draw [arrow] (start) -- (input);
+		%\draw [arrow] (input) -- (setup);
+		%\draw [arrow] (setup) -- (div);
+		%\draw [arrow] (div) -- node[anchor=east] {false} (check);
+		%\draw [arrow] (div) -- node[anchor=north] {true} (add);
+		%\draw [arrow] (add) -- (check);
+		%\draw [arrow] (check) -- node[anchor=north] {false} (increase);
+		%\draw [arrow] (check) -- node[anchor=east] {true} (return);
+		%\draw [arrow] (increase) -- (div);
+		%\draw [arrow] (return) -- (stop);
 	\end{tikzpicture}
 	\caption{Example of an algorithm that counts the number of divisors of $n$.}
 \end{figure}
