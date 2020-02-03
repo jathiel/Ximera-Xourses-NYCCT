@@ -36,13 +36,13 @@ Here is an example of an algorithm that computes the sum $1+2+3+\cdots+n$ for an
 	\centering
 	\begin{tikzpicture}
 		\node (start) [startstop] {Start};
-		\node (input) [input, below of = start, yshift = -1cm] {Input $n$.};
-		\note (setup) [process, below of = input, yshift = -1cm] {$sum = 0$, $i = 1$};
+		\node (input) [io, below of = start, yshift = -1cm] {Input $n$.};
+		\node (setup) [process, below of = input, yshift = -1cm] {$sum:= 0$, $i = 1$};
 		\node (add) [process, below of = setup, yshift = -1cm] {$sum:= sum + 1$};
 		\node (check) [decision, below of = add, yshift = -1cm] {$i=n$};
 		\node (return) [process, below of = check, yshift = -1cm] {Return $sum$.};
 		\node (increase) [process, right of = check, xshift = 3cm] {$i:=i+1$};
-		\node (stop) [startstop, below of = wake, yshift = -1cm] {Stop};
+		\node (stop) [startstop, below of = return, yshift = -1cm] {Stop};
 		\draw [arrow] (start) -- (input);
 		\draw [arrow] (input) -- (setup);
 		\draw [arrow] (setup) -- (add);
