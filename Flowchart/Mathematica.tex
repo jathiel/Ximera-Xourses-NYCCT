@@ -65,13 +65,13 @@ Here is an example of an algorithm that counts the number of divisors of $n$ for
 		\node (setup) [process, below of = input, yshift = -1cm] {$count:= 0$, $i = 1$};
 		\node (div) [decision, below of = setup, yshift = -1cm] {$n\%i = 0$};
 		\node (check) [decision, below of = div, yshift = -1cm] {$i=n$};
-		\node (add) [process, right of = div, yshift = -1cm] {$count:= count + 1$};
+		\node (add) [process, right of = div, xshift = 3cm] {$count:= count + 1$};
 		\node (return) [process, below of = check, yshift = -1cm] {Return $count$};
-		\node (increase) [process, right of = div, xshift = 3cm] {$i:=i+1$};
+		\node (increase) [process, left of = div, xshift = -3cm] {$i:=i+1$};
 		\node (stop) [startstop, below of = return, yshift = -1cm] {Stop};
-		%\draw [arrow] (start) -- (input);
-		%\draw [arrow] (input) -- (setup);
-		%\draw [arrow] (setup) -- (div);
+		\draw [arrow] (start) -- (input);
+		\draw [arrow] (input) -- (setup);
+		\draw [arrow] (setup) -- (div);
 		%\draw [arrow] (div) -- node[anchor=east] {false} (check);
 		%\draw [arrow] (div) -- node[anchor=north] {true} (add);
 		%\draw [arrow] (add) -- (check);
