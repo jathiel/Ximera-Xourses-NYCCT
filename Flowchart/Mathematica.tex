@@ -72,13 +72,13 @@ Here is an example of an algorithm that counts the number of divisors of $n$ for
 		\draw [arrow] (start) -- (input);
 		\draw [arrow] (input) -- (setup);
 		\draw [arrow] (setup) -- (div);
-		%\draw [arrow] (div) -- node[anchor=east] {false} (check);
-		%\draw [arrow] (div) -- node[anchor=north] {true} (add);
-		%\draw [arrow] (add) -- (check);
-		%\draw [arrow] (check) -- node[anchor=north] {false} (increase);
-		%\draw [arrow] (check) -- node[anchor=east] {true} (return);
-		%\draw [arrow] (increase) -- (div);
-		%\draw [arrow] (return) -- (stop);
+		\draw [arrow] (div) -- node[anchor=east] {false} (check);
+		\draw [arrow] (div) -- node[anchor=north] {true} (add);
+		\draw [arrow] (add) -- (check);
+		\draw [arrow] (check) -- node[anchor=north] {false} (increase);
+		\draw [arrow] (check) -- node[anchor=east] {true} (return);
+		\draw [arrow] (increase) -- (div);
+		\draw [arrow] (return) -- (stop);
 	\end{tikzpicture}
 	\caption{Example of an algorithm that counts the number of divisors of $n$.}
 \end{figure}
