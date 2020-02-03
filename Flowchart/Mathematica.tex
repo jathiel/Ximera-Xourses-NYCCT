@@ -57,31 +57,7 @@ Here is an example of an algorithm that computes the sum $1+2+3+\cdots+n$ for an
 
 Here is an example of an algorithm that counts the number of divisors of $n$ for any integer $n>0$.
 
-\begin{figure}[!ht]
-	\centering
-	\begin{tikzpicture}
-		\node (start) [startstop] {Start};
-		\node (input) [io, below of = start, yshift = -1cm] {Input $n$};
-		\node (setup) [process, below of = input, yshift = -1cm] {$count:= 0$, $i = 1$};
-		\node (div) [decision, below of = setup, yshift = -1cm] {$n\%i = 0$};
-		\node (check) [decision, below of = div, yshift = -1cm] {$i=n$};
-		%\node (add) [process, right of = div, xshift = 3cm] {$count:= count + 1$};
-		\node (return) [process, below of = check, yshift = -1cm] {Return $count$};
-		\node (increase) [process, left of = div, xshift = -3cm] {$i:=i+1$};
-		\node (stop) [startstop, below of = return, yshift = -1cm] {Stop};
-		%\draw [arrow] (start) -- (input);
-		%\draw [arrow] (input) -- (setup);
-		%\draw [arrow] (setup) -- (div);
-		%\draw [arrow] (div) -- node[anchor=east] {false} (check);
-		%\draw [arrow] (div) -- node[anchor=north] {true} (add);
-		%\draw [arrow] (add) -- (check);
-		%\draw [arrow] (check) -- node[anchor=north] {false} (increase);
-		%\draw [arrow] (check) -- node[anchor=east] {true} (return);
-		%\draw [arrow] (increase) -- (div);
-		%\draw [arrow] (return) -- (stop);
-	\end{tikzpicture}
-	\caption{Example of an algorithm that counts the number of divisors of $n$.}
-\end{figure}
+
 
 Modify the algorithm above to determine if an integer $n$ is prime (prime numbers are numbers greater than 1 that are only divisible by 1 and themselves).
 \end{document}
