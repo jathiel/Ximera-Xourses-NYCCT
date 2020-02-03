@@ -1,0 +1,59 @@
+\documentclass{ximera}  
+\title{Flowcharts}  
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows}
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30]
+\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=blue!30]
+\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=orange!30]
+\tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=green!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+\begin{document}  
+\begin{abstract}  
+We introduce some mathematical notation to help us create algorithms to solve mathematical problems. 
+\end{abstract}  
+\maketitle
+
+Many of the problems we will encounter in this course will require that we perform some iterative process or count some quantity. For example:
+
+\begin{enumerate}
+	\item Compute $1+2+3+\cdots+16$.
+	\item Count the number of divisors of $100$.
+	\item Determine the value of your account after 10 years if you invest \$1000 into a savings account that offers a $4$\% interest rate compounded monthly.
+	\item Sort the list of numbers 1, 5, 6, 2, 3, 8, 4 in ascending order.
+\end{enumerate}
+
+When creating algorithms to solve these types of problems, we will often need to compare quantities or keep track of (and update) certain values. To help us with this we introduce some important notation and conventions.
+
+\begin{itemize}
+	\item Assignment ($:=$) - This operator assigns the value of whatever is on the right to whatever is on the left. For example, $x:=2$ assigns the value $2$ to the variable $x$. Note that $x:=y$ and $y:=x$ are not the same. Also, a statement like $x:=x+1$ increments the value of $x$ by 1.
+	\item Comparison ($=,<,>,<=,>=,!=$) - These operators are used for comparisons. They give back a truth value to help determine with route to take in a conditional operation/decision. For example, $x>0$ will be true if the value of $x$ is larger than $0$ and false otherwise.
+	\item Arithmetic ($+,-,*,**,/,\%$) - These symbols simply perform the particular operations that we are used to. Note that $**$ represents exponentiation and $\%$ is modular division (it returns the remainder after long division). For example, $2**3 = 2^3 = 8$ and $7\%3 = 1$.
+\end{itemize}
+
+Here is an example of an algorithm that computes the sum $1+2+3+\cdots+n$ for any integer $n>0$.
+
+\begin{figure}[!ht]
+	\centering
+	\begin{tikzpicture}
+		\node (start) [startstop] {Start};
+		\node (input) [input, below of = start, yshift = -1cm] {Input $n$.};
+		\note (setup) [process, below of = input, yshift = -1cm] {$sum = 0$, $i = 1$};
+		\node (add) [process, below of = setup, yshift = -1cm] {$sum:= sum + 1$};
+		\node (check) [decision, below of = add, yshift = -1cm] {$i=n$};
+		\node (return) [process, below of = check, yshift = -1cm] {Return $sum$.};
+		\node (increase) [process, right of = check, xshift = 3cm] {$i:=i+1$};
+		\node (stop) [startstop, below of = wake, yshift = -1cm] {Stop};
+		\draw [arrow] (start) -- (input);
+		\draw [arrow] (input) -- (setup);
+		\draw [arrow] (setup) -- (add);
+		\draw [arrow] (add) -- (check);
+		\draw [arrow] (check) -- node[anchor=north] {no} (increase);
+		\draw [arrow] (check) -- node[anchor=east] {yes} (return);
+		\draw [arrow] (increase) -- (add);
+		\draw [arrow] (return) -- (stop);
+	\end{tikzpicture}
+	\caption{Example of an algorithm that computes $1+2+3+\cdots+n$.}
+\end{figure}
+
+
+end{document}
