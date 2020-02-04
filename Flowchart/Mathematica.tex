@@ -32,8 +32,7 @@ When creating algorithms to solve these types of problems, we will often need to
 
 Here is an example of an algorithm that computes the sum $1+2+3+\cdots+n$ for any integer $n>0$.
 
-\begin{figure}
-	\centering
+\begin{image}
 	\begin{tikzpicture}
 		\node (start) [startstop] {Start};
 		\node (input) [io, below of = start, yshift = -1cm] {Input $n$};
@@ -53,7 +52,7 @@ Here is an example of an algorithm that computes the sum $1+2+3+\cdots+n$ for an
 		\draw [arrow] (return) -- (stop);
 	\end{tikzpicture}
 	\caption{Example of an algorithm that computes $1+2+3+\cdots+n$.}
-\end{figure}
+\end{image}
 
 \begin{problem}
 	Create an algorithm that counts the number of divisors of $n$ for any integer $n>0$. 
@@ -62,8 +61,7 @@ Here is an example of an algorithm that computes the sum $1+2+3+\cdots+n$ for an
 	\end{hint}
 
 	\begin{hint}
-	\begin{figure}
-		\centering
+	\begin{image}
 		\begin{tikzpicture}
 			\node (start) [startstop] {Start};
 			\node (input) [io, below of = start, yshift = -1cm] {Input $n$};
@@ -85,7 +83,7 @@ Here is an example of an algorithm that computes the sum $1+2+3+\cdots+n$ for an
 			\draw [arrow] (return) -- (stop);
 		\end{tikzpicture}
 		\caption{Example of an algorithm that computes the number of divisors of $n$.}
-	\end{figure}
+	\end{image}
 	\end{hint}
 \end{problem}
 
