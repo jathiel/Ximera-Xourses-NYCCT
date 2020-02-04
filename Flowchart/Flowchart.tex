@@ -21,8 +21,7 @@ There are several ways to specify an algorithm. For now we will represent our al
 
 Here, for example, are two different algorithms for accomplishing the same task. 
 
-\begin{figure}[!ht]
-	\centering
+\begin{image}
 	\begin{tikzpicture}
 		\node (start) [startstop] {Start};
 		\node (alarm) [process, below of = start, yshift = -1cm] {Alarm sounds.};
@@ -32,11 +31,13 @@ Here, for example, are two different algorithms for accomplishing the same task.
 		\draw [arrow] (alarm) -- (wake);
 		\draw [arrow] (wake) -- (stop);
 	\end{tikzpicture}
-	\caption{An example of an algorithm for your morning routine.}
-\end{figure}
+\end{image}
 
-\begin{figure}[!ht]
-	\centering
+\begin{center}
+	An example of an algorithm for your morning routine.
+\end{center}
+
+\begin{image}
 	\begin{tikzpicture}
 		\node (start) [startstop] {Start};
 		\node (alarm) [process, below of = start, yshift = -1cm] {Alarm sounds.};
@@ -51,18 +52,22 @@ Here, for example, are two different algorithms for accomplishing the same task.
 		\draw [arrow] (snooze) -- (alarm);
 		\draw [arrow] (wake) -- (stop);
 	\end{tikzpicture}
-	\caption{Another example of an algorithm for your morning routine.}
-\end{figure}
+\end{image}
+
+\begin{center}
+	Another example of an algorithm for your morning routine.
+\end{center}
 
 We use the following conventions for our flowchart compartments (there are others, but these are the main ones we will use). Arrows between the different compartments show how the algorithm progresses from one operation/input/decision to another.
 
-\begin{figure}[!ht]
-	\centering
+\begin{image}
 	\begin{tikzpicture}
 		\node (start) [startstop] {Start/Stop};
 	\end{tikzpicture}
-	\caption{Beginning or end of the algorithm.}
-\end{figure}
+\end{image}
+\begin{center}
+	Beginning or end of the algorithm.
+\end{center}
 
 \begin{figure}[!ht]
 	\centering
