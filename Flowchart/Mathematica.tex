@@ -58,35 +58,35 @@ Here is an example of an algorithm that computes the sum $1+2+3+\cdots+n$ for an
 \begin{problem}
 	Create an algorithm that counts the number of divisors of $n$ for any integer $n>0$. 
 	\begin{hint}
-	You may need two decisions to solve this problem.
+	You may need two decisions to solve this problem. Note, the second hint for this problem is the solution.
 	\end{hint}
-\end{problem}
 
-\begin{foldable}
-
+	\begin{hint}
 	\begin{figure}[!ht]
 		\centering
 		\begin{tikzpicture}
 			\node (start) [startstop] {Start};
 			\node (input) [io, below of = start, yshift = -1cm] {Input $n$};
-			\node (setup) [process, below of = input, yshift = -1cm] {$sum:= 0$, $i := 1$};
-			\node (add) [process, below of = setup, yshift = -1cm] {$sum:= sum + 1$};
-			\node (check) [decision, below of = add, yshift = -1cm] {$i=n$};
-			\node (return) [process, below of = check, yshift = -1cm] {Return $sum$};
-			\node (increase) [process, right of = check, xshift = 3cm] {$i:=i+1$};
+			\node (setup) [process, below of = input, yshift = -1cm] {$count:= 0$, $i := 1$};
+			\node (check) [decision, below of = setup, yshift = -1cm] {$n\%i=0$};
+			\node (div) [process, right of = check, xshift = 3cm] {$count:=count+1$};
+			\node (end) [decision, below of = check, yshift = -1cm] {$i=n$};
+			\node (increase) [process, left of = check, xshift = -3cm] {$i:=i+1$};
+			\node (return) [process, below of = end, yshift = -1cm] {Return $count$};
 			\node (stop) [startstop, below of = return, yshift = -1cm] {Stop};
 			\draw [arrow] (start) -- (input);
 			\draw [arrow] (input) -- (setup);
-			\draw [arrow] (setup) -- (add);
-			\draw [arrow] (add) -- (check);
-			\draw [arrow] (check) -- node[anchor=north] {false} (increase);
-			\draw [arrow] (check) -- node[anchor=east] {true} (return);
-			\draw [arrow] (increase) -- (add);
+			\draw [arrow] (setup) -- (check);
+			\draw [arrow] (check) -- node[anchor=north] {true} (div);
+			\draw [arrow] (check) -- node[anchor=east] {false} (end);
+			\draw [arrow] (end) -- node[anchor=west] {false} (increase);
+			\draw [arrow] (end) -- node[anchor=east] {true} (return);
+			\draw [arrow] (increase) -- (check);
 			\draw [arrow] (return) -- (stop);
 		\end{tikzpicture}
-		\caption{Example of an algorithm that computes $1+2+3+\cdots+n$.}
+		\caption{Example of an algorithm that computes the number of divisors of $n$.}
 	\end{figure}
-
-\end{foldable}
+	\end{hint}
+\end{problem}
 
 \end{document}
