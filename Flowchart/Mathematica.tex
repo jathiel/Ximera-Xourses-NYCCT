@@ -76,8 +76,9 @@ Here is an example of an algorithm that computes the sum $1+2+3+\cdots+n$ for an
 			\draw [arrow] (setup) -- (check);
 			\draw [arrow] (check) -- node[anchor=north] {true} (div);
 			\draw [arrow] (check) -- node[anchor=east] {false} (end);
-			\draw [arrow] (end) -- node[anchor=west] {false} (increase);
-			\draw [arrow] (end) -- node[anchor=east] {true} (return);
+			\draw [arrow] (end) -- node[anchor=east] {false} (increase);
+			\draw [arrow] (end) -- node[anchor=west] {true} (return);
+			\draw [arrow] (div) -- (end);
 			\draw [arrow] (increase) -- (check);
 			\draw [arrow] (return) -- (stop);
 		\end{tikzpicture}
