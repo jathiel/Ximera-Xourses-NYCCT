@@ -1,12 +1,5 @@
 \documentclass{ximera}  
 \title{Flowcharts}  
-\usepackage{tikz}
-\usetikzlibrary{shapes.geometric, arrows}
-\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30]
-\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=blue!30]
-\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=orange!30]
-\tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=green!30]
-\tikzstyle{arrow} = [thick,->,>=stealth]
 \begin{document}  
 \begin{abstract}  
 We introduce flowcharts as a way to organize a procedure designed to solve a particular problem.
@@ -22,97 +15,62 @@ There are several ways to specify an algorithm. For now we will represent our al
 Here, for example, are two different algorithms for accomplishing the same task. 
 
 \begin{image}
-	\begin{tikzpicture}
-		\node (start) [startstop] {Start};
-		\node (alarm) [process, below of = start, yshift = -1cm] {Alarm sounds.};
-		\node (wake) [process, below of = alarm, yshift = -1cm] {Wake up and get ready for school.};
-		\node (stop) [startstop, below of = wake, yshift = -1cm] {Stop};
-		\draw [arrow] (start) -- (alarm);
-		\draw [arrow] (alarm) -- (wake);
-		\draw [arrow] (wake) -- (stop);
-	\end{tikzpicture}
+	\includegraphics{morning1.png}
 \end{image}
-
 \begin{center}
 	An example of an algorithm for your morning routine.
 \end{center}
 
 \begin{image}
-	\begin{tikzpicture}
-		\node (start) [startstop] {Start};
-		\node (alarm) [process, below of = start, yshift = -1cm] {Alarm sounds.};
-		\node (check) [decision, below of = alarm, yshift = -1cm] {Is it 6:50?};
-		\node (wake) [process, below of = check, yshift = -1cm] {Wake up and get ready for school.};
-		\node (snooze) [process, right of = check, xshift = 3cm] {Hit the snooze button.};
-		\node (stop) [startstop, below of = wake, yshift = -1cm] {Stop};
-		\draw [arrow] (start) -- (alarm);
-		\draw [arrow] (alarm) -- (check);
-		\draw [arrow] (check) -- node[anchor=north] {no} (snooze);
-		\draw [arrow] (check) -- node[anchor=east] {yes} (wake);
-		\draw [arrow] (snooze) -- (alarm);
-		\draw [arrow] (wake) -- (stop);
-	\end{tikzpicture}
+	\includegraphics{morning2.png}
 \end{image}
-
 \begin{center}
 	Another example of an algorithm for your morning routine.
 \end{center}
 
 We use the following conventions for our flowchart compartments (there are others, but these are the main ones we will use). Arrows between the different compartments show how the algorithm progresses from one operation/input/decision to another.
 
-\begin{image}
-	\begin{tikzpicture}
-		\node (start) [startstop] {Start/Stop};
-	\end{tikzpicture}
-\end{image}
+\begin{figure}
+	\includegraphics{startstop.png}
+\end{figure}
 \begin{center}
 	Beginning or end of the algorithm.
 \end{center}
 
-\begin{figure}[!ht]
-	\centering
-	\begin{tikzpicture}
-		\node (io) [io] {Input};
-	\end{tikzpicture}
-	\caption{Indicates data input or output.}
+\begin{figure}
+	\includegraphics{io.png}
 \end{figure}
+\begin{center}
+	Indicates data input or output.
+\end{center}
 
-\begin{figure}[!ht]
-	\centering
-	\begin{tikzpicture}
-		\node (dec) [decision] {Decision};
-	\end{tikzpicture}
-	\caption{Conditional operation/decision. Typically limited to yes/no or true/false options.}
+\begin{figure}
+	\includegraphics{decision.png}
 \end{figure}
+\begin{center}
+	Conditional operation/decision. Typically limited to true/false or yes/no options.
+\end{center}
 
-\begin{figure}[!ht]
-	\centering
-	\begin{tikzpicture}
-		\node (proc) [process] {Process};
-	\end{tikzpicture}
-	\caption{A set of operations.}
+\begin{figure}
+	\includegraphics{process.png}
 \end{figure}
+\begin{center}
+	A set of operations.
+\end{center}
 
-An example of an algorithm that computes $|x|$.
-
-\begin{figure}[!ht]
-	\centering
-	\begin{tikzpicture}
-		\node (start) [startstop] {Start};
-		\node (input) [io, below of = start, yshift = -1cm] {Input value for $x$.};
-		\node (check) [decision, below of = input, yshift = -1cm] {Is $x<0$?};
-		\node (neg) [process, left of = check, xshift = -3cm] {Return -x.};
-		\node (pos) [process, right of = check, xshift = 3cm] {Return x.};
-		\node (stop) [startstop, below of = check, yshift = -1cm] {Stop};
-		\draw [arrow] (start) -- (input);
-		\draw [arrow] (input) -- (check);
-		\draw [arrow] (check) -- node[anchor=north] {yes} (neg);
-		\draw [arrow] (check) -- node[anchor=north] {no} (pos);
-		\draw [arrow] (neg) -- (stop);
-		\draw [arrow] (pos) -- (stop);
-	\end{tikzpicture}
-	\caption{An algorithm for computing $|x|$.}
+\begin{figure}
+	\includegraphics{absalgo.png}
 \end{figure}
+\begin{center}
+	An example of an algorithm that computes $|x|$.
+\end{center}
 
-Consider the following scenario. Suppose that you can buy an avocado at the grocery store for \$1 or 5 avocados for \$3. Develop an algorithm for computing the minimum price for buying $n$ avocados where $1\leq n\leq 5$ and draw a flowchart for your algorithm.
+\begin{problem}
+	Consider the following scenario. Suppose that you can buy an avocado at the grocery store for \$1 or 5 avocados for \$3. Develop an algorithm for computing the minimum price for buying $n$ avocados where $1\leq n\leq 5$ and draw a flowchart for your algorithm.
+	\begin{hint}
+		\begin{figure}
+			\includegraphics{avocados.png}
+		\end{figure}
+	\end{hint}
+\end{problem}
 \end{document}
