@@ -8,11 +8,26 @@ We introduce if/else statements in Python.
 
 \section{If/Else}
 
+In an earlier section we saw that in order to compute the absolute value of a real number $x$, we first needed to determine if it satisfied a certain condition, namely, is it the case that $x>0$? The answer to this question then determine the set of instructuctions to follow. We can reformulate our algorithm for computing $|x|$ as two statements in the following way:
 
+For any real number $x$, if $x>0$, then $|x|=x$. Else (or otherwise), $|x|=-x$.
 
-%\begin{center}
-%	\includegraphics{gausssum2.png}
-%\end{center}
+The `if' portion of the statement explains what to do if the given condition is satisfied, while the `else' portion explains what to do if the given condition is not satisfied. This can be easily mapped to the flowchart for computing $|x|$.
+
+\begin{center}
+	\includegraphics{absalgo.png}
+\end{center}
+
+In Python we can implement this short algorithm using the following syntax:
+
+\begin{verbatim}
+if (condition):
+	code1
+else:
+	code2
+\end{verbatim}
+
+The term \verb|condition| indicates the condition we wish to check. If the condition evaluates to \verb|True|, then the instructions given by \verb|code1| are followed. If the condition evaluates to \verb|False|, then the instructions given by \verb|code2| are followed. Note that in Python, whitespace (indentation) determines which lines of code belong to a particular code block. 
 
 \begin{problem}
 \end{problem}
