@@ -36,7 +36,7 @@ else:
         abs = -x
 \end{verbatim}
 
-The above block of code creates a variable \verb|abs| that is assigned the absolute value of $x$ for any given $x$. The SageCell below shows how to use this code in practice.
+The code above creates a variable \verb|abs| that is assigned the absolute value of $x$ for any given $x$. The SageCell below shows how to use this code in practice.
 
 \begin{sageCell}
 x = -3            # change this value and evaluate the cell to compute |x| for other x values
@@ -46,7 +46,7 @@ if x > 0:
 else:
 	abs = -x
 
-print(abs)        # this line prints the value of abs to show that the variable has been assigned the correct value
+print(abs)        # this line prints the value of abs to the screen to show that the variable has been assigned the correct value
 \end{sageCell}
 
 Note that in Python, whitespace (indentation) determines which lines of code belong to a particular code block. For example, the following code differs from that in the SageCell above in that the \verb|print| statement is only evaluated if $x\leq 0$.
@@ -61,7 +61,9 @@ else:
         print(abs)
 \end{sageCell}
 
+The examples above show how a flowchart with a decision compartment can be translated to Python code and vice versa. With enough practice one shoud be able to translate between the two. Eventually, with enough experience, one can start coding without explicitly drawing a flowchart each time.
 
+Below we give examples of how to use the basic if/else form to handle cases where multiple decisions are needed of if a decision has more than two outcomes. 
 
 
 
