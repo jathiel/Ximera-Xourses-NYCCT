@@ -38,7 +38,7 @@ else:
 
 The above block of code creates a variable \verb|abs| that is assigned the absolute value of $x$ for any given $x$. The SageCell below shows how to use this code in practice.
 
-\begin{sagecell}
+\begin{sageCell}
 x = -3            # change this value and evaluate the cell to compute |x| for other x values
 
 if x > 0:
@@ -47,11 +47,11 @@ else:
 	abs = -x
 
 print(abs)        # this line prints the value of abs to show that the variable has been assigned the correct value
-\end{sagecell}
+\end{sageCell}
 
 Note that in Python, whitespace (indentation) determines which lines of code belong to a particular code block. For example, the following code differs from that in the SageCell above in that the \verb|print| statement is only evaluated if $x\leq 0$.
 
-\begin{sagecell}
+\begin{sageCell}
 x = -3
 
 if x > 0:
@@ -59,7 +59,7 @@ if x > 0:
 else:
 	abs = -x
         print(abs)
-\end{sagecell}
+\end{sageCell}
 
 
 
