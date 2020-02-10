@@ -13,7 +13,7 @@ Variables act as containers for data. Together which functions, covered in a lat
 \begin{itemize}
 	\item variable names should be descriptive
 	\item variable names cannot begin with a number
-	\item other than the first letter restriction, variable names can contain any alphanumerica character or \verb|_|
+	\item other than the first letter restriction, variable names can contain any alphanumeric character or \verb|_|
 	\item variable names are case sensitive, for example, \verb|myVar| and \verb|myvar| are not the same
 \end{itemize}
 
@@ -35,14 +35,13 @@ x = 4
 print(2*x)
 \end{sageCell}
 
-Assignment with a variable on the right hand side of the operator:
+Assignment with a variable on the right hand side of the assignment operator:
 
 \begin{sageCell}
 x = 3
 y = 4
 x = y
-print(x)
-print(y)
+print(x,y)
 \end{sageCell}
 
 Assignment with the same variable on both sides of the operator:
@@ -58,7 +57,7 @@ Descriptive variable names:
 \begin{sageCell}
 a = 3
 b = 2
-c = 1
+c = -1
 plus_root = (-b + (b**2-4*a*c)**0.5)/2
 minus_root = (-b - (b**2-4*a*c)**0.5)/2
 print(plus_root)
@@ -68,9 +67,12 @@ print(minus_root)
 \section{Problems}
 
 \begin{question}
-\end{question}
-
-\begin{question}
+	Determine the final value of \verb|x|. $\answer{13}$
+	\begin{verbatim}
+	x := 3
+	y := 7
+	x := 2 * x + y
+	\end{verbatim}
 \end{question}
 
 \end{document}
