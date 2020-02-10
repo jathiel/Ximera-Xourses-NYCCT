@@ -19,9 +19,9 @@ Many of the problems we will encounter in this course will require that we perfo
 When creating algorithms to solve these types of problems, we will often need to compare quantities or keep track of (and update) certain values. To help us with this we introduce some important notation and conventions.
 
 \begin{itemize}
-	\item Assignment ($:=$) - This operator assigns the value of whatever is on the right to whatever is on the left. For example, $x:=2$ assigns the value $2$ to the variable $x$. Note that $x:=y$ and $y:=x$ are not the same. Also, a statement like $x:=x+1$ increments the value of $x$ by 1.
-	\item Comparison ($=,<,>,<=,>=,!=$) - These operators are used for comparisons. They give back a truth value to help determine which route to take in a conditional operation/decision. For example, $x>0$ will be true if the value of $x$ is larger than $0$ and false otherwise.
-	\item Arithmetic ($+,-,*,**,/,\%$) - These symbols simply perform the particular operations that we are used to. Note that $**$ represents exponentiation and $\%$ is modular division (it returns the remainder after long division). For example, $2**3 = 2^3 = 8$ and $7\%3 = 1$.
+	\item Assignment (\verb|:=|) - This operator assigns the value of whatever is on the right to whatever is on the left. For example, \verb|x:=2| assigns the value \verb|2| to the variable \verb|x|. Note that \verb|x:=y| and \verb|y:=x| are not the same. Also, a statement like \verb|x:=x+1| increments the value of \verb|x| by 1.
+	\item Comparison (\verb|==|,\verb|<|,\verb|>|,\verb|<=|,\verb|>=|,\verb|!=|) - These operators are used for comparisons. They give back a truth value to help determine which route to take in a conditional operation/decision. For example, \ver|x>0| will be true if the value of \verb|x| is larger than 0 and false otherwise.
+		\item Arithmetic (\verb|+|,\verb|-|,\verb|*|,\verb|**|,\verb|/|,\verb|%|) - These symbols simply perform the particular operations that we are used to. Note that \verb|**| represents exponentiation and \verb|%| is modular division (it returns the remainder after long division). For example, \verb|2**3| equals 8 and \verb|7%3| is equal to 1.
 \end{itemize}
 
 Here is an example of an algorithm that computes the sum $1+2+3+\cdots+n$ for any integer $n>0$.
