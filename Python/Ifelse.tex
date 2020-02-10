@@ -77,6 +77,8 @@ This can be implemented in Python in several ways.
 
 \begin{enumerate}
 	\item We can put an if/else statement inside of another if or else block of code. Note the indentation of the lines belonging to the second if/else statement.
+\end{enumerate}
+
 \begin{sageCell}
 x = -5
 if x > 0:
@@ -89,7 +91,10 @@ else:
 print(sgn)
 \end{sageCell}
 	
-	\item We can use the \verb|elif| (else-if) option that simply shortens the code above.
+\begin{enumerate}
+	\item[(b)] We can use the \verb|elif| (else-if) option that simply shortens the code above.
+\end{enumerate}
+
 \begin{sageCell}
 x = 2
 if x > 0:
@@ -100,7 +105,6 @@ else:
 	sgn = 0
 print(sgn)
 \end{sageCell}
-\end{enumerate}
 
 Note that the second option greatly increases the readability of the code and can be expanded with more \verb|elif| lines if more options must be considered.
 
@@ -140,7 +144,7 @@ Create an algorithm to implement this alternative Heavyside function. Express yo
 	\end{hint}
 	\begin{hint}
 	\begin{center}
-		\includegraphics{heavy2.png}
+		\includegraphics{heavy.png}
 	\end{center}
 \begin{verbatim}
 if x > 0:
@@ -152,5 +156,5 @@ else:
 \end{verbatim}
 	\end{hint}
 \end{question}
-a
+
 \end{document}
