@@ -63,9 +63,11 @@ else:
 
 The example above show how a flowchart with a decision compartment can be translated to Python code and vice versa. With enough practice one shoud be able to go between the two. Eventually, with enough experience, one can start coding without explicitly drawing a flowchart each time.
 
-Below we give examples of how to use the basic if/else form to handle cases where multiple decisions are needed or if a decision has more than two outcomes. 
+\section{Elif}
 
-Let $sgn$ be the sign function. For any real number $x$, $sgn(x)$ is $+1$ if $x>0$, -1 if $x<0$ and $0$ otherwise. The flowchart below shows a possible algorithm for this function.
+Below we give examples of how to expand on the basic if/else form to handle cases where multiple decisions are needed or if a decision has more than two outcomes. 
+
+Let $sgn$ be the sign function. For any real number $x$, $sgn(x)$ is $+1$ if $x>0$, -1 if $x<0$, and $0$ otherwise. The flowchart below shows a possible algorithm for this function.
 
 \begin{center}
 	\includegraphics{signfun.png}
@@ -75,33 +77,33 @@ This can be implemented in Python in several ways.
 
 \begin{enumerate}
 	\item We can put an if/else statement inside of another if or else block of code. Note the indentation of the lines belonging to the second if/else statement.
-		\begin{sageCell}
-		x = -5
+\begin{sageCell}
+x = -5
 
-		if x > 0:
-			sgn = 1
-		else:
-			if x < 0:
-				sgn = -1
-			else:
-				sgn = 0
-		
-		print(sgn)
-		\end{sageCell}
+if x > 0:
+	sgn = 1
+else:
+	if x < 0:
+		sgn = -1
+	else:
+		sgn = 0
+
+print(sgn)
+\end{sageCell}
 	
 	\item We can use the \verb|elif| (else-if) option that simply shortens the code above.
-		\begin{sageCell}
-		x = 2
+\begin{sageCell}
+x = 2
+	
+if x > 0:
+	sgn = 1
+elif x < 0:
+	sgn = -1
+else:
+	sgn = 0
 
-		if x > 0:
-			sgn = 1
-		elif x < 0:
-			sgn = -1
-		else:
-			sgn = 0
-
-		print(sgn)
-		\end{sageCell}
+print(sgn)
+\end{sageCell}
 \end{enumerate}
 
 Note that the second option greatly increases the readability of the code and can be expanded with more \verb|elif| lines if more options must be considered.
@@ -109,10 +111,51 @@ Note that the second option greatly increases the readability of the code and ca
 \section{Problems}
 
 \begin{question}
-
+Define the Heavyside step function $H$ for any real number $x$ as
+	$$H(x)=\begin{cases} 1 &\text{ if $x\geq 0$}\\
+		0 &\text{ otherwise.}
+	\end{cases}$$
+Create an algorithm to implement the Heavyside function. Express your algorithm as a flowchart and in Python.
+	\begin{hint}
+		This problem is similar to computing $|x|$. Note that the second hint for this problem is the solution.
+	\end{hint}
+	\begin{hint}
+	\begin{center}
+		\includegraphics{heavy.png}
+	\end{center}
+\begin{verbatim}
+if x >= 0:
+	H = 1
+else:
+	H = 0
+\end{verbatim}
+	\end{hint}
 \end{question}
 
 \begin{question}
+A different definition of the Heavyside step function gives a different value at $x=0$, namely,
+	$$H(x)=\begin{cases} 1 &\text{ if $x>0$}\\
+		1/2 &\text{ if $x=0$}\\
+		0 &\text{ otherwise.}
+	\end{cases}$$
+Create an algorithm to implement this alternative Heavyside function. Express your algorithm as a flowchart and in Python.
+	\begin{hint}
+		This problem is similar to computing $|sgn(x)|$. Note that the second hint for this problem is the solution.
+	\end{hint}
+	\begin{hint}
+	\begin{center}
+		\includegraphics{heavy2.png}
+	\end{center}
+\begin{verbatim}
+if x > 0:
+	H = 1
+elif x == 0:
+	H = 0.5
+else:
+	H = 0
+\end{verbatim}
+	\end{hint}
+
 \end{question}
 
 \end{document}
