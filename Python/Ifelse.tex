@@ -42,34 +42,44 @@ The code above creates a variable \verb|abs| that is assigned the absolute value
 x = -3            # change this value and evaluate the cell to compute |x| for other x values
 
 if x > 0:
-	abs = x
+	absVal = x
 else:
-	abs = -x
+	absVal = -x
 
-print(abs)        # this line prints the value of abs to the screen to show that the variable has been assigned the correct value
+print(absVal)        # this line prints the value of abs to the screen to show that the variable has been assigned the correct value
 \end{sageCell}
 
-Note that in Python, whitespace (indentation) determines which lines of code belong to a particular code block. For example, the following code differs from that in the SageCell above in that the \verb|print| statement is only evaluated if $x\leq 0$.
+Note that in Python, whitespace (indentation) determines which lines of code belong to a particular code block. For example, the following code differs from that in the SageCell above in that the \verb|print| statement is only called if $x\leq 0$.
 
 \begin{sageCell}
-x = -3
+x = 4
 
 if x > 0:
-	abs = x
+	absVal = x
 else:
-	abs = -x
-	print(abs)
+	absVal = -x
+	print(absVal)
 \end{sageCell}
 
-The examples above show how a flowchart with a decision compartment can be translated to Python code and vice versa. With enough practice one shoud be able to translate between the two. Eventually, with enough experience, one can start coding without explicitly drawing a flowchart each time.
+The example above show how a flowchart with a decision compartment can be translated to Python code and vice versa. With enough practice one shoud be able to go between the two. Eventually, with enough experience, one can start coding without explicitly drawing a flowchart each time.
 
-Below we give examples of how to use the basic if/else form to handle cases where multiple decisions are needed of if a decision has more than two outcomes. 
+Below we give examples of how to use the basic if/else form to handle cases where multiple decisions are needed or if a decision has more than two outcomes. 
+
+Let $sgn$ be the sign function. For any real number $x$, $sgn(x)$ is $+1$ if $x>0$, -1 if $x<0$ and $0$ otherwise. The flowchart below shows a possible algorithm for this function.
+
+\begin{center}
+	\includegraphics{signfun.png}
+\end{center}
+
+This can be implemented in Python in several ways.
 
 
-\begin{problem}
-\end{problem}
+\section{Problems}
 
-\begin{problem}
-\end{problem}
+\begin{question}
+\end{question}
+
+\begin{question}
+\end{question}
 
 \end{document}
