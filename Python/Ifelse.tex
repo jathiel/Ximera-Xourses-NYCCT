@@ -79,7 +79,6 @@ This can be implemented in Python in several ways.
 	\item We can put an if/else statement inside of another if or else block of code. Note the indentation of the lines belonging to the second if/else statement.
 \begin{sageCell}
 x = -5
-
 if x > 0:
 	sgn = 1
 else:
@@ -87,21 +86,18 @@ else:
 		sgn = -1
 	else:
 		sgn = 0
-
 print(sgn)
 \end{sageCell}
 	
 	\item We can use the \verb|elif| (else-if) option that simply shortens the code above.
 \begin{sageCell}
 x = 2
-	
 if x > 0:
 	sgn = 1
 elif x < 0:
 	sgn = -1
 else:
 	sgn = 0
-
 print(sgn)
 \end{sageCell}
 \end{enumerate}
@@ -125,9 +121,9 @@ Create an algorithm to implement the Heavyside function. Express your algorithm 
 	\end{center}
 \begin{verbatim}
 if x >= 0:
-	H = 1
+        H = 1
 else:
-	H = 0
+        H = 0
 \end{verbatim}
 	\end{hint}
 \end{question}
@@ -148,11 +144,11 @@ Create an algorithm to implement this alternative Heavyside function. Express yo
 	\end{center}
 \begin{verbatim}
 if x > 0:
-	H = 1
+        H = 1
 elif x == 0:
-	H = 0.5
+        H = 0.5
 else:
-	H = 0
+        H = 0
 \end{verbatim}
 	\end{hint}
 \end{question}
