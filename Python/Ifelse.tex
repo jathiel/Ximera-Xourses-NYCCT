@@ -36,7 +36,7 @@ else:
         abs = -x
 \end{verbatim}
 
-The code above creates a variable \verb|abs| that is assigned the absolute value of $x$ for any given $x$. The SageCell below shows how to use this code in practice.
+The code above creates a variable \verb|absVal| that is assigned the absolute value of $x$ for any given $x$. The SageCell below shows how to use this code in practice.
 
 \begin{sageCell}
 x = -3            # change this value and evaluate the cell to compute |x| for other x values
@@ -71,12 +71,45 @@ Let $sgn$ be the sign function. For any real number $x$, $sgn(x)$ is $+1$ if $x>
 	\includegraphics{signfun.png}
 \end{center}
 
-This can be implemented in Python in several ways.
+This can be implemented in Python in several ways. 
 
+\begin{enumerate}
+	\item We can put an if/else statement inside of another if or else block of code. Note the indentation of the lines belonging to the second if/else statement.
+		\begin{sageCell}
+		x = -5
+
+		if x > 0:
+			sgn = 1
+		else:
+			if x < 0:
+				sgn = -1
+			else:
+				sgn = 0
+		
+		print(sgn)
+		\end{sageCell}
+	
+	\item We can use the \verb|elif| (else-if) option that simply shortens the code above.
+		\begin{sageCell}
+		x = 2
+
+		if x > 0:
+			sgn = 1
+		elif x < 0:
+			sgn = -1
+		else:
+			sgn = 0
+
+		print(sgn)
+		\end{sageCell}
+\end{enumerate}
+
+Note that the second option greatly increases the readability of the code and can be expanded with more \verb|elif| lines if more options must be considered.
 
 \section{Problems}
 
 \begin{question}
+
 \end{question}
 
 \begin{question}
