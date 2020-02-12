@@ -8,7 +8,7 @@ We give a brief discussion on the use of variables.
 
 \section{Variables}
 
-Variables act as containers for data. Together which functions, covered in a later section, variables help us generalize our algorithms. While you may be used to variables such as \verb|x| or \verb|y| from your math courses, variable names in programming languages can be longer with the aim of being descriptive. When choosing variable names in Python, be sure to keep in mind the following guidelines:
+Variables act as containers for data. Together with functions, covered in a later section, variables help us generalize our algorithms. While you may be used to variables such as \verb|x| or \verb|y| from your math courses, variable names in programming languages can be longer with the aim of being descriptive. When choosing variable names in Python, be sure to keep in mind the following guidelines:
 
 \begin{itemize}
 	\item variable names should be descriptive
@@ -17,7 +17,7 @@ Variables act as containers for data. Together which functions, covered in a lat
 	\item variable names are case sensitive, for example, \verb|myVar| and \verb|myvar| are not the same
 \end{itemize}
 
-We use the assignment operator to associate data or a particular value with a variable. Note that when writing an algorithm that is independent of a particular programming language, the assignment operator is given by \verb|:=|. However, in Python (and other programming languages), the assignment operator is typed as \verb|=|.
+We use the assignment operator to associate data or a particular value with a variable. Reminder: when writing an algorithm that is independent of a particular programming language, the assignment operator is given by \verb|:=|, however, in Python (and other programming languages), the assignment operator is typed as \verb|=|.
 
 We give a few examples below of how variables may be used.
 
@@ -44,7 +44,7 @@ x = y
 print(x,y)
 \end{sageCell}
 
-Assignment with the same variable on both sides of the operator:
+Assignment with the same variable on both sides of the assignment operator:
 
 \begin{sageCell}
 x = 3
@@ -55,6 +55,7 @@ print(x)
 Descriptive variable names:
 
 \begin{sageCell}
+# This code computes the roots of a quadratic polynomal ax^2+bx+c
 a = 3
 b = 2
 c = -1
