@@ -1,6 +1,8 @@
-\documentclass{ximera}  
+\documentclass{ximera} 
+\usepackage{listings}
 \title{If/Else Statements}  
 \begin{document}  
+\lstset{language=Python}
 \begin{abstract}  
 We introduce if/else statements in Python.
 \end{abstract}  
@@ -30,15 +32,13 @@ else:
 \noindent\rule{\textwidth}{1pt}
 
 The term \verb|condition| indicates the condition we wish to check. If the condition evaluates to \verb|True|, then the instructions given by \verb|code1| are followed. If the condition evaluates to \verb|False|, then the instructions given by \verb|code2| are followed. Using the template above, we can now write the necessary Python code to compute $|x|$.
-      
-\noindent\rule{\textwidth}{1pt}    
-\begin{verbatim}
+
+\begin{lstlings}[frame=single]
 if x > 0:
         absVal = x
 else:
         absVal = -x
-\end{verbatim}
-\noindent\rule{\textwidth}{1pt}
+\end{lstlisting}
 
 The code above creates a variable \verb|absVal| that is assigned the absolute value of $x$ for any given $x$. The SageCell below shows how to use this code in practice.
 
