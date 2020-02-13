@@ -2,7 +2,7 @@
 \usepackage{listings}
 \title{If/Else Statements}  
 \begin{document}  
-\lstset{language=Python}
+\lstset{language=Python,frame=single}
 \begin{abstract}  
 We introduce if/else statements in Python.
 \end{abstract}  
@@ -33,7 +33,7 @@ else:
 
 The term \verb|condition| indicates the condition we wish to check. If the condition evaluates to \verb|True|, then the instructions given by \verb|code1| are followed. If the condition evaluates to \verb|False|, then the instructions given by \verb|code2| are followed. Using the template above, we can now write the necessary Python code to compute $|x|$.
 
-\begin{lstlisting}[frame=single]
+\begin{lstlisting}
 if x > 0:
         absVal = x
 else:
