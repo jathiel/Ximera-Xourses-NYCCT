@@ -33,12 +33,14 @@ else:
 
 The term \verb|condition| indicates the condition we wish to check. If the condition evaluates to \verb|True|, then the instructions given by \verb|code1| are followed. If the condition evaluates to \verb|False|, then the instructions given by \verb|code2| are followed. Using the template above, we can now write the necessary Python code to compute $|x|$.
 
-\begin{lstlisting}
+\begin{verbatim}
+==============================
 if x > 0:
         absVal = x
 else:
         absVal = -x
-\end{lstlisting}
+==============================
+\end{verbatim}
 
 The code above creates a variable \verb|absVal| that is assigned the absolute value of $x$ for any given $x$. The SageCell below shows how to use this code in practice.
 
@@ -94,8 +96,8 @@ print(sgn)
 	
 We can use the \verb|elif| (else-if) option that simply shortens the code above.
 
-\noindent\rule{\textwidth}{1pt}
 \begin{verbatim}
+==============================
 if condition1:
         code1
 elif condition2:
@@ -107,8 +109,8 @@ elif conditionk:
         codek
 else:
         code(k+1)
+==============================
 \end{verbatim}
-\noindent\rule{\textwidth}{1pt}
 
 The \verb|elif| lines above allow one to write a program that checks multiple conditions. The program will execute whatever instructions are associated with the first (and only the first) condition checked that is satisfied. If none of the conditions are satisfied, then the default behavior is given by the code in the \verb|else| portion.
 
