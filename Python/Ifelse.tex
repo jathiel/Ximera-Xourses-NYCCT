@@ -90,7 +90,21 @@ print(sgn)
 	
 We can use the \verb|elif| (else-if) option that simply shortens the code above.
 
-asdf
+\begin{verbatim}
+if condition1:
+	code1
+elif condition2:
+	code2
+elif condition3:
+	code3
+    ...
+elif conditionk:
+	codek
+else:
+	code(k+1)
+\end{verbatim}
+
+The \verb|elif| lines above allow one to write a program that checks multiple conditions. The program will execute whatever instructions are associated with the first (and only the first) condition checked that is satisfied. If none of the conditions are satisfied, then the default behavior is given by the code in the \verb|else| portion.
 
 \begin{sageCell}
 x = 4
