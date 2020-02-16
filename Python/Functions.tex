@@ -111,16 +111,46 @@ While the scope of a variable might seem a bit technical, it is an important det
 
 \section{Problems}
 
+Consider using the SageCell below as your workspace for answering the following questions. Note that for the questions below, the hint contains the solution.
+
 \begin{question}
 	Define a function called \verb|square| that returns the square of any real number \verb|x|. 
+	\begin{hint}
+\begin{sageCell}
+def square(x):
+        return x*x
+\end{sageCell}
+	\end{hint}
 \end{question}
 
 \begin{question}
-	Define a function that computes the average of two numbers \verb|a| and \verb|b|.
+	Define a function called \verb|avg2| that computes the average of two numbers \verb|a| and \verb|b|.
+	\begin{hint}
+\begin{sageCell}
+def avg2(a,b):
+        return (a+b)/2
+\end{sageCell}
+	\end{hint}
 \end{question}
 
 \begin{question}
-	Define a function that computes the number of distinct real roots of a quadratic polynomal $ax^2+bx+c$ where ($a\neq 0$).
+	Define a function called \verb|num_real_roots| that computes the number of distinct real roots of a quadratic polynomal $ax^2+bx+c$ where ($a\neq 0$).
+	\begin{hint}
+\begin{sageCell}
+def num_real_root(a,b,c):
+        d = b*b - 4*a*c
+	if d > 0:
+                roots = 2
+	elif d < 0:
+                roots = 0
+        else:
+                roots = 1
+        return roots
+\end{sageCell}
+	\end{hint}
 \end{question}
+
+\begin{sageCell}
+\end{sageCell}
 
 \end{document}
