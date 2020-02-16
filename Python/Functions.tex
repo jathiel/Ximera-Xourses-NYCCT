@@ -62,7 +62,7 @@ Note the importance of whitespace when defining a function. Any lines that are n
 
 \section{Scope}
 
-The scope of a variable is essentially where the variable `exists' and can be referenced. Variables defined in a program outside of a function is a global variable and can be used inside of a function. Variables defined inside of a function are local variables and cannot be used outside of the function where they are first defined. Below we give some examples to illustrate the differece between these types of variables.
+The scope of a variable is essentially where the variable `exists' and can be referenced. Variables defined in a program outside of a function are global variables and can be used inside of a function as well. Variables defined inside of a function are local variables and cannot be used outside of the function where they are first defined. Below we give some examples to illustrate the differece between these types of variables.
 
 In this example, \verb|x| is global and \verb|y| is local.
 
@@ -87,7 +87,7 @@ def fun():
 print(y)
 \end{sageCell}
 
-This example shows what happens if there are global variable and function inputs with the same name.
+This example shows what happens if there are global variables and function inputs with the same name.
 
 \begin{sageCell}
 x = 3
