@@ -23,7 +23,7 @@ A Python function will have the following syntax:
 ==============================
 def functionName(inputs):
         code
-	return variable
+        return variable
 ==============================
 \end{verbatim}
 
@@ -58,7 +58,7 @@ print(dist(x1,y1,x3,y3))
 print(dist(x2,y2,x3,y3))
 \end{sageCell}
 
-Note the importance of whitespace when defining a function. Any lines that are not indented are not part of the function definition.
+Note the importance of whitespace when defining a function. Any lines that are not indented are not part of the function definition. Also of importance is the order in which the variables where passed into the function.
 
 \section{Scope}
 
@@ -98,6 +98,8 @@ def fun(x):
 print(fun(4))
 print(fun(x))     # What should happen here?
 \end{sageCell}
+
+While the scope of a variable might seem a bit technical, it is an important detail that will keep us from making preventable mistakes in future lessons.
 
 \begin{question}
 \end{question}
