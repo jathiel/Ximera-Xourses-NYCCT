@@ -22,12 +22,12 @@ A Python function will have the following syntax:
 \begin{verbatim}
 ==============================
 def functionName(inputs):
-	code
+        code
 	return variable
 ==============================
 \end{verbatim}
 
-The key word \verb|def| denotes the beginning of a function definition. Using the same guidelines for variable names, \verb|functionName| is your choice of the name of the function and will be used to `call' it as needed. A collection of comma separated values in \verb|inputs| will act as the inputs to the function (note that order matters for the inputs). The portion labelled \verb|code| is simply the set of instructions to be completed whenever the function is called. Finally, we have the line with the keyword \verb|return|. So far, we have been using \verb|print| to see the result of a calculation on the screen. In the case of a function, we will likely want the resulting output to be used in {\em another} calculation. The keyword \verb|return| provides us with this ability. Any \verb|variable| after \verb|return| represents the output value of the function and can be assigned to another variable or passed into another function without displaying the value on the screen. The keyword \verb|print|, on the other hand, prints the value to the screen but does not provide us with any data that can be assigned elsewhere. When using \verb|print|, the computer essentially forgets what it just computed.
+The key word \verb|def| denotes the beginning of a function definition. Using the same guidelines for variable names, \verb|functionName| is your choice for the name of the function and will be used to `call' it as needed. A collection of comma separated values in \verb|inputs| will act as the inputs to the function (note that order matters for the inputs). The portion labeled \verb|code| is simply the set of instructions to be completed whenever the function is called. Finally, we have the line with the keyword \verb|return|. So far, we have been using \verb|print| to see the result of a calculation on the screen. In the case of a function, we will likely want the resulting output to be used in {\em another} calculation. The keyword \verb|return| provides us with this ability. Any \verb|variable| after \verb|return| represents the output value of the function and can be assigned to another variable or passed into another function without displaying the value on the screen. The keyword \verb|print|, on the other hand, prints the value to the screen but does not provide us with any data that can be assigned elsewhere. When using \verb|print|, the computer essentially forgets what it just computed.
 
 Below is an example of the function that computes the distance between two points, $(x_1,y_1)$ and $(x_2,y_2)$.
 
@@ -35,15 +35,15 @@ Below is an example of the function that computes the distance between two point
 ==============================
 def dist(x1,y1,x2,y2):
         d = ((x1-x2)**2+(y1-y2)**2)**(0.5)
-	return d
+        return d
 ==============================
 \end{verbatim}
 
 This function, as long as it is defined before it is called, can now be used multiple times with different inputs to compute the distance between several pairs of points. Below we give an example.
 
 \begin{sageCell}
-def dist(x1,y1,x2,y2):
-        d = ((x1-x2)**2+(y1-y2)**2)**(0.5)
+def dist(X1,Y1,X2,Y2):
+        d = ((X1-X2)**2+(Y1-Y2)**2)**(0.5)
         return d
 
 x1 = 1
@@ -58,9 +58,46 @@ print(dist(x1,y1,x3,y3))
 print(dist(x2,y2,x3,y3))
 \end{sageCell}
 
-
+Note the importance of whitespace when defining a function. Any lines that are not indented are not part of the function definition.
 
 \section{Scope}
+
+The scope of a variable is essentially where the variable `exists' and can be referenced. Variables defined in a program outside of a function is a global variable and can be used inside of a function. Variables defined inside of a function are local variables and cannot be used outside of the function where they are first defined. Below we give some examples to illustrate the differece between these types of variables.
+
+In this example, \verb|x| is global and \verb|y| is local.
+
+\begin{sageCell}
+x = 3
+
+def fun(y):
+        return x*y
+
+print(fun(2))
+\end{sageCell}
+
+This example shows that you cannot use a local variable outside of the function that defined it.
+
+\begin{sageCell}
+x = 3
+
+def fun():
+        y = 4
+        return 2
+
+print(y)
+\end{sageCell}
+
+This example shows what happens if there are global variable and function inputs with the same name.
+
+\begin{sageCell}
+x = 3
+
+def fun(x):
+	return 2*x
+
+print(fun(4))
+print(fun(x))     # What should happen here?
+\end{sageCell}
 
 \begin{question}
 \end{question}
