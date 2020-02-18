@@ -32,11 +32,12 @@ Python comes equipped with functions and operators designed to work in a particu
 	\item Concatenation (\verb|+|) - This operator concatenates lists, so \verb|[1,2]+[3,4]| would yield \verb|[1,2,3,4]|.
 	\item Multiplication (\verb|*|) - This operator requires a list and integer and is best illustrated via an example. We have that \verb|[1,2] * 3| yields \verb|[1,2,1,2,1,2]|.
 	\item Length (\verb|len|) - This function computes the length of a list, so \verb|len([1,3])| yields \verb|2|.
+	\item Membership (\verb|in|) - This keyword can be used to determine if a particular value is a member of a list. For example, \verb|2 in [1,2,3]| is \verb|True|.
 \end{itemize}
 
 \section{Slicing}
 
-List slicing is a handy way of obtaining a portion of a list using the following notation. Given a list \verb|a|, then \verb|a[start:stop]| will give all of the elements of \verb|a| starting with index \verb|start| and ending with index \verb|stop-1|. If either \verb|start| or \verb|stop| are omitted, then the longest list satisfying the contraints is given. Also, a third optional argument can be given to specify the step size taken. We illustrate slicing in the example below.
+List slicing is a handy way of obtaining a portion of a list using the following notation. Given a list \verb|a|, \verb|a[start:stop]| will give all of the elements of \verb|a| starting with index \verb|start| and ending with index \verb|stop-1|. If either \verb|start| or \verb|stop| are omitted, then the longest list satisfying the contraints is given. Also, a third optional argument can be given to specify the step size taken. We illustrate various ways to slice a list below.
 
 \begin{sageCell}
 myList = ['cake', 'pie', 'ice cream', 'donut', 'brownie', 'fruit']
@@ -47,6 +48,23 @@ print(myList[1:])   # Contains elements with index >= 1.
 print(myList[2::2]) # Contains every other element with index >= 2.
 print(myList[::-1]) # Reverses the list.
 \end{sageCell}
+
+\section{Caution}
+
+Consider the following example:
+
+\begin{sageCell}
+a = [1,2,3]
+
+b = a
+
+b[1] = -7
+
+print(a) # What do you expect to see here?
+print(b)
+\end{sageCell}
+
+Note that \verb|b=a| does not create a new list \verb|b| with the same elements as \verb|a|. Rather, both are references to the same object. To create a duplicate copy of a list that avoids this issue, use \verb|b = a[:]|.
 
 \section{Problems}
 
