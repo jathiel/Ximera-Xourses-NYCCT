@@ -64,14 +64,44 @@ print(a) # What do you expect to see here?
 print(b)
 \end{sageCell}
 
-Note that \verb|b=a| does not create a new list \verb|b| with the same elements as \verb|a|. Rather, both are references to the same object. To create a duplicate copy of a list that avoids this issue, use \verb|b = a[:]|.
+Note that \verb|b=a| does not create a new list \verb|b| with the same elements as \verb|a|. Rather, both are references to the same object. Any changes to \verb|b| will therefore be reflected by \verb|a| as well. To create a duplicate copy of a list that avoids this issue, use \verb|b = a[:]|.
 
 \section{Problems}
 
+Note that for the questions below, the hint contains the solution.
+
 \begin{question}
+Consider the list \verb|a = [4,5,2,1,6]|. Use list slicing to obtain the list \verb|2,1,6|.
+	\begin{hint}
+\begin{sageCell}
+a = [4,5,2,1,6]
+a[2:]
+\end{sageCell}
+	\end{hint}
 \end{question}
 
 \begin{question}
+Write a Python function \verb|longer| that takes in two lists \verb|a| and \verb|b| as inputs and returns the length of the longer list.
+	\begin{hint}
+\begin{sageCell}
+def longer(a,b):
+        if len(a) >= len(b):
+                long = len(a)
+        else:
+        long = len(b)
+        return long
+\end{sageCell}
+	\end{hint}
+\end{question}
+
+\begin{question}
+A list is a palindrome if it is the same forwards and backwards, like \verb|[1,2,3,4,3,2,1]|. Write a Python function \verb|pal| that takes in a list \verb|a| as an input and returns \verb|True| if the list is a palindrome and \verb|False| otherwise.
+	\begin{hint}
+\begin{sageCell}
+def pal(a):
+        return a == a[::-1]
+\end{sageCell}
+	\end{hint}
 \end{question}
 
 \section{Workspace}
