@@ -1,1 +1,16 @@
 *.log
+*.aux
+*.auxlock
+*.dvi
+*.html
+*.pdf
+*.tmp
+*.jax
+*.ids
+*.idv
+*.lg
+*.out
+*.oc
+*.toc
+*.xref
+*.json
