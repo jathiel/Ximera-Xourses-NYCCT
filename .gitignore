@@ -18,4 +18,6 @@
 *.swp
 *.svg
 *.md5
-*.dph*
+*.dp*
+*.png
+*~
