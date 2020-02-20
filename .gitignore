@@ -14,3 +14,8 @@
 *.toc
 *.xref
 *.json
+*.4*
+*.swp
+*.svg
+*.md5
+*.dph*
