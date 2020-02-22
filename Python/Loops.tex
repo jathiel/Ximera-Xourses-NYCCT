@@ -29,8 +29,8 @@ Loops are
 def fun(x):
         return x*x
 
-def test():
-        return myfun(3)==fun(3)
+def test(f):
+        return f(3)==fun(3)
 
 
 True == True
@@ -42,7 +42,7 @@ True == True
 def myfun(x):
         return x**2
 
-test()
+test(myfun)
 \end{sageCell}
 
 \end{document}
