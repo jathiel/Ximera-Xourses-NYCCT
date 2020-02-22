@@ -24,8 +24,23 @@ Loops are
 
 \section{Workspace}
 
+
 \begin{sageCell}
 #
+def myfun(x):
+        return x**2
+
+test()
 \end{sageCell}
+
+\begin{expandable}
+\begin{sageCell}
+def fun(x):
+        return x*x
+
+def test():
+	return myfun(3)==fun(3)
+\end{sageCell}
+\end{expandable}
 
 \end{document}
