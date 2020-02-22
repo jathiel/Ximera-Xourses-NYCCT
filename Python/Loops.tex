@@ -8,9 +8,24 @@ We give an introduction to for and while loops.
 
 \section{Loops}
 
-Loops are 
+Loops are useful whenever you have an algorithm that requires multiple uses of the same step. For example, say we wanted to compute the sum $1+2+\cdots+100$. We have seen in a previous section that this can be done using two variables, one that tracks the current value of the sum and another that tracks whether or not our task is finished (see the flowchart below).
+
+\begin{center}
+	    \includegraphics{gausssum2.png}
+\end{center}
+
+The structure of the flowchart above is very suggestive of why we use the terminology `loop'. We will now go over two types of loops: for loops and while loops.
 
 \section{For Loops}
+
+The Python syntax for a for loop is as follows:
+
+\begin{verbatim}
+for variable in iterable:
+        code
+\end{verbatim}
+
+In the above code, \verb|for| indicates the start of a for loop, \verb|variable| is just a variable name of your choice, \verb|in| is a keyword, and \verb|iterable| is a Python object that can be iterated over, like a list. This Python code almost reads as an English statement. It is saying, for each item in \verb|iterable|, which we will denote by \verb|variable| each time, perform the instructions given by \verb|code|.
 
 \section{While Loops}
 
@@ -24,25 +39,8 @@ Loops are
 
 \section{Workspace}
 
-\begin{expandable}
-\begin{sageOutput}
-def fun(x):
-        return x*x
-
-def test(f):
-        return f(3)==fun(3)
-
-
-True == True
-\end{sageOutput}
-\end{expandable}
-
 \begin{sageCell}
 #
-def myfun(x):
-        return x**2
-
-test(myfun)
 \end{sageCell}
 
 \end{document}
