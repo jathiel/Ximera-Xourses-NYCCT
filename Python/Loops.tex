@@ -35,15 +35,15 @@ Below is an example of how to compute $1+2+\cdots+100$ using a for loop.
 
 \begin{sageCell}
 n = 100
-sum = 0
+s = 0
 
 for i in range(1,101):
-        sum = sum + i
+        s = s + i
 
-sum
+s
 \end{sageCell}
 
-The \verb|range| function above is commonly used in for loops. The inputs for the \verb|range| function are similar to those used for list slicing. See the SageCells below for examples of how tuse the \verb|range| function.
+The \verb|range| function above is commonly used in for loops. The inputs for the \verb|range| function are similar to those used for list slicing. See the SageCells below for examples of how to use the \verb|range| function.
 
 The range function with 1 argument.
 \begin{sageCell}
@@ -65,11 +65,40 @@ for k in range(3,12,2):
 
 \section{While Loops}
 
+The Python syntax for a while loop is as follows:
 
+\begin{verbatim}
+==============================
+
+while condition:
+	code
+
+==============================
+\end{verbatim}
+
+In the above code, \verb|while| indicates the start of a while loop, \verb|condition| is the comparison that is made to determine if the while loop is finished, and \verb|code| is executed as long as \verb|condition| holds true.
+
+Below is an example of how to compute $1+2+\cdots+100$ using a while loop.
+
+\begin{sageCell}
+n = 100
+s = 0
+i = 1
+
+while n>=i:
+        s = s + i
+	i = i + 1
+
+s
+\end{sageCell}
+
+Note that for a while loop, if \verb|condition| is always true, then your algorithm will never finish running.
 
 \section{Choices}
 
+A common question when learning about these two types of loops is: Which one should I use? In many cases either will work just fine. For loops are preferred when the number of times the instructions are to be repeated is known. While loops are preferred when the number of times the instructions are to be repeated is unknown.
 
+What is the smallest positive integer $n$ that has exactly $5$ divisors? You can use a loop to tackle this question by testing the number of divisors of $1$, $2$, and so on until the desired condition is met. Since it is unclear how big $n$ is, using a while loop here would be reasonable.
 
 \section{Problems}
 
