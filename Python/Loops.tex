@@ -29,7 +29,7 @@ for variable in iterable:
 ==============================
 \end{verbatim}
 
-In the above code, \verb|for| indicates the start of a for loop, \verb|variable| is just a variable name of your choice, \verb|in| is a keyword, and \verb|iterable| is a Python object that can be iterated over, like a list. This Python code almost reads as an English statement. It is saying, for each item in \verb|iterable|, which we will denote by \verb|variable| each time, perform the instructions given by \verb|code|.
+In the above code, \verb|for| indicates the start of a for loop, \verb|variable| is just a variable name of your choice, \verb|in| is a keyword, and \verb|iterable| is a Python object that can be iterated over, like a list. This Python code almost reads as an English statement. It is saying, for each item in \verb|iterable|, whose value we assign to \verb|variable| each time, perform the instructions given by \verb|code|.
 
 Below is an example of how to compute $1+2+\cdots+100$ using a for loop. 
 
@@ -71,7 +71,7 @@ The Python syntax for a while loop is as follows:
 ==============================
 
 while condition:
-	code
+        code
 
 ==============================
 \end{verbatim}
@@ -92,7 +92,7 @@ while n>=i:
 s
 \end{sageCell}
 
-Note that for a while loop, if \verb|condition| is always true, then your algorithm will never finish running.
+Note that for a while loop, if \verb|condition| is always true, then your algorithm will never finish running. Unlike a for loop, you must be sure to update the variables associated with the condition being checked at each iteration. In the example above, omitting the line \verb|i = i + 1| would create an infinite loop.
 
 \section{Choices}
 
@@ -102,16 +102,57 @@ What is the smallest positive integer $n$ that has exactly $5$ divisors? You can
 
 \section{Problems}
 
+Note that for the questions below, the hint contains the solution.
+
 \begin{question}
+	Write a Python function \verb|pos_floor| that computes the floor of a positive real number $x$.
+\begin{hint}
+\begin{sageCell}
+
+\end{sageCell}
+\end{hint}
 \end{question}
 
 \begin{question}
+	Write a Python function \verb|neg_floor| that computes the floor of a negative real number $x$
+\begin{hint}
+\begin{sageCell}
+
+\end{sageCell}
+\end{hint}
+\end{question}
+
+\begin{question}
+	Write a Python function \verb|my_floor| that computes the floor of any real number $x$.
+\begin{hint}
+\begin{sageCell}
+
+\end{sageCell}
+\end{hint}
+\end{question}
+
+\begin{question}
+	Write a Python function that computes the number of divisors of a positive integer $n$.
+\begin{hint}
+\begin{sageCell}
+
+\end{sageCell}
+\end{hint}
+\end{question}
+
+\begin{question}
+	Write a Python function that computes $n!$ for any nonnegative integer $n$.
+\begin{hint}
+\begin{sageCell}
+
+\end{sageCell}
+\end{hint}
 \end{question}
 
 \section{Workspace}
 
 \begin{sageCell}
-#
+# Use this cell to solve the above questions.
 \end{sageCell}
 
 \end{document}
