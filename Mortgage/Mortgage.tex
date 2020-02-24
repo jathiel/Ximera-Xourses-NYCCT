@@ -6,20 +6,49 @@ We introduce some mortgage rate problems as an application.
 \end{abstract}  
 \maketitle
 
-\section{Compount Interest}
+\section{Compound Interest}
+
+Any financial agreement involving the borrowing of money typically includes an interest calculation. Interest can be thought of as the cost of borrowing from a lender and is usually computed as a percentage of the principal sum over a fixed period of time.
+
+Compound interest involves the addition of the previously computed interest to the principal sum. That is, you compute the interest on the interest on the loan.
+
+We use the following basic formula for compounding interest:
+
+$$P' = P\cdot\left(1+\frac{r}{n}\right) + c $$ where
+\begin{itemize}
+	\item $P = $ principal sum,
+	\item $r = $ annual interest rate,
+	\item $n = $ number of compoundings per year,
+	\item $c = $ contribution to the principal per compounding period, and 
+	\item $P' = $ new principal sum after one compounding period.
+\end{itemize}
+
+When $c=0$, we can compute the new principal after $t$ compounding periods as $P\cdot\left(1+\frac{r}{n}\right)^{t}$. When $c\neq 0$, the following formulas for geometric sums will be helpful:
+
+$$\sum_{k=0}^N r^k = \frac{1-r^{N+1}}{1-r}$$
+
+and
+
+$$\sum_{k=0}^N r^k = \frac{1}{1-r}, |r| < 1.$$
 
 \section{Problems}
 
 \begin{question}
+Suppose you open a retirement account with \$1,000 that offers an annual interest rate of 6\% compounded monthly. (Round all answers to the nearest cent.)
+
+How much is the account worth after 20 years with no monthly contributions? $\answer{3310.20}$
+
+How much is the same account worth after 20 years if you make monthly contributions of \$50? $\answer{26412.25}$
 \end{question}
 
 \begin{question}
+
 \end{question}
 
 \section{Workspace}
 
 \begin{sageCell}
-#
+# Use this cell to solve the above questions.
 \end{sageCell}
 
 \end{document}
