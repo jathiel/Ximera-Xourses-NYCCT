@@ -6,69 +6,99 @@ The goal is to understand how use list comprehensions and perform set.
 \end{abstract}
 \maketitle
 
-\noindent\textbf{Objectives: }Understand how use list comprehensions and perform set operations.
+\section{List Comprehensions}
 
+A list comprehension allows you to create lists quickly using syntax that looks like set-builder notation.
+\begin{verbatim}
+============================== 
+a = [k*k for k in range(5)]
+b = [k for k in range(13) if k%2 == 0]
+==============================
+\end{verbatim}
+        
+The list \verb|a| contains the squares of 0 to 4 and \verb|b| contains all even numbers from 0 to 12.
+
+\section{Sets and Set Operations}
+
+Sets are similar to lists, but they cannot have repeated entries and have special set operations.
+
+\begin{verbatim}
+==============================
+A = set([1,2,3,4,5])
+B = set([3,4,5,6,7])
+==============================
+\end{verbatim}
 \begin{enumerate}
-\item Create a new trinket titled ``2440 Module 3" to begin today's activities. Type all of today's work into this trinket.
-\item List Comprehensions:
-    \begin{enumerate}
-        \item A list comprehension allows you to create lists quickly using syntax that looks like set-builder notation
-        \begin{verbatim}
-        a = [k*k for k in range(5)]
-        b = [k for k in range(13) if k%2 == 0]
-        \end{verbatim}
-        The list \verb|a| contains the squares of 0 to 4 and \verb|b| contains all even numbers from 0 to 12.
+        \item We can determine the membership of an element \verb|x| in a set \verb|A|:
+\begin{verbatim}
+==============================	
+x in A
+==============================
+\end{verbatim}
+        \item In the case of a finite set, we can compute its cardinality:
+\begin{verbatim}
+==============================
+len(A)
+==============================
+\end{verbatim}
+        \item We can determine if a set \verb|A| is a subset of another set \verb|B|:
+\begin{verbatim}
+==============================
+A.issubset(B)
+==============================
+\end{verbatim}
+        \item Unions:
+\begin{verbatim}
+==============================
+A.union(B)
+==============================
+\end{verbatim}
+        \item Intersection:
+\begin{verbatim}
+==============================
+A.intersection(B)
+==============================
+\end{verbatim}
+        \item Set Differences:
+\begin{verbatim}
+==============================
+A.difference(B)
+==============================
+\end{verbatim}
     \end{enumerate}
 
-\item Sets:
+\section{Problems}
+
     \begin{enumerate}
-    \item Sets are similar to lists, but they cannot have repeated entries and have special set operations:
-        \begin{verbatim}
-        A = set([1,2,3,4,5])
-        B = set([3,4,5,6,7])
-        \end{verbatim}
-    \end{enumerate}
-\item Set Operations:
-    \begin{enumerate}
-        \item We can determine the membership of an element \verb|x| in a set \verb|A|:
-        \begin{verbatim}
-            x in A
-        \end{verbatim}
-        \item In the case of a finite set, we can compute its cardinality:
-        \begin{verbatim}
-            len(A)
-        \end{verbatim}
-        \item We can determine if a set \verb|A| is a subset of another set \verb|B|:
-        \begin{verbatim}
-            A.issubset(B)
-        \end{verbatim}
-        \item Unions:
-        \begin{verbatim}
-            A.union(B)
-        \end{verbatim}
-        \item Intersection:
-        \begin{verbatim}
-            A.intersection(B)
-        \end{verbatim}
-        \item Set Differences:
-        \begin{verbatim}
-            A.difference(B)
-        \end{verbatim}
-    \end{enumerate}
-\item Write code to do the following:
-    \begin{enumerate}
-    \item Use list comprehensions to create the following lists:
-    \begin{enumerate}
-        \item The list of all of the odd numbers from 1 to 100.
-        \item The list of all letters in your name that are not `e'. (Hint: a string can be iterated over.)
-    \end{enumerate}
-    \item Suppose $A=\{4,7,8,3,2\}$ and $B=\{8,7,5s,4\}$
+    	\item Use list comprehensions to create the following lists:
+    	\begin{enumerate}
+        	\item The list of all of the odd numbers from 1 to 100.
+\begin{sageCell}
+# Use this cell to solve the problem.
+\end{sageCell}
+        	\item The list of all letters in your name that are not `e'. (Hint: a string can be iterated over.)
+\begin{sageCell}
+# Use this cell to solve the problem.
+\end{sageCell}
+    	\end{enumerate}
+    	\item Suppose $A=\{4,7,8,3,2\}$ and $B=\{8,7,5s,4\}$
         \begin{enumerate}
-            \item Compute $A\cap B$.
-            \item Compute $A\cup B$.
-            \item Compute $A-B$.
-            \item Compute $|A\cup B|$.
+        	\item Compute $A\cap B$.
+\begin{sageCell}
+# Use this cell to solve the problem.
+\end{sageCell}
+        	\item Compute $A\cup B$.
+\begin{sageCell}
+# Use this cell to solve the problem.
+\end{sageCell}
+         	\item Compute $A-B$.
+\begin{sageCell}
+# Use this cell to solve the problem.
+\end{sageCell}
+         	\item Compute $|A\cup B|$.
+\begin{sageCell}
+# Use this cell to solve the problem.
+\end{sageCell}
         \end{enumerate}
     \end{enumerate}
-\end{enumerate}
 \end{document}
