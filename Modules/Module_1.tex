@@ -1,8 +1,117 @@
-\documentclass{ximera}  
-\title{}  
+\documentclass{ximera}
+\title{Loops and Functions}
 \begin{document}
-\begin{abstract}  
-\end{abstract}  
+\begin{abstract}
+The goal is to learn to write some basic python programs.
+\end{abstract}
 \maketitle
 
+\section{Basics}
+
+In this section we introduce loops and function definitions.
+
+    \begin{enumerate}
+        \item The Python syntax for a for loop is as follows:
+
+\begin{verbatim}
+==============================
+
+for variable in iterable:
+        code
+
+==============================
+\end{verbatim}
+
+In the above code, \verb|for| indicates the start of a for loop, \verb|variable| is just a variable name of your choice, \verb|in| is a keyword, and \verb|iterable| is a Python object that can be iterated over, like a list. This Python code almost reads as an English statement. It is saying, for each item in \verb|iterable|, whose value we assign to \verb|variable| each time, perform the instructions given by \verb|code|.
+
+The example below prints the values \verb|0| to \verb|9|.
+
+\begin{verbatim}
+==============================
+for i in range(10):
+        print(i)
+==============================
+\end{verbatim}
+
+        \item If/Else statements help direct your program if there are multiple cases and use the following syntax:
+\begin{verbatim}
+==============================
+if condition:
+        code1
+elif:
+        code2
+else:
+        code3
+==============================
+\end{verbatim}
+
+The example below computes the absolute value of \verb|x|.
+
+\begin{verbatim}
+==============================
+if x==0:
+        print(0)
+elif x>0:
+        print(x)
+else:
+        print(-x)
+==============================
+\end{verbatim}
+
+        \item A Python function will have the following syntax:
+
+\begin{verbatim}
+==============================
+def functionName(inputs):
+        code
+        return variable
+==============================
+\end{verbatim}
+
+The key word \verb|def| denotes the beginning of a function definition. Using the same guidelines for variable names, \verb|functionName| is your choice for the name of the function and will be used to `call' it as needed. A collection of comma separated values in \verb|inputs| will act as the inputs to the function.  The portion labeled \verb|code| is simply the set of instructions to be completed whenever the function is called. Finally, we have the line with the keyword \verb|return|. So far, we have been using \verb|print| to see the result of a calculation on the screen. In the case of a function, we will likely want the resulting output to be used in {\em another} calculation. The keyword \verb|return| provides us with this ability. Any \verb|variable| after \verb|return| represents the output value of the function and can be assigned to another variable or passed into another function without displaying the value on the screen. The keyword \verb|print|, on the other hand, prints the value to the screen but does not provide us with any data that can be assigned elsewhere. When using \verb|print|, the computer essentially forgets what it just computed.
+
+Below is an example of the function that computes the square of any number \verb|n|.
+
+\begin{verbatim}
+==============================
+def square(n):
+        return n*n
+==============================
+\end{verbatim}
+\end{enumerate}
+
+\section{Problems}
+
+    \begin{enumerate}
+    \item Write a function that computes $x^2+\sin(x)$.
+\begin{sageCell}
+# Use this cell to solve the problem.
+\end{sageCell}
+
+    \item Write a function that computes the derivative of $x^{3/2}$.
+\begin{sageCell}
+# Use this cell to solve the problem.
+\end{sageCell}
+
+    \item Write an if/else statement that returns a 1 if a number $n$ is positive, 0 if $n$ is zero, and -1 if $n$ is negative.
+\begin{sageCell}
+# Use this cell to solve the problem.
+\end{sageCell}
+
+    \item Write a for loop that computes ``$1+2+3+\cdots+100$".
+\begin{sageCell}
+# Use this cell to solve the problem.
+\end{sageCell}
+
+    \item Write a function that takes in a positive integer $n$ as an input and returns the sum ``$1+2+3+\cdots+n$".
+\begin{sageCell}
+# Use this cell to solve the problem.
+\end{sageCell}
+
+    \item Write a for loop that counts the number of e's in the string ``new york city college of technology".
+\begin{sageCell}
+# Use this cell to solve the problem.
+\end{sageCell}
+
+\end{enumerate}
 \end{document}
