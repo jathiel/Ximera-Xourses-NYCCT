@@ -1,187 +1,74 @@
 \documentclass{ximera}
-\title{Boolean Variables and Logical Operators}
+\title{List Comprehensions and Sets}
 \begin{document}
 \begin{abstract}
-The goal is to understand how Boolean variables and logical operators work in Python.
+The goal is to understand how use list comprehensions and perform set.
 \end{abstract}
 \maketitle
 
-\section{Boolean variables}
-
-A Boolean variable is either true or false. In Python, these are written in the following way:
-
-\begin{verbatim}
-==============================
-p = True
-q = False
-==============================
-\end{verbatim}
-
-Boolean values appear when doing comparisons. Try the following:
-\begin{verbatim}
-==============================
-print(3 == 2)
-print(3 > 2)
-==============================
-\end{verbatim}
-
-Boolean values also determine the behavior of if/else statements and while loops.
-\begin{verbatim}
-==============================
-i = 0
-while i < 10:
-        print(i)
-        i += 1
-==============================
-\end{verbatim}
-
-\begin{verbatim}
-==============================
-if True:
-        print('Hi!')
-else:
-        print('Bye!')
-==============================
-\end{verbatim}
-
-\section{Logical Operators}
+\noindent\textbf{Objectives: }Understand how use list comprehensions and perform set operations.
 
 \begin{enumerate}
-    \item The negation operator:
-\begin{verbatim}
-==============================
-not p
-==============================
-\end{verbatim}
-
-    \item The \verb|AND| operator:
-\begin{verbatim}
-==============================
-p and q
-==============================
-\end{verbatim}
-
-    \item The \verb|OR| operator:
-\begin{verbatim}
-==============================
-p or q
-==============================
-\end{verbatim}
-\end{enumerate}
-
-\section{Problems}
-
+\item Create a new trinket titled ``2440 Module 3" to begin today's activities. Type all of today's work into this trinket.
+\item List Comprehensions:
     \begin{enumerate}
-    \item With $p$ true and $q$ false, compute the truth value of the following:
-    \begin{enumerate}
-        \item $p\vee q$
-        \item $p\to q$ (Hint: There is no conditional operator, so use an equivalent form)
-        \item $(p\to q)\wedge \neg q$
-        \item $p\to (q\wedge \neg q)$
+        \item A list comprehension allows you to create lists quickly using syntax that looks like set-builder notation
+        \begin{verbatim}
+        a = [k*k for k in range(5)]
+        b = [k for k in range(13) if k%2 == 0]
+        \end{verbatim}
+        The list \verb|a| contains the squares of 0 to 4 and \verb|b| contains all even numbers from 0 to 12.
     \end{enumerate}
-\begin{sageCell}
-# Use this cell to solve the problem.
-\end{sageCell}
-    \item Use the code in the SageCell below that constructs truth tables for the following problems:
+
+\item Sets:
+    \begin{enumerate}
+    \item Sets are similar to lists, but they cannot have repeated entries and have special set operations:
+        \begin{verbatim}
+        A = set([1,2,3,4,5])
+        B = set([3,4,5,6,7])
+        \end{verbatim}
+    \end{enumerate}
+\item Set Operations:
+    \begin{enumerate}
+        \item We can determine the membership of an element \verb|x| in a set \verb|A|:
+        \begin{verbatim}
+            x in A
+        \end{verbatim}
+        \item In the case of a finite set, we can compute its cardinality:
+        \begin{verbatim}
+            len(A)
+        \end{verbatim}
+        \item We can determine if a set \verb|A| is a subset of another set \verb|B|:
+        \begin{verbatim}
+            A.issubset(B)
+        \end{verbatim}
+        \item Unions:
+        \begin{verbatim}
+            A.union(B)
+        \end{verbatim}
+        \item Intersection:
+        \begin{verbatim}
+            A.intersection(B)
+        \end{verbatim}
+        \item Set Differences:
+        \begin{verbatim}
+            A.difference(B)
+        \end{verbatim}
+    \end{enumerate}
+\item Write code to do the following:
+    \begin{enumerate}
+    \item Use list comprehensions to create the following lists:
+    \begin{enumerate}
+        \item The list of all of the odd numbers from 1 to 100.
+        \item The list of all letters in your name that are not `e'. (Hint: a string can be iterated over.)
+    \end{enumerate}
+    \item Suppose $A=\{4,7,8,3,2\}$ and $B=\{8,7,5s,4\}$
         \begin{enumerate}
-            \item Construct a truth table for $\neg p \vee q$.
-            \item Construct a truth table for $(p \vee q) \vee r$.
-            \item Construct a truth table that shows that $\neg(p \vee q) \equiv \neg p \wedge \neg q$.
+            \item Compute $A\cap B$.
+            \item Compute $A\cup B$.
+            \item Compute $A-B$.
+            \item Compute $|A\cup B|$.
         \end{enumerate}
-\begin{sageCell}
-# Use this cell to solve the problem.
-def table21():
-  listComb = [[True,  True],
-              [True,  False],
-              [False, True],
-              [False, False]]
-
-  statement = 'not (p or (not p and q))'
-
-  firstLine = '{:^6} | {:^6}| {}'.format('p','q',statement+' ')
-  print firstLine
-  print '-'*len(firstLine)
-
-  for p,q in listComb:
-    myString = "{:^6} | {:^6}| {:^" + str(len(statement)) + "}"
-    nextLine = myString.format(p,q, not (p or (not p and q)))
-    print nextLine
-
-def table22():
-  listComb = [[True,  True],
-              [True,  False],
-              [False, True],
-              [False, False]]
-
-  statement1 = 'not (p or (not p and q))'
-  statement2 = 'not p and not q'
-
-  firstLine = '{:^6} | {:^6} | {} | {}'.format('p','q',statement1,statement2)
-  print firstLine
-  print '-'*len(firstLine)
-
-  for p,q in listComb:
-    myString = "{:^6} | {:^6} | {:^" + str(len(statement1)) + "} | {:^" + str(len(statement2)) + "}"
-    nextLine = myString.format(p,q, not (p or (not p and q)), not p and not q)
-    print nextLine
-
-def table31():
-  listComb = [[True,  True,  True],
-              [True,  True,  False],
-              [True,  False, True],
-              [True,  False, False],
-              [False, True,  True],
-              [False,  True,  False],
-              [False,  False, True],
-              [False,  False, False]]
-
-  statement = 'p and q and r'
-
-  firstLine = '{:^6} | {:^6} | {:^6} | {}'.format('p','q', 'r',statement+' ')
-  print firstLine
-  print '-'*len(firstLine)
-
-  for p,q,r in listComb:
-    myString = "{:^6} | {:^6} | {:^6} | {:^" + str(len(statement)) + "}"
-    nextLine = myString.format(p,q,r, p and q and r)
-    print nextLine
-
-def table32():
-  listComb = [[True,  True,  True],
-              [True,  True,  False],
-              [True,  False, True],
-              [True,  False, False],
-              [False, True,  True],
-              [False,  True,  False],
-              [False,  False, True],
-              [False,  False, False]]
-
-  statement1 = 'p and q and r'
-  statement2 = 'p and q and r'
-
-  firstLine = '{:^6} | {:^6} | {:^6} | {} | {}'.format('p','q', 'r',statement1,statement2)
-  print firstLine
-  print '-'*len(firstLine)
-
-  for p,q,r in listComb:
-    myString = "{:^6} | {:^6} | {:^6} | {:^" + str(len(statement1)) + "} | {:^" + str(len(statement1)) + "}"
-    nextLine = myString.format(p,q,r, p and q and r,p and q and r)
-    print nextLine
-
-# Remove hash tag for whatever line is desired
-
-# 2 variables, 1 statement
-table21()
-
-# 2 variables, 2 statements
-#table22()
-
-# 3 variables, 1 statement
-#table31()
-
-# 3 variables, 2 statements
-#table32()
-
-\end{sageCell}
+    \end{enumerate}
 \end{enumerate}
 \end{document}
