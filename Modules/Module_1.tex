@@ -10,9 +10,9 @@ The goal is to learn to write some basic python programs.
 
 In this section we introduce loops and function definitions.
 
-    \begin{enumerate}
-        \item The Python syntax for a for loop is as follows:
-
+	\begin{enumerate}
+        	\item The Python syntax for a for loop is as follows:
+	\end{enumerate}
 \begin{verbatim}
 ==============================
 
@@ -26,14 +26,13 @@ In the above code, \verb|for| indicates the start of a for loop, \verb|variable|
 
 The example below prints the values \verb|0| to \verb|9|.
 
-\begin{verbatim}
-==============================
+\begin{sageCell}
 for i in range(10):
         print(i)
-==============================
-\end{verbatim}
+\end{sageCell}
 
-        \item If/Else statements help direct your program if there are multiple cases and use the following syntax:
+	\begin{enumerate}
+		\item[(b)] If/Else statements help direct your program if there are multiple cases and use the following syntax:
 \begin{verbatim}
 ==============================
 if condition:
@@ -46,19 +45,22 @@ else:
 \end{verbatim}
 
 The example below computes the absolute value of \verb|x|.
+	\end{enumerate}
 
-\begin{verbatim}
-==============================
+\begin{sageCell}
+x = -5
+	
 if x==0:
         print(0)
 elif x>0:
         print(x)
 else:
         print(-x)
-==============================
-\end{verbatim}
+\end{sageCell}
 
-        \item A Python function will have the following syntax:
+	\begin{enumerate}
+        	\item[(c)] A Python function will have the following syntax:
+	\end{enumerate}
 
 \begin{verbatim}
 ==============================
@@ -72,13 +74,10 @@ The key word \verb|def| denotes the beginning of a function definition. Using th
 
 Below is an example of the function that computes the square of any number \verb|n|.
 
-\begin{verbatim}
-==============================
+\begin{sageCell}
 def square(n):
         return n*n
-==============================
-\end{verbatim}
-\end{enumerate}
+\end{sageCell}
 
 \section{Problems}
 
