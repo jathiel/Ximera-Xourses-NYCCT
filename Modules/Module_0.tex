@@ -1,63 +1,85 @@
 \documentclass{ximera}  
 \title{An introduction to Python and SageCell}  
 \begin{document}
-The goal is to learn t use some basic Python commands.
+The goal is to learn to use some basic Python commands.
 \begin{abstract}  
 \end{abstract}  
 \maketitle
 
 \section{Basics}
 
-\begin{enumerate}
-\item Go to \url{https://trinket.io/} and create an account. This will help you create and manage your own work. Create a new trinket titled ``2440 Module 0" to begin today's activities. Type all of today's work into this trinket.
-\item Basics:
     \begin{enumerate}
         \item The print command prints variables and strings to the screen.
-        \begin{verbatim}
-        print "Hello world!"
+\begin{verbatim}
+==============================
+	print("Hello world!")
         x = 3
-        print x
-        print 3+4
+	print(x)
+	print(3+4)
         x = 5
-        print x
-        \end{verbatim}
-        \item Comments let you insert text into your code that is not executed. This will help to remind you (and others) what your code does.
-        \begin{verbatim}
-        print #"Hi there!"
-        \end{verbatim}
-        \item Lists help you organize and manipulate data.
-        \begin{verbatim}
+	print(x)
+==============================
+\end{verbatim}
+
+	\item Comments let you insert text into your code that is not executed. This will help to remind you (and others) what your code does.
+\begin{verbatim}
+==============================
+        #"Hi there!"
+	x = 3
+==============================
+\end{verbatim}
+	\item Lists help you organize and manipulate data.
+\begin{verbatim}
+==============================
         a = [1,2,3,5]
-        print a
-        print a[0]   #this picks out elements (starting with element 0)
-        print len(a) #len is a function that gives the length of the list
-        \end{verbatim}
-        \item Mathematical functions like $e^x$, $\sin(x)$ have to be imported from another file. Use the following link to see what other functions are available: \url{https://docs.python.org/2/library/math.html}.
-        \begin{verbatim}
+	print(a)
+	print(a[0])   #this picks out elements (starting with element 0)
+	print(len(a)) #len is a function that gives the length of the list
+==============================
+\end{verbatim}
+	\item Mathematical functions like $e^x$, $\sin(x)$ have to be imported from another file. Use this \link[this]{https://docs.python.org/2/library/math.html} for more information.
+\begin{verbatim}
+==============================
         import math
 
         print math.exp(1)   #math.exp(x) is the exponential function
         print math.pi       #the constant 3.1415926...
         print math.cos(math.pi/4)
-        \end{verbatim}
-
+==============================
+\end{verbatim}
     \end{enumerate}
-\item Write code to do the following:
-    \begin{enumerate}
+
+\section{Problems}
+\begin{enumerate}
     \item Print a string that contains your full name.
-    \item Print the length of the string from the previous question. (Hint: Strings are lists where each element is a single character.)
-    \item Compute and print $3+4/2$. Are you surprised by the result?
-    \item Compute and print $e^{-\pi}$.
-    \item Are the trigonometric functions assuming that the input is in degrees or radians?
-    \item Compute and print $2^{2/3}$. (Hint: You will need to find an appropriate function using the math library link listed above.)
-    \end{enumerate}
-\end{enumerate}
-
-
-\section{Workspace}
-
 \begin{sageCell}
-# Use this cell to solve the above questions.
+# Use this cell to solve the problem.
 \end{sageCell}
 
+    \item Print the length of the string from the previous question. (Hint: Strings are lists where each element is a single character.)
+\begin{sageCell}
+# Use this cell to solve the problem.
+\end{sageCell}
+
+    \item Compute and print $3+4/2$. Are you surprised by the result?
+\begin{sageCell}
+# Use this cell to solve the problem.
+\end{sageCell}
+
+    \item Compute and print $e^{-\pi}$.
+\begin{sageCell}
+# Use this cell to solve the problem.
+\end{sageCell}
+
+    \item Are the trigonometric functions assuming that the input is in degrees or radians?
+\begin{sageCell}
+# Use this cell to solve the problem.
+\end{sageCell}
+
+    \item Compute and print $2^{2/3}$. (Hint: You will need to find an appropriate function using the math library link listed above.)
+\begin{sageCell}
+# Use this cell to solve the problem.
+\end{sageCell}
+
+\end{enumerate}
 \end{document}
