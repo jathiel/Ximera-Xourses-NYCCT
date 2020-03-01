@@ -96,13 +96,13 @@ def table21():
         statement = 'not (p or (not p and q))'
 
         firstLine = '{:^6} | {:^6}| {}'.format('p','q',statement+' ')
-        print(firstLine)
-        print('-'*len(firstLine))
+        print(firstLine+'\n')
+        print('-'*len(firstLine)+'\n')
 
         for p,q in listComb:
                 myString = "{:^6} | {:^6}| {:^" + str(len(statement)) + "}"
                 nextLine = myString.format(p,q, not (p or (not p and q)))
-                print(nextLine)
+                print(nextLine+'\n')
     
 def table22():
         listComb = [[True,  True],
