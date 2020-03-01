@@ -12,43 +12,35 @@ In this section we cover some basic Python syntax.
 
     \begin{enumerate}
         \item The print command prints variables and strings to the screen.
-\begin{verbatim}
-==============================
+\begin{sageCell}
 print("Hello world!")
 x = 3
 print(x)
 print(3+4)
 x = 5
 print(x)
-==============================
-\end{verbatim}
+\end{sageCell}
 
 	\item Comments let you insert text into your code that is not executed. This will help to remind you (and others) what your code does.
-\begin{verbatim}
-==============================
+\begin{sageCell}
 #"Hi there!"
 x = 3
-==============================
-\end{verbatim}
+\end{sageCell}
 	\item Lists help you organize and manipulate data.
-\begin{verbatim}
-==============================
+\begin{sageCell}
 a = [1,2,3,5]
 print(a)
 print(a[0])   #this picks out elements (starting with element 0)
 print(len(a)) #len is a function that gives the length of the list
-==============================
-\end{verbatim}
+\end{sageCell}
 		\item Mathematical functions like $e^x$, $\sin(x)$ have to be imported from another file. Use this \link[link]{https://docs.python.org/2/library/math.html} for more information.
-\begin{verbatim}
-==============================
+\begin{sageCell}
 import math
 
-print math.exp(1)   #math.exp(x) is the exponential function
-print math.pi       #the constant 3.1415926...
-print math.cos(math.pi/4)
-==============================
-\end{verbatim}
+print(math.exp(1))   #math.exp(x) is the exponential function
+print(math.pi)       #the constant 3.1415926...
+print(math.cos(math.pi/4))
+\end{sageCell}
     \end{enumerate}
 
 \section{SageCell}
