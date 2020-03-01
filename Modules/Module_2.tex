@@ -78,105 +78,10 @@ p or q
 # Use this cell to solve the problem.
 \end{sageCell}
 
-    \item Use the code in the SageCell below that constructs truth tables for the following problems:
+    \item Use the code \link[here]{https://trinket.io/python/177455c243} to construct truth tables for the following problems:
         \begin{enumerate}
             \item Construct a truth table for $\neg p \vee q$.
             \item Construct a truth table for $(p \vee q) \vee r$.
             \item Construct a truth table that shows that $\neg(p \vee q) \equiv \neg p \wedge \neg q$.
         \end{enumerate}
 \end{enumerate}
-\begin{sageCell}
-# Use this cell to solve the problem.
-def table21():
-        listComb = [[True,  True],
-                    [True,  False],
-                    [False, True],
-                    [False, False]]
-
-        statement = 'not (p or (not p and q))'
-
-        firstLine = '{:^6} | {:^6}| {}'.format('p','q',statement+' ')
-        print(firstLine+'\n')
-        print('-'*len(firstLine)+'\n')
-
-        for p,q in listComb:
-                myString = "{:^6} | {:^6}| {:^" + str(len(statement)) + "}"
-                nextLine = myString.format(p,q, not (p or (not p and q)))
-                print(nextLine+'\n')
-    
-def table22():
-        listComb = [[True,  True],
-                    [True,  False],
-                    [False, True],
-                    [False, False]]
-
-        statement1 = 'not (p or (not p and q))'
-        statement2 = 'not p and not q'
-
-        firstLine = '{:^6} | {:^6} | {} | {}'.format('p','q',statement1,statement2)
-        print(firstLine)
-        print('-'*len(firstLine))
-
-        for p,q in listComb:
-                myString = "{:^6} | {:^6} | {:^" + str(len(statement1)) + "} | {:^" + str(len(statement2)) + "}"
-                nextLine = myString.format(p,q, not (p or (not p and q)), not p and not q)
-                print(nextLine)
-    
-def table31():
-        listComb = [[True,  True,  True],
-                    [True,  True,  False],
-                    [True,  False, True],
-                    [True,  False, False],
-                    [False, True,  True],
-                    [False,  True,  False],
-                    [False,  False, True],
-                    [False,  False, False]]
-
-        statement = 'p and q and r'
-
-        firstLine = '{:^6} | {:^6} | {:^6} | {}'.format('p','q', 'r',statement+' ')
-        print(firstLine)
-        print('-'*len(firstLine))
-
-        for p,q,r in listComb:
-                myString = "{:^6} | {:^6} | {:^6} | {:^" + str(len(statement)) + "}"
-                nextLine = myString.format(p,q,r, p and q and r)
-                print(nextLine)
-    
-def table32():
-        listComb = [[True,  True,  True],
-                    [True,  True,  False],
-                    [True,  False, True],
-                    [True,  False, False],
-                    [False, True,  True],
-                    [False,  True,  False],
-                    [False,  False, True],
-                    [False,  False, False]]
-
-        statement1 = 'p and q and r'
-        statement2 = 'p and q and r'
-
-        firstLine = '{:^6} | {:^6} | {:^6} | {} | {}'.format('p','q', 'r',statement1,statement2)
-        print(firstLine)
-        print('-'*len(firstLine))
-
-        for p,q,r in listComb:
-                myString = "{:^6} | {:^6} | {:^6} | {:^" + str(len(statement1)) + "} | {:^" + str(len(statement1)) + "}"
-                nextLine = myString.format(p,q,r, p and q and r,p and q and r)
-                print(nextLine)
-
-# Remove hash tag for whatever line is desired
-
-# 2 variables, 1 statement
-table21()
-
-# 2 variables, 2 statements
-#table22()
-
-# 3 variables, 1 statement
-#table31()
-
-# 3 variables, 2 statements
-#table32()
-\end{sageCell}
-\end{document}
