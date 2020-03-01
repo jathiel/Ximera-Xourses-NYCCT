@@ -1,53 +1,66 @@
 \documentclass{ximera}  
 \title{An introduction to Python and SageCell}  
 \begin{document}
-The goal is to learn to use some basic Python commands.
+The goal is to learn to use some basic Python functions and SageCell.
 \begin{abstract}  
 \end{abstract}  
 \maketitle
 
 \section{Basics}
 
+In this section we cover some basic Python syntax.
+
     \begin{enumerate}
         \item The print command prints variables and strings to the screen.
 \begin{verbatim}
 ==============================
-	print("Hello world!")
-        x = 3
-	print(x)
-	print(3+4)
-        x = 5
-	print(x)
+print("Hello world!")
+x = 3
+print(x)
+print(3+4)
+x = 5
+print(x)
 ==============================
 \end{verbatim}
 
 	\item Comments let you insert text into your code that is not executed. This will help to remind you (and others) what your code does.
 \begin{verbatim}
 ==============================
-        #"Hi there!"
-	x = 3
+#"Hi there!"
+x = 3
 ==============================
 \end{verbatim}
 	\item Lists help you organize and manipulate data.
 \begin{verbatim}
 ==============================
-        a = [1,2,3,5]
-	print(a)
-	print(a[0])   #this picks out elements (starting with element 0)
-	print(len(a)) #len is a function that gives the length of the list
+a = [1,2,3,5]
+print(a)
+print(a[0])   #this picks out elements (starting with element 0)
+print(len(a)) #len is a function that gives the length of the list
 ==============================
 \end{verbatim}
 	\item Mathematical functions like $e^x$, $\sin(x)$ have to be imported from another file. Use this \link[this]{https://docs.python.org/2/library/math.html} for more information.
 \begin{verbatim}
 ==============================
-        import math
+import math
 
-        print math.exp(1)   #math.exp(x) is the exponential function
-        print math.pi       #the constant 3.1415926...
-        print math.cos(math.pi/4)
+print math.exp(1)   #math.exp(x) is the exponential function
+print math.pi       #the constant 3.1415926...
+print math.cos(math.pi/4)
 ==============================
 \end{verbatim}
     \end{enumerate}
+
+\section{SageCell}
+
+A SageCell is a location where you can type in Python code and evaluate it without installing any special software or navigating to another page. SageCell runs a special version of Python 3 with some minor differences to the standard kernel. This should not present any serious difficulties in this course. Solutions to the module problems can be typed in the SageCells below.
+
+Below is an example of a SageCell. Click on the `Evaluate' button to see the result.
+
+\begin{sageCell}
+x = 3
+print(2*x + 5)
+\end{sageCell}
 
 \section{Problems}
 \begin{enumerate}
