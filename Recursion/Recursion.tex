@@ -14,7 +14,7 @@ The factorial function is defined over the nonnegative integers in the following
 
 This new way of defining $n!$ highlights the idea that to solve the problem of computing $n!$, one first must solve the similar, but smaller problem, of computing $(n-1)!$. Recursion typically comes up when this is the case.
 
-Another example of recursion is given by the \link[Fibonacci sequence]{https://plus.maths.org/content/fibonacci-sequence-brief-introduction}. We define $f_n$, the $n$th Fibonacci number of $n\geq 0$ as $$f_n=\begin{cases} 1 & \text{if $n=0,1$}\\ f_{n-1}+f_{n-2} & \text{otherwise.}$$ Computing recursively, we see that this definition yields the sequence $1,1,2,3,5,8,\cdots$. That is, for every $n\geq 2$, $f_n$ is the sum of the previous two terms in the sequence.
+Another example of recursion is given by the \link[Fibonacci sequence]{https://plus.maths.org/content/fibonacci-sequence-brief-introduction}. We define $f_n$, the $n$th Fibonacci number of $n\geq 0$ as $$f_n=\begin{cases} 1 & \text{if $n=0,1$}\\ f_{n-1}+f_{n-2} & \text{otherwise.}\end{cases}$$ Computing recursively, we see that this definition yields the sequence $1,1,2,3,5,8,\cdots$. That is, for every $n\geq 2$, $f_n$ is the sum of the previous two terms in the sequence.
 
 \begin{sageCell}
 def fib(n):
@@ -28,7 +28,7 @@ fib(5)
 
 Every recursively defined function has two key ingredients:
 
-	\begin{enuemrate}
+	\begin{enumerate}
 	\item base case(s): these are known values of the function that will be used as a starting point for computing other values,
 	\item inductive case: this is the rule for computing the function at unknown values using previously known values.
 	\end{enumerate}
