@@ -8,7 +8,11 @@ We introduce recursion and recursively defined functions.
 
 \section{Recursion}
 
-Recursion is involved when an object's definition refers to itself. A recursively definited function is one where 
+Recursion is involved when an object's definition refers to itself. We illustrate this idea via an example.
+
+The factorial function is defined over the nonnegative integers in the following way: if $n=0$, $n!=0$, otherwise $n!=n(n-1)(n-2)\cdots 1$. Note that in order to compute $n!$ for $n>2$, one first needs to compute $(n-1)!$. So we can define the factorial function one number at a time. We define $$n!=\begin{cases} 1 & \text{ if $n=0,1$}\\ n\cdot(n-1)! & \text{otherwise.}\end{cases}$$
+
+
 
 \begin{verbatim}
 ==============================
