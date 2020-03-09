@@ -43,7 +43,7 @@ Some advantages of using recursively defined functions:
 
 	\end{itemize}
 
-A major dissadvantage of using a recursive definition is that it can require a lot of time to compute something. For example, computing $f_{100}$ in Python will take an extremely long period of time. This happens because the Python function either `forgets' that it has already computed a certain quantity. In the case of $f_{100}$, the program will first attempt to compute $f_{99}$ first, but to compute that it will first attempt to compute $f_{98}$ and so on. After finally evaluating $f_{99}$ it will attempt to compute $f_{98}$ again, not realizing that it has done that before. In a future lesson we will discuss how we can reduce the time needed to compute such values.
+A major dissadvantage of using a recursive definition is that it can require a lot of time to compute something. For example, computing $f_{100}$ in Python will take an extremely long period of time. This happens because the Python function `forgets' that it has already computed a certain quantity. In the case of $f_{100}$, the program will first attempt to compute $f_{99}$ first, but to compute that it will first attempt to compute $f_{98}$ and so on. After finally evaluating $f_{99}$ it will attempt to compute $f_{98}$ again, not realizing that it has done that before. In a future lesson we will discuss how we can reduce the time needed to compute such values.
 
 Another well-known example of a problem with a recursive solution is the \link[Tower of Hanoi]{https://www.mathsisfun.com/games/towerofhanoi.html} problem. In this problem, if we define $H(n)$ to be the minimum number of moves needed to move the $n$ disk tower from one post to another, then $$H(n) = \begin{cases}1 & \text{if $n=1$}\\ 2H(n-1) + 1 & \text{otherwise.}\end{cases}$$ While this is clearly recursive, it can also be shown (using an inductive proof) that $H(n)=2^n-1$. (Being able to give an explicit formula this way is not possible in every case.)
 
@@ -52,7 +52,7 @@ Another well-known example of a problem with a recursive solution is the \link[T
 Note that for the first two questions below, the first hint contains the solution.
 
 \begin{question}
-Implement the recursive definition of $H(n)$.
+Implement the recursive definition of $H(n)$ in Python.
 	\begin{hint}
 \begin{sageCell}
 def H(n):
