@@ -82,22 +82,23 @@ print(stair(9))
 \end{hint}
 \end{question}
 
-\begin{question}
-McDonald's used to sell nuggets only in packages of size 6, 9, and 20. What is the largest number of nuggest that cannot be ordered using such sizes? $\answer{43}$
-	\begin{hint}
-If a number $n$ can be ordered, then either $n=6,9,20$ or one of $n-6$, $n-9$, or $n-20$. can be ordered.
-	\end{hint}
-	\begin{hint}
-\begin{sageCell}
-def nugget(n):
-        if n < 6:
-                return 0
-        if n == 6 or n == 9 or n == 20:
-                return 1
-        else:
-                return max(nugget(n-6),nugget(n-9),nugget(n-20))
-\end{sageCell}
-	\end{hint}
+%\begin{question}
+%McDonald's used to sell nuggets only in packages of size 6, 9, and 20. What is the largest number of nuggest that cannot be ordered using such sizes? $\answer{43}$
+%	\begin{hint}
+%If a number $n$ can be ordered, then either $n=6,9,20$ or one of $n-6$, $n-9$, or $n-20$ can be ordered.
+%	\end{hint}
+%	\begin{hint}
+%\begin{sageCell}
+%def nugget(n):
+%        if n < 6:
+%                return 0
+%        if n == 6 or n == 9 or n == 20:
+%                return 1
+%        else:
+%                return max(nugget(n-6),nugget(n-9),nugget(n-20))
+%\end{sageCell}
+%	\end{hint}
+
 \section{Workspace}
 
 \begin{sageCell}
