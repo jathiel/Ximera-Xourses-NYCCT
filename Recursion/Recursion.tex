@@ -10,9 +10,39 @@ We introduce recursion and recursively defined functions.
 
 Recursion is involved when an object's definition refers to itself. We illustrate this idea via an example.
 
-The factorial function is defined over the nonnegative integers in the following way: if $n=0$, $n!=0$, otherwise $n!=n(n-1)(n-2)\cdots 1$. Note that in order to compute $n!$ for $n>2$, one first needs to compute $(n-1)!$. So we can define the factorial function one number at a time. We define $$n!=\begin{cases} 1 & \text{ if $n=0,1$}\\ n\cdot(n-1)! & \text{otherwise.}\end{cases}$$
+The factorial function is defined over the nonnegative integers in the following way: $0!=0$, for $n\geq 1$, $n!=n(n-1)(n-2)\cdots 1$. Note that in order to compute $n!$ for $n>2$, one first needs to compute $(n-1)!$. So we can define the factorial function one number at a time. We let $$n!=\begin{cases} 1 & \text{if $n=0,1$}\\ n\cdot(n-1)! & \text{otherwise.}\end{cases}$$
 
+This new way of defining $n!$ highlights the idea that to solve the problem of computing $n!$, one first must solve the similar, but smaller problem, of computing $(n-1)!$. Recursion typically comes up when this is the case.
 
+Another example of recursion is given by the \link[Fibonacci sequence]{https://plus.maths.org/content/fibonacci-sequence-brief-introduction}. We define $f_n$, the $n$th Fibonacci number of $n\geq 0$ as $$f_n=\begin{cases} 1 & \text{if $n=0,1$}\\ f_{n-1}+f_{n-2} & \text{otherwise.}$$ Computing recursively, we see that this definition yields the sequence $1,1,2,3,5,8,\cdots$. That is, for every $n\geq 2$, $f_n$ is the sum of the previous two terms in the sequence.
+
+\begin{sageCell}
+def fib(n):
+        if n < 2:
+                return 1
+        else:
+                return fib(n-1) + fib(n-2)
+
+fib(5)
+\end{sageCell}
+
+Every recursively defined function has two key ingredients:
+
+	\begin{enuemrate}
+	\item base case(s): these are known values of the function that will be used as a starting point for computing other values,
+	\item inductive case: this is the rule for computing the function at unknown values using previously known values.
+	\end{enumerate}
+
+If either ingredient above is missing, then the function will not be defined correctly. (Can you think of why?)
+
+Some advantages of using recursively defined functions:
+
+	\begin{itemize}
+		\item Recursively definied functions can be easy to implement in Python.
+		\item In many cases recursion is the {\em only} known way to define certain functions.
+	\end{itemize}
+
+A major dissadvantage of using a recursive definition is that it can require a lot of time to compute something. For example, computing $f_{100}$ in Python will take an extremely long period of time.
 
 \begin{verbatim}
 ==============================
