@@ -28,24 +28,65 @@ plt.title('A graph of $f(x)$ and $g(x)$')
 plt.show()
 \end{sageCell}
 
-
+The code above covers the main plotting features we will use in this course. The meaning of each line is covered below.
 
 \begin{itemize}
-	\item \verb|import matplotlib.pyplot as plt| - this imports the appropriate Matplotlib functions with the commonly used alias \verb|plt|
-	\item \verb|np.linspace(-10,10,100)| - this produces an array containing 100 evenly spaced points from -10 to 10
-	\item \verb|plt.plot| - this adds the data points to the image, additional arguments specify their color and add a label for the plot legend (use \verb|plt.scatter| to draw points without connecting them)
-	\item \verb|plt.xlabel|, \verb|plt.ylabel| - this adds axes labels
-	\item \verb|plt.legend| - this adds a legend to the graph
-	\item \verb|plt.title| - this adds a title to the graph
-	\item \verb|plt.show| - this displays the graph
+	\item \verb|import matplotlib.pyplot as plt| - imports the appropriate Matplotlib functions with the commonly used alias \verb|plt|
+	\item \verb|np.linspace(-10,10,100)| - produces an array containing 100 evenly spaced points from -10 to 10
+	\item \verb|plt.plot| - adds the data points to the image, additional arguments specify their color and add a label for the plot legend (use \verb|plt.scatter| to draw points without connecting them)
+	\item \verb|plt.xlabel|, \verb|plt.ylabel| - adds axes labels
+	\item \verb|plt.legend| - adds a legend to the graph
+	\item \verb|plt.title| - adds a title to the graph
+	\item \verb|plt.show| - displays the graph
 \end{itemize}
+
+Note that the inputs for \verb|np.plot| can be regular lists. In this case we choose to use arrays due to ease of use.
 
 \section{Problems}
 
 Note that for the questions below, the hint contains the solution.
 
 \begin{question}
+Use the Matplotlib library to plot $f(x)=e^{-x}\sin{x}$ and $g(x)=e^{-x}\cos(x)$ rom $[0,2\pi]$.
+	\begin{hint}
+\begin{sageCell}
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.linspace(0,2*np.pi,100)
+y1 = np.exp(-x)*np.sin(x)
+y2 = np.exp(-x)*np.cos(x)
+plt.plot(x,y,color='blue',label='$f(x)$')
+plt.plot(x,y2,color='red',label='$g(x)$')
+plt.xlabel('$x$')
+plt.ylabel('$y$')
+plt.legend()
+plt.title('A graph of $f(x)$ and $g(x)$')
+plt.show()
+\end{sageCell}
+	\end{hint}
 \end{question}
+
+\begin{question}
+Use the Matplotlib library to create a scatter plot of the following recursively defined sequence for $n=0,1,\dots,100$ $$x_n=\begin{cases}0.25 & \text{if $n=0$}\\ 3.44x_{n-1}(1-x_{n-1}) & \text{otherwise.}\end{cases}$$
+	\begin{hint}
+\begin{sageCell}
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = [i for i in range(101)]
+y = [0.25]
+for j in range(100):
+	y_old = y[-1]
+	y.append(3.44*y_old*(1-y_old))
+plt.scatter(x,y)
+plt.xlabel('$x$')
+plt.ylabel('$y$')
+plt.legend()
+plt.title('A graph of $x_n$')
+plt.show()
+\end{sageCell}
+	\end{hint}
 
 \section{Workspace}
 
