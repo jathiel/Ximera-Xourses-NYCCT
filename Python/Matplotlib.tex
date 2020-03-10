@@ -63,6 +63,7 @@ plt.ylabel('$y$')
 plt.legend()
 plt.title('A graph of $f(x)$ and $g(x)$')
 plt.show()
+plt.clf() # This clears the figure to avoid drawing the same graph on the next plot.
 \end{sageCell}
 	\end{hint}
 \end{question}
@@ -82,7 +83,6 @@ for j in range(100):
 plt.scatter(x,y)
 plt.xlabel('$x$')
 plt.ylabel('$y$')
-plt.legend()
 plt.title('A graph of $x_n$')
 plt.show()
 \end{sageCell}
