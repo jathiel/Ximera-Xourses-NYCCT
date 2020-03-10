@@ -8,7 +8,7 @@ We give an introduction to list comprehensions and NumPy arrays.
 
 \section{List Comprehensions}
 
-List comprehentions gives us a new way to create lists that is reminiscent of set builder notation. For example, suppose we wanted to create a list containing the positive squares from 1 to 100. That is, we want \verb|[1,4,9,...,100]|. This can be done using a list, a for loop, and the \verb|append| method.
+List comprehentions give us a new way to create lists that is reminiscent of set builder notation. For example, suppose we wanted to create a list containing the positive squares from 1 to 100. That is, we want \verb|[1,4,9,...,100]|. This can be done using a list, a for loop, and the \verb|append| method.
 
 \begin{sageCell}
 squares = []
@@ -17,7 +17,7 @@ for i in range(1,11):
 squares
 \end{sageCell}
 
-A list comprehension allows us to create the same list in a compact and easy-to-read way.
+A list comprehension allows us to create the same list in a compact and easy-to-read way that is similar to the notation $\{x^2:x\in\mathbb{Z},1\leq x\leq 10\}$..
 
 \begin{sageCell}
 [i**2 for i in range(1,11)]
@@ -33,19 +33,19 @@ The general syntax for a list comprehension has the following form:
 ==============================
 \end{verbatim}
 
-The term \verb|expression| is some function that is applied to each value of \verb|var| as it iterates over \verb|iterable| (usually a list or instance of the \verb|range| function). In order to filter results, one can add an optional comparison at the end of the list comprehension, represented by the \verb|condition| term.
+The term \verb|expression| is some function that is applied to each value of \verb|var| as it iterates over \verb|iterable| (usually a list or iterable created using the \verb|range| function). In order to filter results, one can add an optional comparison at the end of the list comprehension, represented by the \verb|condition| term.
 
-The list comprehension below give all of the nonnegative, even cubes that are at most 1000.
+The list comprehension below gives all of the nonnegative even cubes that are at most 1000.
 
 \begin{sageCell}
-[i**3 for i in range(10) if i%2 == 0]
+[i**3 for i in range(11) if i%2 == 0]
 \end{sageCell}
 
 We will use list comprehensions to generate lists containing desired elements without resorting to using a loop. The use of list comprehensions is intended to increase the readibility of the code.
 
 \section{NumPy Arrays}
 
-The \link[NumPy]{numpy.org} library is commonly used for scientific computing and is often used by data scientists. We will dive deepter into the contents of this library in a later section. For now, we are interseted in a new type of object that is provided by this library: arrays. Arrays are like lists with additional functionality designed for handling large data sets. 
+The \link[NumPy]{numpy.org} library is a scientific computing library often used by data scientists. We will dive deepter into the contents of this library in a later section. For now, we are interseted in a new type of object that is provided by this library: an array. Arrays are like lists with additional functionality designed for handling large data sets. 
 
 In the next section, we will use arrays together with the Matplotlib library to create graphs. So, for now, our use of arrays will be limited to some basic functions.
 
@@ -92,7 +92,7 @@ Use a list comprehension or NumPy array to define a function in Python that dete
 	\begin{hint}
 \begin{sageCell}
 def prime(n):
-	return len([d for d in range(1,n+1) if n%d==0]) == 2
+        return len([d for d in range(1,n+1) if n%d==0]) == 2
 \end{sageCell}
 	\end{hint}
 \end{question}
