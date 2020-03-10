@@ -10,7 +10,7 @@ We introduce recursion and recursively defined functions.
 
 Recursion is involved when an object's definition refers to itself. We illustrate this idea via an example.
 
-The factorial function is defined over the nonnegative integers in the following way: $0!=1$, for $n\geq 1$, $n!=n(n-1)(n-2)\cdots 1$. Note that in order to compute $n!$ for $n>2$, one first needs to compute $(n-1)!$. So we can define the factorial function one number at a time. We let $$n!=\begin{cases} 1 & \text{if $n=0,1$}\\ n\cdot(n-1)! & \text{otherwise.}\end{cases}$$
+The factorial function is defined over the nonnegative integers in the following way: $0!=1$, for $n\geq 1$, $n!=n(n-1)(n-2)\cdots 1$. Note that in order to compute $n!$ for $n>2$, one first needs to compute $(n-1)!$. So we can define the factorial function one number at a time. We let $$n!=\begin{cases} 1 & \text{if $n=0$}\\ n\cdot(n-1)! & \text{otherwise.}\end{cases}$$
 
 This new way of defining $n!$ highlights the idea that to solve the problem of computing $n!$, one first must solve the similar, but smaller problem, of computing $(n-1)!$. Recursion typically comes up when this is the case.
 
