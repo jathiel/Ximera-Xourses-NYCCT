@@ -8,18 +8,107 @@ We give an introduction to list comprehensions and NumPy arrays.
 
 \section{List Comprehensions}
 
+List comprehentions gives us a new way to create lists that is reminiscent of set builder notation. For example, suppose we wanted to create a list containing the positive squares from 1 to 100. That is, we want \verb|[1,4,9,...,100]|. This can be done using a list, a for loop, and the \verb|append| method.
 
+\begin{sageCell}
+squares = []
+for i in range(1,11):
+        squares.append(i**2)
+squares
+\end{sageCell}
+
+A list comprehension allows us to create the same list in a compact and easy-to-read way.
+
+\begin{sageCell}
+[i**2 for i in range(1,11)]
+\end{sageCell}
+
+The general syntax for a list comprehension has the following form:
+
+\begin{verbatim}
+==============================
+
+[expression(var) for var in iterable if condition]
+
+==============================
+\end{verbatim}
+
+The term \verb|expression| is some function that is applied to each value of \verb|var| as it iterates over \verb|iterable| (usually a list or instance of the \verb|range| function). In order to filter results, one can add an optional comparison at the end of the list comprehension, represented by the \verb|condition| term.
+
+The list comprehension below give all of the nonnegative, even cubes that are at most 1000.
+
+\begin{sageCell}
+[i**3 for i in range(10) if i%2 == 0]
+\end{sageCell}
+
+We will use list comprehensions to generate lists containing desired elements without resorting to using a loop. The use of list comprehensions is intended to increase the readibility of the code.
 
 \section{NumPy Arrays}
 
+The \link[NumPy]{numpy.org} library is commonly used for scientific computing and is often used by data scientists. We will dive deepter into the contents of this library in a later section. For now, we are interseted in a new type of object that is provided by this library: arrays. Arrays are like lists with additional functionality designed for handling large data sets. 
 
+In the next section, we will use arrays together with the Matplotlib library to create graphs. So, for now, our use of arrays will be limited to some basic functions.
+
+\begin{sageCell}
+import numpy as np
+
+x = np.arange(1,10)
+
+x**2
+\end{sageCell}
+
+The example above showcases our main use of arrays in the next section. When performing a mathematical operation on an array, that operation is performed on each individual entry in the array. These vectorized functions will allow us to create data sets to be plotted with significantly less work while increasing code readibility.
+
+The line \verb|import numpy as np| (which needs to appear only once in a notebook) tells our notebook that we want to have access to the NumPy library. The term \verb|np| is a commonly used alias for NumPy. To call any NumPy function, we must first write \verb|np.| followed by the function name. This is to ensure that there is no ambiguity between a built-in Python function and a NumPy function of the same name.
+
+Some commonly used NumPy functions include:
+
+\begin{itemize}
+	\item \verb|np.max| - finds the maximum in an array
+	\item \verb|np.sort| - sorts an array
+	\item \verb|np.cumsum| - computes the cumulative sum of an array
+	\item \verb|np.random.randint| - generates an array of random integers
+	\item \verb|np.exp|,\verb|np.sin| - the vectorized functions for $e^x$ and $\sin(x)$
+	\item \verb|np.pi| - the constant $\pi$
+	\item \verb|np.linspace| - a quick way to create a desired number of sample points in an interval
+\end{itemize}
 
 \section{Problems}
 
 Note that for the questions below, the hint contains the solution.
 
 \begin{question}
+Use a list comprehension or NumPy array to define a function in Python that returns the list of divisors of a positive integer $n$.
+	\begin{hint}
+\begin{sageCell}
+def divisors(n):
+        return [d for d in range(1,n+1) if n%d==0]
+\end{sageCell}
+	\end{hint}
 \end{question}
+
+\begin{question}
+Use a list comprehension or NumPy array to define a function in Python that determines if an integer $n>1$ is prime or not.
+	\begin{hint}
+\begin{sageCell}
+def prime(n):
+	return len([d for d in range(1,n+1) if n%d==0]) == 2
+\end{sageCell}
+	\end{hint}
+\end{question}
+
+\begin{question}
+	Use a list comprehension or NumPy array to create a list containing the values $f(n)=3n^3+2$ for $n=0,1,2,\dots,5$.
+	\begin{hint}
+\begin{sageCell}
+import numpy as np
+
+x = np.arange(6)
+
+3*x**3+1
+\end{sageCell}
+	\end{hint}
+
 
 \section{Workspace}
 
