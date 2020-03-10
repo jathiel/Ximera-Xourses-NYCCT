@@ -8,6 +8,9 @@ We give an introduction to plotting using Matplotlib.
 
 \section{Matplotlib}
 
+The \link[Matplotlib]{https://matplotlib.org/} library is a plotting library that is commonly used for producing publication quality figures of all kinds. Matplotlib has many features (too many to cover here). The easiest way to create a plot is to use the example gallery found on the Matplotlib website. Find the type of plot and features that you want and use the code sample provided.
+
+To illustrate the kinds of plots that we will generate, we begin with an example. The code below produces a plot of $f(x)=5x^2-400$ and $g(x)=x^3-x+1$ on the interval $\[-10,10\]$. 
 
 \begin{sageCell}
 import numpy as np
@@ -25,6 +28,17 @@ plt.title('A graph of $f(x)$ and $g(x)$')
 plt.show()
 \end{sageCell}
 
+
+
+\begin{itemize}
+	\item \verb|import matplotlib.pyplot as plt| - this imports the appropriate Matplotlib functions with the commonly used alias \verb|plt|
+	\item \verb|np.linspace(-10,10,100)| - this produces an array containing 100 evenly spaced points from -10 to 10
+	\item \verb|plt.plot| - this adds the data points to the image, additional arguments specify their color and add a label for the plot legend (use \verb|plt.scatter| to draw points without connecting them)
+	\item \verb|plt.xlabel|, \verb|plt.ylabel| - this adds axes labels
+	\item \verb|plt.legend| - this adds a legend to the graph
+	\item \verb|plt.title| - this adds a title to the graph
+	\item \verb|plt.show| - this displays the graph
+\end{itemize}
 
 \section{Problems}
 
