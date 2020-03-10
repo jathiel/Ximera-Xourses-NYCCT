@@ -14,11 +14,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 x = np.linspace(-10,10,100)
-y = x**2-x+1
-plt.plot(x,y)
+y1 = x**2-4
+y2 = x**3-x+1
+plt.plot(x,y1,color='blue',label='$f(x)$')
+plt.plot(x,y2,color='red',label='$g(x)$')
 plt.xlabel('$x$')
 plt.ylabel('$y$')
-plt.title('A graph of $x^2-x+1$')
+plt.title('A graph of $f(x)$ and $g(x)$')
 plt.show()
 \end{sageCell}
 
