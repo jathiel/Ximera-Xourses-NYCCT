@@ -12,6 +12,23 @@ The \link[Matplotlib]{https://matplotlib.org/} library is a plotting library tha
 
 To illustrate the kinds of plots that we will generate, consider the following example. The code below produces a plot of $f(x)=5x^2-400$ and $g(x)=x^3-x+1$ on the interval $[-10,10]$. 
 
+\begin{verbatim}
+==============================
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.linspace(-10,10,100)
+y1 = 5*x**2-400
+y2 = x**3-x+1
+plt.plot(x,y1,color='blue',label='$f(x)$')
+plt.plot(x,y2,color='red',label='$g(x)$')
+plt.xlabel('$x$')
+plt.ylabel('$y$')
+plt.legend()
+plt.title('A graph of $f(x)$ and $g(x)$')
+plt.show()
+\end{verbatim}
+==============================
 \begin{sageOutput}
 import numpy as np
 import matplotlib.pyplot as plt
