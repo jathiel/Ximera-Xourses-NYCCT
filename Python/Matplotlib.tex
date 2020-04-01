@@ -12,7 +12,7 @@ The \link[Matplotlib]{https://matplotlib.org/} library is a plotting library tha
 
 To illustrate the kinds of plots that we will generate, consider the following example. The code below produces a plot of $f(x)=5x^2-400$ and $g(x)=x^3-x+1$ on the interval $[-10,10]$. 
 
-\begin{sageCell}
+\begin{sageOutput}
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -26,7 +26,7 @@ plt.ylabel('$y$')
 plt.legend()
 plt.title('A graph of $f(x)$ and $g(x)$')
 plt.show()
-\end{sageCell}
+\end{sageOutput}
 
 The code above covers the main plotting features we will use in this course. The meaning of each line is covered below.
 
@@ -49,7 +49,7 @@ Note that for the questions below, the hint contains the solution.
 \begin{question}
 Use the Matplotlib library to plot $f(x)=e^{-x}\sin{x}$ and $g(x)=e^{-x}\cos(x)$ on $[0,2\pi]$.
 	\begin{hint}
-\begin{sageCell}
+		\begin{sageCell}
 import numpy as np
 import matplotlib.pyplot as plt
 
