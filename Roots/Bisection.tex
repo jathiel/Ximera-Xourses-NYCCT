@@ -12,17 +12,7 @@ The Intermediate Value Theorem simply states that if $f(x)$ is a continuous func
 
 \begin{image}
 \begin{tikzpicture}
-\begin{scope}
-\clip (-3,-2) rectangle (3,2);
 \draw[thick,smooth,domain=-3:3] plot (\x,{\x^3/3 - \x});
-\end{scope}
-\node[point,fill=black] (a) at (-2,-2/3) {};
-\node[point,fill=black] (b) at (2,2/3) {};
-\coordinate (origin) at (-4,-3);
-\coordinate (topright) at (4,2);
-\draw[<->] (topright -| origin) -- (origin) -- (origin -| topright);
-\draw[dotted,very thick] (a) -- (a|-origin) node[below] {$a$};
-\draw[dotted,very thick] (b) -- (b|-origin) node[below] {$b$};
 \end{tikzpicture}
 \end{image}
 
