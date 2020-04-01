@@ -8,7 +8,21 @@ We give an introduction to finding roots using the Bisection Method.
 
 \section{The Intermediate Value Theorem}
 
+The Intermediate Value Theorem simply states that if $f(x)$ is a continuous function on the interval $[a,b]$, then it takes on any given value between $f(a)$ and $f(b)$. In other words, if $f(x)$ is a continuous function, then any horizontal line between $f(a)$ and $f(b)$ intersects the graph of $f(x)$. Note that this theorem does not give the number or location of such intersections.
 
+\begin{tikzpicture}
+\begin{scope}
+\clip (-3,-2) rectangle (3,2);
+\draw[thick,smooth,domain=-3:3] plot (\x,{\x^3/3 - \x});
+\end{scope}
+\node[point,fill=black] (a) at (-2,-2/3) {};
+\node[point,fill=black] (b) at (2,2/3) {};
+\coordinate (origin) at (-4,-3);
+\coordinate (topright) at (4,2);
+\draw[<->] (topright -| origin) -- (origin) -- (origin -| topright);
+\draw[dotted,very thick] (a) -- (a|-origin) node[below] {$a$};
+\draw[dotted,very thick] (b) -- (b|-origin) node[below] {$b$};
+\end{tikzpicture}
 
 \section{Problems}
 
