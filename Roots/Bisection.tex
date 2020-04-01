@@ -8,9 +8,23 @@ We give an introduction to finding roots using the Bisection Method.
 
 \section{The Intermediate Value Theorem}
 
-The Intermediate Value Theorem simply states that if $f(x)$ is a continuous function on the interval $[a,b]$, then it takes on any given value between $f(a)$ and $f(b)$. In other words, if $f(x)$ is a continuous function, then any horizontal line between $f(a)$ and $f(b)$ intersects the graph of $f(x)$. Note that this theorem does not give the number or location of such intersections.
+The Intermediate Value Theorem (IVT) simply states that if $f(x)$ is a continuous function on the interval $[a,b]$, then it takes on any given value between $f(a)$ and $f(b)$. In other words, if $f(x)$ is a continuous function, then any horizontal line between $f(a)$ and $f(b)$ intersects the graph of $f(x)$. Note that this theorem does not give the number or location of such intersections.
 
-\desmos{asczxqaumc}{800}{600}
+\desmos{uroxd0wmuh}{800}{600}
+
+We will use the IVT to come up with numerical approximations to solutions of equations of the form $f(x)=0$. 
+
+\section{The Bisection Method}
+
+The Bisection Method makes use of the IVT in a special situation: when $f(a)$ and $f(b)$ are nonzero values of opposite sign.
+
+Suppose you are given a function $f(x)$ and you are interested in finding at least one solution to the equation $f(x)=0$. Furthermore, suppose that $f(0)=2$, $f(4)=-3$, and $f(x)$ is continuous on the interval $[0,4]$. Then, by the IVT, we know that our equation has at least one solution in the interval $[0,4]$. We can narrow down our search by computing $f(2)$ (here $2$ is the midpoint of the interval). If $f(2)=0$, then we found a solution! If $f(2)>0$, then by the IVT, there is a solution in the interval $[2,4]$. Otherwise, if $f(2)<0$, then by the IVT, there is a solution in the inteval $[0,2]$. We can repeat the above procedure until we get an approximation that is ``close enough" to a solution. At each step, we trim down the length of the inteval containing a solution in half, bounding the size of our possible error to half the size of the remaining interval. 
+
+It is possible that we may never find the exact value of a solution or that we may miss some solutions. Try, for example, to use the procedure above to find solutions to $\sin(x)=0$ on the interval $[0,6\pi]$.
+
+We can summarize the Binomial Method using the following flowchart.
+
+
 
 \section{Problems}
 
