@@ -24,7 +24,29 @@ It is possible that we may never find the exact value of a solution or that we m
 
 We can summarize the Binomial Method using the following flowchart.
 
+\begin{center}
+	\includegraphics{bisection.png}
+\end{center}
 
+Converting this to code gives the following:
+
+\begin{verbatim}
+==============================
+def bisection(a,b,f,error):
+        c = (b+a)/2
+	while c-a > error:
+                if f(c) == 0:
+                        return c
+		elif f(a)*f(c) > 0:
+                        a = c
+                else:
+                        b = c
+                c = (b+a)/2
+        return c
+==============================
+\end{verbatim}
+
+Note that we use the fact that $x*y>0$ implies that both $x$ and $y$ have the same sign.
 
 \section{Problems}
 
