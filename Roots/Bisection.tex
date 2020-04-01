@@ -8,7 +8,9 @@ We give an introduction to finding roots using the Bisection Method.
 
 \section{The Intermediate Value Theorem}
 
-The Intermediate Value Theorem (IVT) simply states that if $f(x)$ is a continuous function on the interval $[a,b]$, then it takes on any given value between $f(a)$ and $f(b)$. In other words, if $f(x)$ is a continuous function, then any horizontal line between $f(a)$ and $f(b)$ intersects the graph of $f(x)$. Note that this theorem does not give the number or location of such intersections. The Desmos interactive graph below gives an example of the IVT in action.
+The Intermediate Value Theorem (IVT) simply states that if $f(x)$ is a continuous function on the interval $[a,b]$, then it takes on any given value between $f(a)$ and $f(b)$. In other words, if $f(x)$ is a continuous function, then any horizontal line between $f(a)$ and $f(b)$ intersects the graph of $f(x)$. Note that this theorem does not give the number or location of such intersections. 
+
+The Desmos interactive graph below gives an example of the IVT in action.
 
 \desmos{uroxd0wmuh}{800}{600}
 
@@ -28,7 +30,7 @@ We can summarize the Binomial Method using the following flowchart. Here we assu
 	\includegraphics{bisection.png}
 \end{center}
 
-Converting this to code gives the following:
+Converting this flowchart to code gives the following:
 
 \begin{verbatim}
 ==============================
@@ -48,7 +50,7 @@ def bisection(a,b,f,error):
 
 Note that we use the fact that $x\cdot y>0$ implies that both $x$ and $y$ have the same sign.
 
-The Binomial Method has several advantages and one major dissadvantage. It is an algorithm that is relatively easy to code, requires very few assumptions on the function, and always converges to some solution. The biggest dissadvantag of this method is that the convergence to a solution may be very slow compared to other methods (to be seen in the next section).
+The Binomial Method has several advantages and one major dissadvantage. It is an algorithm that is relatively easy to code, requires very few assumptions on the function being used, and always converges to some solution. A big dissadvantag of this method is that the convergence to a solution may be very slow compared to other methods (to be seen in the next section).
 
 Note that we can also use the Bisection Method to solve equations of the form $f(x)=k$ by solving $g(x)=0$ with $g(x)=f(x)-k$.
 
@@ -57,6 +59,19 @@ Note that we can also use the Bisection Method to solve equations of the form $f
 Note that for the questions below, the hint contains the solution.
 
 \begin{question}
+	Use the Bisection Method to estimate the solution to $f(x)=0$ where $f(x)=x^3-7$ with an error of at most 0.01.
+\end{question}
+
+\begin{question}
+	Use the Bisection Method to give an approximation of $\sqrt{2}$ with an error of at most 0.01.
+\end{question}
+
+\begin{question}
+	Use the Bisection Method to give an approximation of the solution to the equation $x\ln{x}=4$ with an error of at most 0.01.
+\end{question}
+
+\begin{question}
+	Use the Bisection Method to give an approximation of all of the solutions to $\ln{x}+\sin{x}=2$ on the interval $[5,20]$.
 \end{question}
 
 \section{Workspace}
