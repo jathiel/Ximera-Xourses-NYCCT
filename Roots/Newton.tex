@@ -16,9 +16,9 @@ The Desmos interactive graph below gives an example of a linear approximation to
 
 \section{Newton's Method}
 
-Suppose that $f(x)$ is a differentiable function and that we would like to solve the equation $f(x)=0$. Using the IVT, or a graphical method, we might have an initial guess for a solution that we will call $x_0$. We are interested in finding a value $r$ such that $f(r)=0$. We know that if $r$ and $x_0$ are ``close" to each other, then $$f(r)\approx f'(x_0)(r-x_0)+f(x_0).$$ Setting the right-hand side above equal to 0, solving for $r$ in terms of $x_0$, and renaming $r$ as $x_1$ gives that $$x_1=x_0-\frac{f(x_0)}{f'(x_0)}.$$ Iterating this process gives that $$x_n=x_{n-1}-\frac{f(x_{n-1})}{f'(x_{n-1})}$$ for $n\geq 1$.  
+Suppose that $f(x)$ is a differentiable function and that we would like to solve the equation $f(x)=0$. Using the IVT, or a graphical method, we might have an initial guess for a solution that we will call $x_0$. We are interested in finding a value $r$ such that $f(r)=0$. We know that if $r$ and $x_0$ are ``close" to each other, then $$f(r)\approx f'(x_0)(r-x_0)+f(x_0).$$ Setting the right-hand side above equal to 0, solving for $r$ in terms of $x_0$, and renaming $r$ as $x_1$ gives that $$x_1=x_0-\frac{f(x_0)}{f'(x_0)}.$$ Iterating this process gives that $$x_n=x_{n-1}-\frac{f(x_{n-1})}{f'(x_{n-1})}$$ for $n\geq 1$. We can iterate the above proceduce until $|f(x_n)|$ becomes as small as we like, at which point the claim is that $x_n$ is an approximate solution to the equation.
 
-We can iterate the above proceduce until $|f(x_n)|$ becomes as small as we like, at which point the claim is that $x_n$ is an approximate solution. The Desmos interactive graph below gives an example of Newton's method iterated twice.
+The Desmos interactive graph below gives an example of Newton's method iterated twice.
 
 \desmos{zokv8syqrv}{800}{600}
 
