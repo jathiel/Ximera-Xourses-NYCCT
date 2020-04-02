@@ -18,7 +18,7 @@ The Desmos interactive graph below gives an example of a linear approximation to
 
 Suppose that $f(x)$ is a differentiable function and that we would like to solve the equation $f(x)=0$. Using the IVT, or a graphical method, we might have an initial guess for a solution that we will call $x_0$. We are interested in finding a value $r$ such that $f(r)=0$. We know that if $r$ and $x_0$ are ``close" to each other, then $$f(r)\approx f'(x_0)(r-x_0)+f(x_0).$$ Setting the right-hand side above equal to 0, solving for $r$ in terms of $x_0$, and renaming $r$ as $x_1$ gives that $$x_1=x_0-\frac{f(x_0)}{f'(x_0)}.$$ Iterating this process gives that $$x_n=x_{n-1}-\frac{f(x_{n-1})}{f'(x_{n-1})}$$ for $n\geq 1$.  
 
-We can iterate the above proceduce until $|f(x_n)|$ becomes as small as we like. The Desmos interactive graph below gives an example of Newton's method iterated twice.
+We can iterate the above proceduce until $|f(x_n)|$ becomes as small as we like, at which point the claim is that $x_n$ is an approximate solution. The Desmos interactive graph below gives an example of Newton's method iterated twice.
 
 \desmos{zokv8syqrv}{800}{600}
 
@@ -35,8 +35,8 @@ Converting this flowchart to code gives the following:
 \begin{verbatim}
 ==============================
 def newton(f,df,x0,n,error):
-	x = x0
-	i = 0
+        x = x0
+        i = 0
         while abs(f(x)) > error and i <= n:
                 x = x - f(x)/df(x)
                 i += 1
@@ -51,33 +51,20 @@ While Newton's Method may fail to converge, one reason to use it is that can con
 
 \section{Problems}
 
-All answers in this section have been rounded to the nearest thousandth and we have capped the number of iterations to 10.
+All answers in this section have been rounded to the nearest thousandth, the error for the output has been set to $0.0001$, and the number of iterations have been capped at 10.
 
 \begin{question}
-	Use Newton's Method to estimate the solution to $f(x)=0$ where $f(x)=x^3-7$ an error of at most 0.01. $\answer{1.914}$ 
+	Use Newton's Method to estimate the solution to $f(x)=0$ where $f(x)=x^3-5$. $\answer{1.710}$ 
 \end{question}
 
 \begin{question}
-	Use the Newton's Method to give an approximation of $\sqrt{2}$ with an error of at most 0.01. $\answer{1.414}$
-	\begin{hint}
-		Find a simple function $f(x)$ such that $f(\sqrt{2})=0$ that is easy to work with.
-	\end{hint}
-	\begin{hint}
-		Do not use $f(x)=x-\sqrt{2}$, as this would require an approximation of the number you wish to approximate.
-	\end{hint}
+	Use the Newton's Method to give an approximation of $\sqrt{3}$. $\answer{1.732}$
 \end{question}
 
 \begin{question}
-	Use the Bisection Method to give an approximation of the solution to the equation $x\ln{x}=4$ with an error of at most 0.01. $\answer{3.329}$
+	Use Newton's Method to give an approximation of the solutions to the equation $x\ln^2{x}=1/2$. Enter your solutions in incresing order. $\answer{0.073}$ $\answer{0.226}$ $\answer{1.716}$
 	\begin{hint}
-		Remember to use \verb|import math| in order to use the logarithm.
-	\end{hint}
-\end{question}
-
-\begin{question}
-	Use the Bisection Method to give an approximation of all five of the solutions to $\ln{x}+\sin{x}=2$ on the interval $[5,20]$. Enter your solutions in increasing order. $\answer{6.424}$ $\answer{9.705}$ $\answer{12.061}$ $\answer{16.654}$ $\answer{17.779}$
-	\begin{hint}
-		Use a graphical tool (like Matplotlib) to get a sense for the locations of the solutions.
+	Different initial values will converge to different solutions. Use a graphical method to determine different initial values.
 	\end{hint}
 \end{question}
 
