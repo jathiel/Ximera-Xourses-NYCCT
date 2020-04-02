@@ -50,7 +50,7 @@ def bisection(a,b,f,error):
 
 Note that we use the fact that $x\cdot y>0$ implies that both $x$ and $y$ have the same sign.
 
-The Binomial Method has several advantages and one major dissadvantage. It is an algorithm that is relatively easy to code, requires very few assumptions on the function being used, and always converges to some solution. A big dissadvantag of this method is that the convergence to a solution may be very slow compared to other methods (to be seen in the next section).
+The Binomial Method has several advantages and one major disadvantage. It is an algorithm that is relatively easy to code, requires very few assumptions on the function being used, and always converges to some solution (as long as $f(a)\cdot f(b) <0$. A big disadvantage of this method is that the convergence to a solution may be very slow compared to other methods (to be seen in the next section).
 
 Note that we can also use the Bisection Method to solve equations of the form $f(x)=k$ by solving $g(x)=0$ with $g(x)=f(x)-k$.
 
@@ -59,19 +59,31 @@ Note that we can also use the Bisection Method to solve equations of the form $f
 Note that for the questions below, the hint contains the solution.
 
 \begin{question}
-	Use the Bisection Method to estimate the solution to $f(x)=0$ where $f(x)=x^3-7$ with an error of at most 0.01.
+	Use the Bisection Method to estimate the solution to $f(x)=0$ where $f(x)=x^3-7$ with an error of at most 0.01. 
 \end{question}
 
 \begin{question}
 	Use the Bisection Method to give an approximation of $\sqrt{2}$ with an error of at most 0.01.
+	\begin{hint}
+		Find a simple function $f(x)$ such that $f(\sqrt{2})=0$ that is easy to work with.
+	\end{hint}
+	\begin{hint}
+		Do not use $f(x)=x-\sqrt{2}$, as this would require an approximation of the number you wish to approximate.
+	\end{hint}
 \end{question}
 
 \begin{question}
 	Use the Bisection Method to give an approximation of the solution to the equation $x\ln{x}=4$ with an error of at most 0.01.
+	\begin{hint}
+		Remember to use \verb|import math| in order to use the logarithm.
+	\end{hint}
 \end{question}
 
 \begin{question}
-	Use the Bisection Method to give an approximation of all of the solutions to $\ln{x}+\sin{x}=2$ on the interval $[5,20]$.
+	Use the Bisection Method to give an approximation of all five of the solutions to $\ln{x}+\sin{x}=2$ on the interval $[5,20]$. Enter your solutions in increasing order.
+	\begin{hint}
+		Use a graphical tool (like Matplotlib) to get a sense for the locations of the solutions.
+	\end{hint}
 \end{question}
 
 \section{Workspace}
