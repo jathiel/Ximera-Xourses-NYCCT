@@ -16,24 +16,37 @@ The Desmos interactive graph below gives an example of a linear approximation to
 
 \section{Newton's Method}
 
-Suppose that $f(x)$ is a differentiable function and that we would like to solve the equation $f(x)=0$. Using the IVT, or a graphical method, we might have an initial guess for a solution that we will call $x_0$. We are interested in finding a value $r$ such that $f(r)=0$. We know that if $r$ and $x_0$ are ``close" to each other, then $$f(r)\approx f'(x_0)(r-x_0)+f(x_0).$$ Setting the right-hand side equal to 0 and solving for $r$ in terms of $x_0$ and renaming it as $x_1$ gives that $$x_1=x_0-\frac{f(x_0)}{f'(x_0)}.$$ Iterating this process gives that $$x_n=x_{n-1}-\frac{f(x_{n-1})}{f'(x_{n-1})}$$ for $n\geq 1$.  
+Suppose that $f(x)$ is a differentiable function and that we would like to solve the equation $f(x)=0$. Using the IVT, or a graphical method, we might have an initial guess for a solution that we will call $x_0$. We are interested in finding a value $r$ such that $f(r)=0$. We know that if $r$ and $x_0$ are ``close" to each other, then $$f(r)\approx f'(x_0)(r-x_0)+f(x_0).$$ Setting the right-hand side above equal to 0, solving for $r$ in terms of $x_0$, and renaming $r$ as $x_1$ gives that $$x_1=x_0-\frac{f(x_0)}{f'(x_0)}.$$ Iterating this process gives that $$x_n=x_{n-1}-\frac{f(x_{n-1})}{f'(x_{n-1})}$$ for $n\geq 1$.  
+
+We can iterate the above proceduce until $|f(x_n)|$ becomes as small as we like. The Desmos interactive graph below gives an example of Newton's method iterated twice.
 
 \desmos{zokv8syqrv}{800}{600}
 
+Before we go over the algorithm for Newton's Method, we must note a disadvantage of this method. Unlike the Binomial Method, Newton's Method may not converge (try applying the method to $f(x)=x^{1/3}$). We must therefore specify a maximum number of iterations we are willing to compute to ensure that the algorithm terminates.
+
+We can summarize Newton's Method using the following flowchart. Here we assume that $f(x)$ is differentiable, that $f'(x)\neq 0$, that $x$ is close to a solution of $f(x)=0$, that $n$ is the maximum number of iterationswe are willing to compute, and that $error>0$.
+
 \begin{center}
-	\includegraphics{bisection.png}
+	\includegraphics{newton.png}
 \end{center}
 
 Converting this flowchart to code gives the following:
 
 \begin{verbatim}
 ==============================
-def bisection(a,b,f,error):
+def newton(f,df,x,n,error):
+        i = 0
+	while abs(f(x)) > error and i <= n:
+                x = x - f(x)/df(x)
+                i += 1
+        if i > n:
+                return "Exceeded iterations"
+        else:
+                return x
 ==============================
 \end{verbatim}
 
-
-
+While Newton's Method may fail to converge, one reason to use it is that can converge to a solution faster than the Binomial Method.
 
 \section{Problems}
 
