@@ -16,7 +16,7 @@ Many of the problems we will encounter in this course will require that we perfo
 	\item Sort the list of numbers 1, 5, 6, 2, 3, 8, 4 in ascending order.
 \end{enumerate}
 
-When creating algorithms to solve these types of problems, we will often need to compare quantities or keep track of (and update) certain values. To help us with this we introduce some important notation and conventions. (Note: this list is not exhaustive.)
+When creating algorithms to solve these types of problems, we will often need to compare quantities or keep track of (and update) certain values. To help us with this we introduce some important notation and conventions. (Note that this list is not exhaustive.)
 
 \begin{itemize}
 	\item Assignment (\verb|:=|) - This operator assigns the value of whatever is on the right to whatever is on the left. For example, \verb|x:=2| assigns the value \verb|2| to the variable \verb|x|. Note that \verb|x:=y| and \verb|y:=x| are not the same. Also, a statement like \verb|x:=x+1| increments the value of \verb|x| by 1.
@@ -26,10 +26,30 @@ When creating algorithms to solve these types of problems, we will often need to
 
 The assignment and equality comparison operators given above are not given as they are used in Python or other programming languages. The notation above is used in pseudocode, which is a generic, programming language independent way to express algorithms. In later sections we will give examples of how to use these operators in Python. 
 
+Here is an example of an algorithm that determines if a number $n$ is divisible by 3. If the number is divisible by 3, the algorithm outputs a 1. Otherwise, the algorithm outputs a 0.
+
+\begin{center}
+	\includegraphics{divby3.png}
+\end{center}
+
+Here is an example of an algorithm that solves the linear equation $Ax+B=C$ for $x$ if $A$, $B$, and $C$ are real numbers with $A\neq 0$. (Why do we need to assume that $A\neq 0$?)
+
+\begin{center}
+	\includegraphics{solvelinear.png}
+\end{center}
+
+The following two examples illustrate a concept we will see over and over again. These flowcharts will have a loop showing that a certain step may be repeated multiple times until some condition is met.
+
+Here is an example of an algorithm that finds the smallest integer greater than or equal to a real number $x\geq 0$.
+
+\begin{center}
+	\includegraphics{ceil.png}
+\end{center}
+
 Here is an example of an algorithm that computes the sum $1+2+3+\cdots+n$ for any integer $n>0$.
 
 \begin{center}
-	\includegraphics{gausssum2.png}
+	\includegraphics{gausssum:w.png}
 \end{center}
 
 \section{Problems}
