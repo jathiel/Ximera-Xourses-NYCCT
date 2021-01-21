@@ -52,9 +52,65 @@ Here is an example of an algorithm that computes the sum $1+2+3+\cdots+n$ for an
 	\includegraphics{gausssum.png}
 \end{center}
 
-In the example above we need to track two quantities. The value of \verb|i| acts as a counter that tracks the number of times we go through the loop and while \verb|sum| is updated at after each iteration until we reach the desired sum. Note that the order of the instructions when updating \verb|i| and \verb|sum| is important. (Why?) 
+In the example above we need to track two quantities. The value of \verb|i| acts as a counter that tracks the number of times we go through the loop and while \verb|sum| is updated after each iteration until we reach the desired sum. Note that the order of the instructions when updating \verb|i| and \verb|sum| is important. (Why?) 
 
 \section{Problems}
+
+\begin{question}
+	Determine the final value of \verb|x| given the following:
+	\begin{verbatim}
+==============================
+x := 4
+y := 3
+x := y
+==============================
+	\end{verbatim}
+	$x = \answer{3}$
+\end{question}
+
+\begin{question}
+	Determine the final value of \verb|x| given the following:
+	\begin{verbatim}
+==============================
+x := 5
+y := 3
+x := y + 1
+x := x + 6
+==============================
+	\end{verbatim}   
+	$x = \answer{10}$
+\end{question}
+
+\begin{question}
+	Determine the final values of \verb|x| and \verb|y| given the following:
+	\begin{verbatim}
+==============================
+x := -3
+y := 5
+x := y
+y := x
+==============================
+	\end{verbatim}
+	$x = \answer{5}$
+	$y = \answer{5}$
+\end{question}
+
+\begin{question}
+	Determine the final values of \verb|x| and \verb|y| given the following:
+	\begin{verbatim}
+==============================
+x := -3
+y := 5
+t := x
+x := y
+y := t
+==============================
+	\end{verbatim}
+	$x = \answer{5}$
+	$y = \answer{-3}$
+\end{question}
+
+
 
 \begin{question}
 	A divisor $m$ of $n$ is any integer $m$ such that there is no remainder when dividing $n$ by $m$. Create an algorithm that counts the number of divisors of $n$ for any integer $n>0$. 
