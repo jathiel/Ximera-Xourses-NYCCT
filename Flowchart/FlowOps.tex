@@ -54,6 +54,12 @@ Here is an example of an algorithm that computes the sum $1+2+3+\cdots+n$ for an
 
 In the example above we need to track two quantities. The value of \verb|i| acts as a counter that tracks the number of times we go through the loop and while \verb|sum| is updated after each iteration until we reach the desired sum. Note that the order of the instructions when updating \verb|i| and \verb|sum| is important. (Why?) 
 
+Here is an example of an algorithm that compute the number of integers divisible by 6 in the interval $[1,n]$ for some integer $n>0$.
+
+\begin{center}
+	\includegraphics{divby6count.png}
+\end{center}
+
 \section{Problems}
 
 \begin{question}
@@ -110,12 +116,66 @@ y := t
 	$y = \answer{-3}$
 \end{question}
 
-
+\begin{question}
+	Develop an algorithm that takes in three real numbers $a$, $b$, and $c$ and determines if the roots of quadratic function $ax^2+bx+c$ are real or not. If the roots are real, the output should be a 1. If the roots are complex, the output should be 0. Draw a flowchart for your algorithm.
+	\begin{hint}
+		Consider the quantity $b^2-4ac$. Note that the second hint for this problem is the solution.
+	\end{hint}
+	
+	\begin{hint}
+		\begin{center}
+		\includegraphics{realornot.png}
+		\end{center}
+	\end{hint}
+\end{question}
 
 \begin{question}
-	A divisor $m$ of $n$ is any integer $m$ such that there is no remainder when dividing $n$ by $m$. Create an algorithm that counts the number of divisors of $n$ for any integer $n>0$. 
+	Develop an algorithm that takes in a positive integer $n$ and outputs ``Fizz" if the number is divisible only by 3 (and not 5), ``Buzz" if the number is divisible by 5 (and not 3), ``FizzBuzz" if the number is divisible by 15, and n otherwise. Draw a flowchart for your algorithm.
 	\begin{hint}
-	You may need two decisions to solve this problem. Note that the second hint for this problem is the solution.
+		Consider determining if the number is divisible by 15 first. If it is not, then you can determine if it is divisible by just 3 or just 5. Note that the second hint for this problem is the solution.
+	\end{hint}
+	\begin{hint}
+		\begin{center}
+		\includegraphics{fizzbuzz.png}
+		\end{center}
+	\end{hint}
+\end{question}
+
+\begin{question}
+	The factorial function is defined for a nonnegative integer $n$ in the following way:
+	$$n! = \begin{cases}n(n-1)(n-2)\cdots 2\cdot 1 & \text{ if $n>0$,}\\
+		1 & \text{ otherwise.}
+	\end{cases}$$
+	Develop an algorithm for computing $n!$ and draw a flowchart for your algorithm.
+	\begin{hint}
+		This problem is similar to the example above where you wanted to compute $1+2+\cdots+n$. Note that the second hint for this problem is the solution.
+	\end{hint}
+	\begin{hint}
+		\begin{center}
+			\includegraphics{factorial.png}
+		\end{center}
+	\end{hint}
+\end{question}
+
+For the next few problems we will need the following definition:
+
+\begin{definition}
+	For a nonzero integer $n$, we say that a nonzero integer $m$ is a divisor if and only if there is no remainder when dividing $n$ by $m$.
+\end{definition}
+
+For example, 2 is a divisor of 10, but 3 is not a divisor of 10.
+
+\begin{question}
+	Develop an algorithm that takes in two nonzero integers $m$ and $n$ and determines if $m$ is a divisor of $n$. if $m$ is a divisor of $n$, the output should be 1. Draw a flowchart for your algorithm.
+	\begin{hint}
+		
+	\end{hint}
+\end{question}
+
+\begin{question}
+        Develop an algorithm that counts the number of divisors of $n$ for any integer $n>0$. 
+	\begin{hint}
+	For this problem you will use the \verb|%| operator and a loop.You may need two decisions to solve this problem. Note that the second hint for this problem is the solution.
 	\end{hint}
 
 	\begin{hint}
