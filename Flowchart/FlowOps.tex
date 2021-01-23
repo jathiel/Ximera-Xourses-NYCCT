@@ -170,6 +170,9 @@ For example, 2 is a divisor of 10, but 3 is not a divisor of 10.
 \begin{question}
 	Develop an algorithm that takes in two nonzero integers $m$ and $n$ and determines if $m$ is a divisor of $n$. If $m$ is a divisor of $n$, the output should be 1. If $m$ is not a divisor of $n$, the output should be 0. Draw a flowchart for your algorithm.
 	\begin{hint}
+		The solution to this problem is similar to the example above that determines if a number is divisible by 3. The main difference is that 3 should be replaced by the additional input $m$. Note that the second hint for this problem is the solution.
+	\end{hint}
+	\begin{hint}
 		\begin{center}
 			\includegraphics{divisor.png}
 		\end{center}
@@ -177,9 +180,12 @@ For example, 2 is a divisor of 10, but 3 is not a divisor of 10.
 \end{question}
 
 \begin{question}
-        Develop an algorithm that counts the number of divisors of $n$ for any integer $n>0$. 
+	Develop an algorithm that counts the number of (positive) divisors of $n$ for any integer $n>0$. 
 	\begin{hint}
-	For this problem you will use the \verb|%| operator and a loop.You may need two decisions to solve this problem. Note that the second hint for this problem is the solution.
+		The positive divisors of $n$ will have to be in the interval $[1,n]$. (Why?)
+	\end{hint}
+	\begin{hint}
+		The solution to this problem is similar to the example above that counds the number of integers divisible by 6 in the interval $[1,n]$. The main difference is that you are now checking if $n$ (not \verb|i|) is divisible by any of the numbers in the interval $[1,n]$. Note that the third hint for this problem is the solution.
 	\end{hint}
 
 	\begin{hint}
@@ -192,7 +198,10 @@ For example, 2 is a divisor of 10, but 3 is not a divisor of 10.
 \begin{question}
 	Create an algorithm that determines if a positive integer is a prime number. Prime numbers are integers greater than 1 that have exactly two distinct divisors.
 	\begin{hint}
-		You should be able to modify the divisor count algorithm above. Note that the second hit for this problem is the solution.
+		A prime number is any integer greater than 1 that is not divisible by any positive integer other than 1 and itself. (How many distinct divisors must primes have?)
+	\end{hint}
+	\begin{hint}
+		You should be able to modify the divisor count algorithm above. Note that the third hint for this problem is the solution.
 	\end{hint}
 	\begin{hint}
 	\begin{center}
