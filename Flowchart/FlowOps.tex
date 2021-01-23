@@ -52,13 +52,15 @@ Here is an example of an algorithm that computes the sum $1+2+3+\cdots+n$ for an
 	\includegraphics{gausssum.png}
 \end{center}
 
-In the example above we need to track two quantities. The value of \verb|i| acts as a counter that tracks the number of times we go through the loop and while \verb|sum| is updated after each iteration until we reach the desired sum. Note that the order of the instructions when updating \verb|i| and \verb|sum| is important. (Why?) 
+In the example above we need to track two quantities. The value of \verb|i| tracks the number of times we go through the loop and while \verb|sum| is updated after each iteration appropriately until we reach the desired sum. Note that the order of the instructions when updating \verb|i| and \verb|sum| is important. (Why?) 
 
-Here is an example of an algorithm that compute the number of integers divisible by 6 in the interval $[1,n]$ for some integer $n>0$.
+Here is an example of an algorithm that computes the number of integers divisible by 6 in the interval $[1,n]$ for some integer $n>0$.
 
 \begin{center}
 	\includegraphics{divby6count.png}
 \end{center}
+
+In the example above we also track two quantities. Notice that in this case we have an additional decision compartment as we only update the count of numbers divisible by 6 when the current number under consideration, \verb|i|, is divisible by 6. Regardless of whether or not we update \verb|count|, we always increase the value of \verb|i| before looping back.
 
 \section{Problems}
 
