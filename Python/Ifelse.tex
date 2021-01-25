@@ -23,7 +23,7 @@ We can express the same idea as above in pseudocode below. (Note that pseudocode
 procedure absolute(x: real number)
         IF x > 0, THEN absVal = x
         ELSE absVal = -x
-        return absVal (the absoluve value of x)
+        RETURN absVal (the absoluve value of x)
 ==============================
 \end{verbatim}
 
@@ -32,8 +32,9 @@ The block of pseudocode above has several important features:
 \begin{itemize}
 	\item The word \verb|absolute| is the name of this algorithm.
 	\item The \verb|x| in parentheses is the input.
-	\item The `if', `then', `else', etc. represent the individual steps taken in the algorithm. (For a more complete treatment of this, see Rosen's Discrete Mathematics and Its Applications textbook.)
-	\item The variable after the \verb|return| keyword is what the procedure outputs. 
+	\item The \verb|IF|, \verb|THEN|, \verb|ELSE|, etc. represent keywords in the individual steps taken in the algorithm. (For a more complete treatment of this, see Rosen's Discrete Mathematics and Its Applications textbook.)
+	\item The term \verb|absVal| is a variable used to compute the absolute value of \verb|x|.
+	\item The variable after the \verb|RETURN| keyword is what the procedure outputs. 
 \end{itemize}
 
 These two new ways of expressing an algorithm can be easily mapped to the flowchart for computing $|x|$ below.
