@@ -19,8 +19,8 @@ Many of the problems we will encounter in this course will require that we perfo
 When creating algorithms to solve these types of problems, we will often need to compare quantities or keep track of (and update) certain values. To help us with this we introduce some important notation and conventions. (Note that this list is not exhaustive.)
 
 \begin{itemize}
-	\item Assignment (\verb|:=|) - This operator assigns the value of whatever is on the right to whatever is on the left. For example, \verb|x:=2| assigns the value \verb|2| to the variable \verb|x|. Note that \verb|x:=y| and \verb|y:=x| are not the same. Also, a statement like \verb|x:=x+1| increments the value of \verb|x| by 1.
-	\item Comparison (\verb|=|,\verb|<|,\verb|>|,\verb|<=|,\verb|>=|) - These operators are used for comparisons. They give back a truth value to help determine which route to take in a conditional operation/decision. For example, \verb|x>0| will be true if the value of \verb|x| is larger than 0 and false otherwise.
+	\item Assignment (\verb|:=|) - This operator assigns the value of whatever is on the right to whatever is on the left. For example, \verb|x:=2| assigns the value \verb|2| to the variable \verb|x|. Note that \verb|x := y| and \verb|y := x| are not the same. Also, a statement like \verb|x := x+1| increments the value of \verb|x| by 1.
+	\item Comparison (\verb|=|,\verb|<|,\verb|>|,\verb|<=|,\verb|>=|) - These operators are used for comparisons. They give back a truth value to help determine which route to take in a conditional operation/decision. For example, \verb|x > 0| will be true if the value of \verb|x| is larger than 0 and false otherwise.
 		\item Arithmetic (\verb|+|,\verb|-|,\verb|*|,\verb|**|,\verb|/|,\verb|%|) - These symbols simply perform the particular operations that we are used to. Note that \verb|**| represents exponentiation and \verb|%| is modular division (it returns the remainder after long division). For example, \verb|2**3| equals 8 and \verb|7%3| is equal to 1.
 \end{itemize}
 
@@ -63,60 +63,6 @@ Here is an example of an algorithm that computes the number of integers divisibl
 In the example above we also track two quantities. Notice that in this case we have an additional decision compartment as we only update the count of numbers divisible by 6 when the current number under consideration, \verb|i|, is divisible by 6. Regardless of whether or not we update \verb|count|, we always increase the value of \verb|i| before looping back.
 
 \section{Problems}
-
-\begin{question}
-	Determine the final value of \verb|x| given the following:
-	\begin{verbatim}
-==============================
-x := 4
-y := 3
-x := y
-==============================
-	\end{verbatim}
-	$x = \answer{3}$
-\end{question}
-
-\begin{question}
-	Determine the final value of \verb|x| given the following:
-	\begin{verbatim}
-==============================
-x := 5
-y := 3
-x := y + 1
-x := x + 6
-==============================
-	\end{verbatim}   
-	$x = \answer{10}$
-\end{question}
-
-\begin{question}
-	Determine the final values of \verb|x| and \verb|y| given the following:
-	\begin{verbatim}
-==============================
-x := -3
-y := 5
-x := y
-y := x
-==============================
-	\end{verbatim}
-	$x = \answer{5}$
-	$y = \answer{5}$
-\end{question}
-
-\begin{question}
-	Determine the final values of \verb|x| and \verb|y| given the following:
-	\begin{verbatim}
-==============================
-x := -3
-y := 5
-t := x
-x := y
-y := t
-==============================
-	\end{verbatim}
-	$x = \answer{5}$
-	$y = \answer{-3}$
-\end{question}
 
 \begin{question}
 	Develop an algorithm that takes in three real numbers $a$, $b$, and $c$ and determines if the roots of quadratic polynomial $ax^2+bx+c$ are real or not. If the roots are real, the output should be a 1. If the roots are complex, the output should be 0. Draw a flowchart for your algorithm.
