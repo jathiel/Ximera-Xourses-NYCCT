@@ -95,10 +95,10 @@ The example above shows how a flowchart with a decision compartment can be trans
 
 Below we give examples of how to expand on the basic if/else form to handle cases where multiple decisions are needed or if a decision has more than two outcomes. 
 
-The flowchart below shows an algorithm for computing the sign function seen in the Flowchart section.
+The flowchart below shows an algorithm for computing the $sgn$ function seen in the Flowchart problem section.
 
 \begin{center}
-	\includegraphics{heaviside.png}
+	\includegraphics{sgn.png}
 \end{center}
 
 This can be implemented in Python in several ways. 
@@ -155,17 +155,17 @@ Note that the second option greatly increases the readability of the code and ca
 Consider using the SageCell below as your workspace for answering the following questions.
 
 \begin{question}
-Define the Heavyside step function $H$ for any real number $x$ as
+Define the Heaviside step function $H$ for any real number $x$ as
 	$$H(x)=\begin{cases} 1 &\text{ if $x\geq 0$}\\
 		0 &\text{ otherwise.}
 	\end{cases}$$
-Create an algorithm to implement the Heavyside function. Express your algorithm as a flowchart and in Python.
+Develop an algorithm to implement the Heaviside function. Express your algorithm as a flowchart and in Python.
 	\begin{hint}
 		This problem is similar to computing $|x|$. Note that the second hint for this problem is the solution.
 	\end{hint}
 	\begin{hint}
 	\begin{center}
-		\includegraphics{heavy.png}
+		\includegraphics{heavi.png}
 	\end{center}
 \begin{sageCell}
 if x >= 0:
@@ -177,18 +177,18 @@ else:
 \end{question}
 
 \begin{question}
-A different definition of the Heavyside step function gives a different value at $x=0$, namely,
+A different definition of the Heaviside step function gives a different value at $x=0$, namely,
 	$$H(x)=\begin{cases} 1 &\text{ if $x>0$}\\
 		1/2 &\text{ if $x=0$}\\
 		0 &\text{ otherwise.}
 	\end{cases}$$
-Create an algorithm to implement this alternative Heavyside function. Express your algorithm as a flowchart and in Python.
+Develop an algorithm to implement this alternative Heaviside function. Express your algorithm as a flowchart and in Python.
 	\begin{hint}
 		This problem is similar to computing $sgn(x)$. Note that the second hint for this problem is the solution.
 	\end{hint}
 	\begin{hint}
 	\begin{center}
-		\includegraphics{heavy2.png}
+		\includegraphics{heavi2.png}
 	\end{center}
 \begin{sageCell}
 if x > 0:
