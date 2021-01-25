@@ -10,11 +10,32 @@ We introduce if/else statements in Python.
 
 \section{If/Else}
 
-In an earlier section we saw that in order to compute the absolute value of a real number $x$, we first needed to determine if it satisfied a certain condition, namely, is it the case that $x>0$? The answer to this question then determines the set of instructions to follow. We can reformulate our algorithm for computing $|x|$ as two statements in the following way:
+In an earlier section we saw that in order to compute the absolute value of a real number $x$, we first needed to determine if it satisfied a certain condition, namely, is it the case that $x>0$? The answer to this question then determines the set of instructions to follow. We can reformulate our algorithm for computing $|x|$ as two statements in the following ways:
 
 For any real number $x$, if $x>0$, then $|x|=x$. Else (or otherwise), $|x|=-x$.
 
-The `if' portion of the statement explains what to do if the given condition is satisfied, while the `else' portion explains what to do if the given condition is not satisfied. This can be easily mapped to the flowchart for computing $|x|$ below.
+The `if' portion of the statement explains what to do if the given condition is satisfied, while the `else' portion explains what to do if the given condition is not satisfied.
+
+We can express the same idea as above in pseudocode below. (Note that pseudocode will look a lot like Python syntax, but they are not the same.)
+
+\begin{verbatim}
+==============================
+procedure absolute(x: real number)
+	If x > 0, then absVal = x
+	Else absVal = -x
+	return absVal (the absoluve value of x)
+==============================
+\end{verbatim}
+
+The block of pseudocode above has several important features:
+
+\begin{itemize}
+	\item The word \verb|absolute| is the name of this algorithm.
+	\item The \verb|x| in parentheses is the input.
+	\item The `if', `then', `else', etc. represent the individual steps taken in the algorithm. (For a more complete treatment of this, see Rosen's Discrete Mathematics and Its Applications textbook.)
+	\item The variable after the \verb|return| keyword is what the procedure outputs. 
+		
+These two new ways of expressing an algorithm can be easily mapped to the flowchart for computing $|x|$ below.
 
 \begin{center}
 	\includegraphics{absalgo.png}
