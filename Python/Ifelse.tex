@@ -225,10 +225,11 @@ if A > B:
                 maximum = A
         else:
                 maximum = C
-elif B > C:
-        maximum = B
 else:
-        maximum = C
+        if B > C:
+                maximum = B
+        else:
+                maximum = C
 \end{sageCell}
 	\end{hint}
 \end{question}
