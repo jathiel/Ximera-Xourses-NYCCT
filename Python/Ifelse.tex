@@ -65,7 +65,7 @@ else:
 ==============================
 \end{verbatim}
 
-The code above creates a variable \verb|absVal| that is assigned the absolute value of $x$ for any given $x$. The SageCell below shows how to use this code in practice.
+The code above creates a variable \verb|absVal| that is assigned the absolute value of $x$ for any given $x$. The SageCell below shows how to use this code in practice. We assign the desired output to a variable so that we can use it later for whatever we want.
 
 \begin{sageCell}
 x = -3               # change this value and evaluate the cell to compute |x| for other x values
@@ -159,7 +159,7 @@ Define the Heaviside step function $H$ for any real number $x$ as
 	$$H(x)=\begin{cases} 1 &\text{ if $x\geq 0$}\\
 		0 &\text{ otherwise.}
 	\end{cases}$$
-Develop an algorithm to implement the Heaviside function. Express your algorithm as a flowchart and in Python.
+Develop an algorithm to implement the Heaviside function. Express your algorithm as a flowchart and in Python. In Python, assign the desired output to a variable \verb|H|.
 	\begin{hint}
 		This problem is similar to computing $|x|$. Note that the second hint for this problem is the solution.
 	\end{hint}
@@ -182,7 +182,7 @@ A different definition of the Heaviside step function gives a different value at
 		1/2 &\text{ if $x=0$}\\
 		0 &\text{ otherwise.}
 	\end{cases}$$
-Develop an algorithm to implement this alternative Heaviside function. Express your algorithm as a flowchart and in Python.
+Develop an algorithm to implement this alternative Heaviside function. Express your algorithm as a flowchart and in Python. In Python, assign the desired output to a variable \verb|H|.
 	\begin{hint}
 		This problem is similar to computing $sgn(x)$. Note that the second hint for this problem is the solution.
 	\end{hint}
@@ -202,7 +202,7 @@ else:
 \end{question}
 
 \begin{question}
-	Express your algorithm solution from the first question in the Flowcharts with Operators section in Python. Note that the hint for this problem is the solution.
+	Express your algorithm solution from the first question in the Flowcharts with Operators section in Python. In Python, assign the desired output to a variable \verb|real_roots|.  Note that the hint for this problem is the solution. 
 	\begin{hint}
 \begin{sageCell}
 if b**2-4*a*c >= 0:
@@ -214,7 +214,27 @@ else:
 \end{question}
 
 \begin{question}
-	Suppose you are given three distinct real numbers $A$, $B$, and $C$. Develop an algorithm that determines which one is the largest. Express your algorithm as a flowchart and in Python. Note that the hint for this problem is the solution.
+	Develop an algorithm that takes in three real numbers $a$, $b$, and $c$ and determines the number of distict real roots of the quadratic polynomial $ax^2+bx+c$. The output should be the the number of distinct real roots. Express your algorithm as a flowchart and in Python. In Python, assign the desired output to a variable \verb|real_root_count|.
+	\begin{hint}
+	As in the previous problem, the solution is dependent on the value of the quantity $b^2-4ac$. Note that the second hit for this problem is the solution.
+	\end{hint}
+	\begin{hint}
+		\begin{center}
+			\includegraphics{realrootcount.png}
+		\end{center}
+\begin{sageCell}
+if b**2-4*a*c > 0:
+	real_root_count = 2
+elif b**2-4*a*c == 0:
+	real_root_count = 1
+else:
+	real_root_count = 0
+\end{sageCell}
+	\end{hint}
+\end{question}
+
+\begin{question}
+	Suppose you are given three distinct real numbers $A$, $B$, and $C$. Develop an algorithm that determines which one is the largest. Express your algorithm as a flowchart and in Python. In Python, assign the desired output to the variable \verb|maximum|. Note that the hint for this problem is the solution.
 	\begin{hint}
 		\begin{center}
 			\includegraphics{maxof3.png}
