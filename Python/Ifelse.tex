@@ -214,7 +214,7 @@ else:
 \end{question}
 
 \begin{question}
-	Develop an algorithm that takes in three real numbers $a$, $b$, and $c$ and determines the number of distict real roots of the quadratic polynomial $ax^2+bx+c$. The output should be the the number of distinct real roots. Express your algorithm as a flowchart and in Python. In Python, assign the desired output to a variable \verb|real_root_count|.
+	Develop an algorithm that takes in three real numbers $a$, $b$, and $c$ and determines the number of distict real roots of the quadratic polynomial $ax^2+bx+c$. The output should be the the number of distinct real roots. Express your algorithm as a flowchart and in Python. In Python, assign the desired output to a variable \verb|real_roots_count|.
 	\begin{hint}
 	As in the previous problem, the solution is dependent on the value of the quantity $b^2-4ac$. Note that the second hit for this problem is the solution.
 	\end{hint}
@@ -224,11 +224,11 @@ else:
 		\end{center}
 \begin{sageCell}
 if b**2-4*a*c > 0:
-	real_root_count = 2
+	real_roots_count = 2
 elif b**2-4*a*c == 0:
-	real_root_count = 1
+	real_roots_count = 1
 else:
-	real_root_count = 0
+	real_roots_count = 0
 \end{sageCell}
 	\end{hint}
 \end{question}
