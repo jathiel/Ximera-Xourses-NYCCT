@@ -8,7 +8,7 @@ We give a brief discussion on the use of functions.
 
 \section{Functions}
 
-The distance between any two points $(x_1,y_1)$ and $(x_2,y_2)$ in the plane is given by $\sqrt{(x_1-x_2)^2+(y_1-y_2)^2}.$ Suppose you are given the points $p_1=(1,2)$, $p_2=(-5,0)$, $p_3=(-4,4)$, $p_4=(-3,2)$ and are asked to find the maximum distance between any two. To accomplish this in a single program with what we have covered so far would require writing down (essentially) the same code six times, once for each pair $p_1$ and $p_2$, $p_2$ and $p_3$, etc. 
+The distance between any two points $(x_1,y_1)$ and $(x_2,y_2)$ in the plane is given by $\sqrt{(x_1-x_2)^2+(y_1-y_2)^2}.$ Suppose you are given the points $p_1=(1,2)$, $p_2=(-5,0)$, $p_3=(-4,4)$, $p_4=(-3,2)$ and are asked to find the maximum distance between any possible pair. To accomplish this in a single program with what we have covered so far would require writing down (essentially) the same code six times, once for each pair $p_1$ and $p_2$, $p_2$ and $p_3$, etc. 
 
 A function will help us with the above problem in two ways:
 
@@ -27,9 +27,9 @@ def functionName(inputs):
 ==============================
 \end{verbatim}
 
-The key word \verb|def| denotes the beginning of a function definition. Using the same guidelines for variable names, \verb|functionName| is your choice for the name of the function and will be used to `call' it as needed. A collection of comma separated values in \verb|inputs| will act as the inputs to the function.  The portion labeled \verb|code| is simply the set of instructions to be completed whenever the function is called. Finally, we have the line with the keyword \verb|return|. So far, we have been using \verb|print| to see the result of a calculation on the screen. In the case of a function, we will likely want the resulting output to be used in {\em another} calculation. The keyword \verb|return| provides us with this ability. Any \verb|variable| after \verb|return| represents the output value of the function and can be assigned to another variable or passed into another function without displaying the value on the screen. The keyword \verb|print|, on the other hand, prints the value to the screen but does not provide us with any data that can be assigned elsewhere. When using \verb|print|, the computer essentially forgets what it just computed.
+The key word \verb|def| denotes the beginning of a function definition. Using the same guidelines for variable names, \verb|functionName| is your choice for the name of the function and will be used to `call' it as needed. A collection of comma separated values in \verb|inputs| will act as the inputs to the function.  The portion labeled \verb|code| is simply the set of instructions to be completed whenever the function is called. Finally, we have the line with the keyword \verb|return|. So far, we have been using \verb|print| to see the result of a calculation on the screen. In the case of a function, we will likely want the resulting output to be used in another calculation. The keyword \verb|return| provides us with this ability. Any \verb|variable| after \verb|return| represents the output value of the function and can be assigned to another variable or passed into another function without displaying the value on the screen. The keyword \verb|print|, on the other hand, prints the value to the screen but does not provide us with any data that can be assigned elsewhere. When using \verb|print|, the computer essentially forgets what it just computed.
 
-Below is an example of the function that computes the distance between two points, $(x_1,y_1)$ and $(x_2,y_2)$.
+Below is an example of the function that computes the distance between two arbitrary points, $(x_1,y_1)$ and $(x_2,y_2)$.
 
 \begin{verbatim}
 ==============================
@@ -43,22 +43,22 @@ This function, as long as it is defined before it is called, can now be used mul
 
 \begin{sageCell}
 # The definition of the function dist	
-def dist(X1,Y1,X2,Y2):
-        d = ((X1-X2)**2+(Y1-Y2)**2)**(0.5)
+def dist(x1,y1,x2,y2):
+        d = ((x1-x2)**2+(y1-y2)**2)**(0.5)
         return d
 
 # Various variables to be used as inputs for the function dist
-x1 = 1
-y1 = 2
-x2 = -5
-y2 = 0
-x3 = -4
-y3 = 4
+X1 = 1
+Y1 = 2
+X2 = -5
+Y2 = 0
+X3 = -4
+Y3 = 4
 
 # Calling the function dist with the above points and assigning the results to over variables
-d12 = dist(x1,y1,x2,y2)
-d23 = dist(x2,y2,x3,y3)
-d13 = dist(x1,y1,x3,y3)
+d12 = dist(X1,Y1,X2,Y2)
+d23 = dist(X2,Y2,X3,Y3)
+d13 = dist(X1,Y1,X3,Y3)
 	
 # Displaying the resulting values
 print(d12)
@@ -95,7 +95,7 @@ def fun():
 print(y)
 \end{sageCell}
 
-This example shows what happens if there are global variables and function inputs with the same name.
+This example shows what happens if there are global variables and function inputs with the same name. (This situation should be avoided when possible.)
 
 \begin{sageCell}
 x = 3
@@ -111,10 +111,12 @@ While the scope of a variable might seem a bit technical, it is an important det
 
 \section{Problems}
 
-Consider using the SageCell in the next section as your workspace for answering the following questions. Note that for the questions below, the hint contains the solution.
+Consider using the SageCell below as your workspace for answering the following questions. 
+
+At this point the problems will no longer ask for or provide flowchart solution. Flowcharts continue to be a helpful way to visualize an algorithm and it is recommended that you use them before writing code if necessary. 
 
 \begin{question}
-	Define a function called \verb|square| that returns the square of any real number \verb|x|. 
+	Define a function called \verb|square| that returns the square of any real number \verb|x|. Note that the hint for this problem is the solution.
 	\begin{hint}
 \begin{sageCell}
 def square(x):
@@ -124,7 +126,7 @@ def square(x):
 \end{question}
 
 \begin{question}
-	Define a function called \verb|avg2| that computes the average of two numbers \verb|a| and \verb|b|.
+	Define a function called \verb|avg2| that computes the average of two numbers \verb|a| and \verb|b|. Note that the hint for this problem is the solution.
 	\begin{hint}
 \begin{sageCell}
 def avg2(a,b):
@@ -134,20 +136,51 @@ def avg2(a,b):
 \end{question}
 
 \begin{question}
-	Define a function called \verb|num_real_roots| that computes the number of distinct real roots of a quadratic polynomal $ax^2+bx+c$ where ($a\neq 0$).
+	Define a function called \verb|num_real_roots| that computes the number of distinct real roots of a quadratic polynomial $ax^2+bx+c$ where $a\neq 0$.
+	\begin{hint}
+	Consider having three inputs for this function, \verb|a|, \verb|b|, and \verb|c|. Note that the second hint for this problem is the solution.
+	\end{hint}
 	\begin{hint}
 \begin{sageCell}
-def num_real_root(a,b,c):
+def num_real_roots(a,b,c):
         d = b**2 - 4*a*c
-	if d > 0:
-                roots = 2
-	elif d < 0:
-                roots = 0
+        if d > 0:
+                real_root_count = 2
+        elif d == 0:
+                real_root_count = 1
         else:
-                roots = 1
-        return roots
+                real_root_count = 0
+        return real_root_count
 \end{sageCell}
 	\end{hint}
+\end{question}
+
+\begin{question}
+	Define a function called \verb|crit| that computes the critical points(s) of a quadratic polynomial $ax^2+bx+c$ where $a\neq 0$. Note that the hint for this problem is the solution.
+	\begin{hint}
+\begin{sageCell}
+def crit(a,b,c):
+        return -b/(2*a)
+\end{sageCell}
+	\end{hint}
+\end{question}
+
+\begin{question}
+	Suppose that you can rent a car for \$150 per day or buy it for \$3,500. Define a function called \verb|car_op| that, given an integer $n\geq 0$, determines if it is cheaper to rent the car for $n$ days or to buy it. If it is cheaper to rent the car, the function should return a 1. If it is cheaper to buy the car, the function should return a 0. Note that the hint for this problem is the solution.
+	\begin{hint}
+\begin{sageCel}
+def car_op(n):
+        if 150*n < 3500:
+                option = 1
+        else:
+                option = 0
+        return option
+\end{sageCell}
+	\end{hint}
+\end{question}
+
+\begin{question}
+	
 \end{question}
 
 \section{Workspace}
