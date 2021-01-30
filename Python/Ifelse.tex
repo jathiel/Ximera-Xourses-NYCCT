@@ -150,6 +150,16 @@ print(sgn)
 
 Note that the second option greatly increases the readability of the code and can be expanded with more \verb|elif| lines if more options must be considered.
 
+Finally. a condition checked by an if/elif statement need not involve a comparison operator. Any nonzero number is treated as \verb|True|, while zero is treated as \verb|False|. See the example below.
+
+\begin{sageCell}
+x = 3
+if x:
+       print(1)
+else:
+       print(0)
+\end{sageCell}
+
 \section{Problems}
 
 Consider using the SageCell below as your workspace for answering the following questions.
