@@ -99,20 +99,53 @@ print(myString[::-1]) # Reverses the string.
 
 \section{Problems}
 
-Note that for the questions below, the hint contains the solution.
+\begin{question}
+Consider the list \verb|a = [5,5,4,3,6]| and determine the values below.
+	\begin{enuemrate}
+	\item \verb|a[0]| $\answer{5}$
+	\item \verb|a[2]| $\answer{4}$
+	\item \verb|a[3]| $\answer{3}$
+	\item \verb|a[-1]| $\answer{6}$
+	\item \verb|a[4]| $\answer{6}$
+	\end{enumerate}
+\end{question}
 
 \begin{question}
-	Consider the list \verb|a = [4,5,2,1,6]|. Use list slicing to obtain the list \verb|[2,1,6]|.
+	Consider the list \verb|a = [4,5,2,1,6]|. Use list slicing to obtain the following lists:
+	\begin{enumerate}
+	\item \verb|[2,1,6]|
+	\item \verb|[4,5]|
+	\item \verb|[4,2,6]|
+	\item \verb|[6,1,2,5,4]|
+	\end{enumerate}
+	Note that the hint for this problem is the solution.
 	\begin{hint}
 \begin{sageCell}
 a = [4,5,2,1,6]
-a[2:]
+
+print(a[2:])  # Solution to part a.
+print(a[:2])  # Solution to part b.
+print(a[::2]) # Solution to part c.
+print(a[::1]) # Solution to part d.
 \end{sageCell}
 	\end{hint}
 \end{question}
 
 \begin{question}
-Write a Python function \verb|longer| that takes in two lists \verb|a| and \verb|b| as inputs and returns the length of the longer list.
+	Define a function \verb|initials| that takes in two strings \verb|first| and \verb|last| as inputs, representing an individuals first and last name (respectively) and returns their initials. By initials we mean a string containing two characters, the first character of \verb|first| and the first character of \verb|last|. So, for example, if \verb|a='grace'| and \verb|b='hopper'|, then the output should be \verb|gh|.
+	\begin{hint}
+	Use the contatenation operator \verb|+| to concatenate the first character from \verb|first| and the first character from \verb|last|. Note that the second hint for this problem is the solution.
+	\end{hint}
+	\begin{hint}
+\begin{sageCell}
+def initials(a,b):
+	return a[0] + b[0]
+\end{sageCell}
+	\end{hint}
+\end{question}
+
+\begin{question}
+Define a function \verb|longer| that takes in two lists \verb|a| and \verb|b| as inputs and returns the length of the longer list. Note that the hint for this problem is the solution.
 	\begin{hint}
 \begin{sageCell}
 def longer(a,b):
@@ -126,7 +159,10 @@ def longer(a,b):
 \end{question}
 
 \begin{question}
-A list is a palindrome if it is the same forwards and backwards, like \verb|[1,2,3,4,3,2,1]|. Write a Python function \verb|pal| that takes in a list \verb|a| as an input and returns \verb|True| if the list is a palindrome and \verb|False| otherwise.
+A string is a palindrome if it is the same forwards and backwards, like \verb|racecar|. Define a function \verb|pal| that takes in a string \verb|a| as an input and returns \verb|True| if the string is a palindrome and \verb|False| otherwise.
+	\begin{hint}
+	If a string is a palindrome, how does it compare to its reversal? Note that the second hint for this problem is the solution.
+	\end{hint}
 	\begin{hint}
 \begin{sageCell}
 def pal(a):
