@@ -113,7 +113,7 @@ While the scope of a variable might seem a bit technical, it is an important det
 
 Consider using the SageCell below as your workspace for answering the following questions. 
 
-At this point the problems will no longer ask for or provide flowchart solution. Flowcharts continue to be a helpful way to visualize an algorithm and it is recommended that you use them before writing code if necessary. 
+At this point the problems will no longer ask for or provide flowchart solutions. Flowcharts continue to be a helpful way to visualize an algorithm and it is recommended that you use them before writing code if necessary. 
 
 \begin{question}
 	Define a function called \verb|square| that returns the square of any real number \verb|x|. Note that the hint for this problem is the solution.
@@ -136,6 +136,30 @@ def avg2(a,b):
 \end{question}
 
 \begin{question}
+	Define a function called \verb|crit| that computes the critical points(s) of a quadratic polynomial $ax^2+bx+c$ where $a\neq 0$. Note that the hint for this problem is the solution.
+	\begin{hint}
+\begin{sageCell}
+def crit(a,b,c):
+        return -b/(2*a)
+\end{sageCell}
+	\end{hint}
+\end{question}
+
+\begin{question}
+	Suppose that you can rent a car for \$150 per day or buy it for \$3,500. Define a function called \verb|car_option| that, given an integer $n\geq 0$, determines if it is cheaper to rent the car for $n$ days or to buy it. If it is cheaper to rent the car, the function should return a 1. If it is cheaper to buy the car, the function should return a 0. Note that the hint for this problem is the solution.
+	\begin{hint}
+\begin{sageCell}
+def car_option(n):
+        if 150*n < 3500:
+                option = 1
+        else:
+                option = 0
+        return option
+\end{sageCell}
+	\end{hint}
+\end{question}
+
+\begin{question}
 	Define a function called \verb|num_real_roots| that computes the number of distinct real roots of a quadratic polynomial $ax^2+bx+c$ where $a\neq 0$.
 	\begin{hint}
 	Consider having three inputs for this function, \verb|a|, \verb|b|, and \verb|c|. Note that the second hint for this problem is the solution.
@@ -153,34 +177,6 @@ def num_real_roots(a,b,c):
         return real_root_count
 \end{sageCell}
 	\end{hint}
-\end{question}
-
-\begin{question}
-	Define a function called \verb|crit| that computes the critical points(s) of a quadratic polynomial $ax^2+bx+c$ where $a\neq 0$. Note that the hint for this problem is the solution.
-	\begin{hint}
-\begin{sageCell}
-def crit(a,b,c):
-        return -b/(2*a)
-\end{sageCell}
-	\end{hint}
-\end{question}
-
-\begin{question}
-	Suppose that you can rent a car for \$150 per day or buy it for \$3,500. Define a function called \verb|car_op| that, given an integer $n\geq 0$, determines if it is cheaper to rent the car for $n$ days or to buy it. If it is cheaper to rent the car, the function should return a 1. If it is cheaper to buy the car, the function should return a 0. Note that the hint for this problem is the solution.
-	\begin{hint}
-\begin{sageCell}
-def car_op(n):
-        if 150*n < 3500:
-                option = 1
-        else:
-                option = 0
-        return option
-\end{sageCell}
-	\end{hint}
-\end{question}
-
-\begin{question}
-	sddf
 \end{question}
 
 \section{Workspace}
