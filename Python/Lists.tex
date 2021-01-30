@@ -1,8 +1,8 @@
 \documentclass{ximera}  
-\title{Lists}  
+\title{Lists and Strings}  
 \begin{document}  
 \begin{abstract}  
-We give a brief discussion to lists, indexing, and slicing.
+We give a brief discussion on lists, indexing, slicing, and strings.
 \end{abstract}  
 \maketitle
 
@@ -65,6 +65,37 @@ print(b)
 \end{sageCell}
 
 Note that \verb|b = a| does not create a new list \verb|b| with the same elements as \verb|a|. Rather, both are references to the same object. Any changes to \verb|b| will therefore be reflected by \verb|a| as well. To create a duplicate copy of a list that avoids this issue, use \verb|b = a[:]|.
+
+\section{Strings}
+
+A character is a data type that is a single symbol such as a letter, number, or punctuation mark. Characters can be differentiated from other objects (like integers or variables) by their use of single or double quotes. For example, \verb|'a'| is a character, while \verb|a| is a variable.
+
+A string is a sequence of characters. Strings can be used to read, process, and output text. Strings are similar to lists in that we can use much of what we have learned about lists for strings. See the examples below.
+
+Many of the list operators we saw above also work for strings.
+
+\begin{saceCell}
+a = 'foo'
+b = 'bar'
+
+print(a+b)
+print(a*3)
+print(len(a))
+print('f' in a)
+\end{sageCell}
+
+We give some examples of string slicing below.
+
+\begin{sageCell}
+myString = 'Hello, world!'
+
+print(myString[2:5])  # Contains characters with index 2,3,4.
+print(myString[:3])   # Contains characters with index 0,1,2.
+print(myString[1:])   # Contains characters with index >= 1.
+print(myString[2::2]) # Contains every other character with index >= 2.
+print(myString[::-1]) # Reverses the string.
+\end{saceCell}
+
 
 \section{Problems}
 
