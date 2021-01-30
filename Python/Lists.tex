@@ -68,7 +68,7 @@ Note that \verb|b = a| does not create a new list \verb|b| with the same element
 
 \section{Strings}
 
-A character is a data type that is a single symbol such as a letter, number, or punctuation mark. Characters can be differentiated from other objects (like integers or variables) by their use of single or double quotes. For example, \verb|'a'| is a character, while \verb|a| is a variable.
+A character is a data type that is a single symbol such as a letter, number, or punctuation mark. Characters can be differentiated from other objects (like integers or variables) by their use of single or double quotes. For example, \verb|"a"| is a character, while \verb|a| is a variable.
 
 A string is a sequence of characters. Strings can be used to read, process, and output text. Strings are similar to lists in that we can use much of what we have learned about lists for strings. See the examples below.
 
@@ -139,7 +139,7 @@ print(a[::1]) # Solution to part d.
 \end{question}
 
 \begin{question}
-	Define a function \verb|initials| that takes in two strings \verb|first| and \verb|last| as inputs, representing an individuals first and last name (respectively) and returns their initials. By initials we mean a string containing two characters, the first character of \verb|first| and the first character of \verb|last|. So, for example, if \verb|a='grace'| and \verb|b='hopper'|, then the output should be \verb|gh|.
+	Define a function \verb|initials| that takes in two strings \verb|first| and \verb|last| as inputs, representing an individuals first and last name (respectively) and returns their initials. By initials we mean a string containing two characters, the first character of \verb|first| and the first character of \verb|last|. So, for example, if \verb|a="grace"| and \verb|b="hopper"|, then the output should be \verb|gh|.
 	\begin{hint}
 	Use the contatenation operator \verb|+| to concatenate the first character from \verb|first| and the first character from \verb|last|. Note that the second hint for this problem is the solution.
 	\end{hint}
@@ -168,7 +168,14 @@ def longer(a,b):
 \begin{question}
 A string is a palindrome if it is the same forwards and backwards, like \verb|racecar|. Define a function \verb|pal| that takes in a string \verb|a| as an input and returns \verb|True| if the string is a palindrome and \verb|False| otherwise.
 	\begin{hint}
-	If a string is a palindrome, how does it compare to its reversal? Note that the second hint for this problem is the solution.
+	If a string is a palindrome, how does it compare to its reversal? 
+	\end{hint}
+	\begin{hint}
+	This problem can be done without an if/else statement. A comparison, such as \verb|x > 2| we be equal to \verb|True| or \verb|False| depending on the value of \verb|x|. That is, if we simply want to know if \verb|x| really is larger than 2, we can use \verb|return x > 2|. See the example below. Note that the third hint for this problem is the solution.
+\begin{sageCell}
+def greater_than_2(x):
+        return x > 2
+\end{sageCell}
 	\end{hint}
 	\begin{hint}
 \begin{sageCell}
