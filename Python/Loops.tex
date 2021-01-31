@@ -11,7 +11,7 @@ We give an introduction to for and while loops.
 Loops are useful whenever you have an algorithm that requires multiple uses of the same step. For example, say we wanted to compute the sum $1+2+\cdots+100$. We have seen in a previous section that this can be done using two variables, one that tracks the current value of the sum and another that tracks whether or not our task is finished (see the flowchart below).
 
 \begin{center}
-	    \includegraphics{gausssum2.png}
+	    \includegraphics{gausssum.png}
 \end{center}
 
 The structure of the flowchart above is very suggestive of why we use the terminology `loop'. We will now go over two types of loops: for loops and while loops.
@@ -29,21 +29,33 @@ for variable in iterable:
 ==============================
 \end{verbatim}
 
-In the above code, \verb|for| indicates the start of a for loop, \verb|variable| is just a variable name of your choice, \verb|in| is a keyword, and \verb|iterable| is a Python object that can be iterated over, like a list. This Python code almost reads as an English statement. It is saying, for each item in \verb|iterable|, whose value we assign to \verb|variable| each time, perform the instructions given by \verb|code|.
+In the above code, \verb|for| indicates the start of a for loop, \verb|variable| is just a variable name of your choice, \verb|in| is a keyword, and \verb|iterable| is a Python object that can be iterated over, like a list or a string. This Python code almost reads as an English statement. It is saying, for each item in \verb|iterable|, whose value we assign to \verb|variable| each time, perform the instructions given by \verb|code|.
 
-Below is an example of how to compute $1+2+\cdots+100$ using a for loop. 
+The next few examples illustrate how \verb|variable| takes on the values of \verb|iterable|.
+
+\begin{sageCell}
+for n in [0,1,2,3]:
+        print(n)
+\end{sageCell}
+
+\begin{sageCell}
+for c in 'MAT1630':
+        print(c)
+\end{sageCell}
+
+Below is an example of how to compute $1+2+\cdots+10$ using a for loop. 
 
 \begin{sageCell}
 n = 100
 s = 0
 
-for i in range(1,101):
+	for i in [1,2,3,4,5,6,7,8,9,10]:
         s = s + i
 
-s
+print(s)
 \end{sageCell}
 
-The \verb|range| function above is commonly used in for loops. The inputs for the \verb|range| function are similar to those used for list slicing. See the SageCells below for examples of how to use the \verb|range| function.
+If we wanted to compute $1+2+\cdots+n$ for some large or yet unknown value of $n$, we can already see that the previous example won't cut it. We need some generic way of creating useful lists of numbers. We will use the \verb|range| function to help us with this. The \verb|range| function is commonly used in for loops. The inputs for the \verb|range| function are similar to those used for list slicing. See the SageCells below for examples of how to use the \verb|range| function.
 
 The range function with 1 argument.
 \begin{sageCell}
@@ -61,6 +73,27 @@ The range function with 3 arguments.
 \begin{sageCell}
 for k in range(3,12,2):
      print(k)
+\end{sageCell}
+
+Using the \verb|function|, we can now write a for loop that computes $1+2+\cdots+100$.
+
+\begin{sageCell}
+s = 0 
+for i in range(1,101):
+        s = s + i
+print(s)
+\end{sageCell}
+
+We can modify, improve, and generalize the loop above. We will change out the notation \verb|s = s + i| and use $s += i$ instead. (The \verb|+=| operator increments whatever is on the left by whatever is on the right.) We will also create a function to compute $1+2+\cdots+n$ for any integer $n>0$.
+
+\begin{sageCell}
+def mySum(n):
+        s = 0
+        for i in range(1,n+1):
+                s += i
+        return s
+
+print(mySum(100))
 \end{sageCell}
 
 \section{While Loops}
