@@ -116,20 +116,20 @@ i = 1
 
 while i <= n:
         s += i
-	i += 1
+        i += 1
 
 print(s)
 \end{sageCell}
 
 Note that for a while loop, if \verb|condition| is always true, then your algorithm will never finish running. Unlike a for loop, you must be sure to update the variables associated with the condition being checked at each iteration. In the example above, omitting the line \verb|i += 1| would create an infinite loop.
 
-\section{For or While}
+\section{For vs. While}
 
 A common question when learning about these two types of loops is: Which one should I use? In many cases either will work just fine. For loops are preferred when the number of times the instructions are to be repeated is known. While loops are preferred when the number of times the instructions are to be repeated is unknown.
 
-For example, we have already seen that computing $1+2+\cdots+n$ for some integer $n>0$ can be done with a for loop using just a few lines of code. Consider the following related question: determine the smallest integer $m$ such that $1+2+\cdots+m\geq 1000$.
+For example, we have already seen that computing $1+2+\cdots+n$ for some integer $n>0$ can be done with a for loop using just a few lines of code. Consider the following related question: What is the smallest integer $m$ such that $1+2+\cdots+m\geq 1000$?
 
-How large should $m$ be? In this case, a for loop may not be as helpful as a while loop since we do not know how many times to iterate. Using a while loop, we can track the value of the sum after each step. We can use the value of the sum as the condition that determines whether or not the while loop continues to iterate. 
+In this case, a for loop may not be as helpful as a while loop since we do not know how many times to iterate. Using a while loop, we can track the value of the sum after each step. We can use the value of the sum as the condition that determines whether or not the while loop continues to iterate. See the code below.
 
 \begin{sageCell}
 s = 0
@@ -143,78 +143,140 @@ print(i-1)  # Why do we print i-1 and not i?
 
 \section{Problems}
 
-Note that for the questions below, the hint contains the solution.
+The goal of these problems is to convert several of the flowchart solutions to questions in the Flowcharts With Operators to Python functions.
 
 \begin{question}
-	Write a Python function \verb|pos_floor| that computes the floor of a positive real number $x$.
-\begin{hint}
+	Define a function called \verb|fact| that computes $n!$ for any nonnegative integer $n$. (See question 3 from the Flowcharts With Operators section.)
+	\begin{hint}
+	Consider using \verb|range(1,n+1)| in your for loop and the \verb|*=| operator for updating the value of the factorial variable. Note that the second hint for this problem is the solution.
+	\end{hint}
+	\begin{hint}
+\begin{sageCell}
+def facr(n):
+        fac = 1
+        for i in range(1,n+1):
+                fac *= i
+        return fac
+\end{sageCell}
+	\end{hint}
+\end{question}
+
+\begin{question}
+	Define a function called \verb|div| that computes the number of divisors of $n$ for any integer $n>0$. (See question 5 from the Flowcharts With Operators section.)
+	\begin{hint}
+	Consider using a for loop since the divisors of $n$ are in the interval $[1,n]$. Note that the second hint for this problem is the solution.
+	\end{hint}
+	\begin{hint}
+\begin{sageCell}
+def div(n):
+        divCount = 0
+        for i in range(1,n+1):
+                if n%i == 0:
+                        divCount += 1
+        return divCount
+\end{sageCell}
+	\end{hint}
+\end{question}
+
+\begin{question}
+	Define a function called \verb|prime| that determines if a positive integer $n$ is a prime number. If $n$ is a prime number, the output should be the boolean value \verb|True|, with \verb|False| otherwise. (See question 7 from the Flowcharts With Operators section.)
+	\begin{hint}
+	Consider using the previous function to help you determine if $n$ is prime. There are two ways to do this:
+	\begin{itemize}
+	\item Once you define a function, it can be used inside the definition of another. 
+	\item You can define a function inside of another. But beware of scope issues in this case.
+	\begin{itemize}
+	Note that the second hint for this problem contains both solutions described above.
+	\end{hint}
+	\begin{hint}
+\begin{sageCell}
+def div(n):
+        divCount = 0
+        for i in range(1,n+1):
+                if n%i == 0:
+                        divCount += 1
+        return divCount
+def prime(n):
+        if div(n) == 2:
+                p = True
+        else:
+                p = False
+        return p
+\end{sageCell}
+\begin{sageCell}
+def prime(n):
+        def div(n):
+                divCount = 0
+                for i in range(1,n+1):
+                        if n%i == 0:
+                                divCount += 1
+                return divCount
+
+	if div(n) == 2:
+                p = True
+        else:
+                p = False
+        return p
+\end{sageCell}
+	\end{hint}
+\end{question}
+
+\begin{question}
+	Define a function called \verb|pos_floor| that computes the floor of a real number $x\geq 0$. The floor of a real number $x$ is the largest integer less than or equal to $x$, in other words, rounding $x$ down. (See question 8 from the Flowcharts With Operators section.)
+	\begin{hint}
+	Consider using a while loop. Note that the second hint for this problem is the solution.
+	\begin{hint}
 \begin{sageCell}
 def pos_floor(x):
-        i = 0
-        while i <= x:
-                i = i + 1
-        return i - 1
+        n = 0
+        while n <= x:
+                n += 1
+        return n-1
 \end{sageCell}
-\end{hint}
+	\end{hint}
 \end{question}
 
 \begin{question}
-	Write a Python function \verb|neg_floor| that computes the floor of a negative real number $x$
-\begin{hint}
+	Define a function called \verb|neg_floor| that computes the floor of a real number $x<0$. (See question 9 from the Flowcharts With Operators section.)
+	\begin{hint}
+	This problem can be solved in a similar way to the previous one. Note that the second hint for this problem is the solution.
+	\end{hint}
+	\begin{hint}
 \begin{sageCell}
 def neg_floor(x):
-        i = 0
-        while i > x:
-                i = i - 1
-        return i
+        n = 0
+        while n < -x:
+                n += 1
+        return -n
 \end{sageCell}
-\end{hint}
+	\end{hint}
 \end{question}
 
 \begin{question}
-	Write a Python function \verb|my_floor| that computes the floor of any real number $x$.
-\begin{hint}
+	Define a function called \verb|my_floor| that computes the floor of any real number $x$. (See question 10 from the Flowcharts With Operators section.)
+	\begin{hint}
+	Combine the solutions to the previous two problems. Note that the second hint for this problem is the solution.
+	\end{hint}
+	\begin{hint}
 \begin{sageCell}
+def pos_floor(x):
+        n = 0
+        while n <= x:
+                n += 1
+        return n-1
+def neg_floor(x):
+        n = 0
+        while n < -x:
+                n += 1
+        return -n
 def my_floor(x):
-        if x == 0:
-                flr = 0
-        elif x > 0:
+        if x >= 0:
                 flr = pos_floor(x)
         else:
                 flr = neg_floor(x)
         return flr
 \end{sageCell}
-\end{hint}
-\end{question}
-
-\begin{question}
-	Write a Python function \verb|div| that computes the number of divisors of a positive integer $n$.
-\begin{hint}
-\begin{sageCell}
-def div(n):
-        d = 0
-        for i in range(1,n+1):
-                if n%i == 0:
-                        d = d + 1
-        return d
-\end{sageCell}
-\end{hint}
-\end{question}
-
-\begin{question}
-	Write a Python \verb|fac| function that computes $n!$ for any nonnegative integer $n$.
-\begin{hint}
-\begin{sageCell}
-def fac(n):
-        if n == 0:
-                f = 1
-        else:
-                f = 1
-                for i in range(1,n+1):
-                        f = f * i
-        return f
-\end{sageCell}
-\end{hint}
+	\end{hint}
 \end{question}
 
 \section{Workspace}
