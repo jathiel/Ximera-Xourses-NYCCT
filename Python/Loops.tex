@@ -8,7 +8,7 @@ We give an introduction to for and while loops.
 
 \section{Loops}
 
-Loops are useful whenever you have an algorithm that requires multiple uses of the same step. For example, say we wanted to compute the sum $1+2+\cdots+100$. We have seen in a previous section that this can be done using two variables, one that tracks the current value of the sum and another that tracks whether or not our task is finished (see the flowchart below).
+Loops are useful whenever you have an algorithm that requires multiple uses of the same step. For example, say we wanted to compute the sum $1+2+\cdots+n$ for some integer $n>0$. We have seen in a previous section that this can be done using two variables, one that tracks the current value of the sum and another that tracks whether or not our task is finished (see the flowchart below).
 
 \begin{center}
 	    \includegraphics{gausssum.png}
@@ -22,10 +22,8 @@ The Python syntax for a for loop is as follows:
 
 \begin{verbatim}
 ==============================
-
 for variable in iterable:
         code
-
 ==============================
 \end{verbatim}
 
@@ -49,13 +47,13 @@ Below is an example of how to compute $1+2+\cdots+10$ using a for loop.
 n = 100
 s = 0
 
-	for i in [1,2,3,4,5,6,7,8,9,10]:
+for i in [1,2,3,4,5,6,7,8,9,10]:
         s = s + i
 
 print(s)
 \end{sageCell}
 
-If we wanted to compute $1+2+\cdots+n$ for some large or yet unknown value of $n$, we can already see that the previous example won't cut it. We need some generic way of creating useful lists of numbers. We will use the \verb|range| function to help us with this. The \verb|range| function is commonly used in for loops. The inputs for the \verb|range| function are similar to those used for list slicing. See the SageCells below for examples of how to use the \verb|range| function.
+If we wanted to compute $1+2+\cdots+n$ for some large or yet unknown value of $n$, we can already see that the previous example won't cut it. We need some general way of creating useful lists of numbers. We will use the \verb|range| function to help us with this. The \verb|range| function is commonly used in for loops. The inputs for the \verb|range| function are similar to those used for list slicing. See the SageCells below for examples of how to use the \verb|range| function.
 
 The range function with 1 argument.
 \begin{sageCell}
@@ -75,7 +73,7 @@ for k in range(3,12,2):
      print(k)
 \end{sageCell}
 
-Using the \verb|function|, we can now write a for loop that computes $1+2+\cdots+100$.
+Using the \verb|range| function, we can now write a for loop that computes $1+2+\cdots+100$.
 
 \begin{sageCell}
 s = 0 
@@ -84,7 +82,7 @@ for i in range(1,101):
 print(s)
 \end{sageCell}
 
-We can modify, improve, and generalize the loop above. We will change out the notation \verb|s = s + i| and use $s += i$ instead. (The \verb|+=| operator increments whatever is on the left by whatever is on the right.) We will also create a function to compute $1+2+\cdots+n$ for any integer $n>0$.
+We can modify, improve, and generalize the loop above. We will change out the notation \verb|s = s + i| and use \verb|s += i| instead. (The \verb|+=| operator increments whatever is on the left by whatever is on the right.) We will also create a function to compute $1+2+\cdots+n$ for any integer $n>0$.
 
 \begin{sageCell}
 def mySum(n):
@@ -102,10 +100,8 @@ The Python syntax for a while loop is as follows:
 
 \begin{verbatim}
 ==============================
-
 while condition:
         code
-
 ==============================
 \end{verbatim}
 
@@ -118,20 +114,32 @@ n = 100
 s = 0
 i = 1
 
-while n>=i:
-        s = s + i
-	i = i + 1
+while i <= n:
+        s += i
+	i += 1
 
-s
+print(s)
 \end{sageCell}
 
-Note that for a while loop, if \verb|condition| is always true, then your algorithm will never finish running. Unlike a for loop, you must be sure to update the variables associated with the condition being checked at each iteration. In the example above, omitting the line \verb|i = i + 1| would create an infinite loop.
+Note that for a while loop, if \verb|condition| is always true, then your algorithm will never finish running. Unlike a for loop, you must be sure to update the variables associated with the condition being checked at each iteration. In the example above, omitting the line \verb|i += 1| would create an infinite loop.
 
-\section{Choices}
+\section{For or While}
 
 A common question when learning about these two types of loops is: Which one should I use? In many cases either will work just fine. For loops are preferred when the number of times the instructions are to be repeated is known. While loops are preferred when the number of times the instructions are to be repeated is unknown.
 
-What is the smallest positive integer $n$ that has exactly $5$ divisors? You can use a loop to tackle this question by testing the number of divisors of $1$, $2$, and so on until the desired condition is met. Since it is unclear how big $n$ is, using a while loop here would be reasonable.
+For example, we have already seen that computing $1+2+\cdots+n$ for some integer $n>0$ can be done with a for loop using just a few lines of code. Consider the following related question: determine the smallest integer $m$ such that $1+2+\cdots+m\geq 1000$.
+
+How large should $m$ be? In this case, a for loop may not be as helpful as a while loop since we do not know how many times to iterate. Using a while loop, we can track the value of the sum after each step. We can use the value of the sum as the condition that determines whether or not the while loop continues to iterate. 
+
+\begin{sageCell}
+s = 0
+i = 1
+
+while s < 1000:
+        s += i
+        i += 1
+print(i-1)  # Why do we print i-1 and not i?
+\end{sageCell}
 
 \section{Problems}
 
