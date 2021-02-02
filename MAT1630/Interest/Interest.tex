@@ -30,13 +30,13 @@ $$\sum_{k=0}^Nx^k = \frac{1-x^{N+1}}{1-x}.$$
 In particular, working backwards, 
 
 \begin{align*}
-	P_t & = & P_{t-1}\cdot\left(1+\frac{r}{n}\right) + c\\
-	    & = & (P_{t-2}\cdot\left(1+\frac{r}{n}\right) + c)\cdot\left(1+\frac{r}{n}\right) + c\\
-	    & = & P_{t-2}\cdot\left(1+\frac{r}{n}\right)^2 + c\cdot\left(1+\frac{r}{n}\right) + c\\
+	P_t & = P_{t-1}\cdot\left(1+\frac{r}{n}\right) + c\\
+	    & = \left(P_{t-2}\cdot\left(1+\frac{r}{n}\right) + c\right)\cdot\left(1+\frac{r}{n}\right) + c\\
+	    & = P_{t-2}\cdot\left(1+\frac{r}{n}\right)^2 + c\cdot\left(1+\frac{r}{n}\right) + c\\
 	    & \cdots & \\
-	    & = & P\cdot\left(1+\frac{r}{n}\right)^t + c\sum{k=0}^{t-1}\left(1+\frac{r}{n}\right)\\
-	    & = & P\cdot\left(1+\frac{r}{n}\right)^t + c\cdot\frac{1-\left(1+\frac{r}{n}\right)^t}{1-\left(1+\frac{r}{n}\right)}\\
-	    & = & P\cdot\left(1+\frac{r}{n}\right)^t - \frac{cn}{r}\cdot\left(1-\left(1+\frac{r}{n}\right)^t\right).
+	    & = P\cdot\left(1+\frac{r}{n}\right)^t + c\sum_{k=0}^{t-1}\left(1+\frac{r}{n}\right)\\
+	    & = P\cdot\left(1+\frac{r}{n}\right)^t + c\cdot\frac{1-\left(1+\frac{r}{n}\right)^t}{1-\left(1+\frac{r}{n}\right)}\\
+	    & = P\cdot\left(1+\frac{r}{n}\right)^t - \frac{cn}{r}\cdot\left(1-\left(1+\frac{r}{n}\right)^t\right).
 \end{align*}
 
 \section{Problems}
