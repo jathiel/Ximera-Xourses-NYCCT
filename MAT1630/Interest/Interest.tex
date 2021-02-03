@@ -27,7 +27,7 @@ Let $P_t$ be the value of the loan after $t$ compounding periods. When $c=0$, we
 
 $$\sum_{k=0}^Nx^k = \frac{1-x^{N+1}}{1-x}.$$
 
-In particular, working backwards, 
+Working backwards from the definition of $P_t$, we get that
 
 \begin{align*}
 	P_t & = P_{t-1}\cdot\left(1+\frac{r}{n}\right) + c\\
@@ -39,6 +39,14 @@ In particular, working backwards,
 	    & = P\cdot\left(1+\frac{r}{n}\right)^t - \frac{cn}{r}\cdot\left(1-\left(1+\frac{r}{n}\right)^t\right).
 \end{align*}
 
+So, 
+
+\begin{fact}
+  $P_t = P\cdot\left(1+\frac{r}{n}\right)^t - \frac{cn}{r}\cdot\left(1-\left(1+\frac{r}{n}\right)^t\right)$
+\end{fact}
+
+This formula for $P_t$ is useful for a variety of loan problems as will be seen below. It can be used to determine how much is owed after making payments of a fixed size and it can be used to compute the payment amount needed to pay off a loan over a fixed time period.
+
 \section{Problems}
 
 \begin{question}
@@ -47,6 +55,18 @@ Suppose you open a retirement account with \$1,000 that offers an annual interes
 How much is the account worth after 20 years with no monthly contributions? $\answer{3310.20}$
 
 How much is the same account worth after 20 years if you make monthly contributions of \$50? $\answer{26412.25}$
+\end{question}
+
+\begin{question}
+Which account is worth more after a period of 15 years?
+\begin{itemize}
+	\item A savings account earning an annual interest rate of 2.5\% compounded monthly having an initial investment of \$1,000 with no monthly contributions.
+	\item A savings account earning an annual interst rate of 2.5\% compounded monthly having an initial investment of \$0 with \$50 in monthly contributions.
+\end{itemize}
+	\begin{multipleChoice}
+		\choice{\text{A}}
+		\choice[correct]{\text{B}}
+	\end{multipleChoice}
 \end{question}
 
 \begin{question}
