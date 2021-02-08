@@ -50,7 +50,7 @@ Another well-known example of a problem with a recursive solution is the \link[T
 \section{Problems}
 
 \begin{question}
-	Define a sequence $a_n$ for $n\geq 0$ by $$f_n=\begin{cases} 1 & \text{if $n=0$}\\ 3 & \text{if $n=1$}\\a_{n-1}-a_{n-2} & \text{otherwise.}$$ Compute $a_7$. $\answer{-1}$
+	Define a sequence $a_n$ for $n\geq 0$ by $$a_n=\begin{cases} 1 & \text{if $n=0$}\\ 3 & \text{if $n=1$}\\a_{n-1}-a_{n-2} & \text{otherwise.}\end{cases}$$ Compute $a_7$. $\answer{-1}$
 	\begin{hint}
 		The definition of $a_n$ is similar to that of the Fibonacci sequence.
 	\end{hint}
@@ -87,7 +87,7 @@ def stair(n):
                 return stair(n-3)+stair(n-1)
 \end{sageCell}
 \end{hint}
-	The number of ways to climb 9 stairs using this method is $\answer{19}$.
+The number of ways to climb 9 stairs using this method is $\answer{19}$.
 \end{question}
 
 \begin{question}
