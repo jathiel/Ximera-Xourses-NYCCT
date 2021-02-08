@@ -14,13 +14,13 @@ Compound interest involves the addition of the previously computed interest to t
 
 We use the following basic formula for compounding interest:
 
-$$P' = P\cdot\left(1+\frac{r}{n}\right) + c $$ where
+$$P_{new} = P\cdot\left(1+\frac{r}{n}\right) + c $$ where
 \begin{itemize}
 	\item $P = $ principal sum,
 	\item $r = $ annual interest rate,
 	\item $n = $ number of compoundings per year,
 	\item $c = $ contribution to the principal per compounding period, and 
-	\item $P' = $ new principal sum after one compounding period.
+	\item $P_{new} = $ new principal sum after one compounding period.
 \end{itemize}
 
 Let $P_t$ be the value of the loan after $t$ compounding periods. When $c=0$, we can compute $P_t$ as $P\cdot\left(1+\frac{r}{n}\right)^{t}$. For the more general case that includes when $c\neq 0$, the following formula for a geometric sums will be helpful:
@@ -74,9 +74,12 @@ Suppose you have \$2,000 in credit card debt. Your credit card charges an 18\% a
 
 What is the minimum amount you must pay in order to be sure that you will eventually pay off your debt? $\answer{30}$
 
-How much do you end up paying in order to pay off this debt if you make a \$50 payment per month? $\answer{3076.84}$
+How much do you end up paying in order to pay off this debt if you make a \$60 payment per month? $\answer{3076.84}$
+	\begin{hint}
+	Careful with your computations here. Your last payment may not be \$60. Also, remember to compound interest on the last amount before paying it off.
+	\end{hint}
 
-How much do you end up paying in order to pay off this debt if you make a \$100 payment per month? $\answer{2394.24}$
+How much do you end up paying in order to pay off this debt if you make a \$200 payment per month? $\answer{2394.24}$
 \end{question}
 
 \begin{question}
