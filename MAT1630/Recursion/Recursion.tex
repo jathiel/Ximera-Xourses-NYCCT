@@ -49,10 +49,15 @@ Another well-known example of a problem with a recursive solution is the \link[T
 
 \section{Problems}
 
-Note that for the first two questions below, the first hint contains the solution.
+\begin{question}
+	Define a sequence $a_n$ for $n\geq 0$ by $$f_n=\begin{cases} 1 & \text{if $n=0$}\\ 3 & \text{if $n=1$}\\a_{n-1}-a_{n-2} & \text{otherwise.}$$ Compute $a_7$. $\answer{-1}$
+	\begin{hint}
+		The definition of $a_n$ is similar to that of the Fibonacci sequence.
+	\end{hint}
+\end{question}
 
 \begin{question}
-Implement the recursive definition of $H(n)$ in Python.
+Implement the recursive definition of $H(n)$ in Python. Note that the hint for this problem is the solution.
 	\begin{hint}
 \begin{sageCell}
 def H(n):
@@ -67,6 +72,9 @@ def H(n):
 \begin{question}
 Suppose you can climb a set of stairs by either taking one stair or three stairs at once per step. In how many ways can you climb 9 stairs?
 	\begin{hint}
+	One way to establish the base cases is to compute the number of ways to climb 1, 2, or 3 stairs. (Why 2?)
+	\end{hint}
+	\begin{hint}
 \begin{sageCell}
 def stair(n):
         if n == 1:
@@ -77,17 +85,20 @@ def stair(n):
                 return 2
         else:
                 return stair(n-3)+stair(n-1)
-print(stair(9))
 \end{sageCell}
 \end{hint}
+	The number of ways to climb 9 stairs using this method is $\answer{19}$.
 \end{question}
 
 \begin{question}
 McDonald's used to sell nuggets only in packages of size 6, 9, and 20. What is the largest number of nuggest that cannot be ordered using such sizes? $\answer{43}$
 	\begin{hint}
-If a number $n$ can be ordered, then either $n=6,9,20$ or one of $n-6$, $n-9$, or $n-20$ can be ordered.
+Create a recursively defined function named \verb|nugget| that return a 1 if $n$ nuggets can be ordered and returns a 0 otherwise. Be sure to create a case for when $n<6$.
 	\end{hint}
 	\begin{hint}
+	If a number $n$ can be ordered, then either $n=6,9,20$ or one of $n-6$, $n-9$, or $n-20$ can be ordered. The \verb|max| function can help here since we only need at least one of \verb|nugget(n-6)|, \verb|nugget(n-9)|, or \verb|nugget(n-20)| to be equal to 1.
+	\end{hint}
+\begin{hint}
 \begin{sageCell}
 def nugget(n):
         if n < 6:
@@ -99,6 +110,8 @@ def nugget(n):
 \end{sageCell}
 	\end{hint}
 \end{question}
+
+The largest number that cannot be ordered is $\answer{43}$.
 
 \section{Workspace}
 
