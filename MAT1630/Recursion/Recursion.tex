@@ -98,6 +98,9 @@ Create a recursively defined function named \verb|nugget| that return a 1 if $n$
 	\begin{hint}
 	If a number $n$ can be ordered, then either $n=6,9,20$ or one of $n-6$, $n-9$, or $n-20$ can be ordered. The \verb|max| function can help here since we only need at least one of \verb|nugget(n-6)|, \verb|nugget(n-9)|, or \verb|nugget(n-20)| to be equal to 1.
 	\end{hint}
+	\begin{hint}
+	Once you find 6 consecutive numbers that can be ordered, we should be able to determine which is the largest number that cannot be ordered. (Why?)
+	\end{hint}
 \begin{hint}
 \begin{sageCell}
 def nugget(n):
