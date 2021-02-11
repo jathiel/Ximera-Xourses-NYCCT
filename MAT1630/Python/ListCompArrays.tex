@@ -17,7 +17,16 @@ for i in range(1,11):
 squares
 \end{sageCell}
 
-A list comprehension allows us to create the same list in a compact and easy-to-read way that is similar to the notation $\{x^2:x\in\mathbb{Z},1\leq x\leq 10\}$..
+This same task can be accomplished using the \verb|+=| operator, which serves as concatenation here. Note that we must have brackets around \verb|i**2| for this to work.
+
+\begin{sageCell}
+squares = []
+for i in range(1,11):
+	squares += [i**2]
+squares
+\end{sageCell}
+
+A list comprehension allows us to create the same list in a compact and easy-to-read way that is similar to the notation $\{x^2:x\in\mathbb{Z},1\leq x\leq 10\}$.
 
 \begin{sageCell}
 [i**2 for i in range(1,11)]
@@ -27,13 +36,22 @@ The general syntax for a list comprehension has the following form:
 
 \begin{verbatim}
 ==============================
-
 [expression(var) for var in iterable if condition]
-
 ==============================
 \end{verbatim}
 
-The term \verb|expression| is some function that is applied to each value of \verb|var| as it iterates over \verb|iterable| (usually a list or iterable created using the \verb|range| function). In order to filter results, one can add an optional comparison at the end of the list comprehension, represented by the \verb|condition| term.
+The term \verb|expression| is some function or expression that is computed using each value of \verb|var| as it iterates over \verb|iterable| (usually a list or iterable created using the \verb|range| function). In order to filter results, one can add an optional comparison at the end of the list comprehension, represented by the \verb|condition| term.
+
+The above list comprehension format is equivalent to \verb|myList| after running the following chunk of code:
+
+\begin{verbatim}
+==============================
+myList = []
+for var in iterable:
+        if condition:
+        	myList += [expression(var)]
+==============================
+\end{verbatim}
 
 The list comprehension below gives all of the nonnegative even cubes that are at most 1000.
 
