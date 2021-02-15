@@ -22,7 +22,7 @@ This same task can be accomplished using the \verb|+=| operator, which serves as
 \begin{sageCell}
 squares = []
 for i in range(1,11):
-	squares += [i**2]
+        squares += [i**2]
 squares
 \end{sageCell}
 
@@ -42,7 +42,7 @@ The general syntax for a list comprehension has the following form:
 
 The term \verb|expression| is some function or expression that is computed using each value of \verb|var| as it iterates over \verb|iterable| (usually a list or iterable created using the \verb|range| function). In order to filter results, one can add an optional comparison at the end of the list comprehension, represented by the \verb|condition| term.
 
-The above list comprehension format is equivalent to \verb|myList| after running the following chunk of code:
+The above list comprehension format generates a list that is equivalent to \verb|myList| (below) after running the following chunk of code:
 
 \begin{verbatim}
 ==============================
@@ -93,10 +93,23 @@ Some commonly used NumPy functions include:
 
 \section{Problems}
 
-Note that for the questions below, the hint contains the solution.
+\begin{question}
+Use a list comprehension to list the positive integers less than or equal to 20 that are divisible by either 3 or 5.
+	\begin{hint}
+	Use \verb|or| to determine if a number is divisble by 3 or 5. Note that the second hint for this problem is the solution.
+	\end{hint}
+	\begin{hint}
+\begin{sageCell}
+	[n for n in range(21) if n%3 == 0 or n%5 == 0]
+\end{sageCell}
+	\end{hint}
+\end{question}
 
 \begin{question}
 Use a list comprehension or NumPy array to define a function in Python that returns the list of divisors of a positive integer $n$.
+	\begin{hint}
+	Your function should only be one line long. It should return a list comprehension. Note that the second hint for this problem is the solution.
+	\end{hint}
 	\begin{hint}
 \begin{sageCell}
 def divisors(n):
@@ -106,7 +119,10 @@ def divisors(n):
 \end{question}
 
 \begin{question}
-Use a list comprehension or NumPy array to define a function in Python that determines if an integer $n>1$ is prime or not.
+Use a list comprehension or NumPy array to define a function in Python that determines if an integer $n>1$ is prime or not. If the number is prime, the function should return the value \verb|True| and \verb|False| otherwise.
+	\begin{hint}
+	You should be able to use your answer to the previous problem by applying the \verb|len| function. Note that the second hint for this problem is the solution.
+	\end{hint}
 	\begin{hint}
 \begin{sageCell}
 def prime(n):
@@ -116,14 +132,31 @@ def prime(n):
 \end{question}
 
 \begin{question}
-	Use a list comprehension or NumPy array to create a list containing the values $f(n)=3n^3+2$ for $n=0,1,2,\dots,5$.
+	Use a list comprehension or NumPy array to create a list containing the values $f(n)=3n^3+2$ for $n=0,1,2,\dots,5$. Note that the hint for this problem is the solution.
 	\begin{hint}
+A list comprehension solution:
+\begin{sageCell}
+[3*n**3+2 for n in range(6)]
+\end{sageCell}
+A NumPy array solution:
 \begin{sageCell}
 import numpy as np
 
 x = np.arange(6)
 
 3*x**3+1
+\end{sageCell}
+	\end{hint}
+\end{question}
+
+\begin{question}
+	Use a list comprehension to generate the set of ordered pairs $\{(m,n):m,n\in\mathbb{Z}, 0\leq m,n\leq 4\}$. 
+	\begin{hint}
+	Use a list comprehension with two variables and two \verb|for _ in _| statements. That is, write a list comprehension of list comprehensions without additional brackets. Note that the next hint for this problem is the solution. 
+	\end{hint}
+	\begin{hint}
+\begin{sageCell}
+	[[m,n] for m in range(5) for n in range(5)]
 \end{sageCell}
 	\end{hint}
 \end{question}
