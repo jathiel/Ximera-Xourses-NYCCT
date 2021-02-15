@@ -62,7 +62,7 @@ Note that the inputs for \verb|np.plot| can be regular lists. In this case we ch
 
 \section{Problems}
 
-Note that for the questions below, the hint contains the solution.
+Note that for the questions below, the hints contain the solutions.
 
 \begin{question}
 Use the Matplotlib library to plot $f(x)=e^{-x}\sin{x}$ and $g(x)=e^{-x}\cos(x)$ on $[0,2\pi]$.
@@ -87,21 +87,19 @@ plt.clf() # This clears the figure to avoid drawing the same graph on the next p
 \end{question}
 
 \begin{question}
-Use the Matplotlib library to create a scatter plot of the following recursively defined sequence for $n=0,1,\dots,100$ $$x_n=\begin{cases}0.25 & \text{if $n=0$}\\ 3.44x_{n-1}(1-x_{n-1}) & \text{otherwise.}\end{cases}$$
+	Use the Matplotlib library to create a scatter plot (using \verb|plt.scatter|) of $f(x) =x^2-x+1$ using 30 points on the interval $[-2,2]$.
+	
 	\begin{hint}
 \begin{sageCell}
 import numpy as np
 import matplotlib.pyplot as plt
 
-x = [i for i in range(101)]
-y = [0.25]
-for j in range(100):
-	y_old = y[-1]
-	y.append(3.44*y_old*(1-y_old))
+x = np.linspace(-2,2,20)
+y = x**2-x+1
 plt.scatter(x,y)
 plt.xlabel('$x$')
 plt.ylabel('$y$')
-plt.title('A graph of $x_n$')
+plt.title('A graph of $x^2-x+1$')
 plt.show()
 \end{sageCell}
 	\end{hint}
