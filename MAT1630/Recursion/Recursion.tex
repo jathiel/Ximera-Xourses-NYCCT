@@ -93,13 +93,13 @@ The number of ways to climb 9 stairs using this method is $\answer{19}$.
 \begin{question}
 McDonald's used to sell nuggets only in packages of size 6, 9, and 20. What is the largest number of nuggest that cannot be ordered using such sizes? $\answer{43}$
 	\begin{hint}
-Create a recursively defined function named \verb|nugget| that return a 1 if $n$ nuggets can be ordered and returns a 0 otherwise. Be sure to create a case for when $n<6$.
+Create a recursively defined function named \verb|nugget| that returns a 1 if $n$ nuggets can be ordered and returns a 0 otherwise. Be sure to create a case for when $n<6$.
 	\end{hint}
 	\begin{hint}
 	If a number $n$ can be ordered, then either $n=6,9,20$ or one of $n-6$, $n-9$, or $n-20$ can be ordered. The \verb|max| function can help here since we only need at least one of \verb|nugget(n-6)|, \verb|nugget(n-9)|, or \verb|nugget(n-20)| to be equal to 1.
 	\end{hint}
 	\begin{hint}
-	Once you find 6 consecutive numbers that can be ordered, we should be able to determine which is the largest number that cannot be ordered. (Why?)
+	Once you find 6 consecutive numbers that can be ordered, we should be able to determine which is the largest number that cannot be ordered. (Why?) Note that the fourth hint for this problem contains the code for \verb|nugget|.
 	\end{hint}
 \begin{hint}
 \begin{sageCell}
@@ -112,6 +112,7 @@ def nugget(n):
                 return max(nugget(n-6),nugget(n-9),nugget(n-20))
 \end{sageCell}
 	\end{hint}
+The largest number of nuggets that cannot be ordered is $\answer{43}$.
 \end{question}
 
 \section{Workspace}
