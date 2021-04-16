@@ -6,9 +6,26 @@ We give an introduction to random sampling using NumPy.
 \end{abstract}  
 \maketitle
 
-\section{Simulations}
+\section{Simulations and Monte Carlo Methods}
 
-ial
+Suppose you flip a fair coin 500 times. What is the length of the longest streak of consecutive heads that you expect to see? Computing this value exactly requires some knowledge of probability theory and a decent amount of work. 
+
+As an alternative to computing the theoretically expected value, you might consider running your own experiment: flipping a coin 500 times and counting the length of the longest streak of consecutive heads. This experiment could take a while to complete just once and it should be reasonable to think that you are going to have to repeat this experiment many times to get a sense of what happens on average.
+
+The alternative described above seems to solve the problem of having to have specialized knowledge, but doing the experiment by hand seems time consuming. Why not use the computer to simulate the result of this experiment thousands of times? This type of approach is sometimes called a Monte Carlo simulation.
+
+Monte Carlo simulations can be useful when:
+	\begin{itemize}
+		\item computing the probability of an event is difficult and/or
+		\item running a physical experiment is too costly or time consuming.
+	\end{itemize}
+Our general approach to using Monte Carlo simulations will involve three key steps:
+	\begin{enumerate}
+		\item Identify the situation or experiment to be modelled.
+		\item Simulate the result of one experiment using a computer program.
+		\item Repeat step 2 many times.
+	\end{enumarete}
+Usually step 2 is the most challenging part. Once we can simulate the experiment once, we can wrap all of the code inside a functionand then loop it.
 
 \section{Random Sampling}
 
