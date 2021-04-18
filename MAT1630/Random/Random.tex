@@ -31,8 +31,8 @@ Usually step (b) is the most challenging part. Once we can simulate the experime
 
 In order to run a Monte Carlo simulation, we are going to have to generate random numbers somehow. The NumPy library can help us with this. (For a list of available functions related to random sampling, see this \link[link]{https://numpy.org/doc/stable/search.html?q=Random\%20sampling\%20(numpy.random)}.) We will cover some basic examples here.
 \begin{enumerate}
-	\item \verb|np.random.rand()| - This generates a random number using the uniform distribution in the interval $\[0,1)$.
-	\item \verb|np.random.ranint(a,b,size=N)| - This generates a random integer in the interval $\[a,b)$. The optional argument \verb|size| specifies how many samples we want.
+	\item \verb|np.random.rand()| - This generates a random number using the uniform distribution in the interval $[0,1)$.
+	\item \verb|np.random.ranint(a,b,size=N)| - This generates a random integer in the interval $[a,b)$. The optional argument \verb|size| specifies how many samples we want.
 	\item \verb|np.random.choice(myList, p = prob_list)| - This generates a random selection from \verb|myList|. The optional argument \verb|p| allows you to specify the probability of selecting each item on the list.
 \end{enumerate}
 
