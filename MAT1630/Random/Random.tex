@@ -76,7 +76,7 @@ for coin in coin_flips:
                 streak = 0
 
 np.max(streak_list)end
-\{sageCell}
+\end{sageCell}
 
 The work above represents the result of one experiment. To approximate the expected length we have to repeat this experiment thousands of times and average the results. This can be done using by wrapping the code above in a function and using a list comprehension to compute the average result with the \verb|np.mean| function.
 
@@ -100,6 +100,8 @@ def longest_streak()
 
 np.mean(np.array([longest_streak() for i in range(100000]))
 \end{sageCell}
+
+Repeating this experiment will yield different values, but they will tend to cluster around the true expectation. 
 
 \subsection{}
 
