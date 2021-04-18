@@ -38,14 +38,72 @@ In order to run a Monte Carlo simulation, we are going to have to generate rando
 
 \section{Examples}
 
+\subsection{500 Coin Flip Streak}
 
+We now simulate the length of the longest streak of consecutive heads (on average) in 500 fair coin flips. As a first step, we need to simulate the result of flipping 500 fair coins. We are going to use the \verb|np.random.randint| function on the interval $[0,1)$, where we will treat a 0 as tails and a 1 as heads.
 
-\begin{verbatim}
-==============================
+\begin{sageCell}
+import numpy as np
 
-==============================
-\end{verbatim}
+np.random.randint(0,1,size=500)
+\end{sageCell}
 
+The difficulty here is to write an algorithm that loops through the list of results and computes all the streaks of consecutive heads. We will do this by using a loop that will keep track of the current streak of consecutive heads. This will be done in the following way:
+\begin{enumerate}
+	\item Begin with an empty list, \verb|streak_list|, that will contain all of the streaks of consecutive heads.
+	\item Initialize a counter, \verb|streak|, that begins at zero.
+	\item Loop through the list of coin flips and apply the following rules at each step:
+		\begin{itemize}
+			\item if the current coin flip is heads, increase \verb|streak| by one,
+			\item otherwise, append the current value of \verb|streak| to \verb|streak_list| and reset \verb|streak| to zero. (This signifies that the streak has ended.
+		\end{itemize}
+	\item Up \verb|np.max| to obtain the largest value of \verb|streak_list| to get the longest streak of consecutive heads.
+\end{enumerate}
+
+\begin{sageCell}
+import numpy as np
+
+coin_flips = np.random.randint(0,1,size=500)
+
+streak_list = []
+streak = 0
+
+for coin in coin_flips:
+        if coin == 1:
+                streak += 1
+        else:
+                streak_list.append(streak)
+                streak = 0
+
+np.max(streak_list)end
+\{sageCell}
+
+The work above represents the result of one experiment. To approximate the expected length we have to repeat this experiment thousands of times and average the results. This can be done using by wrapping the code above in a function and using a list comprehension to compute the average result with the \verb|np.mean| function.
+
+\begin{sageCell}
+import numpy as np
+
+def longest_streak()
+        coin_flips = np.random.randint(0,1,size=500)
+
+        streak_list = []
+        streak = 0
+
+        for coin in coin_flips:
+                if coin == 1:
+                        streak += 1
+                else:
+                        streak_list.append(streak)
+                        streak = 0
+
+        return np.max(streak_list)
+
+np.mean(np.array([longest_streak() for i in range(100000]))
+\end{sageCell}
+
+\subsection{}
+
+\subsection{Race to the Finish}
 
 \section{Problems}
 
