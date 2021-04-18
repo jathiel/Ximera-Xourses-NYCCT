@@ -55,9 +55,9 @@ The difficulty here is to write an algorithm that loops through the list of resu
 	\item Loop through the list of coin flips and apply the following rules at each step:
 		\begin{itemize}
 			\item if the current coin flip is heads, increase \verb|streak| by one,
-			\item otherwise, append the current value of \verb|streak| to \verb|streak_list| and reset \verb|streak| to zero. (This signifies that the streak has ended.
+			\item otherwise, append the current value of \verb|streak| to \verb|streak_list| and reset \verb|streak| to zero. (This signifies that the streak has ended.)
 		\end{itemize}
-	\item Up \verb|np.max| to obtain the largest value of \verb|streak_list| to get the longest streak of consecutive heads.
+	\item Apply \verb|np.max| to obtain the largest value of \verb|streak_list| to get the longest streak of consecutive heads.
 \end{enumerate}
 
 \begin{sageCell}
@@ -75,7 +75,7 @@ for coin in coin_flips:
                 streak_list.append(streak)
                 streak = 0
 
-np.max(streak_list)end
+np.max(streak_list)
 \end{sageCell}
 
 The work above represents the result of one experiment. To approximate the expected length we have to repeat this experiment thousands of times and average the results. This can be done using by wrapping the code above in a function and using a list comprehension to compute the average result with the \verb|np.mean| function.
@@ -83,7 +83,7 @@ The work above represents the result of one experiment. To approximate the expec
 \begin{sageCell}
 import numpy as np
 
-def longest_streak()
+def longest_streak():
         coin_flips = np.random.randint(0,1,size=500)
 
         streak_list = []
