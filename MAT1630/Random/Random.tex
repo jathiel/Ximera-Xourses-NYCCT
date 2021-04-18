@@ -1,12 +1,12 @@
 \documentclass{ximera}  
-\title{NumPy Random Sampling}  
+\title{Monte Carlo Simulations}  
 \begin{document}  
 \begin{abstract}  
-We give an introduction to random sampling using NumPy.
+We give an introduction to Monte Carlo simulations using NumPy.
 \end{abstract}  
 \maketitle
 
-\section{Simulations and Monte Carlo Methods}
+\section{Monte Carlo Simulations}
 
 Suppose you flip a fair coin 500 times. What is the length of the longest streak of consecutive heads that you expect to see? Computing this value exactly requires some knowledge of probability theory and a decent amount of work. 
 
@@ -16,18 +16,21 @@ The alternative described above seems to solve the problem of having to have spe
 
 Monte Carlo simulations can be useful when:
 	\begin{itemize}
-		\item computing the probability of an event is difficult and/or
+		\item computing the probability of an event is difficult or
 		\item running a physical experiment is too costly or time consuming.
 	\end{itemize}
 Our general approach to using Monte Carlo simulations will involve three key steps:
 	\begin{enumerate}
 		\item Identify the situation or experiment to be modelled.
 		\item Simulate the result of one experiment using a computer program.
-		\item Repeat step 2 many times.
+		\item Repeat the previous step many times.
 	\end{enumerate}
-Usually step 2 is the most challenging part. Once we can simulate the experiment once, we can wrap all of the code inside a functionand then loop it.
+Usually step (b) is the most challenging part. Once we can simulate the experiment once, we can wrap all of the code inside a function and then loop it.
 
 \section{Random Sampling}
+
+In order to run a Monte Carlo simulation, we are going to have to generate random numbers somehow. The NumPy library can help us with this. (For a list of available functions related to random sampling, see this \link[link]{https://ximera.osu.edu/examples/exampleActivityCollection/links/links.tex}.)
+
 
 \begin{verbatim}
 ==============================
