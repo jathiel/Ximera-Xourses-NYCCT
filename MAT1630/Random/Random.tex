@@ -190,11 +190,25 @@ The Monte Hall problem comes from the gameshow Let's Make a Deal. It is a notori
 
 \subsection{Race to the Finish}
 
-Race to the finish is a game on the gameshow Let's Make a Deal. It is a game where it is not easy to compute the exact probabilities of winning a prize, so this is an excellent problem on which to use a Monte Carlo simulation. A description of the problem and estimation of all of the associated probabilities can be found \link[here]{https://github.com/jathiel/ICTCM2021/blob/master/Race\%20to\%20The\%20Finish.ipynb}.
+Race to the Finish is a game on the gameshow Let's Make a Deal. It is a game where it is not easy to compute the exact probabilities of winning a prize, so this is an excellent problem on which to use a Monte Carlo simulation. A description of the problem and estimation of all of the associated probabilities can be found \link[here]{https://github.com/jathiel/ICTCM2021/blob/master/Race\%20to\%20The\%20Finish.ipynb}.
 
 \subsection{Estimating Areas}
 
+So far we have used Monte Carlo simulations to estimate the probability of certain random events. Strangely enough, Monte Carlo simulations can be used to estimate things that are not probabilistic in nature. Our main example of this will be to use a Monte Carlo simulation to estimate an area.
 
+Consider the following example. Say we want to compute the area enclosed by the curves $y = x^2$, $y=0$, and $x=1$ (see the graph below). This can be done after taking Calculus II, but those techniques are limited to ``nice" functions. Here we will discuss how to apply a technique that can be used to estimate areas even in situations where the content in Calculus II is insufficient.
+
+\desmos{lnjny6xuez}{400}{300}
+
+The idea for how this works is as follows:
+
+\begin{enumerate}
+	\item Find a larger, ``nice" area (like a rectangle or circle) that contains the area you wish to estimate.
+	\item Pick points at random inside of your ``nice" area.
+	\item Estimate the desired area by using the approximation $$\frac{\text{desired area}}{\text{``nice" area}}\approx\frac{\text{number of points in desired area}}{\text{total number of points}}.$$
+\end{enuemrate}
+
+For our example we can see 
 
 \section{Problems}
 
