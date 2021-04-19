@@ -127,6 +127,7 @@ The above code generates an array, \verb|cards|, containing our deck. Our algori
 	\item Our hand will contain a single pair if and only if the number if disinct values of our cards is 4. (Why?) To count the number of distinct values we start with an empty list, \verb|value_list|. 
 	\item We loop through \verb|hand| using the dummy variable name \verb|card| and append values (in this case the value of the card is given by \verb|card[0]| since \verb|card| is itself a list containing two pieces of information, the value and suit of the card in that order) to \verb|value_list| if the current value is not already on the list. 
 	\item We then count the number of distinct values and return a 1 if the number of distinct values is 4 and 0 otherwise. This can be done by using the comparison \verb|len(value_list) == 4|.
+\end{enumerate}
 
 \begin{sageCell}
 import numpy as np
