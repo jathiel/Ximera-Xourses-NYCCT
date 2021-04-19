@@ -31,16 +31,17 @@ Usually step (b) is the most challenging part. Once we can simulate the experime
 
 In order to run a Monte Carlo simulation, we are going to have to generate random numbers somehow. The NumPy library can help us with this. (For a list of available functions related to random sampling, see this \link[link]{https://numpy.org/doc/stable/search.html?q=Random\%20sampling\%20(numpy.random)}.) We will cover some basic examples here.
 \begin{enumerate}
-	\item \verb|np.random.rand()| - This generates a random number using the uniform distribution in the interval $[0,2)$.
+	\item \verb|np.random.rand()| - This generates a random number using the uniform distribution in the interval $[0,1)$.
 	\item \verb|np.random.ranint(a,b,size=N)| - This generates a random integer in the interval $[a,b)$. The optional argument \verb|size| specifies how many samples we want.
 	\item \verb|np.random.choice(myList, p = prob_list)| - This generates a random selection from \verb|myList|. The optional argument \verb|p| allows you to specify the probability of selecting each item on the list.
+	\item \verb|np.random.shuffle(myList)| - This function shuffles the entries of \verb|myList|, in place. (That is, the variable \verb|myList| will now contain a shuffled version of itself, the function does not generate or return a new list.)
 \end{enumerate}
 
 \section{Examples}
 
 \subsection{500 Coin Flip Streak}
 
-We now simulate the length of the longest streak of consecutive heads (on average) in 500 fair coin flips. As a first step, we need to simulate the result of flipping 500 fair coins. We are going to use the \verb|np.random.randint| function on the interval $[0,1)$, where we will treat a 0 as tails and a 1 as heads.
+We now simulate the length of the longest streak of consecutive heads (on average) in 500 fair coin flips. As a first step, we need to simulate the result of flipping 500 fair coins. We are going to use the \verb|np.random.randint| function on the interval $[0,2)$, where we will treat a 0 as tails and a 1 as heads.
 
 \begin{sageCell}
 import numpy as np
@@ -98,14 +99,100 @@ def longest_streak():
 
         return np.max(streak_list)
 
-np.mean(np.array([longest_streak() for i in range(100000)])
+np.mean(np.array([longest_streak() for i in range(100000)]))
 \end{sageCell}
 
 Repeating this experiment will yield different values, but they will tend to cluster around the true expectation. 
 
-\subsection{}
+\subsection{Poker Single Pair}
+
+We estimate the probability of being dealt a single pair in a hand of Poker using a standard 52-card deck using a Monte Carlo simulation.
+
+In order to generated a standard 52-card deck, we use 2 lists and list comprehension.
+
+\begin{verbatim}
+==============================
+values = ['2','3','4','5','6','7','8','9','10','J','K','Q','A']
+suits = ['H','D','S','C']
+
+cards = np.array([(v,s) for v in values for s in suits])
+==============================
+\end{verbatim}
+
+The above code generates an array, \verb|cards|, containing our deck. Our algorithm works as follows:
+
+\begin{enumerate}
+	\item We can use the \verb|np.random.shuffle| function to shuffle the cards.
+	\item The first 5 elements of \verb|cards| is stored as \verb|hand|. 
+	\item Our hand will contain a single pair if and only if the number if disinct values of our cards is 4. (Why?) To count the number of distinct values we start with an empty list, \verb|value_list|. 
+	\item We loop through \verb|hand| using the dummy variable name \verb|card| and append values (in this case the value of the card is given by \verb|card[0]| since \verb|card| is itself a list containing two pieces of information, the value and suit of the card in that order) to \verb|value_list| if the current value is not already on the list. 
+	\item We then count the number of distinct values and return a 1 if the number of distinct values is 4 and 0 otherwise. This can be done by using the comparison \verb|len(value_list) == 4|.
+
+\begin{sageCell}
+import numpy as np
+
+values = ['2','3','4','5','6','7','8','9','10','J','K','Q','A']
+suits = ['H','D','S','C']
+
+cards = np.array([(v,s) for v in values for s in suits])
+
+np.random.shuffle(cards)
+
+hand = cards[:5]
+
+value_list = []
+
+for card in hand:
+        if card[0] not in value_list:
+                value_list.append(card[0])
+
+if len(value_list) == 4:
+        print(1)
+else:
+        print(0)
+\end{sageCell}
+
+As in the previous example, we can now take the above code, place it inside a function, and use a list comprehenstion to estimate the desired probability via an average.
+
+\begin{sageCell}
+import numpy as np
+
+values = ['2','3','4','5','6','7','8','9','10','J','K','Q','A']
+suits = ['H','D','S','C']
+
+cards = np.array([(v,s) for v in values for s in suits])
+
+def pair():
+        np.random.shuffle(cards)
+
+        hand = cards[:5]
+
+        value_list = []
+
+        for card in hand:
+                if card[0] not in value_list:
+                        value_list.append(card[0])
+
+        if len(value_list) == 4:
+                return 1
+        else:
+                return 0
+
+np.mean([pair() for i in range(100000)])
+\end{sageCell}
+
+Compare our estimated result to the true probability computed \link[here]{https://en.wikipedia.org/wiki/Poker_probability}.
+
+\subsection{The Monte Hall Problem}
+
 
 \subsection{Race to the Finish}
+
+
+
+\subsection{Estimating Areas}
+
+
 
 \section{Problems}
 
