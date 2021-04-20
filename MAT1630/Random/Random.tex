@@ -298,13 +298,31 @@ def three_of_a_kind():
                 else:
                         return 0
 
-np.mean([three_of_a_kind() for i in range(100000)])/100000
+np.mean([three_of_a_kind() for i in range(100000)])
 \end{sageCell}
 \end{hint}
 \end{question}
 
 \begin{question}
+Estimate the area enclosed by the curves $|\sin{x}|+2$, $y=0$, $x=0$, and $x=5$ using a Monte Carlo simulation. (Note: you will need import the sine function from the \verb|math| library.
+\begin{hint}
+Consider graphing this function in order to decide what ``nice" outside area to use. Note that the next hint for this problem is the solution.
+\end{hint}
+	\begin{hint}
+\begin{sageCell}
+import numpy as np
+from math import sin
 
+N = 100000
+count = 0
+for i in range(N):
+        x = 5*np.random.rand()
+        y = 3*np.random.rand()
+	if y < abs(sin(x))+2:
+                count += 1
+15*count/N
+\end{sageCell}
+	\end{hint}
 \end{question}
 
 \section{Workspace}
