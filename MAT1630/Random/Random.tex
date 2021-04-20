@@ -256,11 +256,51 @@ def die_sum_7():
 np.mean([die_sum_7() for i in range(100000)])/100000
 	\end{sageCell}
 \end{hint}
-
 \end{question}
 
 \begin{question}
+Estimate the probability of being dealt 3-of-a-kind in a hand of Poker using a standard 52-card deck using a Monte Carlo simulation.
 
+	\begin{hint}
+Consider reusing a lot of the code from the single pair example. How many different card values should you find if you have 3-of-a-kind?	
+	\end{hint}
+	\begin{hint}
+		It is not enough to count the number of different values, you need to differentiate between 3-of-a-kind and two pairs! You can do this by using 3 list comprehensions, one for each card value (assuming you have 3 values). The lengths of those lists could be helpfup. Note that the third hint for this problem is the solution.
+	\end{hint}
+\begin{hint}
+\begin{sageCel}
+import numpy as np
+
+values = ['2','3','4','5','6','7','8','9','10','J','K','Q','A']
+suits = ['H','D','S','C']
+
+cards = np.array([(v,s) for v in values for s in suits])
+
+def three_of_a_kind():
+        np.random.shuffle(cards)
+
+        hand = cards[:5]
+
+        value_list = []
+
+        for card in hand:
+                if card[0] not in value_list:
+                        value_list.append(card[0])
+
+        if len(value_list) != 3:
+                return 0
+        else:
+                list1 = [card for card in hand if card[0] == value_list[0]]
+                list2 = [card for card in hand if card[0] == value_list[1]]
+                list3 = [card for card in hand if card[0] == value_list[2]]
+		if len(list1) == 3 or len(list2) == 3 or len(list3) == 3:
+                       return 1
+                else:
+                       return 0
+
+np.mean([three_of_a_kind() for i in range(100000)])/100000
+\end{sageCell}
+\end{hint}
 \end{question}
 
 \begin{question}
