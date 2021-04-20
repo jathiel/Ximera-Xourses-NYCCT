@@ -293,10 +293,10 @@ def three_of_a_kind():
                 list1 = [card for card in hand if card[0] == value_list[0]]
                 list2 = [card for card in hand if card[0] == value_list[1]]
                 list3 = [card for card in hand if card[0] == value_list[2]]
-		if len(list1) == 3 or len(list2) == 3 or len(list3) == 3:
-                       return 1
+                if len(list1) == 3 or len(list2) == 3 or len(list3) == 3:
+                        return 1
                 else:
-                       return 0
+                        return 0
 
 np.mean([three_of_a_kind() for i in range(100000)])/100000
 \end{sageCell}
