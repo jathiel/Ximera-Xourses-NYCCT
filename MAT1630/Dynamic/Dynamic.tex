@@ -35,7 +35,7 @@ dyn_fib(100)
 What we are really doing here is trading computational time for space on your computer's memory. We spend less time computing the desired value by avoiding duplicate work, but we require enough space in memory to hold all of the values we may need. This is what is referred to as a dynamic programming approach. Dynamic programming can work well whenever you have a problem whose solution can be determined by first solving sub-problems of the same type and then combining those solutions. In the case of the Fibonacci sequence, this is easier to see since the value of $f_n$ is clearly related to prior values of the sequence, $f_{n-1}$ and $f_{n-2}$, when $n\geq 2$. (Note: We do not actually need dynamic programming for the Fibonacci sequence, but it makes for an easier example to use as an introduction.)
 
 Once we decide to use dynamic programming to solve a problem, such solutions typically involve a few steps:
-\begin{enuemrate}
+\begin{enumerate}
 	\item We must create a list or table where each entry will contain the solution to some related sub-problem.
 	\item We must populate the list with solutions to initial cases (for recursively defined functions this would be the base cases).
 	\item We must determine what relationship exists between the list or table entries in order to populate the rest of the list without doing any duplicate work.
