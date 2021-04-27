@@ -17,7 +17,7 @@ def fib(n):
                 return fib(n-1) + fib(n-2)			
 fib(5)
 \end{sageCell}
-While the function for \verb|fib| is very short and easy to read, it does suffer from one major drawback. If you try to compute $f_{100}$ you will find that the computer will complain and not be able to do it. Why? Because to compute \verb|fib(100)|, the program will first attempt to compute \verb|fib(99)| before computing \verb|fib(98)| and adding those values together. But to compute \verb|fib(99)| it will first compute \verb|fib(98)| before computing \verb|fib(97)| and so on. So you can see that the program is giving the computer a lot of needless work. The program ends up computing the same values multiple times because it never ``remembers" that it already did the same work before. A better approach would be to start from the beginning and work our way up to the desired term in the sequence. As we work our way up, we write down, in a list or table, the terms of the sequence as we compute them. If we ever need them again, we just look to our table of computed values rather than recomputing them (which can waste a lot of time). Below is an example of this approach:
+While the function for \verb|fib| is very short and easy to read, it does suffer from one major drawback. If you try to compute \verb|fib(100)| you will find that the computer will complain and not be able to do it. Why? Because to compute \verb|fib(100)|, the program will first attempt to compute \verb|fib(99)| before computing \verb|fib(98)| and adding those values together. But to compute \verb|fib(99)| it will first compute \verb|fib(98)| before computing \verb|fib(97)| and so on. So you can see that the program is giving the computer a lot of needless work. The program ends up computing the same values multiple times because it never ``remembers" that it already did the same work before. A better approach would be to start from the beginning and work our way up to the desired term in the sequence. We write down, in a list or table, the terms of the sequence as we compute them. If we ever need them again, we just look to our table of computed values rather than recomputing them (which can waste a lot of time). Below is an example of this approach:
 \begin{sageCell}
 def dyn_fib(n):
         if n < 2:
@@ -29,7 +29,28 @@ def dyn_fib(n):
                 for i in range(2,n):
                         L[i] = L[i-1]+L[i-2]
                 return L[-1]
+dyn_fib(100)
 \end{sageCell}
+
+What we are really doing here is trading computational time for space on your computer's memory. We spend less time computing the desired value by avoiding duplicate work, but we require enough space in memory to hold all of the values we may need. This is what is referred to as a dynamic programming approach. Dynamic programming can work well whenever you have a problem whose solution can be determined by first solving sub-problems of the same type and then combining those solutions. In the case of the Fibonacci sequence, this is easier to see since the value of $f_n$ is clearly related to prior values of the sequence, $f_{n-1}$ and $f_{n-2}$, when $n\geq 2$. (Note: We do not actually need dynamic programming for the Fibonacci sequence, but it makes for an easier example to use as an introduction.)
+
+Once we decide to use dynamic programming to solve a problem, such solutions typically involve a few steps:
+\begin{enuemrate}
+	\item We must create a list or table where each entry will contain the solution to some related sub-problem.
+	\item We must populate the list with solutions to initial cases (for recursively defined functions this would be the base cases).
+	\item We must determine what relationship exists between the list or table entries in order to populate the rest of the list without doing any duplicate work.
+\end{enumerate}
+
+In the case of the Fibonacci sequence, we follow the above steps in the following way:
+\begin{verbatim}
+L is a list of length n
+
+L[i] = ith Fibonacci number
+
+L[0],L[1] = 1
+
+L[i] = L[i-1] + L[i-2] for n >= 2
+\end{verbatim}
 
 
 
