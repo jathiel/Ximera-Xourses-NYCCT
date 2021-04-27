@@ -76,9 +76,11 @@ So if we could first solve the problem for 22, 24, 28, and 29, we could solve th
 ==============================
 L is a list of length n
 
-L[i] is the minimum number of packages needed to put together a lightbulb order of size i
+L[i] is the minimum number of packages 
+     needed to put together a lightbulb order of size i
 
-L[1] = 1, L[2] = 1, L[3] = 2, L[4] = 2, L[5] = 3, L[6] = 1, L[7] = 2, L[8] = 1
+L[1] = 1, L[2] = 1, L[3] = 2, L[4] = 2, 
+L[5] = 3, L[6] = 1, L[7] = 2, L[8] = 1
 
 L[i] = min(L[i-8], L[i-6], L[i-2], L[i-1]) + 1 for i >= 9
 ==============================
