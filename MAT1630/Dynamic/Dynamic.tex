@@ -112,6 +112,16 @@ bulb(30)
 Suppose we are given a rectangular ``maze" like the one below. Assume that we always start at the top left corner and always end at the bottom right corner. If we are only allowed to move down or to the right, how many different paths can we take to get to the end? Our goal is to count the number of distinct paths from the start to the end of the maze.
 
 The number of distinct paths from the start to the end of this maze is 3.
+
+\begin{tikzpicture}[scale=1]
+	\draw[help lines] (0,0) grid (4,4);
+	\fill[black] (1,2) rectangle (2,3);
+	\fill[black] (2,1) rectangle (3,2);
+	\fill[black] (1,1) rectangle (2,2);
+	\node at (0.5,3.5) {$S$};
+	\node at (3.5,0.5) {$E$};
+	\end{tikzpicture}
+
 In this problem, mazes are encoded as a list of lists where a 0 entry represents an open space in the maze and a -1 represents a blocked space in the maze. For example, the maze above is encoded as the following list:
 
 \begin{verbatim}
