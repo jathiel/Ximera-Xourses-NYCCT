@@ -32,7 +32,7 @@ def dyn_fib(n):
 dyn_fib(100)
 \end{sageCell}
 
-What we are really doing here is trading computational time for space on your computer's memory. We spend less time computing the desired value by avoiding duplicate work, but we require enough space in memory to hold all of the values we may need. This is what is referred to as a dynamic programming approach. Dynamic programming can work well whenever you have a problem whose solution can be determined by first solving sub-problems of the same type and then combining those solutions. In the case of the Fibonacci sequence, this is easier to see since the value of $f_n$ is clearly related to prior values of the sequence, $f_{n-1}$ and $f_{n-2}$, when $n\geq 2$. (Note: We do not actually need dynamic programming for the Fibonacci sequence, but it makes for an easier example to use as an introduction.)
+What we are really doing here is trading computational time for space on your computer's memory. We spend less time computing the desired value by avoiding duplicate work, but we require enough space in memory to hold all of the values we may need. This is what is referred to as a dynamic programming approach. Dynamic programming can work well whenever you have a problem whose solution can be determined by first solving sub-problems of the same type and then combining those solutions to solve the original problem. In the case of the Fibonacci sequence, the value of $f_n$ is clearly related to prior values of the sequence, $f_{n-1}$ and $f_{n-2}$, when $n\geq 2$. (Note: We do not actually need dynamic programming for the Fibonacci sequence, but it makes for an easier example to use as an introduction.)
 
 Once we decide to use dynamic programming to solve a problem, such solutions typically involve a few steps:
 \begin{enumerate}
@@ -41,20 +41,86 @@ Once we decide to use dynamic programming to solve a problem, such solutions typ
 	\item We must determine what relationship exists between the list or table entries in order to populate the rest of the list without doing any duplicate work.
 \end{enumerate}
 
-In the case of the Fibonacci sequence, we follow the above steps in the following way:
+In the case of the Fibonacci sequence, our second solution applied the above steps in the following way:
 \begin{verbatim}
+==============================
 L is a list of length n
 
-L[i] = ith Fibonacci number
+L[i] is ith Fibonacci number
 
 L[0],L[1] = 1
 
-L[i] = L[i-1] + L[i-2] for n >= 2
+L[i] = L[i-1] + L[i-2] for i >= 2
+==============================
 \end{verbatim}
+
+\section{Examples}
+
+In this section we illustrate how to use dynamic programming via several examples.
+
+\subsection{The Lightbulb Problem}
+
+Suppose that a company sells lightbulbs in packages of size 1, 2, 6, and 8. If a customer orders 30 lightbulbs, what is the least number of packages (of any size) that can be used to put this order together?
+
+We begin with an simple approach. How many packages would we have to use if we simply tried using the largest package available at the time? In this case we would end up using 3 packages of size 8 and one of size 6. This is optimal here, but this strategy does not always work. Try applying this same strategy to an order of 12 lightbulbs. 
+
+To see how to use dynamic programming, let's work backwards. When putting an order of 30 lightbults together, we either:
+\begin{enumerate}
+	\item solved the problem for 22 bulbs and added a package of size 8, or 
+	\item solved the problem for 24 bulbs and added a package of size 6, or 
+	\item solved the problem for 28 bulbs and added a package of size 2, or 
+	\item solved the problem for 29 bulbs and added a package of size 1.
+\end{enumerate}
+So if we could first solve the problem for 22, 24, 28, and 29, we could solve the problem for 30 by finding the minimum solution out of those 4 problems and adding 1 (for the additional order needed to get to 30). Working backwards this way we see that we would also need to solve some initial cases, namely 1 to 8 would do. So we will establish a list of values that will track our sub-problem solutions together with some initial cases and the relationship between entries in our list.
+\begin{verbatim}
+==============================
+L is a list of length n
+
+L[i] is the minimum number of packages needed to put together a lightbulb order of size i
+
+L[1] = 1, L[2] = 1, L[3] = 2, L[4] = 2, L[5] = 3, L[6] = 1, L[7] = 2, L[8] = 1
+
+L[i] = min(L[i-8], L[i-6], L[i-2], L[i-1]) + 1 for i >= 9
+\end{verbatim}
+
+We apply the above algorithm in the SageCell below. Two notes are needed here. We use \verb|N = max(8,n)| in place of \verb|n| to avoid issues when \verb|n| is smaller than 8 and we add an extra item in our list since lists are zero-indexed in Python.
+
+\begin{sageCell}
+def bulb(n):
+        N = max(8,n)
+        L = [0 for i in range(N+1)]
+        L[1] = 1
+        L[2] = 1
+        L[3] = 2
+        L[4] = 2
+        L[5] = 3
+        L[6] = 1
+        L[7] = 2
+        L[8] = 1
+        for i in range(9,N+1):
+                L[i] = 1 + min(L[i-8], L[i-6], L[i-2], L[i-1])
+        return L[n]
+bulb(30)
+\end{sageCell}
+
+\subsection{Maze Solver}
+
+
+
+\subsection{The Longest Subsequence}
+
+
+
+\subsection{The 0/1 Knapsack Problem}
+
+
+
+\subsection{Minimum Insertions to Form a Palindrome}
 
 
 
 \section{Problems}
+
 
 \begin{question}
 \end{question}
