@@ -109,7 +109,7 @@ bulb(30)
 
 \subsection{Maze Solver}
 
-Suppose we are given a rectangular ``maze" like the one below. Assume that we always start at the top left corner and always end at the bottom right corner. If we are only allowed to move down or to the right, how many different paths can we take to get to the end? Our goal is to count the number of distinct paths from the start to the end of the maze.
+Suppose we are given a rectangular ``maze" like the one below. Assume that we always start at the top left corner and always end at the bottom right corner. If we are only allowed to move down or to the right, how many different paths can we take to get to the end? Our goal is to count the number of distinct paths from the start to the end of the maze. Consider the following example.
 
 \begin{center}
 \includegraphics{maze_example.png} 
@@ -121,7 +121,7 @@ The number of distinct paths from the start to the end of this maze is 3.
 \includegraphics{maze_example_solutions.png}
 \end{center}
 
-In this problem, mazes are encoded as a list of lists where a 0 entry represents an open space in the maze and a -1 represents a blocked space in the maze. For example, the maze above is encoded as the following list:
+From this point on, mazes will be encoded as a matrix (a list of lists) where a 0 entry represents an open space in the maze and a -1 represents a blocked space in the maze. For example, the maze above is encoded as the following list:
 
 \begin{verbatim}
 ==============================
@@ -132,35 +132,28 @@ maze = [[0, 0, 0, 0],
 ==============================
 \end{verbatim}
 
-For each square in the maze, beginning with the start position, we count the number of ways you can enter the square if you can only move down and to the right.
-
-
-\begin{enumerate}
-	\item The following maze has 35 paths to the end.
+For each square in the maze, beginning with the start position, we can count the number of paths to that particular square by adding up the number of paths to the square above it and to the left (should they exist). In particular, we can solve the problem in the following way
 \begin{verbatim}
 ==============================
-[[0, 0, 0, 0, 0],
- [0, 0, 0, 0, 0],
- [0, 0, 0, 0, 0],
- [0, 0, 0, 0, 0]]
+M is a matrix (list of lists) that has the same dimensions as maze
+
+M[0][0] = 1
+M[0][j] = 0 if maze[0][j] = -1 and j > 0
+M[0][j] = M[0][j-1] if maze[0][j] and j > 0
+
+M[i][0] = 0 if maze[i][0] = -1 and i > 0
+M[i][0] = M[i-1][0] if maze[i][0] and i > 0
+
+M[i][j] = 0 if maze[i][j] = -1 and i,j > 0
+M[i][j] = M[i-1][j] + M[i][j-1] if maze[i][j] = 0 and i,j > 0
 ==============================
 \end{verbatim}
-	   \item The following maze has 52 paths to the end.
-\begin{verbatim}
-==============================
-[[0, 0, 0,-1, 0, 0, 0, 0],
- [0,-1, 0, 0, 0, 0, 0, 0],
- [0, 0, 0, 0, 0, 0, 0, 0],
- [0,-1, 0,-1, 0, 0, 0, 0],
- [0,-1, 0, 0, 0, 0, 0, 0]]
-==============================
-\end{verbatim}
-\end{enumerate}
-		
 
 \subsection{The Longest Subsequence}
 
+Consider the following sequence of numbers: $$20,30,17,19,8,2,13,19,25,17.$$ What is the longest subsequence of strictly increasing integers?
 
+We can solve this problem by looking at the same problem 20,30,17,19,8,2,13,19,25,17
 
 \subsection{The 0/1 Knapsack Problem}
 
