@@ -195,9 +195,12 @@ maze_solver(maze)
 
 \subsection{The Longest Subsequence}
 
-Consider the following sequence of numbers: $$20,30,17,19,8,2,13,19,25,17.$$ What is the longest subsequence of strictly increasing integers?
+Consider the following sequence of numbers: $$20,30,2,17,8,19,6,19,25,17.$$ How long is the longest subsequence of strictly increasing integers in this sequence?
 
-We can solve this problem by looking at the same problem 20,30,17,19,8,2,13,19,25,17
+Testing all possible subsequences would involve checking $2^10$ possible subsequences. Clearly, the brute force approach would fail if our sequence had, say, 100 terms. Taking a dynamic programming approach greatly reduces the amount of time needed to compute the solution. As usual, the trade-off is that we need to create a list that tracks the solutions to related sub-problems of our current problem and we have to come up with a relationship between answers on that list.
+
+Consider the following simpler problem. How long is the longest subsequence of strictly increasing integers in the following sequence? $$20,30,2,17,8,19$$ A quick glance will show that the longest subsequence of strictly increasing integers is of length 3.:wq:w
+
 
 \subsection{The 0/1 Knapsack Problem}
 
