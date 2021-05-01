@@ -199,7 +199,7 @@ Consider the following sequence of numbers: $$20,30,2,16,8,15,6,19,25,17.$$ How 
 
 Testing all possible subsequences would involve checking $2^{10}$ possible subsequences. Clearly, the brute force approach would fail if our sequence had, say, 100 terms. Taking a dynamic programming approach greatly reduces the amount of time needed to compute the solution. As usual, the trade-off is that we need to create a list that tracks the solutions to related sub-problems of our current problem and we have to come up with a relationship between answers on that list.
 
-Consider the following simpler problem. How long is the longest subsequence of strictly increasing integers in the following sequence? $$20,30,2,16,8,15,6$$ A quick glance will show that the longest subsequence of strictly increasing integers is of length 3. If we append the number 19 to this sequence, how does it affect our previous answer? This depends on whether or not 19 is larger that the last element of any subsequence of length 3 in the original problem. With this idea in mind, what we will do is create a list that keeps track of the longest subsequence ending with each number in our original sequence. 
+Consider the following sub-problem problem of the original question. How long is the longest subsequence of strictly increasing integers in the following sequence? $$20,30,2,16,8,15,6$$ A quick glance will show that the longest subsequence of strictly increasing integers is of length 3. If we append the number 19 to this sequence, how does it affect our previous answer? This depends on whether or not 19 is larger that the last element of any subsequence of length 3 in the original problem. With this idea in mind, what we will do is create a list that keeps track of the longest subsequence ending with each number in our original sequence. 
 
 \begin{verbatim}
 ==============================
@@ -216,15 +216,16 @@ L[0] = 1
 L[i] = 1 + max(j if a[j] < a[i]) for i > 0
 ==============================
 \end{verbatim}
-For example, in the example above, we have that:
-
+Applying this idea to the sub-problem of the original problem, we have that:
 \begin{center}
-	\begin{tabular}{|c|c|c|}
+	\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
 		\hline
-		3 & 3 & 3\\
+		\verb|a[i]| & 20 & 30 & 2 & 16 & 8 & 15 & 6 & 19 \\
+		\verb|L[i]| &  1 &  2 & 1 &  2 & 2 &  3 & 2 & 4 \\
 		\hline
 	\end{tabular}
 \end{center}
+
 
 \subsection{The 0/1 Knapsack Problem}
 
