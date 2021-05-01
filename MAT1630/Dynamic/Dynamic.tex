@@ -213,19 +213,23 @@ L[i] = the length of the longest subsequence ending with a[i]
 
 L[0] = 1
 
-L[i] = 1 + max(j if a[j] < a[i]) for i > 0
+L[i] = 1 + max(L[j] if a[j] < a[i]) for i > 0
 ==============================
 \end{verbatim}
 Applying this idea to the sub-problem of the original problem, we have that:
 \begin{center}
 	\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+		\verb|i| & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7\\
 		\hline
 		\verb|a[i]| & 20 & 30 & 2 & 16 & 8 & 15 & 6 & 19 \\
+		\hline
 		\verb|L[i]| &  1 &  2 & 1 &  2 & 2 &  3 & 2 & 4 \\
 		\hline
 	\end{tabular}
 \end{center}
+To see how \verb|L[7]| is computed, note that in this case \verb|a[7]|=19, so \verb|L[7]| is one more than the maximum out of \verb|L[2]|, \verb|L[3]|, \verb|L[4]|, \verb|L[5]|, and \verb|L[6]|. This immediately gives that \verb|L[7]| is 4. What this result is saying is that there is a subsequence of length 4 ending with 19 because we found a subsequence of length 3 that ended with a number smaller than 19. In fact, this is the longest subsequence ending with 19.
 
+Continuing in this way, we see that the solution to the original problem is that the longest subsequence of strictly increasing integers has length 5.
 
 \subsection{The 0/1 Knapsack Problem}
 
