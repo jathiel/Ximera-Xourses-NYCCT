@@ -219,6 +219,7 @@ L[i] = 1 + max(L[j] if a[j] < a[i]) for i > 0
 Applying this idea to the sub-problem of the original problem, we have that:
 \begin{center}
 	\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+		\hline
 		\verb|i| & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7\\
 		\hline
 		\verb|a[i]| & 20 & 30 & 2 & 16 & 8 & 15 & 6 & 19 \\
@@ -233,7 +234,99 @@ Continuing in this way, we see that the solution to the original problem is that
 
 \subsection{The 0/1 Knapsack Problem}
 
+In this problem, we consider the following situation. Suppowe we have a knapsack (or backpack, if you prefer) with a weight limit of 10 lbs. You also have 6 items available:
+\begin{enumerate}
+	\item a 1 lb. can of caviar that costs \$20,
+	\item a 2 lb. bottle of water that costs \$5,
+	\item a 3 lb. bag of trail mix that costs \$10,
+	\item an 8 lb. bag of coffee that costs \$40,
+	\item a 7 lb. bag of chicken that costs \$15, and
+	\item a 4 lb. container of butane that costs \$25.
+\end{enumerate}
+Given the choice of items above and the 10 lb. restriction on the knapsack, what is the maximum value (in \$) worth of items that can be held in the knapsack? (Note: This problem is known as the 0/1 knapsack problem because you can think of making a binary choice for each item. You can choose to put the item in the knapsack, designated by a 1, or leave the item behind, designated by a 0.)
 
+The approach for this problem is somewhat similar to that used for finding the longest increasing subsequence. We will first try to maximize the value using only the first item for knapsacks that with a weight limit of $0,1,2,\dots,10$ lbs. We will then see if we can improve our previous results if we are also allowed to use the second item. We will then add the third and so on until we find the answer to the original problem. (The order of the items does not matter here. There is no need to sort the items by weight or value or any other measure.)
+
+It should be clear that when using just the first item, the maximum value that can be held by the knapsack is \$20 once the knapsack can hold at least 1 lb. If we now allow the second item to be considered, it should be clear that our new answers should never be any smaller than they were before for all of the different knapsack weight limits. If the knapsack can hold at most 1 lb., then our current best is still \$20. If the knapsack can hold 2 lbs. then we have a choice: either the knapsack holds \$20 as before, or we can add \$5 to whatever the knapsack could hold when it still had room for the second item. In this case, for the knapsack with a weight limit of 2 lbs. we must have had 0 lbs. worth of stuff in it (worth \$0) before using the new item. So here, again, it is better to not use the second item. If the knapsack can hold at least 3 lbs., then using the same reasoning as for the 2 lb. case we see that the knapsack can hold \$25 worth of items.
+
+Continuing in this way will give the overall solution to the problem. As we consider more items (one at a time), we are really updating prior solutions. We have to ask ourselves if it is better to simply use our previous best answer, or can we do better if we leave enough room (in terms of weight) for the new item considered. With this in mind we define our matrix to help us solve this problem in the following way:
+
+\begin{verbatim}
+==============================
+W is the maximum weight the knapsack can hold
+
+c is the sequence (list) of item costs
+
+c[i] = the cost of the ith item
+
+w is the sequence (list) of item weights
+
+w[i] = the weight of the ith item
+
+M is a matrix (list of lists) with i rows and W+1 columns
+
+M[i][j] = the maximum value that can be held by a knapsack
+          with a maximum weight limit of j if we only consider
+	  using items 0, 1, 2, ..., i
+
+M[i][0] = 0 for all i
+
+M[0][j] = 0 if j < w[0]
+M[0][j] = c[0] if j >= w[0]
+
+M[i][j] = M[i-1][j] if j < w[i] for i > 0
+M[[i][j] = max(c[i] + M[i-1][j-w[i]], M[i-1][j]) if j >= w[i] for i > 0
+==============================
+\end{verbatim}
+The line \verb|M[[i][j] = max(c[i] + M[i-1][j-w[i]], M[i-1][j])| may be initially somewhat confusing, so we give additional details here to (hopefully) provide some clarification. If \verb|M[i][j]| represents the optimal solution when considering the first \verb|i| items with a knapsack weight limit of \verb|j|, then this optimal solution could have only been obtained in one of two ways:
+\begin{itemize}
+	\item If we do not use the \verb|ith| item, then our optimal solution should be the same as the one when we considered the first \verb|i-1| items with a weight limit of \verb|j| (since we are just doing what we did before), which is given by \verb|M[i-1][j]|.
+	\item If we do use the \verb|ith| item, then our optimal solution should be the cost of the new item, \verb|c[i]|, added to the optimal solution when we considered the first \verb|i-1| items, but with a weight limit of \verb|j-w[i]| (if we want to use item \verb|i| with a weight limit of \verb|j|, then before using item \verb|i| there must be enough room in the knapsack for it), which is given by \verb|M[i-1][j-w[i]]|.
+\end{itemize}
+Taking the maximum of these two options (as there are no other choices, you use the new item or you do not) gives the desired result.
+
+We construct the table for \verb|M| in this case and then implement our solution in the SageCell below.
+
+\begin{center}
+	\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|}
+		\hline
+	  & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10\\
+		\hline
+	0 & 0  & 20  & 20  & 20  & 20  & 20  & 20  & 20  & 20  & 20  & 20  \\
+		\hline
+	1 & 0  & 20  & 20  & 25  & 25  & 25  & 25  & 25  & 25  & 25  & 25  \\
+		\hline
+        2 & 0  & 20  & 20  & 25  & 30  & 30  & 35  & 35  & 35  & 35  & 35  \\
+		\hline
+	3 & 0  & 20  & 20  & 25  & 30  & 30  & 35  & 35  & 40  & 60  & 60  \\
+		\hline
+	4 & 0  & 20  & 20  & 25  & 30  & 30  & 35  & 35  & 40  & 60  & 60  \\
+		\hline
+	5 & 0  & 20  & 20  & 25  & 30  & 45  & 45  & 50  & 55  & 60  & 60  \\
+		\hline
+	\end{tabular}
+\end{center}
+
+The table above can also be used to determine what items go into the knapsack, but that is beyond what we intend to accomplish here. 
+\begin{sageCell}
+def knapsack(W,w,c):
+        M = [[0 for j in range(W+1)] for i in range(len(c))] # create matrix
+        for j in range(w[0],W+1):                            
+                M[0][j] = c[0]                               # fill in the first row values
+        for i in range(1,len(c)):
+                for j in range(1,W+1):
+                        if j < w[i]:  
+                                M[i][j] = M[i-1][j]          # use previous answer when knapsack limit is less than new item weight
+                        else:
+                                M[i][j] = max(c[i]+M[i-1][j-w[i]],M[i-1][j]) # compare using new item to otherwise
+	#for i in M:           
+	#        print(i)      # prints matrix
+        return M[len(v)-1][W]
+
+knapsack(10,[1,2,3,8,7,4],[50,5,10,40,15,25])
+\end{sageCell}
+
+We see now that in our original problem we can place \$60 worth of items into the knapsack.
 
 \subsection{Minimum Insertions to Form a Palindrome}
 
