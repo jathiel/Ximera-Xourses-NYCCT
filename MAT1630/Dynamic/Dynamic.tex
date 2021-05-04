@@ -109,7 +109,7 @@ bulb(30)
 
 \subsection{Maze Solver}
 
-Suppose we are given a rectangular ``maze" like the one below. Assume that we always start at the top left corner and always end at the bottom right corner. If we are only allowed to move down or to the right, how many different paths can we take to get to the end? Our goal is to count the number of distinct paths from the start to the end of the maze. Consider the following example.
+Suppose we are given a rectangular ``maze" like the one below. Assume that we always start at the top left corner and always end at the bottom right corner. If we are only allowed to move down or to the right, how many different paths can we take to get to the end? Our goal is to count the number of distinct paths from the start to the end of the maze. Consider the following example:
 
 \begin{center}
 \includegraphics{maze_example.png} 
@@ -135,6 +135,8 @@ maze = [[0, 0, 0, 0],
 For each square in the maze, beginning with the start position, we can count the number of paths to that particular square by adding up the number of paths to the square above it and to the left (should they exist). In particular, we can solve the problem in the following way:
 \begin{verbatim}
 ==============================
+maze is a matrix (list of lists) that determines the shape of our puzzle
+
 M is a matrix (list of lists) that has the same dimensions as maze
 
 M[0][0] = 1
@@ -199,7 +201,7 @@ Consider the following sequence of numbers: $$20,30,2,16,8,15,6,19,25,17.$$ How 
 
 Testing all possible subsequences would involve checking $2^{10}$ possible subsequences. Clearly, the brute force approach would fail if our sequence had, say, 100 terms. Taking a dynamic programming approach greatly reduces the amount of time needed to compute the solution. As usual, the trade-off is that we need to create a list that tracks the solutions to related sub-problems of our current problem and we have to come up with a relationship between answers on that list.
 
-Consider the following sub-problem problem of the original question. How long is the longest subsequence of strictly increasing integers in the following sequence? $$20,30,2,16,8,15,6$$ A quick glance will show that the longest subsequence of strictly increasing integers is of length 3. If we append the number 19 to this sequence, how does it affect our previous answer? This depends on whether or not 19 is larger that the last element of any subsequence of length 3 in the original problem. With this idea in mind, what we will do is create a list that keeps track of the longest subsequence ending with each number in our original sequence. 
+Consider the following sub-problem problem of the original question. How long is the longest subsequence of strictly increasing integers in the following sequence? $$20,30,2,16,8,15,6$$ A quick glance will show that the longest subsequence of strictly increasing integers is of length 3. If we append the number 19 to this sub-problem, how does it affect our previous answer? This depends on whether or not 19 is larger that the last element of any subsequence of length 3 in the original problem. With this idea in mind, what we will do is create a list that keeps track of the longest subsequence ending with each number in our original sequence. 
 
 \begin{verbatim}
 ==============================
@@ -234,7 +236,7 @@ Continuing in this way, we see that the solution to the original problem is that
 
 \subsection{The 0/1 Knapsack Problem}
 
-In this problem, we consider the following situation. Suppowe we have a knapsack (or backpack, if you prefer) with a weight limit of 10 lbs. You also have 6 items available:
+In this problem, we consider the following situation. Suppowe we have a knapsack (or backpack, if you prefer) with a weight limit of 10 lbs. We also have the following 6 items available:
 \begin{enumerate}
 	\item a 1 lb. can of caviar that costs \$20,
 	\item a 2 lb. bottle of water that costs \$5,
@@ -245,11 +247,11 @@ In this problem, we consider the following situation. Suppowe we have a knapsack
 \end{enumerate}
 Given the choice of items above and the 10 lb. restriction on the knapsack, what is the maximum value (in \$) worth of items that can be held in the knapsack? (Note: This problem is known as the 0/1 knapsack problem because you can think of making a binary choice for each item. You can choose to put the item in the knapsack, designated by a 1, or leave the item behind, designated by a 0.)
 
-The approach for this problem is somewhat similar to that used for finding the longest increasing subsequence. We will first try to maximize the value using only the first item for knapsacks that with a weight limit of $0,1,2,\dots,10$ lbs. We will then see if we can improve our previous results if we are also allowed to use the second item. We will then add the third and so on until we find the answer to the original problem. (The order of the items does not matter here. There is no need to sort the items by weight or value or any other measure.)
+The approach for this problem is somewhat similar to that used for finding the longest increasing subsequence. We will first try to maximize the value using only the first item for knapsacks with weight limits of $0,1,2,\dots,10$ lbs. We will then see if we can improve our previous results if we are also allowed to use the second item. We will then add the third and so on until we find the answer to the original problem. (The order of the items does not matter here. There is no need to sort the items by weight or value or any other measure.)
 
 It should be clear that when using just the first item, the maximum value that can be held by the knapsack is \$20 once the knapsack can hold at least 1 lb. If we now allow the second item to be considered, it should be clear that our new answers should never be any smaller than they were before for all of the different knapsack weight limits. If the knapsack can hold at most 1 lb., then our current best is still \$20. If the knapsack can hold 2 lbs. then we have a choice: either the knapsack holds \$20 as before, or we can add \$5 to whatever the knapsack could hold when it still had room for the second item. In this case, for the knapsack with a weight limit of 2 lbs. we must have had 0 lbs. worth of stuff in it (worth \$0) before using the new item. So here, again, it is better to not use the second item. If the knapsack can hold at least 3 lbs., then using the same reasoning as for the 2 lb. case we see that the knapsack can hold \$25 worth of items.
 
-Continuing in this way will give the overall solution to the problem. As we consider more items (one at a time), we are really updating prior solutions. We have to ask ourselves if it is better to simply use our previous best answer, or can we do better if we leave enough room (in terms of weight) for the new item considered. With this in mind we define our matrix to help us solve this problem in the following way:
+Continuing in this way will give the overall solution to the problem. As we consider more items (one at a time), we are really updating prior solutions. We have to ask ourselves if it is better to simply use our previous best answer, or see if we can do better by leaving enough room (in terms of weight) for the new item considered. With this in mind we define our matrix to help us solve this problem in the following way:
 
 \begin{verbatim}
 ==============================
@@ -267,7 +269,7 @@ M is a matrix (list of lists) with i rows and W+1 columns
 
 M[i][j] = the maximum value that can be held by a knapsack
           with a maximum weight limit of j if we only consider
-	  using items 0, 1, 2, ..., i
+          using items 0, 1, 2, ..., i
 
 M[i][0] = 0 for all i
 
@@ -278,10 +280,10 @@ M[i][j] = M[i-1][j] if j < w[i] for i > 0
 M[[i][j] = max(c[i] + M[i-1][j-w[i]], M[i-1][j]) if j >= w[i] for i > 0
 ==============================
 \end{verbatim}
-The line \verb|M[[i][j] = max(c[i] + M[i-1][j-w[i]], M[i-1][j])| may be initially somewhat confusing, so we give additional details here to (hopefully) provide some clarification. If \verb|M[i][j]| represents the optimal solution when considering the first \verb|i| items with a knapsack weight limit of \verb|j|, then this optimal solution could have only been obtained in one of two ways:
+The line \verb|M[[i][j] = max(c[i] + M[i-1][j-w[i]], M[i-1][j])| may be initially somewhat confusing, so we give additional details here to (hopefully) provide some clarification. If \verb|M[i][j]| represents the optimal solution when considering items \verb|0| to \verb|i| with a knapsack weight limit of \verb|j|, then this optimal solution could have only been obtained in one of two ways:
 \begin{itemize}
-	\item If we do not use the \verb|ith| item, then our optimal solution should be the same as the one when we considered the first \verb|i-1| items with a weight limit of \verb|j| (since we are just doing what we did before), which is given by \verb|M[i-1][j]|.
-	\item If we do use the \verb|ith| item, then our optimal solution should be the cost of the new item, \verb|c[i]|, added to the optimal solution when we considered the first \verb|i-1| items, but with a weight limit of \verb|j-w[i]| (if we want to use item \verb|i| with a weight limit of \verb|j|, then before using item \verb|i| there must be enough room in the knapsack for it), which is given by \verb|M[i-1][j-w[i]]|.
+	\item If we do not use item \verb|i|, then our optimal solution should be the same as the one when we considered items \verb|0| to \verb|i-1| with a weight limit of \verb|j| (since we are just doing what we did before), which is given by \verb|M[i-1][j]|.
+	\item If we do use the item \verb|i|, then our optimal solution should be the cost of the new item, \verb|c[i]|, added to the optimal solution when we considered items \verb|0| to \verb|i-1|, but with a weight limit of \verb|j-w[i]| (if we want to use item \verb|i| with a weight limit of \verb|j|, then before putting item \verb|i| into the knapsack there must be enough room for it), which is given by \verb|M[i-1][j-w[i]]|.
 \end{itemize}
 Taking the maximum of these two options (as there are no other choices, you use the new item or you do not) gives the desired result.
 
@@ -290,7 +292,8 @@ We construct the table for \verb|M| in this case and then implement our solution
 \begin{center}
 	\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|}
 		\hline
-	  & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10\\
+	\verb|i|  & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10\\
+		\hline
 		\hline
 	0 & 0  & 20  & 20  & 20  & 20  & 20  & 20  & 20  & 20  & 20  & 20  \\
 		\hline
@@ -321,14 +324,40 @@ def knapsack(W,w,c):
                                 M[i][j] = max(c[i]+M[i-1][j-w[i]],M[i-1][j]) # compare using new item to otherwise
 	#for i in M:           
 	#        print(i)      # prints matrix
-        return M[len(v)-1][W]
+        return M[len(c)-1][W]
 
-knapsack(10,[1,2,3,8,7,4],[50,5,10,40,15,25])
+knapsack(10,[1,2,3,8,7,4],[20,5,10,40,15,25])
 \end{sageCell}
 
-We see now that in our original problem we can place \$60 worth of items into the knapsack.
+We see now that in our original problem we can place \$60 worth of items into the knapsack. Note that we do not have to fill the knapsack to its weight limit to reach this optimal value.
 
 \subsection{Minimum Insertions to Form a Palindrome}
+
+A palindrome is a word that is spelled the same way forwards and backwards, like racecar or radar. Consider the following string of characters: $$aabcab.$$ What is the minimum number of characters that would need to be added to this string (in any location) to make it into a palindrome? You can quickly see that your answer should not be larger than 6, since $bacbaaaabcab$ is a palindrome, but can you do better than that?
+
+Since the leftmost and rightmost letters of $aabcab$ do not match, then it must be the case that we will eventually have to add either a $b$ on the left end of the word or an $a$ on the right end of the word. In other words, we will first have to figure out the solution to the sub-problem $aabca$ and then add 1 insertion to handle the rightmost $b$ or we will have to figure out the solution to the sub-problem $aabcab$ and then add 1 insertion to handle the leftmost $a$. Note that if the leftmost and rightmost letters match, there is the option of just dropping these (since they are already in a good position) and solving the sub-problem for what remains. We summarize this approach as follows:
+
+\begin{verbatim}
+==============================
+s is a string of characters of length n
+
+s[i] is the ith character of the string
+
+M is a matrix (list of lists) with n rows and n columns
+
+M[i][j] = the minimum number of insertions needed to make the
+          substring from the ith character to the jth 
+          character a palindrome
+
+M[i][j] = 0 if j > i
+
+M[i][j] = 0 if i = j
+
+M[i][j] = M[i+1][j-1] if s[i] = s[j] when i > j
+
+M[i][j] = 1 + min(M[i+1][j],M[i][j-1]) if s[i] != s[j] when i > j
+==============================
+\end{verbatim}
 
 
 
