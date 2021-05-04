@@ -359,7 +359,49 @@ M[i][j] = 1 + min(M[i+1][j],M[i][j-1]) if s[i] != s[j] when i > j
 ==============================
 \end{verbatim}
 
+We construct the table for \verb|M| for our example.
 
+\begin{center}
+	\begin{tabular}{|c|c|c|c|c|c|c|c|}
+		\hline
+		& s_0 & s_1 & s_2 & s_3 & s_4 & s_5\\
+		\hline
+		\hline
+		s_0 & 0& 0& 1& 2& 2& 3\\
+		\hline
+		s_1 & 0& 0& 1& 2& 1& 2\\
+		\hline
+	        s_2 & 0& 0& 0& 1& 2& 1\\
+		\hline
+		s_3 & 0& 0& 0& 0& 1& 2\\
+		\hline
+	        s_4 & 0& 0& 0& 0& 0& 1\\
+		\hline
+	        s_5 & 0& 0& 0& 0& 0& 0\\
+		\hline
+	\end{tabular}
+\end{center}
+
+In the SageCell below we implement this approach in Python.
+
+\begin{sageCell}
+def minInsert(s):
+        le = len(s)
+        M = [[0 for j in range(le)] for i in range(le)]
+	for k in range(1,le):
+                j = k + 1
+                if s[i] == s[j]:
+                        M[i][j] = M[i+1][j-1]
+                else:
+                        M[i][j] = 1 + min(M[i+1][j],M[i][j-1])
+        #for m in M:
+                #print(m)
+        return M[0][-1]
+
+minInsert('aabcab')
+\end{sageCell}
+
+So we see now that the minimum number of insertions is 3. As in the 0/1 knapsack problem, the table of values generated can be used to determine where the insertions were made. This is beyond what we intend to accomplish here, but in this case a palindrome (there are many) generated with a minimum number of insertions for our example is $baacbcaab$.
 
 \section{Problems}
 
