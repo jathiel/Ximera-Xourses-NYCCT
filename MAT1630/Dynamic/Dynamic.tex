@@ -450,6 +450,13 @@ Determine the minimum number of insertions needed to make the following string a
 
 \begin{question}
 Can the number 24 be written as a sum of the numbers 7,3,2,5,8?
+	\begin{hint}
+This problem is similar to the 0/1 knapsack problem. Set up a table \verb|M| that has 5 rows (for each number available) and 25 columns (for the numbers 0 to 24). Now let \verb|M[i][j]| be 1 if \verb|j| can be represented as a sum of the first \verb|i| numbers available and 0 otherwise.
+
+So in the first row, only one entry should be a 1, namely \verb|M[0][7]|. As you move into the second row, it should be the case that \verb|M[1][7]| should also be 1 (if you could get 7 before, then you can certainly get it now). What new numbers can you now get if 3 is also available? (There should be 2 more.)
+
+Continue in this way to fill out the rest of the table.
+	\end{hint}
 	\begin{multipleChoice}
 	\choice[correct]{No}
 	\choice{Yes}
