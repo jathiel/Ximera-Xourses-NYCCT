@@ -125,15 +125,11 @@ To see how to use dynamic programming, let's work backwards. When putting an ord
 \end{enumerate}
 So if we could first solve the problem for 22, 24, 28, and 29, we could solve the problem for 30 by finding the minimum solution out of those 4 problems and adding 1 (for the additional package needed to get to 30). Working backwards this way we see that we would also need to solve some initial cases, namely 1 to 8 would do. So we will establish a list of values that will track our sub-problem solutions together with some initial cases and the relationship between entries in our list.
 \begin{align*}
-	&b\text{ is a list of length $n$}\\
-
-	&b[i]\text{ is the minimum number of packages 
-	needed to put together a lightbulb order of size $i$}\\
-
-	&b[0]=0,b[1] = 1, b[2] = 1, b[3] = 2, b[4] = 2,\\ 
+	&b\text{ is a list of length $n+1$}\\
+	&b[i]\text{ is the minimum number of packages needed to put together a lightbulb order of size $i$}\\
+	&b[0] = 0,b[1] = 1, b[2] = 1, b[3] = 2, b[4] = 2,\\ 
 	&b[5] = 3, b[6] = 1, b[7] = 2, b[8] = 1\\
-
-	&b[i] = min(b[i-8], b[i-6], b[i-2], b[i-1]) + 1\text{ for $i \geq 9$}
+	&b[i] = \min(b[i-8], b[i-6], b[i-2], b[i-1]) + 1\text{ for $i \geq 9$}
 \end{align*}
 
 We apply the above algorithm in the SageCell below. Two notes are needed here. We use \verb|N = max(8,n)| in place of \verb|n| to avoid issues when \verb|n| is smaller than 8 and we add an extra item in our list since lists are zero-indexed in Python.
