@@ -24,12 +24,12 @@ def dyn_fib(n):
         if n < 2:
                 return 1
         else:
-                L = [0 for i in range(n)]
-                L[0] = 1
-                L[1] = 1
+                f = [0 for i in range(n)]
+                f[0] = 1
+                f[1] = 1
                 for i in range(2,n):
-                        L[i] = L[i-1]+L[i-2]
-                return L[-1]
+                        f[i] = f[i-1]+f[i-2]
+                return f[-1]
 dyn_fib(100)
 \end{sageCell}
 
@@ -44,11 +44,13 @@ Once we decide to use dynamic programming to solve a problem, such solutions typ
 
 In the case of the Fibonacci sequence, our second solution applied the above steps in the following way:
 \begin{align*}
-	&L\text{ is a list of length $n$}\\
-	&L[i]\text{ is the $i$th Fibonacci number}\\
-	&L[0],L[1] = 1\\
-	&L[i] = L[i-1]+L[i-2]\text{ for $i\geq 2$}
+	&f\text{ is a list of length $n+1$}\\
+	&f[i]\text{ is the $i$th Fibonacci number}\\
+	&f[0],f[1] = 1\\
+	&f[i] = f[i-1]+f[i-2]\text{ for $i\geq 2$}
 \end{align*}
+
+As an example we will calculate $f_4$ using a list as prescribed above. We create a list of length 5 and make the first two entries 1.
 
 \begin{center}
 	\[
@@ -56,7 +58,49 @@ In the case of the Fibonacci sequence, our second solution applied the above ste
 		\hline
 		i & 0 & 1 & 2 & 3 & 4\\
 		\hline
-		L[i] & 0 & 0 &  &  &  \\
+		f[i] & 1 & 1 &  &  &  \\
+		\hline
+	\end{array}
+	\]
+\end{center}
+
+We can now fill in the values one at a time. We compute $f[2]$ as the sum $f[1]+f[0]$.
+
+\begin{center}
+	\[
+	\begin{array}{|c|c|c|c|c|c|}
+		\hline
+		i & 0 & 1 & 2 & 3 & 4\\
+		\hline
+		L[i] & 1 & 1 & 2 &  &  \\
+		\hline
+	\end{array}
+	\]
+\end{center}
+
+Continuing in this way we get that $f[3]$ is the sum $f[2]+f[1]$. Note that we do not recompute $f[2]$ as we would have in the recusrsive version of the program. This is because we have already computed $f[2]$ and can simply use the list to look it up.
+
+\begin{center}
+	\[
+	\begin{array}{|c|c|c|c|c|c|}
+		\hline
+		i & 0 & 1 & 2 & 3 & 4\\
+		\hline
+		L[i] & 1 & 1 & 2 & 5 &  \\
+		\hline
+	\end{array}
+	\]
+\end{center}
+
+We now complete the table by computing $f[4]$, so $f_4=8$.
+
+\begin{center}
+	\[
+	\begin{array}{|c|c|c|c|c|c|}
+		\hline
+		i & 0 & 1 & 2 & 3 & 4\\
+		\hline
+		L[i] & 1 & 1 & 2 & 5 & 8\\
 		\hline
 	\end{array}
 	\]
