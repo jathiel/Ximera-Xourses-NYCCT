@@ -72,7 +72,7 @@ We can now fill in the values one at a time. We compute $f[2]$ as the sum $f[1]+
 		\hline
 		i & 0 & 1 & 2 & 3 & 4\\
 		\hline
-		L[i] & 1 & 1 & 2 &  &  \\
+		f[i] & 1 & 1 & 2 &  &  \\
 		\hline
 	\end{array}
 	\]
@@ -86,7 +86,7 @@ Continuing in this way we get that $f[3]$ is the sum $f[2]+f[1]$. Note that we d
 		\hline
 		i & 0 & 1 & 2 & 3 & 4\\
 		\hline
-		L[i] & 1 & 1 & 2 & 3 &  \\
+		f[i] & 1 & 1 & 2 & 3 &  \\
 		\hline
 	\end{array}
 	\]
@@ -100,7 +100,7 @@ We now complete the table by computing $f[4]$, so $f_4=5$.
 		\hline
 		i & 0 & 1 & 2 & 3 & 4\\
 		\hline
-		L[i] & 1 & 1 & 2 & 3 & 5\\
+		f[i] & 1 & 1 & 2 & 3 & 5\\
 		\hline
 	\end{array}
 	\]
@@ -124,37 +124,35 @@ To see how to use dynamic programming, let's work backwards. When putting an ord
 	\item solved the problem for 29 bulbs and added a package of size 1.
 \end{enumerate}
 So if we could first solve the problem for 22, 24, 28, and 29, we could solve the problem for 30 by finding the minimum solution out of those 4 problems and adding 1 (for the additional package needed to get to 30). Working backwards this way we see that we would also need to solve some initial cases, namely 1 to 8 would do. So we will establish a list of values that will track our sub-problem solutions together with some initial cases and the relationship between entries in our list.
-\begin{verbatim}
-==============================
-L is a list of length n
+\begin{align*}
+	&b\text{ is a list of length $n$}\\
 
-L[i] is the minimum number of packages 
-     needed to put together a lightbulb order of size i
+	&b[i]\text{ is the minimum number of packages 
+	needed to put together a lightbulb order of size $i$}\\
 
-L[1] = 1, L[2] = 1, L[3] = 2, L[4] = 2, 
-L[5] = 3, L[6] = 1, L[7] = 2, L[8] = 1
+	bb[1] = 1, b[2] = 1, b[3] = 2, b[4] = 2,\\ 
+b[5] = 3, b[6] = 1, b[7] = 2, b[8] = 1\\
 
 L[i] = min(L[i-8], L[i-6], L[i-2], L[i-1]) + 1 for i >= 9
-==============================
-\end{verbatim}
+\end{align*}
 
 We apply the above algorithm in the SageCell below. Two notes are needed here. We use \verb|N = max(8,n)| in place of \verb|n| to avoid issues when \verb|n| is smaller than 8 and we add an extra item in our list since lists are zero-indexed in Python.
 
 \begin{sageCell}
 def bulb(n):
         N = max(8,n)
-        L = [0 for i in range(N+1)]
-        L[1] = 1
-        L[2] = 1
-        L[3] = 2
-        L[4] = 2
-        L[5] = 3
-        L[6] = 1
-        L[7] = 2
-        L[8] = 1
+        b = [0 for i in range(N+1)]
+        b[1] = 1
+        b[2] = 1
+        b[3] = 2
+        b[4] = 2
+        b[5] = 3
+        b[6] = 1
+        b[7] = 2
+        b[8] = 1
         for i in range(9,N+1):
-                L[i] = 1 + min(L[i-8], L[i-6], L[i-2], L[i-1])
-        return L[n]
+                b[i] = 1 + min(b[i-8], b[i-6], b[i-2], b[i-1])
+        return b[n]
 bulb(30)
 \end{sageCell}
 
