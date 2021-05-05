@@ -132,6 +132,20 @@ So if we could first solve the problem for 22, 24, 28, and 29, we could solve th
 	&b[i] = \min(b[i-8], b[i-6], b[i-2], b[i-1]) + 1\text{ for $i \geq 9$}
 \end{align*}
 
+As an example we compute the minimum number of packages needed to put together an order of 12 lightbulbs. We being by creating a list with 13 entries where the first 9 values are filled in according to the initial conditions given above.
+
+\begin{center}
+\[
+	\begin{arra}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+		\hline
+	i    & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12\\
+		\hline
+	b[i] & 0 & 1 & 1 & 2 & 2 & 3 & 1 & 2 & 1 &   &    &    & \\ 
+		\hline
+	\end{array}
+\]
+\end{center}
+
 We apply the above algorithm in the SageCell below. Two notes are needed here. We use \verb|N = max(8,n)| in place of \verb|n| to avoid issues when \verb|n| is smaller than 8 and we add an extra item in our list since lists are zero-indexed in Python.
 
 \begin{sageCell}
