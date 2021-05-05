@@ -130,10 +130,10 @@ So if we could first solve the problem for 22, 24, 28, and 29, we could solve th
 	&b[i]\text{ is the minimum number of packages 
 	needed to put together a lightbulb order of size $i$}\\
 
-	bb[1] = 1, b[2] = 1, b[3] = 2, b[4] = 2,\\ 
-b[5] = 3, b[6] = 1, b[7] = 2, b[8] = 1\\
+	&b[0]=0,b[1] = 1, b[2] = 1, b[3] = 2, b[4] = 2,\\ 
+	&b[5] = 3, b[6] = 1, b[7] = 2, b[8] = 1\\
 
-L[i] = min(L[i-8], L[i-6], L[i-2], L[i-1]) + 1 for i >= 9
+	&b[i] = min(b[i-8], b[i-6], b[i-2], b[i-1]) + 1\text{ for $i \geq 9$}
 \end{align*}
 
 We apply the above algorithm in the SageCell below. Two notes are needed here. We use \verb|N = max(8,n)| in place of \verb|n| to avoid issues when \verb|n| is smaller than 8 and we add an extra item in our list since lists are zero-indexed in Python.
