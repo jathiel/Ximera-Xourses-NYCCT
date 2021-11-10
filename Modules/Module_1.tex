@@ -32,7 +32,32 @@ for i in range(10):
 \end{sageCell}
 
 	\begin{enumerate}
-		\item[(b)] If/Else statements help direct your program if there are multiple cases and use the following syntax:
+		\item[(b)] Thy Python syntax for a while loop is as follows: 
+	\end{enumerate}
+\begin{verbatim}
+==============================
+
+while condition:
+        code
+
+==============================
+\end{verbatim}
+
+In the above code, \verb|while| indicates the start of the while loop and \verb|condition| is the statement that is checked to see if the code in the while loop should be exectued (the while loop will end whenever \verb|condition| is false). Note that for a while loop, if variables related to \verb|condition| are not updated within the loop, it is possible to create an infinite loop.
+
+In many cases for and while loops can be used to execute the same computation. Typically a for loop is used if it is known in advance how many iterations are going to be needed to complete some computation. A while loop, on the other hand, is often used when the number of iterations needed is not obvious, but a stopping condition is clear.
+
+The example below prints the values of \verb|0| to \verb|9|.
+
+\begin{sageCell}
+n = 0
+while n < 10:
+        print(n)
+        n += 1
+\end{sageCell}
+
+	\begin{enumerate}
+		\item[(c)] If/Else statements help direct your program if there are multiple cases and use the following syntax:
 \begin{verbatim}
 ==============================
 if condition:
@@ -59,7 +84,7 @@ else:
 \end{sageCell}
 
 	\begin{enumerate}
-        	\item[(c)] A Python function will have the following syntax:
+        	\item[(d)] A Python function will have the following syntax:
 	\end{enumerate}
 
 \begin{verbatim}
