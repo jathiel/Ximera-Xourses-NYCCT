@@ -1,9 +1,18 @@
-\documentclass{ximera}  
-\title{Flowcharts}  
-\begin{document}  
-\begin{abstract}  
+\documentclass{ximera}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows}
+
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, fill=red!50]
+\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum height=1cm, text centered, fill=blue!30]
+\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, text width=3cm, fill=orange!50]
+\tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=1cm, text centered, text width=2cm, fill=green!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+\title{Flowcharts}
+\begin{document}
+\begin{abstract}
 We introduce flowcharts as a way to organize a procedure designed to solve a particular problem.
-\end{abstract}  
+\end{abstract}
 \maketitle
 
 \section{Algorithms and Flowcharts}
@@ -11,17 +20,38 @@ An algorithm is a fixed set of instructions that can be followed to solve a prob
 
 There are several ways to specify an algorithm. For now we will represent our algorithms using a special type of diagram known as a flowchart. As we gain more experience we will be able to transition to other methods for expressing algorithms. We begin with flowcharts because they are a relatively intuitive to use and because you probably have some prior experience with them.
 
-Here, for example, are two different flowcharts that describe how you might accomplish a certain common task. 
+Here, for example, are two different flowcharts that describe how you might accomplish a certain common task.
 
 \begin{center}
-	\includegraphics{morning1.png}
+	\begin{tikzpicture}
+    \node [startstop] at (0,0) (start) {Start};
+    \node [process] at (0,-2) (process1) {Alarm sounds.};
+    \node [process] at (0,-4) (process2) {Wake up and get ready for school.};
+    \node [startstop] at (0,-6) (stop) {Stop};
+    \draw [arrow] (start) -- (process1);
+    \draw [arrow] (process1) -- (process2);
+    \draw [arrow] (process2) -- (stop);
+    \end{tikzpicture}
 \end{center}
 \begin{center}
 	An example of a morning routine.
 \end{center}
 
 \begin{center}
-	\includegraphics{morning2.png}
+	\begin{tikzpicture}
+    \node [startstop] at (0,0) (start) {Start};
+    \node [process] at (0,-2) (process1) {Alarm sounds.};
+    \node [decision] at (0,-5) (decision) {Is it after 6:50AM?};
+    \node [process] at (4,-5) (process2) {Hit the snooze button.};
+    \node [process] at (0,-8) (process3) {Wake up and get ready for school.};
+    \node [startstop] at (0,-10) (stop) {Stop};
+    \draw [arrow] (start) -- (process1);
+    \draw [arrow] (process1) -- (decision);
+    \draw [arrow] (decision) -- node[anchor=south] {no}(process2);
+    \draw [arrow] (decision) -- node[anchor=east] {yes} (process3);
+    \draw [arrow] (process2) |- (process1);
+    \draw [arrow] (process3) -- (stop);
+    \end{tikzpicture}
 \end{center}
 \begin{center}
 	Another example of a morning routine.
@@ -32,28 +62,36 @@ Note that the flowcharts above are not examples of algorithms. The individual st
 We use the following conventions for our flowchart compartments (there are others, but these are the main ones we will use). Arrows between the different compartments show how the algorithm progresses from one operation/input/decision to another.
 
 \begin{center}
-	\includegraphics{startstop.png}
+	\begin{tikzpicture}
+    \node [startstop] at (0,0) (start) {Start/Stop};
+    \end{tikzpicture}
 \end{center}
 \begin{center}
 	Beginning or end of the algorithm.
 \end{center}
 
 \begin{center}
-	\includegraphics{io.png}
+	\begin{tikzpicture}
+    \node [io] at (0,0) (start) {Input/Output};
+    \end{tikzpicture}
 \end{center}
 \begin{center}
 	Indicates data input or output.
 \end{center}
 
 \begin{center}
-	\includegraphics{decision.png}
+	\begin{tikzpicture}
+    \node [decision] at (0,0) (start) {Decision};
+    \end{tikzpicture}
 \end{center}
 \begin{center}
 	Conditional operation/decision. Typically limited to true/false or yes/no options.
 \end{center}
 
 \begin{center}
-	\includegraphics{process.png}
+	\begin{tikzpicture}
+    \node [process] at (0,0) (start) {Process};
+    \end{tikzpicture}
 \end{center}
 \begin{center}
 	A set of operations.
@@ -62,7 +100,20 @@ We use the following conventions for our flowchart compartments (there are other
 The following flowchart represents a simple algorithm that computes the absolute value of any real number $x$.
 
 \begin{center}
-	\includegraphics{absalgo.png}
+	\begin{tikzpicture}
+    \node [startstop] at (0,0) (start) {Start};
+    \node [io] at (0,-2) (io1) {Input $x$};
+    \node [decision] at (0,-5) (decision) {Is $x>0$?};
+    \node [io] at (5,-5) (io2) {Output $-x$};
+    \node [io] at (-5,-5) (io3) {Output $x$};
+    \node [startstop] at (0,-8) (stop) {Stop};
+    \draw [arrow] (start) -- (io1);
+    \draw [arrow] (io1) -- (decision);
+    \draw [arrow] (decision) -- node[anchor=south] {no}(io2);
+    \draw [arrow] (decision) -- node[anchor=south] {yes} (io3);
+    \draw [arrow] (io2) |- (stop);
+    \draw [arrow] (io3) |- (stop);
+    \end{tikzpicture}
 \end{center}
 \begin{center}
 	An example of an algorithm that computes $|x|$.
@@ -87,18 +138,39 @@ The following flowchart represents a simple algorithm that computes the absolute
 		\item $n = 0$ $\answer{0}$
 	\end{itemize}
 	\begin{center}
-	\includegraphics{20bigger.png}
+	   \begin{tikzpicture}
+        \node [startstop] at (0,0) (start) {Start};
+        \node [io] at (0,-2) (io1) {Input $n$};
+        \node [decision] at (0,-5) (decision) {Is \\$2n+1>0$?};
+        \node [io] at (5,-5) (io2) {Output $0$};
+        \node [io] at (-5,-5) (io3) {Output $1$};
+        \node [startstop] at (0,-8) (stop) {Stop};
+        \draw [arrow] (start) -- (io1);
+        \draw [arrow] (io1) -- (decision);
+        \draw [arrow] (decision) -- node[anchor=south] {no}(io2);
+        \draw [arrow] (decision) -- node[anchor=south] {yes} (io3);
+        \draw [arrow] (io2) |- (stop);
+        \draw [arrow] (io3) |- (stop);
+        \end{tikzpicture}
 	\end{center}
 \end{question}
 
-\begin{question} 
+\begin{question}
 	Develop an algorithm that takes in two inputs $a$ and $b$ and outputs their average. Draw a flowchart for your algorithm.
 	\begin{hint}
 		Your flowchart should only need 4 compartments: a start compartment, an input compartment, a output compartment giving the average, and a stop compartment. Note that the second hint for this problem is the solution.
 	\end{hint}
 	\begin{hint}
 		\begin{center}
-		\includegraphics{average.png}
+		    \begin{tikzpicture}
+            \node [startstop] at (0,0) (start) {Start};
+            \node [io] at (0,-2) (io1) {Input $a,b$};
+            \node [io] at (0,-4) (io2) {Output $\frac{a+b}{2}$};
+            \node [startstop] at (0,-6) (stop) {Stop};
+            \draw [arrow] (start) -- (io1);
+            \draw [arrow] (io1) -- (io2);
+            \draw [arrow] (io2) -- (stop);
+            \end{tikzpicture}
 		\end{center}
 	\end{hint}
 \end{question}
@@ -110,7 +182,20 @@ The following flowchart represents a simple algorithm that computes the absolute
 	\end{hint}
 	\begin{hint}
 		\begin{center}
-		\includegraphics{avocados.png}
+		    \begin{tikzpicture}
+            \node [startstop] at (0,0) (start) {Start};
+            \node [io] at (0,-2) (io1) {Input $n$};
+            \node [decision] at (0,-5) (decision) {Is $n>2$?};
+            \node [io] at (5,-5) (io2) {Output \textdollar$n$};
+            \node [io] at (-5,-5) (io3) {Output \textdollar$3$};
+            \node [startstop] at (0,-8) (stop) {Stop};
+            \draw [arrow] (start) -- (io1);
+            \draw [arrow] (io1) -- (decision);
+            \draw [arrow] (decision) -- node[anchor=south] {no}(io2);
+            \draw [arrow] (decision) -- node[anchor=south] {yes} (io3);
+            \draw [arrow] (io2) |- (stop);
+            \draw [arrow] (io3) |- (stop);
+            \end{tikzpicture}
 		\end{center}
 	\end{hint}
 \end{question}
@@ -124,14 +209,48 @@ The following flowchart represents a simple algorithm that computes the absolute
 	Develop an algorithm that takes in the real number $x$ and outputs the value of $sgn(x)$. Draw a flowchart for your algorithm.
 
 	\begin{hint}
-		You will need two decision compartments to differentiate the three cases. 
+		You will need two decision compartments to differentiate the three cases.
 	\end{hint}
 	\begin{hint}
 		First determine if $x>0$ or not. If not, what comparison can you make to differentiate between the two remaining cases? Note that the third hint for this problem is a solution.
 	\end{hint}
 	\begin{hint}
 		\begin{center}
-		\includegraphics{sgn.png}
+		\begin{tikzpicture}
+            \node [startstop] at (0,0) (start) {Start};
+            \node [io] at (0,-2) (io1) {Input $n$};
+            \node [decision] at (0,-5) (decision) {Is $n>2$?};
+            \node [io] at (5,-5) (io2) {Output \textdollar$n$};
+            \node [io] at (-5,-5) (io3) {Output \textdollar$3$};
+            \node [startstop] at (0,-8) (stop) {Stop};
+            \draw [arrow] (start) -- (io1);
+            \draw [arrow] (io1) -- (decision);
+            \draw [arrow] (decision) -- node[anchor=south] {no}(io2);
+            \draw [arrow] (decision) -- node[anchor=south] {yes} (io3);
+            \draw [arrow] (io2) |- (stop);
+            \draw [arrow] (io3) |- (stop);
+            \end{tikzpicture}
+
+            \begin{tikzpicture}
+            \node [startstop] at (0,0) (start) {Start};
+            \node [io] at (0,-2) (io1) {Input $x$};
+            \node [decision] at (0,-5) (decision1) {Is $x>0$?};
+            \node [io] at (-5,-5) (io2) {Output 1};
+            \node [decision] at (0,-9) (decision2) {Is $x<0$?};
+            \node [io] at (5,-9) (io3) {Output -1};
+            \node [io] at (0,-12) (io4) {Output 0};
+            \node [startstop] at (0,-14) (stop) {Stop};
+
+            \draw [arrow] (start) -- (io1);
+            \draw [arrow] (io1) -- (decision1);
+            \draw [arrow] (decision1) -- node[anchor=south] {yes}(io2);
+            \draw [arrow] (decision1) -- node[anchor=east] {no} (decision2);
+            \draw [arrow] (decision2) -- node[anchor=south] {yes} (io3);
+            \draw [arrow] (decision2) -- node[anchor=east] {no} (io4);
+            \draw [arrow] (io2) |- (stop);
+            \draw [arrow] (io3) |- (stop);
+            \draw [arrow] (io4) -- (stop);
+            \end{tikzpicture}}
 		\end{center}
 	\end{hint}
 \end{question}
