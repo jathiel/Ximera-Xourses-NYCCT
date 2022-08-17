@@ -1,11 +1,20 @@
-\documentclass{ximera} 
+\documentclass{ximera}
 \usepackage{listings}
-\title{If/Else Statements}  
-\begin{document}  
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows}
+
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm, text centered, fill=red!50]
+\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum height=1cm, text centered, fill=blue!30]
+\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, text width=3cm, fill=orange!50]
+\tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=1cm, text centered, text width=2cm, fill=green!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+\title{If/Else Statements}
+\begin{document}
 \lstset{language=Python,frame=tb}
-\begin{abstract}  
+\begin{abstract}
 We introduce if/else statements in Python.
-\end{abstract}  
+\end{abstract}
 \maketitle
 
 \section{If/Else}
@@ -34,13 +43,26 @@ The block of pseudocode above has several important features:
 	\item The \verb|x| in parentheses is the input.
 	\item The \verb|IF|, \verb|THEN|, \verb|ELSE|, etc. represent keywords in the individual steps taken in the algorithm. (For a more complete treatment of this, see Rosen's Discrete Mathematics and Its Applications textbook.)
 	\item The term \verb|absVal| is a variable used to compute the absolute value of \verb|x|.
-	\item The variable after the \verb|RETURN| keyword is what the procedure outputs. 
+	\item The variable after the \verb|RETURN| keyword is what the procedure outputs.
 \end{itemize}
 
 These two new ways of expressing an algorithm can be easily mapped to the flowchart for computing $|x|$ below.
 
 \begin{center}
-	\includegraphics{absalgo.png}
+    \begin{tikzpicture}
+    \node [startstop] at (0,0) (start) {Start};
+    \node [io] at (0,-2) (io1) {Input $x$};
+    \node [decision] at (0,-5) (decision) {$x>0$};
+    \node [io] at (5,-5) (io2) {Output $-x$};
+    \node [io] at (-5,-5) (io3) {Output $x$};
+    \node [startstop] at (0,-8) (stop) {Stop};
+    \draw [arrow] (start) -- (io1);
+    \draw [arrow] (io1) -- (decision);
+    \draw [arrow] (decision) -- node[anchor=south] {no}(io2);
+    \draw [arrow] (decision) -- node[anchor=south] {yes} (io3);
+    \draw [arrow] (io2) |- (stop);
+    \draw [arrow] (io3) |- (stop);
+    \end{tikzpicture}
 \end{center}
 
 In Python we can implement this short algorithm using the following syntax:
@@ -93,15 +115,34 @@ The example above shows how a flowchart with a decision compartment can be trans
 
 \section{Elif}
 
-Below we give examples of how to expand on the basic if/else form to handle cases where multiple decisions are needed or if a decision has more than two outcomes. 
+Below we give examples of how to expand on the basic if/else form to handle cases where multiple decisions are needed or if a decision has more than two outcomes.
 
 The flowchart below shows an algorithm for computing the $sgn$ function seen in the Flowchart problem section.
 
 \begin{center}
-	\includegraphics{sgn.png}
+	\begin{tikzpicture}
+    \node [startstop] at (0,0) (start) {Start};
+    \node [io] at (0,-2) (io1) {Input $x$};
+    \node [decision] at (0,-5) (decision1) {$x>0$};
+    \node [io] at (-5,-5) (io2) {Output 1};
+    \node [decision] at (0,-9) (decision2) {$x<0$};
+    \node [io] at (5,-9) (io3) {Output -1};
+    \node [io] at (0,-12) (io4) {Output 0};
+    \node [startstop] at (0,-14) (stop) {Stop};
+
+    \draw [arrow] (start) -- (io1);
+    \draw [arrow] (io1) -- (decision1);
+    \draw [arrow] (decision1) -- node[anchor=south] {yes}(io2);
+    \draw [arrow] (decision1) -- node[anchor=east] {no} (decision2);
+    \draw [arrow] (decision2) -- node[anchor=south] {yes} (io3);
+    \draw [arrow] (decision2) -- node[anchor=east] {no} (io4);
+    \draw [arrow] (io2) |- (stop);
+    \draw [arrow] (io3) |- (stop);
+    \draw [arrow] (io4) -- (stop);
+    \end{tikzpicture}
 \end{center}
 
-This can be implemented in Python in several ways. 
+This can be implemented in Python in several ways.
 
 We can put an if/else statement inside of another if or else block of code. Note the indentation of the lines belonging to the second if/else statement.
 
@@ -175,7 +216,7 @@ Develop an algorithm to implement the Heaviside function. Express your algorithm
 	\end{hint}
 	\begin{hint}
 	\begin{center}
-		\includegraphics{heaviside.png}
+
 	\end{center}
 \begin{sageCell}
 if x >= 0:
@@ -198,7 +239,26 @@ Develop an algorithm to implement this alternative Heaviside function. Express y
 	\end{hint}
 	\begin{hint}
 	\begin{center}
-		\includegraphics{heaviside2.png}
+		\begin{tikzpicture}
+        \node [startstop] at (0,0) (start) {Start};
+        \node [io] at (0,-2) (io1) {Input $x$};
+        \node [decision] at (0,-5) (decision1) {$x>0$};
+        \node [io] at (-5,-5) (io2) {Output 1};
+        \node [decision] at (0,-9) (decision2) {$x<0$};
+        \node [io] at (5,-9) (io3) {Output 0};
+        \node [io] at (0,-12) (io4) {Output 1/2};
+        \node [startstop] at (0,-14) (stop) {Stop};
+
+        \draw [arrow] (start) -- (io1);
+        \draw [arrow] (io1) -- (decision1);
+        \draw [arrow] (decision1) -- node[anchor=south] {yes}(io2);
+        \draw [arrow] (decision1) -- node[anchor=east] {no} (decision2);
+        \draw [arrow] (decision2) -- node[anchor=south] {yes} (io3);
+        \draw [arrow] (decision2) -- node[anchor=east] {no} (io4);
+        \draw [arrow] (io2) |- (stop);
+        \draw [arrow] (io3) |- (stop);
+        \draw [arrow] (io4) -- (stop);
+        \end{tikzpicture}
 	\end{center}
 \begin{sageCell}
 if x > 0:
@@ -212,7 +272,7 @@ else:
 \end{question}
 
 \begin{question}
-	Express your algorithm solution from the first question in the Flowcharts with Operators section in Python. In Python, assign the desired output to a variable \verb|real_roots|.  Note that the hint for this problem is the solution. 
+	Express your algorithm solution from the first question in the Flowcharts with Operators section in Python. In Python, assign the desired output to a variable \verb|real_roots|.  Note that the hint for this problem is the solution.
 	\begin{hint}
 \begin{sageCell}
 if b**2-4*a*c >= 0:
@@ -230,7 +290,28 @@ else:
 	\end{hint}
 	\begin{hint}
 		\begin{center}
-			\includegraphics{realrootscount.png}
+            \begin{tikzpicture}
+            \node [startstop] at (0,2) (start) {Start};
+            \node [io] at (0,0) (io1) {Input $x$};
+            \node [process] at (0,-2) (process) {$d:=b^2-4ac$};
+            \node [decision] at (0,-5) (decision1) {$d>0$};
+            \node [io] at (-5,-5) (io2) {Output 2};
+            \node [decision] at (0,-9) (decision2) {$d=0$};
+            \node [io] at (5,-9) (io3) {Output 1};
+            \node [io] at (0,-12) (io4) {Output 0};
+            \node [startstop] at (0,-14) (stop) {Stop};
+
+            \draw [arrow] (start) -- (io1);
+            \draw [arrow] (io1) -- (process);
+            \draw [arrow] (process) -- (decision1);
+            \draw [arrow] (decision1) -- node[anchor=south] {yes}(io2);
+            \draw [arrow] (decision1) -- node[anchor=east] {no} (decision2);
+            \draw [arrow] (decision2) -- node[anchor=south] {yes} (io3);
+            \draw [arrow] (decision2) -- node[anchor=east] {no} (io4);
+            \draw [arrow] (io2) |- (stop);
+            \draw [arrow] (io3) |- (stop);
+            \draw [arrow] (io4) -- (stop);
+            \end{tikzpicture}
 		\end{center}
 \begin{sageCell}
 if b**2-4*a*c > 0:
@@ -247,7 +328,29 @@ else:
 	Suppose you are given three distinct real numbers $A$, $B$, and $C$. Develop an algorithm that determines which one is the largest. Express your algorithm as a flowchart and in Python. In Python, assign the desired output to the variable \verb|maximum|. Note that the hint for this problem is the solution.
 	\begin{hint}
 		\begin{center}
-			\includegraphics{maxof3.png}
+            \begin{tikzpicture}
+            \node [startstop] at (0,0) (start) {Start};
+            \node [io] at (0,-2) (io1) {Input $A,B,C$};
+            \node [decision] at (0,-5) (decision1) {$A>B$};
+            \node [decision] at (-5,-5) (decision2) {$B>C$};
+            \node [decision] at (0,-9) (decision3) {$A>C$};
+            \node [io] at (-5,-9) (io2) {Output $B$};
+            \node [io] at (5,-9) (io3) {Output $A$};
+            \node [io] at (0,-12) (io4) {Output $C$};
+            \node [startstop] at (0,-14) (stop) {Stop};
+
+            \draw [arrow] (start) -- (io1);
+            \draw [arrow] (io1) -- (decision1);
+            \draw [arrow] (decision1) -- node[anchor=south] {no} (decision2);
+            \draw [arrow] (decision2) -- node[anchor=east] {yes} (io2);
+            \draw [arrow] (decision1) -- node[anchor=east] {yes} (decision3);
+            \draw [arrow] (decision3) -- node[anchor=south] {yes} (io3);
+            \draw [arrow] (decision3) -- node[anchor=east] {no} (io4);
+            \draw [arrow] (decision2) -| node[anchor=south east] {no} (-7.5,-5) |-  (io4);
+            \draw [arrow] (io2) |- (stop);
+            \draw [arrow] (io3) |- (stop);
+            \draw [arrow] (io4) -- (stop);
+            \end{tikzpicture}
 		\end{center}
 \begin{sageCell}
 if A > B:

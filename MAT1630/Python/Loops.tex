@@ -1,9 +1,18 @@
-\documentclass{ximera}  
-\title{Loops}  
-\begin{document}  
-\begin{abstract}  
+\documentclass{ximera}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows}
+
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, fill=red!50]
+\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum height=1cm, text centered, fill=blue!30]
+\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, text width=3cm, fill=orange!50]
+\tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=1cm, text centered, text width=2cm, fill=green!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+\title{Loops}
+\begin{document}
+\begin{abstract}
 We give an introduction to for and while loops.
-\end{abstract}  
+\end{abstract}
 \maketitle
 
 \section{Loops}
@@ -11,7 +20,23 @@ We give an introduction to for and while loops.
 Loops are useful whenever you have an algorithm that requires multiple uses of the same step. For example, say we wanted to compute the sum $1+2+\cdots+n$ for some integer $n>0$. We have seen in a previous section that this can be done using two variables, one that tracks the current value of the sum and another that tracks whether or not our task is finished (see the flowchart below).
 
 \begin{center}
-	    \includegraphics{gausssum.png}
+	\begin{tikzpicture}
+    \node [startstop] at (0,0) (start) {Start};
+    \node [io] at (0,-2) (io1) {Input $n$};
+    \node [process] at (0,-4) (process1) {$sum:=0$\\$i:=1$};
+    \node [decision] at (0,-7) (decision) {$i\leq n$};
+    \node [io] at (-5,-7) (io2) {Output $sum$};
+    \node [process] at (0,-10) (process2) {$sum:=sum+i$\\$i:=i+1$};
+    \node [startstop] at (-5,-10) (stop) {Stop};
+
+    \draw [arrow] (start) -- (io1);
+    \draw [arrow] (io1) -- (process1);
+    \draw [arrow] (process1) -- (decision);
+    \draw [arrow] (decision) -- node[anchor=east] {yes} (process2);
+    \draw [arrow] (decision) -- node[anchor=south] {no} (io2);
+    \draw [arrow] (io2) -- (stop);
+    \draw [arrow] (process2) -- (3,-10) |- (decision);
+    \end{tikzpicture}
 \end{center}
 
 The structure of the flowchart above is very suggestive of why we use the terminology `loop'. We will now go over two types of loops: for loops and while loops.
@@ -41,7 +66,7 @@ for c in 'MAT1630':
         print(c)
 \end{sageCell}
 
-Below is an example of how to compute $1+2+\cdots+10$ using a for loop. 
+Below is an example of how to compute $1+2+\cdots+10$ using a for loop.
 
 \begin{sageCell}
 n = 100
@@ -76,7 +101,7 @@ for k in range(3,12,2):
 Using the \verb|range| function, we can now write a for loop that computes $1+2+\cdots+100$.
 
 \begin{sageCell}
-s = 0 
+s = 0
 for i in range(1,101):
         s = s + i
 print(s)
@@ -183,7 +208,7 @@ def div(n):
 	\begin{hint}
 	Consider using the previous function to help you determine if $n$ is prime. There are two ways to do this:
 	\begin{itemize}
-	\item Once you define a function, it can be used inside the definition of another. 
+	\item Once you define a function, it can be used inside the definition of another.
 	\item You can define a function inside of another. But beware of scope issues in this case.
 	\end{itemize}
 	Note that the second hint for this problem contains both solutions described above.
