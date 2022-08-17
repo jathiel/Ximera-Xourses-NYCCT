@@ -1,42 +1,75 @@
-\documentclass{ximera}  
-\title{Bisection Method}  
-\begin{document}  
-\begin{abstract}  
+\documentclass{ximera}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows}
+
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm, text centered, fill=red!50]
+\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum height=1cm, text centered, fill=blue!30]
+\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, text width=3cm, fill=orange!50]
+\tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=1cm, text centered, text width=2cm, fill=green!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+\title{Bisection Method}
+\begin{document}
+\begin{abstract}
 We give an introduction to finding roots using the Bisection Method.
-\end{abstract}  
+\end{abstract}
 \maketitle
 
 \section{The Intermediate Value Theorem}
 
-The Intermediate Value Theorem (IVT) simply states that if $f(x)$ is a continuous function on the interval $[a,b]$, then it takes on any given value between $f(a)$ and $f(b)$. In other words, if $f(x)$ is a continuous function, then any horizontal line between $f(a)$ and $f(b)$ intersects the graph of $f(x)$. Note that this theorem does not give the number or location of such intersections. 
+The Intermediate Value Theorem (IVT) simply states that if $f(x)$ is a continuous function on the interval $[a,b]$, then it takes on any given value between $f(a)$ and $f(b)$. In other words, if $f(x)$ is a continuous function, then any horizontal line between $f(a)$ and $f(b)$ intersects the graph of $f(x)$. Note that this theorem does not give the number or location of such intersections.
 
 The Desmos interactive graph below gives an example of the IVT in action.
 
 \desmos{uroxd0wmuh}{800}{600}
 
-We will use the IVT to come up with numerical approximations to solutions of equations of the form $f(x)=0$. 
+We will use the IVT to come up with numerical approximations to solutions of equations of the form $f(x)=0$.
 
 \section{The Bisection Method}
 
 The Bisection Method makes use of the IVT in a special situation: when $f(a)$ and $f(b)$ are nonzero values of opposite sign.
 
-Suppose you are given a function $f(x)$ and you are interested in finding at least one solution to the equation $f(x)=0$. Furthermore, suppose that $f(0)=2$, $f(4)=-3$, and $f(x)$ is continuous on the interval $[0,4]$. Then, by the IVT, we know that our equation has at least one solution in the interval $[0,4]$. We can narrow down our search by computing $f(2)$ (here $2$ is the midpoint of the interval). If $f(2)=0$, then we found a solution! If $f(2)>0$, then by the IVT, there is a solution in the interval $[2,4]$. Otherwise, if $f(2)<0$, then by the IVT, there is a solution in the inteval $[0,2]$. We can repeat this procedure until we get an approximation that is ``close enough" to a solution. At each step, we trim down the length of the inteval containing a solution in half, bounding the size of our possible error to half the size of the remaining interval. 
+Suppose you are given a function $f(x)$ and you are interested in finding at least one solution to the equation $f(x)=0$. Furthermore, suppose that $f(0)=2$, $f(4)=-3$, and $f(x)$ is continuous on the interval $[0,4]$. Then, by the IVT, we know that our equation has at least one solution in the interval $[0,4]$. We can narrow down our search by computing $f(2)$ (here $2$ is the midpoint of the interval). If $f(2)=0$, then we found a solution! If $f(2)>0$, then by the IVT, there is a solution in the interval $[2,4]$. Otherwise, if $f(2)<0$, then by the IVT, there is a solution in the inteval $[0,2]$. We can repeat this procedure until we get an approximation that is ``close enough" to a solution. At each step, we trim down the length of the inteval containing a solution in half, bounding the size of our possible error to half the size of the remaining interval.
 
 It is possible that we may never find the exact value of a solution or that we may miss some solutions. Try, for example, to use the procedure above to find solutions to $x^3-2x=0$ on the interval $[-5,5]$.
 
-We can summarize the Binomial Method using the following flowchart. Here we assume that $a<b$, $f(x)$ is continuous on $[a,b]$ and $error>0$.
+We can summarize the Binomial Method using the following flowchart. Here we assume that $a<b$, $f(x)$ is continuous on $[a,b]$ and $err>0$.
 
 \begin{center}
-	\includegraphics{bisection.png}
+    \begin{tikzpicture}
+    \node [startstop] at (0,0) (start) {Start};
+    \node [io] at (0,-2) (io1) {$a,b,f,err$};
+    \node [process] at (0,-4) (process1) {$c:=\displaystyle\frac{b+a}{2}$};
+    \node [decision] at (0,-7) (decision1) {$c-a>err$};
+    \node [io] at (-4,-9) (io2) {Output $c$};
+    \node [decision] at (4,-9) (decision2) {$f(c)=0$};
+    \node [startstop] at (-4,-13) (stop) {Stop};
+    \node [process] at (0,-13) (process2) {$a:=c$};
+    \node [decision] at (4,-13) (decision3) {$f(a)f(c)>0$};
+    \node [process] at (8,-13) (process3) {$b:=c$};
+
+    \draw [arrow] (start) -- (io1);
+    \draw [arrow] (io1) -- (process1);
+    \draw [arrow] (process1) -- (decision1);
+    \draw [arrow] (decision1) -| node[anchor=south] {no} (io2);
+    \draw [arrow] (decision1) -| node[anchor=south] {yes} (decision2);
+    \draw [arrow] (decision2) -- node[anchor=south] {yes} (io2);
+    \draw [arrow] (decision2) -- node[anchor=east] {no} (decision3);
+    \draw [arrow] (decision3) -- node[anchor=south] {yes} (process2);
+    \draw [arrow] (decision3) -- node[anchor=south] {no} (process3);
+    \draw [arrow] (process2) -- (0,-14.5) -- (-6.5,-14.5) |- (process1);
+    \draw [arrow] (process3) |- (process1);
+    \draw [arrow] (io2) -- (stop);
+    \end{tikzpicture}
 \end{center}
 
 Converting this flowchart to code gives the following:
 
 \begin{verbatim}
 ==============================
-def bisection(a,b,f,error):
+def bisection(a,b,f,err):
         c = (b+a)/2
-        while c-a > error:
+        while c-a > err:
                 if f(c) == 0:
                         return c
                 elif f(a)*f(c) > 0:
@@ -59,7 +92,7 @@ Note that we can also use the Bisection Method to solve equations of the form $f
 All answers in this section have been rounded to the nearest thousandth.
 
 \begin{question}
-	Use the Bisection Method to estimate the solution to $f(x)=0$ where $f(x)=x^3-7$ with an error of at most 0.01. $\answer{1.914}$ 
+	Use the Bisection Method to estimate the solution to $f(x)=0$ where $f(x)=x^3-7$ with an error of at most 0.01. $\answer{1.914}$
 \end{question}
 
 \begin{question}
