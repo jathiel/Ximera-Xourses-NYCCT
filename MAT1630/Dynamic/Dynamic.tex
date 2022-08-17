@@ -1,10 +1,9 @@
-\documentclass{ximera}  
-\title{Dynamic Programming}  
-\pgfplotsset{compat=1.15}
-\begin{document}  
-\begin{abstract}  
+\documentclass{ximera}
+\title{Dynamic Programming}
+\begin{document}
+\begin{abstract}
 We give an introduction to dynamic programming techniques via examples.
-\end{abstract}  
+\end{abstract}
 \maketitle
 
 \section{Dynamic Programming}
@@ -118,16 +117,16 @@ We begin with an simple approach. How many packages would we have to use if we s
 
 To see how to use dynamic programming, let's work backwards. When putting an order of 12 lightbults together, we either:
 \begin{enumerate}
-	\item solved the problem for 4 bulbs and added a package of size 8, or 
-	\item solved the problem for 6 bulbs and added a package of size 6, or 
-	\item solved the problem for 10 bulbs and added a package of size 2, or 
+	\item solved the problem for 4 bulbs and added a package of size 8, or
+	\item solved the problem for 6 bulbs and added a package of size 6, or
+	\item solved the problem for 10 bulbs and added a package of size 2, or
 	\item solved the problem for 11 bulbs and added a package of size 1.
 \end{enumerate}
 So if we could first solve the problem for 4, 6, 10, and 11, we could solve the problem for 12 by finding the minimum solution out of those 4 problems and adding 1 (for the additional package needed to get to 12). Working backwards this way we see that we would also need to solve some initial cases, namely 1 to 8 would do. So we will establish a list of values that will track our sub-problem solutions together with some initial cases and the relationship between entries in our list.
 \begin{align*}
 	&b\text{ is a list of length $n+1$}\\
 	&b[i]\text{ is the minimum number of packages needed to put together a lightbulb order of size $i$}\\
-	&b[0] = 0,b[1] = 1, b[2] = 1, b[3] = 2, b[4] = 2,\\ 
+	&b[0] = 0,b[1] = 1, b[2] = 1, b[3] = 2, b[4] = 2,\\
 	&b[5] = 3, b[6] = 1, b[7] = 2, b[8] = 1\\
 	&b[i] = \min(b[i-8], b[i-6], b[i-2], b[i-1]) + 1\text{ for $i \geq 9$}
 \end{align*}
@@ -140,7 +139,7 @@ As an example we compute the minimum number of packages needed to put together a
 		\hline
 	i    & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12\\
 		\hline
-	b[i] & 0 & 1 & 1 & 2 & 2 & 3 & 1 & 2 & 1 &   &    &    & \\ 
+	b[i] & 0 & 1 & 1 & 2 & 2 & 3 & 1 & 2 & 1 &   &    &    & \\
 		\hline
 	\end{array}
 \]
@@ -152,7 +151,7 @@ As an example we compute the minimum number of packages needed to put together a
 		\hline
 	i    & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12\\
 		\hline
-	b[i] & 0 & 1 & 1 & 2 & 2 & 3 & 1 & 2 & 1 &   &    &    & \\ 
+	b[i] & 0 & 1 & 1 & 2 & 2 & 3 & 1 & 2 & 1 &   &    &    & \\
 		\hline
 	\end{array}
 \]
@@ -164,7 +163,7 @@ As an example we compute the minimum number of packages needed to put together a
 		\hline
 	i    & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12\\
 		\hline
-	b[i] & 0 & 1 & 1 & 2 & 2 & 3 & 1 & 2 & 1 &   &    &    & \\ 
+	b[i] & 0 & 1 & 1 & 2 & 2 & 3 & 1 & 2 & 1 &   &    &    & \\
 		\hline
 	\end{array}
 \]
@@ -175,7 +174,7 @@ As an example we compute the minimum number of packages needed to put together a
 		\hline
 	i    & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12\\
 		\hline
-	b[i] & 0 & 1 & 1 & 2 & 2 & 3 & 1 & 2 & 1 &   &    &    & \\ 
+	b[i] & 0 & 1 & 1 & 2 & 2 & 3 & 1 & 2 & 1 &   &    &    & \\
 		\hline
 	\end{array}
 \]
@@ -210,7 +209,7 @@ bulb(30)
 Suppose we are given a rectangular ``maze" like the one below. Assume that we always start at the top left corner and always end at the bottom right corner. If we are only allowed to move down or to the right, how many different paths can we take to get to the end? Our goal is to count the number of distinct paths from the start to the end of the maze. Consider the following example:
 
 \begin{center}
-\includegraphics{maze_example.png} 
+\includegraphics{maze_example.png}
 \end{center}
 
 The number of distinct paths from the start to the end of this maze is 3.
@@ -299,7 +298,7 @@ Consider the following sequence of numbers: $$20,30,2,16,8,15,6,19,25,17.$$ How 
 
 Testing all possible subsequences would involve checking $2^{10}$ possible subsequences. Clearly, the brute force approach would fail if our sequence had, say, 100 terms. Taking a dynamic programming approach greatly reduces the amount of time needed to compute the solution. As usual, the trade-off is that we need to create a list that tracks the solutions to related sub-problems of our current problem and we have to come up with a relationship between answers on that list.
 
-Consider the following sub-problem problem of the original question. How long is the longest subsequence of strictly increasing integers in the following sequence? $$20,30,2,16,8,15,6$$ A quick glance will show that the longest subsequence of strictly increasing integers is of length 3. If we append the number 19 to this sub-problem, how does it affect our previous answer? This depends on whether or not 19 is larger that the last element of any subsequence of length 3 in the original problem. With this idea in mind, what we will do is create a list that keeps track of the longest subsequence ending with each number in our original sequence. 
+Consider the following sub-problem problem of the original question. How long is the longest subsequence of strictly increasing integers in the following sequence? $$20,30,2,16,8,15,6$$ A quick glance will show that the longest subsequence of strictly increasing integers is of length 3. If we append the number 19 to this sub-problem, how does it affect our previous answer? This depends on whether or not 19 is larger that the last element of any subsequence of length 3 in the original problem. With this idea in mind, what we will do is create a list that keeps track of the longest subsequence ending with each number in our original sequence.
 
 \begin{verbatim}
 ==============================
@@ -408,19 +407,19 @@ We construct the table for \verb|M| in this case and then implement our solution
 	\end{tabular}
 \end{center}
 
-The table above can also be used to determine what items go into the knapsack, but that is beyond what we intend to accomplish here. 
+The table above can also be used to determine what items go into the knapsack, but that is beyond what we intend to accomplish here.
 \begin{sageCell}
 def knapsack(W,w,c):
         M = [[0 for j in range(W+1)] for i in range(len(c))] # create matrix
-        for j in range(w[0],W+1):                            
+        for j in range(w[0],W+1):
                 M[0][j] = c[0]                               # fill in the first row values
         for i in range(1,len(c)):
                 for j in range(1,W+1):
-                        if j < w[i]:  
+                        if j < w[i]:
                                 M[i][j] = M[i-1][j]          # use previous answer when knapsack limit is less than new item weight
                         else:
                                 M[i][j] = max(c[i]+M[i-1][j-w[i]],M[i-1][j]) # compare using new item to otherwise
-	#for i in M:           
+	#for i in M:
 	#        print(i)      # prints matrix
         return M[len(c)-1][W]
 
@@ -444,7 +443,7 @@ s[i] is the ith character of the string
 M is a matrix (list of lists) with n rows and n columns
 
 M[i][j] = the minimum number of insertions needed to make the
-          substring from the ith character to the jth 
+          substring from the ith character to the jth
           character a palindrome
 
 M[i][j] = 0 if j > i
