@@ -97,26 +97,26 @@ We use the following conventions for our flowchart compartments (there are other
 	A set of operations.
 \end{center}
 
-The following flowchart represents a simple algorithm that computes the absolute value of any real number $x$.
+The following flowchart (see Figure 3) represents a simple algorithm that computes the absolute value of any real number $x$.
 
 \begin{center}
 	\begin{tikzpicture}
-    \node [startstop] at (0,0) (start) {Start};
-    \node [io] at (0,-2) (io1) {Input $x$};
-    \node [decision] at (0,-5) (decision) {Is $x>0$?};
-    \node [io] at (5,-5) (io2) {Output $-x$};
-    \node [io] at (-5,-5) (io3) {Output $x$};
-    \node [startstop] at (0,-8) (stop) {Stop};
-    \draw [arrow] (start) -- (io1);
-    \draw [arrow] (io1) -- (decision);
-    \draw [arrow] (decision) -- node[anchor=south] {no}(io2);
-    \draw [arrow] (decision) -- node[anchor=south] {yes} (io3);
-    \draw [arrow] (io2) |- (stop);
-    \draw [arrow] (io3) |- (stop);
-    \end{tikzpicture}
+        \node [startstop] at (0,0) (start) {Start};
+        \node [io] at (0,-2) (io1) {Input $x$};
+    	\node [decision] at (0,-5) (decision) {Is $x\geq 0$?};
+    	\node [io] at (5,-5) (io2) {Output $-x$};
+    	\node [io] at (-5,-5) (io3) {Output $x$};
+    	\node [startstop] at (0,-8) (stop) {Stop};
+   	\draw [arrow] (start) -- (io1);
+    	\draw [arrow] (io1) -- (decision);
+    	\draw [arrow] (decision) -- node[anchor=south] {no}(io2);
+    	\draw [arrow] (decision) -- node[anchor=south] {yes} (io3);
+    	\draw [arrow] (io2) |- (stop);
+    	\draw [arrow] (io3) |- (stop);
+    	\end{tikzpicture}
 \end{center}
 \begin{center}
-	An example of an algorithm that computes $|x|$.
+	Figure 3: An example of an algorithm that computes $|x|$.
 \end{center}
 
 \section{Problems}
@@ -139,19 +139,19 @@ The following flowchart represents a simple algorithm that computes the absolute
 	\end{itemize}
 	\begin{center}
 	   \begin{tikzpicture}
-        \node [startstop] at (0,0) (start) {Start};
-        \node [io] at (0,-2) (io1) {Input $n$};
-        \node [decision] at (0,-5) (decision) {Is \\$2n+1>0$?};
-        \node [io] at (5,-5) (io2) {Output $0$};
-        \node [io] at (-5,-5) (io3) {Output $1$};
-        \node [startstop] at (0,-8) (stop) {Stop};
-        \draw [arrow] (start) -- (io1);
-        \draw [arrow] (io1) -- (decision);
-        \draw [arrow] (decision) -- node[anchor=south] {no}(io2);
-        \draw [arrow] (decision) -- node[anchor=south] {yes} (io3);
-        \draw [arrow] (io2) |- (stop);
-        \draw [arrow] (io3) |- (stop);
-        \end{tikzpicture}
+           \node [startstop] at (0,0) (start) {Start};
+           \node [io] at (0,-2) (io1) {Input $n$};
+     	   \node [decision] at (0,-5) (decision) {Is \\$2n+1>0$?};
+           \node [io] at (5,-5) (io2) {Output $0$};
+           \node [io] at (-5,-5) (io3) {Output $1$};
+           \node [startstop] at (0,-8) (stop) {Stop};
+           \draw [arrow] (start) -- (io1);
+           \draw [arrow] (io1) -- (decision);
+           \draw [arrow] (decision) -- node[anchor=south] {no}(io2);
+           \draw [arrow] (decision) -- node[anchor=south] {yes} (io3);
+           \draw [arrow] (io2) |- (stop);
+           \draw [arrow] (io3) |- (stop);
+           \end{tikzpicture}
 	\end{center}
 \end{question}
 
@@ -163,14 +163,15 @@ The following flowchart represents a simple algorithm that computes the absolute
 	\begin{hint}
 		\begin{center}
 		    \begin{tikzpicture}
-            \node [startstop] at (0,0) (start) {Start};
-            \node [io] at (0,-2) (io1) {Input $a,b$};
-            \node [io] at (0,-4) (io2) {Output $\frac{a+b}{2}$};
-            \node [startstop] at (0,-6) (stop) {Stop};
-            \draw [arrow] (start) -- (io1);
-            \draw [arrow] (io1) -- (io2);
-            \end{tikzpicture}
-	    \end{center}
+            	    \node [startstop] at (0,0) (start) {Start};
+    	            \node [io] at (0,-2) (io1) {Input $a,b$};
+     	            \node [io] at (0,-4) (io2) {Output $\frac{a+b}{2}$};
+  	            \node [startstop] at (0,-6) (stop) {Stop};
+          	    \draw [arrow] (start) -- (io1);
+     	            \draw [arrow] (io1) -- (io2);
+		    \draw [arrow[ (io2) -- (stop);
+        	    \end{tikzpicture}
+	    	\end{center}
 	\end{hint}
 \end{question}
 	
