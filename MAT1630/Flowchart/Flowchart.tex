@@ -107,7 +107,7 @@ The following flowchart (see Figure 3) represents a simple algorithm that comput
     	\node [io] at (5,-5) (io2) {Output $-x$};
     	\node [io] at (-5,-5) (io3) {Output $x$};
     	\node [startstop] at (0,-8) (stop) {Stop};
-   	\draw [arrow] (start) -- (io1);
+        \draw [arrow] (start) -- (io1);
     	\draw [arrow] (io1) -- (decision);
     	\draw [arrow] (decision) -- node[anchor=south] {no}(io2);
     	\draw [arrow] (decision) -- node[anchor=south] {yes} (io3);
@@ -166,11 +166,11 @@ The following flowchart (see Figure 3) represents a simple algorithm that comput
             	    \node [startstop] at (0,0) (start) {Start};
     	            \node [io] at (0,-2) (io1) {Input $a,b$};
      	            \node [io] at (0,-4) (io2) {Output $\frac{a+b}{2}$};
-  	            \node [startstop] at (0,-6) (stop) {Stop};
-          	    \draw [arrow] (start) -- (io1);
+                    \node [startstop] at (0,-6) (stop) {Stop};
+                    \draw [arrow] (start) -- (io1);
      	            \draw [arrow] (io1) -- (io2);
-	            \draw [arrow] (io2) -- (stop);
-        	    \end{tikzpicture}
+                    \draw [arrow] (io2) -- (stop);
+                    \end{tikzpicture}
 	    	\end{center}
 	\end{hint}
 \end{question}
@@ -182,20 +182,20 @@ The following flowchart (see Figure 3) represents a simple algorithm that comput
 	\end{hint}
 	\begin{hint}
 		\begin{center}
-		    \begin{tikzpicture}
-      	            \node [startstop] at (0,0) (start) {Start};
-    	            \node [io] at (0,-2) (io1) {Input $n$};
-  	            \node [decision] at (0,-5) (decision) {Is $n>2$?};
-     	            \node [io] at (5,-5) (io2) {Output \textdollar$n$};
-            	    \node [io] at (-5,-5) (io3) {Output \textdollar$3$};
-            	    \node [startstop] at (0,-8) (stop) {Stop};
-            	    \draw [arrow] (start) -- (io1);
-      	            \draw [arrow] (io1) -- (decision);
-            	    \draw [arrow] (decision) -- node[anchor=south] {no}(io2);
-            	    \draw [arrow] (decision) -- node[anchor=south] {yes} (io3);
-                    \draw [arrow] (io2) |- (stop);
-                    \draw [arrow] (io3) |- (stop);
-                    \end{tikzpicture}
+                   \begin{tikzpicture}
+                   \node [startstop] at (0,0) (start) {Start};
+                   \node [io] at (0,-2) (io1) {Input $n$};
+                   \node [decision] at (0,-5) (decision) {Is $n>2$?};
+                   \node [io] at (5,-5) (io2) {Output \textdollar$n$};
+                   \node [io] at (-5,-5) (io3) {Output \textdollar$3$};
+                   \node [startstop] at (0,-8) (stop) {Stop};
+                   \draw [arrow] (start) -- (io1);
+                   \draw [arrow] (io1) -- (decision);
+                   \draw [arrow] (decision) -- node[anchor=south] {no}(io2);
+                   \draw [arrow] (decision) -- node[anchor=south] {yes} (io3);
+                   \draw [arrow] (io2) |- (stop);
+                   \draw [arrow] (io3) |- (stop);
+                   \end{tikzpicture}
 		\end{center}
 	\end{hint}
 \end{question}
@@ -215,27 +215,27 @@ The following flowchart (see Figure 3) represents a simple algorithm that comput
 		First determine if $x>0$ or not. If not, what comparison can you make to differentiate between the two remaining cases? Note that the third hint for this problem is a solution.
 	\end{hint}
 	\begin{hint}
-		\begin{center}
-	            \begin{tikzpicture}
-	            \node [startstop] at (0,0) (start) {Start};
-        	    \node [io] at (0,-2) (io1) {Input $x$};
-	            \node [decision] at (0,-5) (decision1) {Is $x>0$?};
-        	    \node [io] at (-5,-5) (io2) {Output 1};
- 	            \node [decision] at (0,-9) (decision2) {Is $x<0$?};
-        	    \node [io] at (5,-9) (io3) {Output -1};
-      	            \node [io] at (0,-12) (io4) {Output 0};
-        	    \node [startstop] at (0,-14) (stop) {Stop};
-  	            \draw [arrow] (start) -- (io1);
-         	    \draw [arrow] (io1) -- (decision1);
-   	            \draw [arrow] (decision1) -- node[anchor=south] {yes}(io2);
- 	            \draw [arrow] (decision1) -- node[anchor=east] {no} (decision2);
-                    \draw [arrow] (decision2) -- node[anchor=south] {yes} (io3);
-                    \draw [arrow] (decision2) -- node[anchor=east] {no} (io4);
-       	            \draw [arrow] (io2) |- (stop);
-   	            \draw [arrow] (io3) |- (stop);
-                    \draw [arrow] (io4) -- (stop);
-                    \end{tikzpicture}
-	       	\end{center}
+           \begin{center}
+              \begin{tikzpicture}
+              \node [startstop] at (0,0) (start) {Start};
+              \node [io] at (0,-2) (io1) {Input $x$};
+              \node [decision] at (0,-5) (decision1) {Is $x>0$?};
+              \node [io] at (-5,-5) (io2) {Output 1};
+              \node [decision] at (0,-9) (decision2) {Is $x<0$?};
+              \node [io] at (5,-9) (io3) {Output -1};
+              \node [io] at (0,-12) (io4) {Output 0};
+              \node [startstop] at (0,-14) (stop) {Stop};
+              \draw [arrow] (start) -- (io1);
+              \draw [arrow] (io1) -- (decision1);
+              \draw [arrow] (decision1) -- node[anchor=south] {yes}(io2);
+              \draw [arrow] (decision1) -- node[anchor=east] {no} (decision2);
+              \draw [arrow] (decision2) -- node[anchor=south] {yes} (io3);
+              \draw [arrow] (decision2) -- node[anchor=east] {no} (io4);
+              \draw [arrow] (io2) |- (stop);
+              \draw [arrow] (io3) |- (stop);
+              \draw [arrow] (io4) -- (stop);
+              \end{tikzpictur
+	   \end{center}
 	\end{hint}
 \end{question}
 \end{document}
