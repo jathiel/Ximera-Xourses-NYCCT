@@ -20,10 +20,11 @@ An algorithm is a fixed set of instructions that can be followed to solve a prob
 
 There are several ways to specify an algorithm. For now we will represent our algorithms using a special type of diagram known as a flowchart. As we gain more experience we will be able to transition to other methods for expressing algorithms. We begin with flowcharts because they are a relatively intuitive to use and because you probably have some prior experience with them.
 
-Here, for example, are two different flowcharts that describe how you might accomplish a certain common task (see Figures~\ref{fastmorning} and~\ref{slowmorning}).
+Here, for example, are two different flowcharts that describe how you might accomplish a certain common task (see Figures~\ref{fig:fastmorning} and~\ref{fig:slowmorning}).
 
-\begin{center}
-	\begin{tikzpicture}
+\begin{figure}
+\centering
+    \begin{tikzpicture}
     \node [startstop] at (0,0) (start) {Start};
     \node [process] at (0,-2) (process1) {Alarm sounds.};
     \node [process] at (0,-4) (process2) {Wake up and get ready for school.};
@@ -32,11 +33,12 @@ Here, for example, are two different flowcharts that describe how you might acco
     \draw [arrow] (process1) -- (process2);
     \draw [arrow] (process2) -- (stop);
     \end{tikzpicture}
-	\caption{An example of a morning routine.}\label{fastmorning}
-\end{center}
+	\caption{An example of a morning routine.}\label{fig:fastmorning}
+\end{figure}
 
-\begin{center}
-	\begin{tikzpicture}
+\begin{figure}
+\centering
+    \begin{tikzpicture}
     \node [startstop] at (0,0) (start) {Start};
     \node [process] at (0,-2) (process1) {Alarm sounds.};
     \node [decision] at (0,-5) (decision) {Is it after 6:50AM?};
@@ -50,8 +52,8 @@ Here, for example, are two different flowcharts that describe how you might acco
     \draw [arrow] (process2) |- (process1);
     \draw [arrow] (process3) -- (stop);
     \end{tikzpicture}
-	\caption{Another example of a morning routine.}\label{slowmorning}
-\end{center}
+	\caption{Another example of a morning routine.}\label{fig:slowmorning}
+\end{figure}
 
 Note that the flowcharts above are not examples of algorithms. The individual steps are too vague to claim that they form a precise set of instructions. The point of these flowcharts is to show how they may help you organize your thoughts in a naturally sequential way.
 
