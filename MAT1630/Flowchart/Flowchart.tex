@@ -20,7 +20,7 @@ An algorithm is a fixed set of instructions that can be followed to solve a prob
 
 There are several ways to specify an algorithm. For now we will represent our algorithms using a special type of diagram known as a flowchart. As we gain more experience we will be able to transition to other methods for expressing algorithms. We begin with flowcharts because they are a relatively intuitive to use and because you probably have some prior experience with them.
 
-Here, for example, are two different flowcharts that describe how you might accomplish a certain common task.
+Here, for example, are two different flowcharts that describe how you might accomplish a certain common task (see Figures~\ref{fastmorning} and~\ref{slowmorning}).
 
 \begin{center}
 	\begin{tikzpicture}
@@ -32,9 +32,7 @@ Here, for example, are two different flowcharts that describe how you might acco
     \draw [arrow] (process1) -- (process2);
     \draw [arrow] (process2) -- (stop);
     \end{tikzpicture}
-\end{center}
-\begin{center}
-	An example of a morning routine.
+	\caption{An example of a morning routine.}\label{fastmorning}
 \end{center}
 
 \begin{center}
@@ -52,9 +50,7 @@ Here, for example, are two different flowcharts that describe how you might acco
     \draw [arrow] (process2) |- (process1);
     \draw [arrow] (process3) -- (stop);
     \end{tikzpicture}
-\end{center}
-\begin{center}
-	Another example of a morning routine.
+	\caption{Another example of a morning routine.}\label{slowmorning}
 \end{center}
 
 Note that the flowcharts above are not examples of algorithms. The individual steps are too vague to claim that they form a precise set of instructions. The point of these flowcharts is to show how they may help you organize your thoughts in a naturally sequential way.
