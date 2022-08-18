@@ -183,19 +183,19 @@ The following flowchart (see Figure 3) represents a simple algorithm that comput
 	\begin{hint}
 		\begin{center}
 		    \begin{tikzpicture}
-            \node [startstop] at (0,0) (start) {Start};
-            \node [io] at (0,-2) (io1) {Input $n$};
-            \node [decision] at (0,-5) (decision) {Is $n>2$?};
-            \node [io] at (5,-5) (io2) {Output \textdollar$n$};
-            \node [io] at (-5,-5) (io3) {Output \textdollar$3$};
-            \node [startstop] at (0,-8) (stop) {Stop};
-            \draw [arrow] (start) -- (io1);
-            \draw [arrow] (io1) -- (decision);
-            \draw [arrow] (decision) -- node[anchor=south] {no}(io2);
-            \draw [arrow] (decision) -- node[anchor=south] {yes} (io3);
-            \draw [arrow] (io2) |- (stop);
-            \draw [arrow] (io3) |- (stop);
-            \end{tikzpicture}
+      	            \node [startstop] at (0,0) (start) {Start};
+    	            \node [io] at (0,-2) (io1) {Input $n$};
+  	            \node [decision] at (0,-5) (decision) {Is $n>2$?};
+     	            \node [io] at (5,-5) (io2) {Output \textdollar$n$};
+            	    \node [io] at (-5,-5) (io3) {Output \textdollar$3$};
+            	    \node [startstop] at (0,-8) (stop) {Stop};
+            	    \draw [arrow] (start) -- (io1);
+      	            \draw [arrow] (io1) -- (decision);
+            	    \draw [arrow] (decision) -- node[anchor=south] {no}(io2);
+            	    \draw [arrow] (decision) -- node[anchor=south] {yes} (io3);
+                    \draw [arrow] (io2) |- (stop);
+                    \draw [arrow] (io3) |- (stop);
+                    \end{tikzpicture}
 		\end{center}
 	\end{hint}
 \end{question}
@@ -225,7 +225,6 @@ The following flowchart (see Figure 3) represents a simple algorithm that comput
         	    \node [io] at (5,-9) (io3) {Output -1};
       	            \node [io] at (0,-12) (io4) {Output 0};
         	    \node [startstop] at (0,-14) (stop) {Stop};
-
   	            \draw [arrow] (start) -- (io1);
          	    \draw [arrow] (io1) -- (decision1);
    	            \draw [arrow] (decision1) -- node[anchor=south] {yes}(io2);
