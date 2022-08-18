@@ -222,20 +222,20 @@ The following flowchart represents a simple algorithm that computes the absolute
         	    \node [io] at (-5,-5) (io2) {Output 1};
  	            \node [decision] at (0,-9) (decision2) {Is $x<0$?};
         	    \node [io] at (5,-9) (io3) {Output -1};
-      	        \node [io] at (0,-12) (io4) {Output 0};
+      	            \node [io] at (0,-12) (io4) {Output 0};
         	    \node [startstop] at (0,-14) (stop) {Stop};
 
   	            \draw [arrow] (start) -- (io1);
          	    \draw [arrow] (io1) -- (decision1);
    	            \draw [arrow] (decision1) -- node[anchor=south] {yes}(io2);
  	            \draw [arrow] (decision1) -- node[anchor=east] {no} (decision2);
-                \draw [arrow] (decision2) -- node[anchor=south] {yes} (io3);
-                \draw [arrow] (decision2) -- node[anchor=east] {no} (io4);
-       	        \draw [arrow] (io2) |- (stop);
+                    \draw [arrow] (decision2) -- node[anchor=south] {yes} (io3);
+                    \draw [arrow] (decision2) -- node[anchor=east] {no} (io4);
+       	            \draw [arrow] (io2) |- (stop);
    	            \draw [arrow] (io3) |- (stop);
-                \draw [arrow] (io4) -- (stop);
-                \end{tikzpicture}
-		\end{center}
+                    \draw [arrow] (io4) -- (stop);
+                    \end{tikzpicture}
+	       	\end{center}
 	\end{hint}
 \end{question}
 \end{document}
