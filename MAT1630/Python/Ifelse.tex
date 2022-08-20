@@ -225,9 +225,9 @@ Develop an algorithm to implement the Heaviside function. Express your algorithm
             \begin{tikzpicture}
             \node [startstop] at (0,0) (start) {Start};
             \node [io] at (0,-2) (io1) {Input $x$};
-            \node [decision] at (0,-5) (decision) {$x>0$};
-            \node [io] at (5,-5) (io2) {Output $-x$};
-            \node [io] at (-5,-5) (io3) {Output $x$};
+            \node [decision] at (0,-5) (decision) {$x\geq 0$};
+            \node [io] at (5,-5) (io2) {Output $0$};
+            \node [io] at (-5,-5) (io3) {Output $1$};
             \node [startstop] at (0,-8) (stop) {Stop};
             \draw [arrow] (start) -- (io1);
             \draw [arrow] (io1) -- (decision);
