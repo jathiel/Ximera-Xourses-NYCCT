@@ -1,0 +1,114 @@
+\documentclass{ximera}  
+\title{Matplotlib}  
+\begin{document}  
+\begin{abstract}  
+We give an introduction to plotting using Matplotlib.
+\end{abstract}  
+\maketitle
+
+\section{Matplotlib}
+
+The \link[Matplotlib]{https://matplotlib.org/} library is a plotting library that is commonly used for producing publication quality figures of all kinds. Matplotlib has many features (too many to cover here). The easiest way to create a plot is to use the example gallery found on the Matplotlib website. Find the type of plot and features that you want and use the code sample provided.
+
+To illustrate the kinds of plots that we will generate, consider the following example. The code below produces a plot of $f(x)=5x^2-400$ and $g(x)=x^3-x+1$ on the interval $[-10,10]$. 
+
+\begin{verbatim}
+==============================
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.linspace(-10,10,100)
+y1 = 5*x**2-400
+y2 = x**3-x+1
+plt.plot(x,y1,color='blue',label='$f(x)$')
+plt.plot(x,y2,color='red',label='$g(x)$')
+plt.xlabel('$x$')
+plt.ylabel('$y$')
+plt.legend()
+plt.title('A graph of $f(x)$ and $g(x)$')
+plt.show()
+==============================
+\end{verbatim}
+
+\begin{sageOutput}
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.linspace(-10,10,100)
+y1 = 5*x**2-400
+y2 = x**3-x+1
+plt.plot(x,y1,color='blue',label='$f(x)$')
+plt.plot(x,y2,color='red',label='$g(x)$')
+plt.xlabel('$x$')
+plt.ylabel('$y$')
+plt.legend()
+plt.title('A graph of $f(x)$ and $g(x)$')
+plt.show()
+\end{sageOutput}
+
+The code above covers the main plotting features we will use in this course. The meaning of each line is covered below.
+
+\begin{itemize}
+	\item \verb|import matplotlib.pyplot as plt| - imports the appropriate Matplotlib functions with the commonly used alias \verb|plt|
+	\item \verb|np.linspace(-10,10,100)| - produces an array containing 100 evenly spaced points from -10 to 10
+	\item \verb|plt.plot| - adds the data points to the image, additional arguments specify their color and add a label for the plot legend (use \verb|plt.scatter| to draw points without connecting them)
+	\item \verb|plt.xlabel|, \verb|plt.ylabel| - adds axes labels
+	\item \verb|plt.legend| - adds a legend to the graph
+	\item \verb|plt.title| - adds a title to the graph
+	\item \verb|plt.show| - displays the graph
+\end{itemize}
+
+Note that the inputs for \verb|np.plot| can be regular lists. In this case we choose to use arrays due to ease of use.
+
+\section{Problems}
+
+Note that for the questions below, the hints contain the solutions.
+
+\begin{question}
+Use the Matplotlib library to plot $f(x)=e^{-x}\sin{x}$ and $g(x)=e^{-x}\cos(x)$ on $[0,2\pi]$.
+	\begin{hint}
+		\begin{sageCell}
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.linspace(0,2*np.pi,100)
+y1 = np.exp(-x)*np.sin(x)
+y2 = np.exp(-x)*np.cos(x)
+plt.plot(x,y1,color='blue',label='$f(x)$')
+plt.plot(x,y2,color='red',label='$g(x)$')
+plt.xlabel('$x$')
+plt.ylabel('$y$')
+plt.legend()
+plt.title('A graph of $f(x)$ and $g(x)$')
+plt.show()
+plt.clf() # This clears the figure to avoid drawing the same graph on the next plot.
+\end{sageCell}
+	\end{hint}
+\end{question}
+
+\begin{question}
+	Use the Matplotlib library to create a scatter plot (using \verb|plt.scatter|) of $f(x) =x^2-x+1$ using 20 points on the interval $[-2,2]$.
+	
+	\begin{hint}
+\begin{sageCell}
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.linspace(-2,2,20)
+y = x**2-x+1
+plt.scatter(x,y)
+plt.xlabel('$x$')
+plt.ylabel('$y$')
+plt.title('A graph of $x^2-x+1$')
+plt.show()
+\end{sageCell}
+	\end{hint}
+\end{question}
+
+\section{Workspace}
+
+\begin{sageCell}
+# Use this cell to solve the above questions.
+\end{sageCell}
+
+\end{document}
