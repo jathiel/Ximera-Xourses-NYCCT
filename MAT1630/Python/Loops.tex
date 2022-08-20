@@ -17,10 +17,10 @@ We give an introduction to for and while loops.
 
 \section{Loops}
 
-Loops are useful whenever you have an algorithm that requires multiple uses of the same step. For example, say we wanted to compute the sum $1+2+\cdots+n$ for some integer $n>0$. We have seen in a previous section that this can be done using two variables, one that tracks the current value of the sum and another that tracks whether or not our task is finished (see the flowchart below).
+Loops are useful whenever you have an algorithm that requires multiple uses of the same step. For example, say we wanted to compute the sum $1+2+\cdots+n$ for some integer $n>0$. We have seen in a previous section that this can be done using two variables, one that tracks the current value of the sum and another that tracks whether or not our task is finished (see Figure 1).
 
 \begin{center}
-	\begin{tikzpicture}
+    \begin{tikzpicture}
     \node [startstop] at (0,0) (start) {Start};
     \node [io] at (0,-2) (io1) {Input $n$};
     \node [process] at (0,-4) (process1) {$sum:=0$\\$i:=1$};
@@ -28,7 +28,6 @@ Loops are useful whenever you have an algorithm that requires multiple uses of t
     \node [io] at (-5,-7) (io2) {Output $sum$};
     \node [process] at (0,-10) (process2) {$sum:=sum+i$\\$i:=i+1$};
     \node [startstop] at (-5,-10) (stop) {Stop};
-
     \draw [arrow] (start) -- (io1);
     \draw [arrow] (io1) -- (process1);
     \draw [arrow] (process1) -- (decision);
@@ -37,6 +36,9 @@ Loops are useful whenever you have an algorithm that requires multiple uses of t
     \draw [arrow] (io2) -- (stop);
     \draw [arrow] (process2) -- (3,-10) |- (decision);
     \end{tikzpicture}
+\end{center}
+\begin{center}
+	Figure 1: An algorithm for computing the sum $1+2+3+\cdots n$.
 \end{center}
 
 The structure of the flowchart above is very suggestive of why we use the terminology `loop'. We will now go over two types of loops: for loops and while loops.
