@@ -8,7 +8,7 @@
 \tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=1cm, text centered, text width=2cm, fill=green!30]
 \tikzstyle{arrow} = [thick,->,>=stealth]
 
-\title{Newton's Method}
+\title{Newton's Method (optional)}
 \begin{document}
 \begin{abstract}
 We give an introduction to finding roots using Newton's Method.
@@ -33,7 +33,7 @@ The Desmos interactive graph below gives an example of Newton's method iterated 
 
 Before we go over the algorithm for Newton's Method, we must note a disadvantage of this method. Unlike the Binomial Method, Newton's Method may not converge (try applying the method to $f(x)=x^{1/3}$). We must therefore specify a maximum number of iterations we are willing to compute to ensure that the algorithm terminates.
 
-We can summarize Newton's Method using the following flowchart. Here we assume that $f(x)$ is differentiable, that $f'(x)\neq 0$, that $x_0$ is close to a solution of $f(x)=0$, that $n$ is the maximum number of iterations we are willing to compute, and that $err>0$.
+We can summarize Newton's Method using the following flowchart (see Figure 1). Here we assume that $f(x)$ is differentiable, that $f'(x)\neq 0$, that $x_0$ is close to a solution of $f(x)=0$, that $n$ is the maximum number of iterations we are willing to compute, and that $err>0$.
 
 \begin{center}
     \begin{tikzpicture}
@@ -46,7 +46,6 @@ We can summarize Newton's Method using the following flowchart. Here we assume t
     \node [io] at (-5,-10) (io2) {Output $x$};
     \node [io] at (-10,-7) (io3) {Output ``Error"};
     \node [startstop] at (-10,-10) (stop) {Stop};
-
     \draw [arrow] (start) -- (io1);
     \draw [arrow] (io1) -- (process1);
     \draw [arrow] (process1) -- (decision1);
@@ -58,6 +57,9 @@ We can summarize Newton's Method using the following flowchart. Here we assume t
     \draw [arrow] (io2) -- (stop);
     \draw [arrow] (io3) -- (stop);
     \end{tikzpicture}
+\end{center}
+\begin{center}
+	Figure 1: An algorithm for approximating roots using Newton's Method.
 \end{center}
 
 Converting this flowchart to code gives the following:
