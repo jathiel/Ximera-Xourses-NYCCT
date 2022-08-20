@@ -35,7 +35,7 @@ When creating algorithms to solve these types of problems, we will often need to
 
 The assignment and equality comparison operators given above are not given as they are used in Python or other programming languages. The notation above is used in pseudocode, which is a generic, programming language independent way to express algorithms. In later sections we will give examples of how to use these operators in Python.
 
-Here is an example of an algorithm that determines if a number $n$ is divisible by 3. If the number is divisible by 3, the algorithm outputs a 1. Otherwise, the algorithm outputs a 0.
+Here is an example (see Figure 1) of an algorithm that determines if a number $n$ is divisible by 3. If the number is divisible by 3, the algorithm outputs a 1. Otherwise, the algorithm outputs a 0.
 
 \begin{center}
     \begin{tikzpicture}
@@ -53,8 +53,11 @@ Here is an example of an algorithm that determines if a number $n$ is divisible 
     \draw [arrow] (io3) |- (stop);
     \end{tikzpicture}
 \end{center}
+\begin{center}
+	Figure 1: An algorithm that determines if $n$ is divisible by 3.
+\end{center}
 
-Here is an example of an algorithm that solves the linear equation $Ax+B=C$ for $x$ if $A$, $B$, and $C$ are real numbers with $A\neq 0$. (Why do we need to assume that $A\neq 0$?)
+Here is an example (see Figure 2) of an algorithm that solves the linear equation $Ax+B=C$ for $x$ if $A$, $B$, and $C$ are real numbers with $A\neq 0$. (Why do we need to assume that $A\neq 0$?)
 
 \begin{center}
     \begin{tikzpicture}
@@ -69,10 +72,13 @@ Here is an example of an algorithm that solves the linear equation $Ax+B=C$ for 
     \draw [arrow] (io2) -- (stop);
     \end{tikzpicture}
 \end{center}
+\begin{center}
+	Figure 2: An algorithm for solving certain linear equations.
+\end{center}
 
 The following examples illustrate a concept we will see over and over again. These flowcharts will have a loop showing that a certain step may be repeated multiple times until some condition is met.
 
-Here is an example of an algorithm that finds the smallest integer greater than or equal to a real number $x\geq 0$.
+Here is an example (see Figure 3) of an algorithm that finds the smallest integer greater than or equal to a real number $x\geq 0$.
 
 \begin{center}
     \begin{tikzpicture}
@@ -83,7 +89,6 @@ Here is an example of an algorithm that finds the smallest integer greater than 
     \node [io] at (-5,-7) (io2) {Output $n$};
     \node [process] at (0,-10) (process2) {$n:=n+1$};
     \node [startstop] at (-5,-10) (stop) {Stop};
-
     \draw [arrow] (start) -- (io1);
     \draw [arrow] (io1) -- (process1);
     \draw [arrow] (process1) -- (decision);
@@ -93,8 +98,11 @@ Here is an example of an algorithm that finds the smallest integer greater than 
     \draw [arrow] (process2) -- (3,-10) |- (decision);
     \end{tikzpicture}
 \end{center}
+\begin{center}
+	Figure 3: An algorithm that computes the smallest integer greater than or equal to $x$.
+\end{center}
 
-Here is an example of an algorithm that computes the sum $1+2+3+\cdots+n$ for any integer $n>0$.
+Here is an example (see Figure 4) of an algorithm that computes the sum $1+2+3+\cdots+n$ for any integer $n>0$.
 
 \begin{center}
     \begin{tikzpicture}
@@ -105,7 +113,6 @@ Here is an example of an algorithm that computes the sum $1+2+3+\cdots+n$ for an
     \node [io] at (-5,-7) (io2) {Output $sum$};
     \node [process] at (0,-10) (process2) {$sum:=sum+i$\\$i:=i+1$};
     \node [startstop] at (-5,-10) (stop) {Stop};
-
     \draw [arrow] (start) -- (io1);
     \draw [arrow] (io1) -- (process1);
     \draw [arrow] (process1) -- (decision);
@@ -115,10 +122,13 @@ Here is an example of an algorithm that computes the sum $1+2+3+\cdots+n$ for an
     \draw [arrow] (process2) -- (3,-10) |- (decision);
     \end{tikzpicture}
 \end{center}
+\begin{center}
+	Figure 4: An algorithm that computes the sum $1+2+3+\cdots n$.
+\end{center}
 
 In the example above we need to track two quantities. The value of \verb|i| tracks the number of times we go through the loop and while \verb|sum| is updated after each iteration appropriately until we reach the desired sum. Note that the order of the instructions when updating \verb|i| and \verb|sum| is important. (Why?)
 
-Here is an example of an algorithm that computes the number of integers divisible by 6 in the interval $[1,n]$ for some integer $n>0$.
+Here is an example (see Figure 5) of an algorithm that computes the number of integers divisible by 6 in the interval $[1,n]$ for some integer $n>0$.
 
 \begin{center}
     \begin{tikzpicture}
@@ -131,7 +141,6 @@ Here is an example of an algorithm that computes the number of integers divisibl
     \node [process] at (0,-14) (process2) {$count:=count+i$};
     \node [process] at (5,-11) (process3) {$i:=i+i$};
     \node [startstop] at (-5,-9) (stop) {Stop};
-
     \draw [arrow] (start) -- (io1);
     \draw [arrow] (io1) -- (process1);
     \draw [arrow] (process1) -- (decision1);
@@ -143,6 +152,9 @@ Here is an example of an algorithm that computes the number of integers divisibl
     \draw [arrow] (process2) -| (process3);
     \draw [arrow] (process3) |- (decision1);
     \end{tikzpicture}
+\end{center}
+\begin{center}
+	Figure 5: An algorithm for computing the number of integers $\leq n$ that are divisible by 6.
 \end{center}
 
 In the example above we also track two quantities. Notice that in this case we have an additional decision compartment as we only update the count of numbers divisible by 6 when the current number under consideration, \verb|i|, is divisible by 6. Regardless of whether or not we update \verb|count|, we always increase the value of \verb|i| before looping back.
@@ -157,20 +169,20 @@ In the example above we also track two quantities. Notice that in this case we h
 	
 	\begin{hint}
 		\begin{center}
-			\begin{tikzpicture}
-            \node [startstop] at (0,0) (start) {Start};
-            \node [io] at (0,-2) (io1) {Input $a,b,c$};
-            \node [decision] at (0,-5) (decision) {$b^2-4ac\geq 0$};
-            \node [io] at (5,-5) (io2) {Output 0};
-            \node [io] at (-5,-5) (io3) {Output 1};
-            \node [startstop] at (0,-8) (stop) {Stop};
-            \draw [arrow] (start) -- (io1);
-            \draw [arrow] (io1) -- (decision);
-            \draw [arrow] (decision) -- node[anchor=south] {no}(io2);
-            \draw [arrow] (decision) -- node[anchor=south] {yes} (io3);
-            \draw [arrow] (io2) |- (stop);
-            \draw [arrow] (io3) |- (stop);
-            \end{tikzpicture}
+                     \begin{tikzpicture}
+                     \node [startstop] at (0,0) (start) {Start};
+                     \node [io] at (0,-2) (io1) {Input $a,b,c$};
+                     \node [decision] at (0,-5) (decision) {$b^2-4ac\geq 0$};
+                     \node [io] at (5,-5) (io2) {Output 0};
+                     \node [io] at (-5,-5) (io3) {Output 1};
+                     \node [startstop] at (0,-8) (stop) {Stop};
+                     \draw [arrow] (start) -- (io1);
+                     \draw [arrow] (io1) -- (decision);
+                     \draw [arrow] (decision) -- node[anchor=south] {no}(io2);
+                     \draw [arrow] (decision) -- node[anchor=south] {yes} (io3);
+                     \draw [arrow] (io2) |- (stop);
+                     \draw [arrow] (io3) |- (stop);
+                     \end{tikzpicture}
 		\end{center}
 	\end{hint}
 \end{question}
@@ -182,31 +194,30 @@ In the example above we also track two quantities. Notice that in this case we h
 	\end{hint}
 	\begin{hint}
 		\begin{center}
-			\begin{tikzpicture}
-            \node [startstop] at (0,0) (start) {Start};
-            \node [io] at (0,-2) (io1) {Input $n$};
-            \node [io, label=center:Output ``FuzzBizz"] at (-5,-5) (io2) {\phantom{Output ``Bizz"}};
-            \node [decision] at (0,-5) (decision1) {$n\%15=0$};
-            \node [decision] at (5,-5) (decision2) {$n\%3=0$};
-            \node [io] at (0,-9) (io3) {Output ``Buzz"};
-            \node [decision] at (5,-9) (decision3) {$n\%5=0$};
-            \node [io] at (10,-9) (io4) {Output ``Fizz"};
-            \node [startstop] at (0,-12) (stop) {Stop};
-            \node [io] at (5,-12) (io5) {Output $n$};
-
-            \draw [arrow] (start) -- (io1);
-            \draw [arrow] (io1) -- (decision1);
-            \draw [arrow] (decision1) -- node[anchor=south] {yes}(io2);
-            \draw [arrow] (decision1) -- node[anchor=south] {no} (decision2);
-            \draw [arrow] (decision2) -| node[anchor=south] {yes} (io4);
-            \draw [arrow] (decision2) -- node[anchor=east] {no} (decision3);
-            \draw [arrow] (decision3) -- node[anchor=south] {yes} (io3);
-            \draw [arrow] (decision3) -- node[anchor=east] {no} (io5);
-            \draw [arrow] (io2) |- (stop);
-            \draw [arrow] (io3) -- (stop);
-            \draw [arrow] (io4) -- (10,-13.5) -| (stop);
-            \draw [arrow] (io5) -- (stop);
-            \end{tikzpicture}
+                     \begin{tikzpicture}
+                     \node [startstop] at (0,0) (start) {Start};
+                     \node [io] at (0,-2) (io1) {Input $n$};
+                     \node [io, label=center:Output ``FuzzBizz"] at (-5,-5) (io2) {\phantom{Output ``Bizz"}};
+                     \node [decision] at (0,-5) (decision1) {$n\%15=0$};
+                     \node [decision] at (5,-5) (decision2) {$n\%3=0$};
+                     \node [io] at (0,-9) (io3) {Output ``Buzz"};
+                     \node [decision] at (5,-9) (decision3) {$n\%5=0$};
+                     \node [io] at (10,-9) (io4) {Output ``Fizz"};
+                     \node [startstop] at (0,-12) (stop) {Stop};
+                     \node [io] at (5,-12) (io5) {Output $n$};
+                     \draw [arrow] (start) -- (io1);
+                     \draw [arrow] (io1) -- (decision1);
+                     \draw [arrow] (decision1) -- node[anchor=south] {yes}(io2);
+                     \draw [arrow] (decision1) -- node[anchor=south] {no} (decision2);
+                     \draw [arrow] (decision2) -| node[anchor=south] {yes} (io4);
+                     \draw [arrow] (decision2) -- node[anchor=east] {no} (decision3);
+                     \draw [arrow] (decision3) -- node[anchor=south] {yes} (io3);
+                     \draw [arrow] (decision3) -- node[anchor=east] {no} (io5);
+                     \draw [arrow] (io2) |- (stop);
+                     \draw [arrow] (io3) -- (stop);
+                     \draw [arrow] (io4) -- (10,-13.5) -| (stop);
+                     \draw [arrow] (io5) -- (stop);
+                     \end{tikzpicture}
 		\end{center}
 	\end{hint}
 \end{question}
@@ -222,23 +233,22 @@ In the example above we also track two quantities. Notice that in this case we h
 	\end{hint}
 	\begin{hint}
 		\begin{center}
-			\begin{tikzpicture}
-            \node [startstop] at (0,0) (start) {Start};
-            \node [io] at (0,-2) (io1) {Input $n$};
-            \node [process] at (0,-4) (process1) {$fac:=1$\\$i:=1$};
-            \node [decision] at (0,-7) (decision) {$i\leq n$};
-            \node [io] at (-5,-7) (io2) {Output $fac$};
-            \node [process] at (0,-10) (process2) {$fac:=fac\cdot i$\\$i:=i+1$};
-            \node [startstop] at (-5,-10) (stop) {Stop};
-
-            \draw [arrow] (start) -- (io1);
-            \draw [arrow] (io1) -- (process1);
-            \draw [arrow] (process1) -- (decision);
-            \draw [arrow] (decision) -- node[anchor=east] {yes} (process2);
-            \draw [arrow] (decision) -- node[anchor=south] {no} (io2);
-            \draw [arrow] (io2) -- (stop);
-            \draw [arrow] (process2) -- (3,-10) |- (decision);
-            \end{tikzpicture}
+                     \begin{tikzpicture}
+                     \node [startstop] at (0,0) (start) {Start};
+                     \node [io] at (0,-2) (io1) {Input $n$};
+                     \node [process] at (0,-4) (process1) {$fac:=1$\\$i:=1$};
+                     \node [decision] at (0,-7) (decision) {$i\leq n$};
+                     \node [io] at (-5,-7) (io2) {Output $fac$};
+                     \node [process] at (0,-10) (process2) {$fac:=fac\cdot i$\\$i:=i+1$};
+                     \node [startstop] at (-5,-10) (stop) {Stop};
+                     \draw [arrow] (start) -- (io1);
+                     \draw [arrow] (io1) -- (process1);
+                     \draw [arrow] (process1) -- (decision);
+                     \draw [arrow] (decision) -- node[anchor=east] {yes} (process2);
+                     \draw [arrow] (decision) -- node[anchor=south] {no} (io2);
+                     \draw [arrow] (io2) -- (stop);
+                     \draw [arrow] (process2) -- (3,-10) |- (decision);
+                     \end{tikzpicture}
 		\end{center}
 	\end{hint}
 \end{question}
@@ -258,20 +268,20 @@ For example, 2 is a divisor of 10, but 3 is not a divisor of 10.
 	\end{hint}
 	\begin{hint}
 		\begin{center}
-			\begin{tikzpicture}
-            \node [startstop] at (0,0) (start) {Start};
-            \node [io] at (0,-2) (io1) {Input $m,n$};
-            \node [decision] at (0,-5) (decision) {$n\%m = 0$};
-            \node [io] at (5,-5) (io2) {Output 0};
-            \node [io] at (-5,-5) (io3) {Output 1};
-            \node [startstop] at (0,-8) (stop) {Stop};
-            \draw [arrow] (start) -- (io1);
-            \draw [arrow] (io1) -- (decision);
-            \draw [arrow] (decision) -- node[anchor=south] {no}(io2);
-            \draw [arrow] (decision) -- node[anchor=south] {yes} (io3);
-            \draw [arrow] (io2) |- (stop);
-            \draw [arrow] (io3) |- (stop);
-            \end{tikzpicture}
+                     \begin{tikzpicture}
+                     \node [startstop] at (0,0) (start) {Start};
+                     \node [io] at (0,-2) (io1) {Input $m,n$};
+                     \node [decision] at (0,-5) (decision) {$n\%m = 0$};
+                     \node [io] at (5,-5) (io2) {Output 0};
+                     \node [io] at (-5,-5) (io3) {Output 1};
+                     \node [startstop] at (0,-8) (stop) {Stop};
+                     \draw [arrow] (start) -- (io1);
+                     \draw [arrow] (io1) -- (decision);
+                     \draw [arrow] (decision) -- node[anchor=south] {no}(io2);
+                     \draw [arrow] (decision) -- node[anchor=south] {yes} (io3);
+                     \draw [arrow] (io2) |- (stop);
+                     \draw [arrow] (io3) |- (stop);
+                     \end{tikzpicture}
 		\end{center}
 	\end{hint}
 \end{question}
@@ -287,28 +297,27 @@ For example, 2 is a divisor of 10, but 3 is not a divisor of 10.
 
 	\begin{hint}
 		\begin{center}
-			\begin{tikzpicture}
-            \node [startstop] at (0,0) (start) {Start};
-            \node [io] at (0,-2) (io1) {Input $n$};
-            \node [process] at (0,-4) (process1) {$divC:=0$\\$i:=1$};
-            \node [decision] at (0,-7) (decision1) {$i\leq n$};
-            \node [decision] at (0,-11) (decision2) {$n\%i=0$};
-            \node [io] at (-5,-7) (io2) {Output $divC$};
-            \node [process] at (0,-14) (process2) {$divC:=divC+1$};
-            \node [process] at (5,-11) (process3) {$i:=i+1$};
-            \node [startstop] at (-5,-9) (stop) {Stop};
-
-            \draw [arrow] (start) -- (io1);
-            \draw [arrow] (io1) -- (process1);
-            \draw [arrow] (process1) -- (decision1);
-            \draw [arrow] (decision1) -- node[anchor=east] {yes} (decision2);
-            \draw [arrow] (decision1) -- node[anchor=south] {no} (io2);
-            \draw [arrow] (decision2) -- node[anchor=east] {yes} (process2);
-            \draw [arrow] (decision2) -- node[anchor=south] {no} (process3);
-            \draw [arrow] (io2) -- (stop);
-            \draw [arrow] (process2) -| (process3);
-            \draw [arrow] (process3) |- (decision1);
-            \end{tikzpicture}
+                     \begin{tikzpicture}
+                     \node [startstop] at (0,0) (start) {Start};
+                     \node [io] at (0,-2) (io1) {Input $n$};
+                     \node [process] at (0,-4) (process1) {$divC:=0$\\$i:=1$};
+                     \node [decision] at (0,-7) (decision1) {$i\leq n$};
+                     \node [decision] at (0,-11) (decision2) {$n\%i=0$};
+                     \node [io] at (-5,-7) (io2) {Output $divC$};
+                     \node [process] at (0,-14) (process2) {$divC:=divC+1$};
+                     \node [process] at (5,-11) (process3) {$i:=i+1$};
+                     \node [startstop] at (-5,-9) (stop) {Stop};
+                     \draw [arrow] (start) -- (io1);
+                     \draw [arrow] (io1) -- (process1);
+                     \draw [arrow] (process1) -- (decision1);
+                     \draw [arrow] (decision1) -- node[anchor=east] {yes} (decision2);
+                     \draw [arrow] (decision1) -- node[anchor=south] {no} (io2);
+                     \draw [arrow] (decision2) -- node[anchor=east] {yes} (process2);
+                     \draw [arrow] (decision2) -- node[anchor=south] {no} (process3);
+                     \draw [arrow] (io2) -- (stop);
+                     \draw [arrow] (process2) -| (process3);
+                     \draw [arrow] (process3) |- (decision1);
+                     \end{tikzpicture}
 		\end{center}
 	\end{hint}
 \end{question}
@@ -320,28 +329,27 @@ For example, 2 is a divisor of 10, but 3 is not a divisor of 10.
 	\end{hint}
 	\begin{hint}
 		\begin{center}
-			\begin{tikzpicture}
-            \node [startstop] at (0,0) (start) {Start};
-            \node [io] at (0,-2) (io1) {Input $n$};
-            \node [process] at (0,-4) (process1) {$divS:=0$\\$i:=1$};
-            \node [decision] at (0,-7) (decision1) {$i\leq n$};
-            \node [decision] at (0,-11) (decision2) {$n\%i=0$};
-            \node [io] at (-5,-7) (io2) {Output $divS$};
-            \node [process] at (0,-14) (process2) {$divS:=divS+i$};
-            \node [process] at (5,-11) (process3) {$i:=i+1$};
-            \node [startstop] at (-5,-9) (stop) {Stop};
-
-            \draw [arrow] (start) -- (io1);
-            \draw [arrow] (io1) -- (process1);
-            \draw [arrow] (process1) -- (decision1);
-            \draw [arrow] (decision1) -- node[anchor=east] {yes} (decision2);
-            \draw [arrow] (decision1) -- node[anchor=south] {no} (io2);
-            \draw [arrow] (decision2) -- node[anchor=east] {yes} (process2);
-            \draw [arrow] (decision2) -- node[anchor=south] {no} (process3);
-            \draw [arrow] (io2) -- (stop);
-            \draw [arrow] (process2) -| (process3);
-            \draw [arrow] (process3) |- (decision1);
-            \end{tikzpicture}
+                     \begin{tikzpicture}
+                     \node [startstop] at (0,0) (start) {Start};
+                     \node [io] at (0,-2) (io1) {Input $n$};
+                     \node [process] at (0,-4) (process1) {$divS:=0$\\$i:=1$};
+                     \node [decision] at (0,-7) (decision1) {$i\leq n$};
+                     \node [decision] at (0,-11) (decision2) {$n\%i=0$};
+                     \node [io] at (-5,-7) (io2) {Output $divS$};
+                     \node [process] at (0,-14) (process2) {$divS:=divS+i$};
+                     \node [process] at (5,-11) (process3) {$i:=i+1$};
+                     \node [startstop] at (-5,-9) (stop) {Stop};
+                     \draw [arrow] (start) -- (io1);
+                     \draw [arrow] (io1) -- (process1);
+                     \draw [arrow] (process1) -- (decision1);
+                     \draw [arrow] (decision1) -- node[anchor=east] {yes} (decision2);
+                     \draw [arrow] (decision1) -- node[anchor=south] {no} (io2);
+                     \draw [arrow] (decision2) -- node[anchor=east] {yes} (process2);
+                     \draw [arrow] (decision2) -- node[anchor=south] {no} (process3);
+                     \draw [arrow] (io2) -- (stop);
+                     \draw [arrow] (process2) -| (process3);
+                     \draw [arrow] (process3) |- (decision1);
+                     \end{tikzpicture}
 		\end{center}
 	\end{hint}
 \end{question}
@@ -356,33 +364,32 @@ For example, 2 is a divisor of 10, but 3 is not a divisor of 10.
 	\end{hint}
 	\begin{hint}
 		\begin{center}
-			\begin{tikzpicture}
-            \node [startstop] at (0,0) (start) {Start};
-            \node [io] at (0,-2) (io1) {Input $n$};
-            \node [process] at (0,-4) (process1) {$divC:=x_0$\\$i:=1$};
-            \node [decision] at (0,-7) (decision1) {$i\leq n$};
-            \node [decision] at (-5,-7) (decision2) {$divC=2$};
-            \node [decision] at (0,-11) (decision3) {$n\%i=0$};
-            \node [process] at (0,-14) (process2) {$divC:=divC+1$};
-            \node [io] at (-5,-10) (io2) {Output 0};
-            \node [io] at (-10,-7) (io3) {Output 1};
-            \node [process] at (5,-11) (process3) {$i:=i+1$};
-            \node [startstop] at (-10,-10) (stop) {Stop};
-
-            \draw [arrow] (start) -- (io1);
-            \draw [arrow] (io1) -- (process1);
-            \draw [arrow] (process1) -- (decision1);
-            \draw [arrow] (decision1) -- node[anchor=south] {no} (decision2);
-            \draw [arrow] (decision2) -- node[anchor=east] {no} (io2);
-            \draw [arrow] (decision1) -- node[anchor=east] {yes} (decision3);
-            \draw [arrow] (decision2) -- node[anchor=south] {yes} (io3);
-            \draw [arrow] (process2) -| (process3);
-            \draw [arrow] (decision3) -- node[anchor=south] {no} (process3);
-            \draw [arrow] (decision3) -- node[anchor=east] {yes} (process2);
-            \draw [arrow] (process3) |- (decision1);
-            \draw [arrow] (io2) -- (stop);
-            \draw [arrow] (io3) -- (stop);
-            \end{tikzpicture}
+                     \begin{tikzpicture}
+                     \node [startstop] at (0,0) (start) {Start};
+                     \node [io] at (0,-2) (io1) {Input $n$};
+                     \node [process] at (0,-4) (process1) {$divC:=x_0$\\$i:=1$};
+                     \node [decision] at (0,-7) (decision1) {$i\leq n$};
+                     \node [decision] at (-5,-7) (decision2) {$divC=2$};
+                     \node [decision] at (0,-11) (decision3) {$n\%i=0$};
+                     \node [process] at (0,-14) (process2) {$divC:=divC+1$};
+                     \node [io] at (-5,-10) (io2) {Output 0};
+                     \node [io] at (-10,-7) (io3) {Output 1};
+                     \node [process] at (5,-11) (process3) {$i:=i+1$};
+                     \node [startstop] at (-10,-10) (stop) {Stop};
+                     \draw [arrow] (start) -- (io1);
+                     \draw [arrow] (io1) -- (process1);
+                     \draw [arrow] (process1) -- (decision1);
+                     \draw [arrow] (decision1) -- node[anchor=south] {no} (decision2);
+                     \draw [arrow] (decision2) -- node[anchor=east] {no} (io2);
+                     \draw [arrow] (decision1) -- node[anchor=east] {yes} (decision3);
+                     \draw [arrow] (decision2) -- node[anchor=south] {yes} (io3);
+                     \draw [arrow] (process2) -| (process3);
+                     \draw [arrow] (decision3) -- node[anchor=south] {no} (process3);
+                     \draw [arrow] (decision3) -- node[anchor=east] {yes} (process2);
+                     \draw [arrow] (process3) |- (decision1);
+                     \draw [arrow] (io2) -- (stop);
+                     \draw [arrow] (io3) -- (stop);
+                     \end{tikzpicture}
 		\end{center}
 	\end{hint}
 \end{question}
@@ -394,23 +401,22 @@ For example, 2 is a divisor of 10, but 3 is not a divisor of 10.
 	\end{hint}
 	\begin{hint}
 		\begin{center}
-			\begin{tikzpicture}
-            \node [startstop] at (0,0) (start) {Start};
-            \node [io] at (0,-2) (io1) {Input $x$};
-            \node [process] at (0,-4) (process1) {$n:=0$};
-            \node [decision] at (0,-7) (decision) {$n\leq x$};
-            \node [io] at (-5,-7) (io2) {Output $n-1$};
-            \node [process] at (0,-10) (process2) {$n:=n+1$};
-            \node [startstop] at (-5,-10) (stop) {Stop};
-
-            \draw [arrow] (start) -- (io1);
-            \draw [arrow] (io1) -- (process1);
-            \draw [arrow] (process1) -- (decision);
-            \draw [arrow] (decision) -- node[anchor=east] {yes} (process2);
-            \draw [arrow] (decision) -- node[anchor=south] {no} (io2);
-            \draw [arrow] (io2) -- (stop);
-            \draw [arrow] (process2) -- (3,-10) |- (decision);
-            \end{tikzpicture}
+                     \begin{tikzpicture}
+                     \node [startstop] at (0,0) (start) {Start};
+                     \node [io] at (0,-2) (io1) {Input $x$};
+                     \node [process] at (0,-4) (process1) {$n:=0$};
+                     \node [decision] at (0,-7) (decision) {$n\leq x$};
+                     \node [io] at (-5,-7) (io2) {Output $n-1$};
+                     \node [process] at (0,-10) (process2) {$n:=n+1$};
+                     \node [startstop] at (-5,-10) (stop) {Stop};
+                     \draw [arrow] (start) -- (io1);
+                     \draw [arrow] (io1) -- (process1);
+                     \draw [arrow] (process1) -- (decision);
+                     \draw [arrow] (decision) -- node[anchor=east] {yes} (process2);
+                     \draw [arrow] (decision) -- node[anchor=south] {no} (io2);
+                     \draw [arrow] (io2) -- (stop);
+                     \draw [arrow] (process2) -- (3,-10) |- (decision);
+                     \end{tikzpicture}
 		\end{center}
 	\end{hint}
 \end{question}
@@ -422,24 +428,23 @@ For example, 2 is a divisor of 10, but 3 is not a divisor of 10.
 	\end{hint}
 	\begin{hint}
 		\begin{center}
-			\begin{tikzpicture}
-            \node [startstop] at (0,0) (start) {Start};
-            \node [io] at (0,-2) (io1) {Input $x$};
-            \node [process] at (0,-4) (process1) {$n:=0$};
-            \node [decision] at (0,-7) (decision) {$n< -x$};
-            \node [io] at (-5,-7) (io2) {Output $-n$};
-            \node [process] at (0,-10) (process2) {$n:=n+1$};
-            \node [startstop] at (-5,-10) (stop) {Stop};
-
-            \draw [arrow] (start) -- (io1);
-            \draw [arrow] (io1) -- (process1);
-            \draw [arrow] (process1) -- (decision);
-            \draw [arrow] (decision) -- node[anchor=east] {yes} (process2);
-            \draw [arrow] (decision) -- node[anchor=south] {no} (io2);
-            \draw [arrow] (io2) -- (stop);
-            \draw [arrow] (process2) -- (3,-10) |- (decision);
-            \end{tikzpicture}
-		\end{center}
+                     \begin{tikzpicture}
+                     \node [startstop] at (0,0) (start) {Start};
+                     \node [io] at (0,-2) (io1) {Input $x$};
+                     \node [process] at (0,-4) (process1) {$n:=0$};
+                     \node [decision] at (0,-7) (decision) {$n< -x$};
+                     \node [io] at (-5,-7) (io2) {Output $-n$};
+                     \node [process] at (0,-10) (process2) {$n:=n+1$};
+                     \node [startstop] at (-5,-10) (stop) {Stop};
+                     \draw [arrow] (start) -- (io1);
+                     \draw [arrow] (io1) -- (process1);
+                     \draw [arrow] (process1) -- (decision);
+                     \draw [arrow] (decision) -- node[anchor=east] {yes} (process2);
+                     \draw [arrow] (decision) -- node[anchor=south] {no} (io2);
+                     \draw [arrow] (io2) -- (stop);
+                     \draw [arrow] (process2) -- (3,-10) |- (decision);
+                     \end{tikzpicture}
+               \end{center}
 	\end{hint}
 \end{question}
 
@@ -450,33 +455,32 @@ For example, 2 is a divisor of 10, but 3 is not a divisor of 10.
 	\end{hint}
 	\begin{hint}
 		\begin{center}
-			\begin{tikzpicture}
-            \node [startstop] at (0,0) (start) {Start};
-            \node [io] at (0,-2) (io1) {Input $x$};
-            \node [process] at (0,-4) (process1) {$n:=0$};
-            \node [decision] at (0,-7) (decision1) {$x\geq 0$};
-            \node [decision] at (-3,-9) (decision2) {$n< -x$};
-            \node [io] at (-8,-9) (io2) {Output $-n$};
-            \node [process] at (-3,-12) (process2) {$n:=n+1$};
-            \node [decision] at (3,-9) (decision3) {$n\leq x$};
-            \node [io] at (8,-9) (io3) {Output $n-1$};
-            \node [process] at (3,-12) (process3) {$n:=n+1$};
-            \node [startstop] at (0,-14) (stop) {Stop};
-
-            \draw [arrow] (start) -- (io1);
-            \draw [arrow] (io1) -- (process1);
-            \draw [arrow] (process1) -- (decision1);
-            \draw [arrow] (decision1) -| node[anchor=south] {no} (decision2);
-            \draw [arrow] (decision1) -| node[anchor=south] {yes} (decision3);
-            \draw [arrow] (decision2) -- node[anchor=south] {no} (io2);
-            \draw [arrow] (decision2) -- node[anchor=east] {yes}(process2);
-            \draw [arrow] (process2) -- (-0.5,-12) |- (decision2);
-            \draw [arrow] (io2) |- (stop);
-            \draw [arrow] (decision3) -- node[anchor=south] {no} (io3);
-            \draw [arrow] (decision3) -- node[anchor=east] {yes}(process3);
-            \draw [arrow] (process3) -- (0.5,-12) |- (decision3);
-            \draw [arrow] (io3) |- (stop);
-            \end{tikzpicture}
+                     \begin{tikzpicture}
+                     \node [startstop] at (0,0) (start) {Start};
+                     \node [io] at (0,-2) (io1) {Input $x$};
+                     \node [process] at (0,-4) (process1) {$n:=0$};
+                     \node [decision] at (0,-7) (decision1) {$x\geq 0$};
+                     \node [decision] at (-3,-9) (decision2) {$n< -x$};
+                     \node [io] at (-8,-9) (io2) {Output $-n$};
+                     \node [process] at (-3,-12) (process2) {$n:=n+1$};
+                     \node [decision] at (3,-9) (decision3) {$n\leq x$};
+                     \node [io] at (8,-9) (io3) {Output $n-1$};
+                     \node [process] at (3,-12) (process3) {$n:=n+1$};
+                     \node [startstop] at (0,-14) (stop) {Stop};
+                     \draw [arrow] (start) -- (io1);
+                     \draw [arrow] (io1) -- (process1);
+                     \draw [arrow] (process1) -- (decision1);
+                     \draw [arrow] (decision1) -| node[anchor=south] {no} (decision2);
+                     \draw [arrow] (decision1) -| node[anchor=south] {yes} (decision3);
+                     \draw [arrow] (decision2) -- node[anchor=south] {no} (io2);
+                     \draw [arrow] (decision2) -- node[anchor=east] {yes}(process2);
+                     \draw [arrow] (process2) -- (-0.5,-12) |- (decision2);
+                     \draw [arrow] (io2) |- (stop);
+                     \draw [arrow] (decision3) -- node[anchor=south] {no} (io3);
+                     \draw [arrow] (decision3) -- node[anchor=east] {yes}(process3);
+                     \draw [arrow] (process3) -- (0.5,-12) |- (decision3);
+                     \draw [arrow] (io3) |- (stop);
+                     \end{tikzpicture}
 		\end{center}
 	\end{hint}
 \end{question}
