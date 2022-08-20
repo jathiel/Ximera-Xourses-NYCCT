@@ -46,13 +46,13 @@ The block of pseudocode above has several important features:
 	\item The variable after the \verb|RETURN| keyword is what the procedure outputs.
 \end{itemize}
 
-These two new ways of expressing an algorithm can be easily mapped to the flowchart for computing $|x|$ below.
+These two new ways of expressing an algorithm can be easily mapped to the flowchart for computing $|x|$ below (see Figure 1).
 
 \begin{center}
     \begin{tikzpicture}
     \node [startstop] at (0,0) (start) {Start};
     \node [io] at (0,-2) (io1) {Input $x$};
-    \node [decision] at (0,-5) (decision) {$x>0$};
+    \node [decision] at (0,-5) (decision) {$x\geq 0$};
     \node [io] at (5,-5) (io2) {Output $-x$};
     \node [io] at (-5,-5) (io3) {Output $x$};
     \node [startstop] at (0,-8) (stop) {Stop};
@@ -64,6 +64,10 @@ These two new ways of expressing an algorithm can be easily mapped to the flowch
     \draw [arrow] (io3) |- (stop);
     \end{tikzpicture}
 \end{center}
+\begin{center}
+    Figure 1: An example of an algorithm that computes $|x|$.
+\end{center}
+
 
 In Python we can implement this short algorithm using the following syntax:
 
@@ -117,10 +121,10 @@ The example above shows how a flowchart with a decision compartment can be trans
 
 Below we give examples of how to expand on the basic if/else form to handle cases where multiple decisions are needed or if a decision has more than two outcomes.
 
-The flowchart below shows an algorithm for computing the $sgn$ function seen in the Flowchart problem section.
+The flowchart below (see Figure 2) shows an algorithm for computing the $sgn$ function seen in the Flowchart problem section.
 
 \begin{center}
-	\begin{tikzpicture}
+    \begin{tikzpicture}
     \node [startstop] at (0,0) (start) {Start};
     \node [io] at (0,-2) (io1) {Input $x$};
     \node [decision] at (0,-5) (decision1) {$x>0$};
@@ -129,7 +133,6 @@ The flowchart below shows an algorithm for computing the $sgn$ function seen in 
     \node [io] at (5,-9) (io3) {Output -1};
     \node [io] at (0,-12) (io4) {Output 0};
     \node [startstop] at (0,-14) (stop) {Stop};
-
     \draw [arrow] (start) -- (io1);
     \draw [arrow] (io1) -- (decision1);
     \draw [arrow] (decision1) -- node[anchor=south] {yes}(io2);
@@ -140,6 +143,9 @@ The flowchart below shows an algorithm for computing the $sgn$ function seen in 
     \draw [arrow] (io3) |- (stop);
     \draw [arrow] (io4) -- (stop);
     \end{tikzpicture}
+\end{center}
+\begin{center}
+    Figure 2: An algorithm that determines the sign of a real number $x$.
 \end{center}
 
 This can be implemented in Python in several ways.
@@ -216,7 +222,20 @@ Develop an algorithm to implement the Heaviside function. Express your algorithm
 	\end{hint}
 	\begin{hint}
 	\begin{center}
-
+            \begin{tikzpicture}
+            \node [startstop] at (0,0) (start) {Start};
+            \node [io] at (0,-2) (io1) {Input $x$};
+            \node [decision] at (0,-5) (decision) {$x>0$};
+            \node [io] at (5,-5) (io2) {Output $-x$};
+            \node [io] at (-5,-5) (io3) {Output $x$};
+            \node [startstop] at (0,-8) (stop) {Stop};
+            \draw [arrow] (start) -- (io1);
+            \draw [arrow] (io1) -- (decision);
+            \draw [arrow] (decision) -- node[anchor=south] {no}(io2);
+            \draw [arrow] (decision) -- node[anchor=south] {yes} (io3);
+            \draw [arrow] (io2) |- (stop);
+            \draw [arrow] (io3) |- (stop);
+            \end{tikzpicture}
 	\end{center}
 \begin{sageCell}
 if x >= 0:
@@ -239,26 +258,25 @@ Develop an algorithm to implement this alternative Heaviside function. Express y
 	\end{hint}
 	\begin{hint}
 	\begin{center}
-		\begin{tikzpicture}
-        \node [startstop] at (0,0) (start) {Start};
-        \node [io] at (0,-2) (io1) {Input $x$};
-        \node [decision] at (0,-5) (decision1) {$x>0$};
-        \node [io] at (-5,-5) (io2) {Output 1};
-        \node [decision] at (0,-9) (decision2) {$x<0$};
-        \node [io] at (5,-9) (io3) {Output 0};
-        \node [io] at (0,-12) (io4) {Output 1/2};
-        \node [startstop] at (0,-14) (stop) {Stop};
-
-        \draw [arrow] (start) -- (io1);
-        \draw [arrow] (io1) -- (decision1);
-        \draw [arrow] (decision1) -- node[anchor=south] {yes}(io2);
-        \draw [arrow] (decision1) -- node[anchor=east] {no} (decision2);
-        \draw [arrow] (decision2) -- node[anchor=south] {yes} (io3);
-        \draw [arrow] (decision2) -- node[anchor=east] {no} (io4);
-        \draw [arrow] (io2) |- (stop);
-        \draw [arrow] (io3) |- (stop);
-        \draw [arrow] (io4) -- (stop);
-        \end{tikzpicture}
+            \begin{tikzpicture}
+            \node [startstop] at (0,0) (start) {Start};
+            \node [io] at (0,-2) (io1) {Input $x$};
+            \node [decision] at (0,-5) (decision1) {$x>0$};
+            \node [io] at (-5,-5) (io2) {Output 1};
+            \node [decision] at (0,-9) (decision2) {$x<0$};
+            \node [io] at (5,-9) (io3) {Output 0};
+            \node [io] at (0,-12) (io4) {Output 1/2};
+            \node [startstop] at (0,-14) (stop) {Stop};
+            \draw [arrow] (start) -- (io1);
+            \draw [arrow] (io1) -- (decision1);
+            \draw [arrow] (decision1) -- node[anchor=south] {yes}(io2);
+            \draw [arrow] (decision1) -- node[anchor=east] {no} (decision2);
+            \draw [arrow] (decision2) -- node[anchor=south] {yes} (io3);
+            \draw [arrow] (decision2) -- node[anchor=east] {no} (io4);
+            \draw [arrow] (io2) |- (stop);
+            \draw [arrow] (io3) |- (stop);
+            \draw [arrow] (io4) -- (stop);
+            \end{tikzpicture}
 	\end{center}
 \begin{sageCell}
 if x > 0:
@@ -289,30 +307,29 @@ else:
 	As in the previous problem, the solution is dependent on the value of the quantity $b^2-4ac$. Note that the second hint for this problem is the solution.
 	\end{hint}
 	\begin{hint}
-		\begin{center}
-            \begin{tikzpicture}
-            \node [startstop] at (0,2) (start) {Start};
-            \node [io] at (0,0) (io1) {Input $x$};
-            \node [process] at (0,-2) (process) {$d:=b^2-4ac$};
-            \node [decision] at (0,-5) (decision1) {$d>0$};
-            \node [io] at (-5,-5) (io2) {Output 2};
-            \node [decision] at (0,-9) (decision2) {$d=0$};
-            \node [io] at (5,-9) (io3) {Output 1};
-            \node [io] at (0,-12) (io4) {Output 0};
-            \node [startstop] at (0,-14) (stop) {Stop};
-
-            \draw [arrow] (start) -- (io1);
-            \draw [arrow] (io1) -- (process);
-            \draw [arrow] (process) -- (decision1);
-            \draw [arrow] (decision1) -- node[anchor=south] {yes}(io2);
-            \draw [arrow] (decision1) -- node[anchor=east] {no} (decision2);
-            \draw [arrow] (decision2) -- node[anchor=south] {yes} (io3);
-            \draw [arrow] (decision2) -- node[anchor=east] {no} (io4);
-            \draw [arrow] (io2) |- (stop);
-            \draw [arrow] (io3) |- (stop);
-            \draw [arrow] (io4) -- (stop);
-            \end{tikzpicture}
-		\end{center}
+            \begin{center}
+               \begin{tikzpicture}
+               \node [startstop] at (0,2) (start) {Start};
+               \node [io] at (0,0) (io1) {Input $x$};
+               \node [process] at (0,-2) (process) {$d:=b^2-4ac$};
+               \node [decision] at (0,-5) (decision1) {$d>0$};
+               \node [io] at (-5,-5) (io2) {Output 2};
+               \node [decision] at (0,-9) (decision2) {$d=0$};
+               \node [io] at (5,-9) (io3) {Output 1};
+               \node [io] at (0,-12) (io4) {Output 0};
+               \node [startstop] at (0,-14) (stop) {Stop};
+               \draw [arrow] (start) -- (io1);
+               \draw [arrow] (io1) -- (process);
+               \draw [arrow] (process) -- (decision1);
+               \draw [arrow] (decision1) -- node[anchor=south] {yes}(io2);
+               \draw [arrow] (decision1) -- node[anchor=east] {no} (decision2);
+               \draw [arrow] (decision2) -- node[anchor=south] {yes} (io3);
+               \draw [arrow] (decision2) -- node[anchor=east] {no} (io4);
+               \draw [arrow] (io2) |- (stop);
+               \draw [arrow] (io3) |- (stop);
+               \draw [arrow] (io4) -- (stop);
+               \end{tikzpicture}
+           \end{center}
 \begin{sageCell}
 if b**2-4*a*c > 0:
 	real_roots_count = 2
@@ -327,31 +344,30 @@ else:
 \begin{question}
 	Suppose you are given three distinct real numbers $A$, $B$, and $C$. Develop an algorithm that determines which one is the largest. Express your algorithm as a flowchart and in Python. In Python, assign the desired output to the variable \verb|maximum|. Note that the hint for this problem is the solution.
 	\begin{hint}
-		\begin{center}
-            \begin{tikzpicture}
-            \node [startstop] at (0,0) (start) {Start};
-            \node [io] at (0,-2) (io1) {Input $A,B,C$};
-            \node [decision] at (0,-5) (decision1) {$A>B$};
-            \node [decision] at (-5,-5) (decision2) {$B>C$};
-            \node [decision] at (0,-9) (decision3) {$A>C$};
-            \node [io] at (-5,-9) (io2) {Output $B$};
-            \node [io] at (5,-9) (io3) {Output $A$};
-            \node [io] at (0,-12) (io4) {Output $C$};
-            \node [startstop] at (0,-14) (stop) {Stop};
-
-            \draw [arrow] (start) -- (io1);
-            \draw [arrow] (io1) -- (decision1);
-            \draw [arrow] (decision1) -- node[anchor=south] {no} (decision2);
-            \draw [arrow] (decision2) -- node[anchor=east] {yes} (io2);
-            \draw [arrow] (decision1) -- node[anchor=east] {yes} (decision3);
-            \draw [arrow] (decision3) -- node[anchor=south] {yes} (io3);
-            \draw [arrow] (decision3) -- node[anchor=east] {no} (io4);
-            \draw [arrow] (decision2) -| node[anchor=south east] {no} (-7.5,-5) |-  (io4);
-            \draw [arrow] (io2) |- (stop);
-            \draw [arrow] (io3) |- (stop);
-            \draw [arrow] (io4) -- (stop);
-            \end{tikzpicture}
-		\end{center}
+	    \begin{center}
+                 \begin{tikzpicture}
+                 \node [startstop] at (0,0) (start) {Start};
+                 \node [io] at (0,-2) (io1) {Input $A,B,C$};
+                 \node [decision] at (0,-5) (decision1) {$A>B$};
+                 \node [decision] at (-5,-5) (decision2) {$B>C$};
+                 \node [decision] at (0,-9) (decision3) {$A>C$};
+                 \node [io] at (-5,-9) (io2) {Output $B$};
+                 \node [io] at (5,-9) (io3) {Output $A$};
+                 \node [io] at (0,-12) (io4) {Output $C$};
+                 \node [startstop] at (0,-14) (stop) {Stop};
+                 \draw [arrow] (start) -- (io1);
+                 \draw [arrow] (io1) -- (decision1);
+                 \draw [arrow] (decision1) -- node[anchor=south] {no} (decision2);
+                 \draw [arrow] (decision2) -- node[anchor=east] {yes} (io2);
+                 \draw [arrow] (decision1) -- node[anchor=east] {yes} (decision3);
+                 \draw [arrow] (decision3) -- node[anchor=south] {yes} (io3);
+                 \draw [arrow] (decision3) -- node[anchor=east] {no} (io4);
+                 \draw [arrow] (decision2) -| node[anchor=south east] {no} (-7.5,-5) |-  (io4);
+                 \draw [arrow] (io2) |- (stop);
+                 \draw [arrow] (io3) |- (stop);
+                 \draw [arrow] (io4) -- (stop);
+                 \end{tikzpicture}
+            \end{center}
 \begin{sageCell}
 if A > B:
         if A > C:
