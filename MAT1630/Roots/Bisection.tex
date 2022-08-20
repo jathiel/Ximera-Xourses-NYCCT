@@ -33,7 +33,7 @@ Suppose you are given a function $f(x)$ and you are interested in finding at lea
 
 It is possible that we may never find the exact value of a solution or that we may miss some solutions. Try, for example, to use the procedure above to find solutions to $x^3-2x=0$ on the interval $[-5,5]$.
 
-We can summarize the Binomial Method using the following flowchart. Here we assume that $a<b$, $f(x)$ is continuous on $[a,b]$ and $err>0$.
+We can summarize the Binomial Method using the following flowchart (see Figure 1). Here we assume that $a<b$, $f(x)$ is continuous on $[a,b]$ and $err>0$.
 
 \begin{center}
     \begin{tikzpicture}
@@ -47,7 +47,6 @@ We can summarize the Binomial Method using the following flowchart. Here we assu
     \node [process] at (0,-13) (process2) {$a:=c$};
     \node [decision] at (4,-13) (decision3) {$f(a)f(c)>0$};
     \node [process] at (8,-13) (process3) {$b:=c$};
-
     \draw [arrow] (start) -- (io1);
     \draw [arrow] (io1) -- (process1);
     \draw [arrow] (process1) -- (decision1);
@@ -61,6 +60,9 @@ We can summarize the Binomial Method using the following flowchart. Here we assu
     \draw [arrow] (process3) |- (process1);
     \draw [arrow] (io2) -- (stop);
     \end{tikzpicture}
+\end{center}
+\begin{center}
+	Figure 1: An algorithm for approximating roots using the Binomial Method.
 \end{center}
 
 Converting this flowchart to code gives the following:
