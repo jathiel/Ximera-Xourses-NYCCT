@@ -8,14 +8,89 @@ We provide a brief instroduction to discrete models.
 
 \section{Discrete Models}
 
-Intro text
+The definition of a discrete set is beyond the scope of this class, so
+instead we will illustrate the concept via examples and non-examples. Examples
+of discrete (sub)sets of the real line include:
+\begin{itemize}
+	\item the integers and
+	\item rationals with a denominator of 2 or 3.
+\end{itemize}
+Examples of (sub)sets of the real line that are not discrete include:
+\begin{itemize}
+	\item the real line,
+	\item all rationals, and
+	\item the open interval $(0,1)$.
+\end{itemize}
+One way of thinking of a discrete set is that its elements must be
+``isolated" from each other. 
+
+Discrete sets and models are important in 
+this setting since we are using a computer, which cannot perfectly model
+a continuous process. In many cases, we wish to model over discrete data
+(like in a recurrence relation) or we may try to approximate a 
+continuous model using a discrete one (this idea will be revisited in 
+MAT4880 since, in some cases, such approximations do not work).
 
 \section{Examples}
 
+\subsection{A Population Model}
+
+Suppose that observations of the local turtle population in a nearby 
+lake show that the population follows the following trends:
+\begin{itemize}
+	\item When first observed, the population of turtles was 20
+	in the year 2010.
+	\item Every 5 years about half the turtles die off and 15
+	new turtles are born.
+\end{itemize}
+What will be the long-term behavior of this population? What happens
+to the population should some of our initial assumptions change?
+
+\begin{sageCell}
+# Turtle population problem
+import matplotlib.pyplot as plt
+
+x = [20]
+r = 15 # try these values 0.75, 1.5, 2.3, 2.6, 3.1, 3.3, 3.5, 3.8
+for i in range(100):
+    x.append(0.5*x[-1]+r)
+             
+plt.scatter(range(101),x)
+plt.show()
+\end{sageCell}
+
+\subsection{The Logistic Map}
+
+The logistic map is a recurrence relation that is a discrete 
+approximation to a commonly used population model. It is given by
+\begin{align*}
+	x_0 &= c\\
+	x_{n+1} &= rx_n(1-x_n)
+\end{align*}
+for a pair of constants $c$ and $r$. Taking $c=0$, we can plot 
+$x_0$ to $x_{100}$ for various choices of $r$ to see how it affects
+the result. 
+
+\begin{sageCell}
+# An example of the logistic map
+import matplotlib.pyplot as plt
+
+x = [0.5]
+r = 3.8 # try these values 0.75, 1.5, 2.3, 2.6, 3.1, 3.3, 3.5, 3.8
+for i in range(100):
+    x.append(r*x[-1]*(1-x[-1]))
+             
+plt.scatter(range(101),x)
+plt.show()
+\end{sageCell}
+
 \subsection{Roulette}
 
-\subsection{Population Models}
 
-\subsection{SIR Models}
+
+\section{Compartment Models}
+
+
+
 
 \end{document}
