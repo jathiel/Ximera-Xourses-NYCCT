@@ -100,9 +100,54 @@ with \$20 and plans to make \$10 bets until they either double their
 original starting amount or go broke. What are the odds of either 
 scenario? Does it make sense to bet in smaller or larger increments?
 
+We will write a system of recurrence relations that will help us
+analyze this scenario. Let $p_{d,n}$ equal the probability of the 
+player having $d$ dollars after the $n$th spin of the roulette wheel.
+Then
+\begin{align}
+	p_{d,0} = \begin{cases} 1 & \text{ if $d=20$,}\\
+                                0 & \text{ otherwise ($d=0,10,30,40$).}
+		  \end{cases}
+\end{align}
+We also have that
+\begin{align}
+	p_{0,n+1}  &= p_{0,n} + 10/19p_{10,n}\\
+	p_{10,n+1} &= 10/19p_{20,n}\\
+	p_{20,n+1} &= 9/19p_{10,n} + 10/19p_{30,n}\\
+	p_{30,n+1} &= 9/19p_{20,n}\\
+	p_{40,n+1} &= 9/19p_{30,n} + p_{40,n}.
+\end{align}
+The above formulas come about by considering how one can arrive at a certain
+dollar amount after $n+1$ spins. For example, to have \$0 after $n+1$ 
+spins, one either had \$0 on spin $n$ or they had \$10 and lost (with a
+loss probability of $10/19$). A similar analysis gives rise to all of
+the other formulas.
 
+We implement the above system in the SageCell below, showing that in this
+case, the chances of ending up with no money is about $55.2\%$.
 
+\begin{sageCell}
+# Roulette wheel analysis
+p0 = 0
+p10 = 0
+p20 = 1
+p30 = 0
+p40 = 0
 
+n = 1
+
+while n <= 40:
+    p0, p10, p20, p30, p40 = p0 + 10/19*p10, 10/19*p20, 9/19*p10 + 10/19*p30, 9/19*p20, 9/19*p30 + p40
+    n += 1
+
+print(p0)
+print(p10)
+print(p20)
+print(p30)
+print(p40)
+print('-------------')
+print(p0+p10+p20+p30+p40)
+\end{sageCell}
 
 \section{Compartment Models}
 
