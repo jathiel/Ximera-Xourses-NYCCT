@@ -151,7 +151,119 @@ print(p0+p10+p20+p30+p40)
 
 \section{Compartment Models}
 
+Compartment models are useful when you have a population of objects that
+can be classified into different groups (compartments) acoording to some
+property that may change over time. Our interest is in modeling the way
+in which the objects move between the different classifications. Such models
+are useful in the study of population dynamics and in the study of 
+infectious diseases (epidimiology). The type of compartment model used will
+depend greatly on the the type of population or disease being studied.
 
+\subsection{A Two-Compartment Model}
 
+Below is an example of a two-compartment system in which $A(n)$ and $B(n)$
+represent the amount in each compartment at time $n$. The values $r_1$,
+$r_2$, and $r_3$ represent the rates of `flow' from one compartment to another.
+Given a set of initial conditions, we can write a recurrence relation to help
+determine how the system evolves over time.
+
+\begin{center}
+    \begin{tikzpicture}
+        \node [io] at (2,0) (b) {$B(n)$};
+        \node [io] at (-2,0) (a) {$A(n)$};
+        \draw [arrow] (a) -- (-2,-1) -- (2,-1) -- (b);
+        \draw [arrow] (b) -- (2,1) -- (-2,1) -- (a);
+        \draw [arrow] (-5,0) -- (a);
+        \node at (-4.5,0.5) {$r_1$};
+        \node at (0,-1.5) {$r_2$};
+        \node at (0,1.5) {$r_3$};
+        \end{tikzpicture}
+\end{center}
+\begin{center}
+    Figure 2: An example of an two-compartment system.
+\end{center}
+
+\subsection{Disease Models}
+
+For the following examples, we label the members of a population hit
+with an infectious disease as:
+\begin{itemize}
+	\item Susceptibles ($S$) - members that may become infected.
+	\item Infected ($I$) - members that have aquired the disease.
+	\item Removed/Recovered ($R$) - members that have recovered
+		from the illness, developed an immunity, or possibly
+		died (depending on the disease modeled).
+\end{itemize}
+
+The model below is known as an SIR model and can be used to model
+diseases for which one builds immunity, like chicken pox. The rate
+of change from $S$ to $I$ depends on susceptibles coming into
+contact with the infected, which is why the rate of change is
+proportional to the produce $SI$. The rate of change from $I$ to
+$R$ depends on how long the disease lasts, which is why the rate 
+is proportional to just $I$.
+
+\begin{center}
+    \begin{tikzpicture}
+        \node [io] at (0,0) (b) {$I$};
+        \node [io] at (-4,0) (a) {$S$};
+        \node [io] at (4,0) (c) {$R$};
+        \draw [arrow] (a) -- (b);
+        \draw [arrow] (b) -- (c);
+        \node at (-2,0.5) {$\alpha SI$};
+        \node at (2,0.5) {$\beta I$};
+        \end{tikzpicture}
+\end{center}
+\begin{center}
+    Figure 3: An SIR model with rates of change.
+\end{center}
+
+The next model is an example of an SIR model in which the recovered
+population may become susceptible over time, like the flu.
+
+\begin{center}
+    \begin{tikzpicture}
+        \node [io] at (0,0) (b) {$I$};
+        \node [io] at (-4,0) (a) {$S$};
+        \node [io] at (4,0) (c) {$R$};
+        \draw [arrow] (a) -- (b);
+        \draw [arrow] (b) -- (c);
+        \draw [arrow] (c) -- (4,1) -- (-4,1) -- (a);
+        \end{tikzpicture}
+\end{center}
+\begin{center}
+    Figure 4: An example of an SIR model with a loss of immunity.
+\end{center}
+
+The following model is an example of an SIS model where a population
+receives no immunity, like the common cold.
+
+\begin{center}
+    \begin{tikzpicture}
+        \node [io] at (2,0) (b) {$I$};
+        \node [io] at (-2,0) (a) {$S$};
+        \draw [arrow] (a) -- (b);
+        \draw [arrow] (b) -- (2,1) -- (-2,1) -- (a);
+        \end{tikzpicture}
+\end{center}
+\begin{center}
+    Figure 5: An example of an SIS model.
+\end{center}
+
+There is a great paper on modeling the zombie apocalypse with an
+interesting model that can be found \href{https://loe.org/images/content/091023/Zombie\%20Publication.pdf}{here}.
+
+\section{Problems}
+
+\begin{question}
+A population of 100,000 members is subject to a disease non-fatal disease that leaves individuals immune to future infections. Infection can only occur when a susceptible person comes in direct contact with an infectious person. The infectious period lasts approximately two weeks. It is estimated that 15\% of the population is currently immune to the disease due to a previous exposure. There were 20 reported cases of the disease last week and this week there are 50 new cases of the disease. Plot the number of susceptibles, infected, and recovered individuals over time. Note that in this case,
+the hint contains the solution.
+\begin{hint}
+	\begin{sageCell}
+	# SIR model problem solution
+
+	\end{sageCell}
+\end{hint}
+\end{question}
 
 \end{document}
