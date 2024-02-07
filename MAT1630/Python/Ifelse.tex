@@ -28,7 +28,7 @@ The `if' portion of the statement explains what to do if the given condition is 
 We can express the same idea as above in pseudocode below. (Note that pseudocode will look a lot like Python syntax, but they are not the same.)
 
 \begin{verbatim}
-==============================
+===PSEUDOCODE=================
 procedure absolute(x: real number)
         IF x > 0, THEN absVal = x
         ELSE absVal = -x
@@ -93,7 +93,8 @@ else:
 
 The code above creates a variable \verb|absVal| that is assigned the absolute value of $x$ for any given $x$. The SageCell below shows how to use this code in practice. We assign the desired output to a variable so that we can use it later for whatever we want.
 
-\begin{sageCell}
+\begin{verbatim}
+==============================
 x = -3               # change this value and evaluate the cell to compute |x| for other x values
 
 if x > 0:
@@ -101,11 +102,13 @@ if x > 0:
 else:
 	absVal = -x
 print(absVal)        # this line prints the value of absVal to the screen to show that the variable has been assigned the correct value
-\end{sageCell}
+==============================
+\end{verbatim}
 
 Note that in Python, whitespace (indentation) determines which lines of code belong to a particular code block. For example, the following code differs from that in the SageCell above in that the \verb|print| statement is only called if $x\leq 0$.
 
-\begin{sageCell}
+\begin{verbatim}
+==============================
 x = 4
 
 if x > 0:
@@ -113,7 +116,8 @@ if x > 0:
 else:
 	absVal = -x
 	print(absVal)
-\end{sageCell}
+==============================
+\end{verbatim}
 
 The example above shows how a flowchart with a decision compartment can be translated to Python code and vice versa. With enough practice one shoud be able to go between the two. Eventually, with enough experience, one can start coding without explicitly drawing a flowchart each time.
 
@@ -152,7 +156,8 @@ This can be implemented in Python in several ways.
 
 We can put an if/else statement inside of another if or else block of code. Note the indentation of the lines belonging to the second if/else statement.
 
-\begin{sageCell}
+\begin{verbatim}
+==============================
 x = -5
 if x > 0:
 	sgn = 1
@@ -162,12 +167,13 @@ else:
 	else:
 		sgn = 0
 print(sgn)
-\end{sageCell}
+==============================
+\end{verbatim}
 	
 We can use the \verb|elif| (else-if) option that simply shortens the code above.
 
 \begin{verbatim}
-==============================
+===PSEUDOCODE================
 if condition1:
         code1
 elif condition2:
@@ -184,7 +190,8 @@ else:
 
 The \verb|elif| lines above allow one to write a program that checks multiple conditions. The program will execute whatever instructions are associated with the first (and only the first) condition checked that is satisfied. If none of the conditions are satisfied, then the default behavior is given by the code in the \verb|else| portion.
 
-\begin{sageCell}
+\begin{verbatim}
+==============================
 x = 4
 if x > 0:
         sgn = 1
@@ -193,19 +200,22 @@ elif x < 0:
 else:
         sgn = 0
 print(sgn)
-\end{sageCell}
+==============================
+\end{verbatim}
 
 Note that the second option greatly increases the readability of the code and can be expanded with more \verb|elif| lines if more options must be considered.
 
 Finally, a condition checked by an if/elif statement need not involve a comparison operator. Any nonzero number is treated as \verb|True|, while zero is treated as \verb|False|. See the example below.
 
-\begin{sageCell}
+\begin{verbatim}
+==============================
 x = 3
 if x:
        print(1)
 else:
        print(0)
-\end{sageCell}
+==============================
+\end{verbatim}
 
 \section{Problems}
 
@@ -237,12 +247,14 @@ Develop an algorithm to implement the Heaviside function. Express your algorithm
             \draw [arrow] (io3) |- (stop);
             \end{tikzpicture}
 	\end{center}
-\begin{sageCell}
+\begin{verbatim}
+==============================
 if x >= 0:
         H = 1
 else:
         H = 0
-\end{sageCell}
+==============================
+\end{verbatim}
 	\end{hint}
 \end{question}
 
@@ -278,26 +290,30 @@ Develop an algorithm to implement this alternative Heaviside function. Express y
             \draw [arrow] (io4) -- (stop);
             \end{tikzpicture}
 	\end{center}
-\begin{sageCell}
+\begin{verbatim}
+==============================
 if x > 0:
         H = 1
 elif x == 0:
         H = 0.5
 else:
         H = 0
-\end{sageCell}
+==============================
+\end{verbatim}
 	\end{hint}
 \end{question}
 
 \begin{question}
 	Express your algorithm solution from the first question in the Flowcharts with Operators section in Python. In Python, assign the desired output to a variable \verb|real_roots|.  Note that the hint for this problem is the solution.
 	\begin{hint}
-\begin{sageCell}
+\begin{verbatim}
+==============================
 if b**2-4*a*c >= 0:
 	real_roots = 1
 else:
 	real_roots = 0
-\end{sageCell}
+==============================
+\end{verbatim}
 	\end{hint}
 \end{question}
 
@@ -330,14 +346,16 @@ else:
                \draw [arrow] (io4) -- (stop);
                \end{tikzpicture}
            \end{center}
-\begin{sageCell}
+\begin{verbatim}
+==============================
 if b**2-4*a*c > 0:
 	real_roots_count = 2
 elif b**2-4*a*c == 0:
 	real_roots_count = 1
 else:
 	real_roots_count = 0
-\end{sageCell}
+==============================
+\end{verbatim}
 	\end{hint}
 \end{question}
 
@@ -368,7 +386,8 @@ else:
                  \draw [arrow] (io4) -- (stop);
                  \end{tikzpicture}
             \end{center}
-\begin{sageCell}
+\begin{verbatim}
+==============================
 if A > B:
         if A > C:
                 maximum = A
@@ -379,14 +398,9 @@ else:
                 maximum = B
         else:
                 maximum = C
-\end{sageCell}
+==============================
+\end{verbatim}
 	\end{hint}
 \end{question}
-
-\section{Workspace}
-
-\begin{sageCell}
-# Use this cell to solve the above questions.
-\end{sageCell}
 
 \end{document}
