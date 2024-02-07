@@ -20,7 +20,7 @@ A function will help us with the above problem in two ways:
 A Python function will have the following syntax:
 
 \begin{verbatim}
-==============================
+===PSEUDOCODE=================
 def functionName(inputs):
         code
         return variable
@@ -41,7 +41,8 @@ def dist(x1,y1,x2,y2):
 
 This function, as long as it is defined before it is called, can now be used multiple times with different inputs to compute the distance between several pairs of points. Below we give an example.
 
-\begin{sageCell}
+\begin{verbatim}
+==============================
 # The definition of the function dist	
 def dist(x1,y1,x2,y2):
         d = ((x1-x2)**2+(y1-y2)**2)**(0.5)
@@ -64,7 +65,8 @@ d13 = dist(X1,Y1,X3,Y3)
 print(d12)
 print(d23)
 print(d13)
-\end{sageCell}
+==============================
+\end{verbatim}
 
 Note the importance of whitespace when defining a function. Any lines that are not indented are not part of the function definition. Also of importance is the order in which the variables where passed into the function.
 
@@ -74,18 +76,21 @@ The scope of a variable is essentially where the variable `exists' and can be re
 
 In this example, \verb|x| is global and \verb|y| is local.
 
-\begin{sageCell}
+\begin{verbatim}
+==============================
 x = 3
 
 def fun(y):
         return x*y
 
 print(fun(2))
-\end{sageCell}
+==============================
+\end{verbatim}
 
 This example shows that you cannot use a local variable outside of the function that defined it.
 
-\begin{sageCell}
+\begin{verbatim}
+==============================
 x = 3
 
 def fun():
@@ -93,11 +98,13 @@ def fun():
         return 2
 
 print(y)
-\end{sageCell}
+==============================
+\end{verbatim}
 
 This example shows what happens if there are global variables and function inputs with the same name. (This situation should be avoided when possible.)
 
-\begin{sageCell}
+\begin{verbatim}
+==============================
 x = 3
 
 def fun(x):
@@ -105,7 +112,8 @@ def fun(x):
 
 print(fun(4))
 print(fun(x))     # What should happen here?
-\end{sageCell}
+==============================
+\end{verbatim}
 
 While the scope of a variable might seem a bit technical, it is an important detail that will keep us from making preventable mistakes in future lessons.
 
@@ -118,66 +126,78 @@ At this point the problems will no longer ask for or provide flowchart solutions
 \begin{question}
 	Define a function called \verb|square| that returns the square of any real number \verb|x|. Note that the hint for this problem is the solution.
 	\begin{hint}
-\begin{sageCell}
+\begin{verbatim}
+==============================
 def square(x):
         return x*x
-\end{sageCell}
+==============================
+\end{verbatim}
 	\end{hint}
 \end{question}
 
 \begin{question}
 	Define a function called \verb|avg2| that computes the average of two numbers \verb|a| and \verb|b|. Note that the hint for this problem is the solution.
 	\begin{hint}
-\begin{sageCell}
+\begin{verbatim}
+==============================
 def avg2(a,b):
         return (a+b)/2
-\end{sageCell}
+==============================
+\end{verbatim}
 	\end{hint}
 \end{question}
 
 \begin{question}
 	Define a function called \verb|crit| that computes the critical points(s) of a quadratic polynomial $ax^2+bx+c$ where $a\neq 0$. Note that the hint for this problem is the solution.
 	\begin{hint}
-\begin{sageCell}
+\begin{verbatim}
+==============================
 def crit(a,b,c):
         return -b/(2*a)
-\end{sageCell}
+==============================
+\end{verbatim}
 	\end{hint}
 \end{question}
 
 \begin{question}
 	Define a function \verb|div5| that determines if an integer $n$ is divisible by 5 or not. If the number is divisible by 5, the function should return the boolean value \verb|True|. If the number is not divisible by 6, the function should return the boolean value \verb|False|.  Note that the hint for this problem is the solution.
 	\begin{hint}
-\begin{sageCell}
+\begin{verbatim}
+==============================
 def div5(n):
         if n%5 -- 0:
                 return True
         else:
                 return False
-\end{sageCell}
+==============================
+\end{verbatim}
 We give an example of another solution where the if statment does not make use of a comparison operator..
 
-\begin{sageCell}
+\begin{verbatim}
+==============================
 def div5(n):
         if n%5: # if a number is not divisible by 5, the remainder will be nonzero, so this expression will be treated as true
                 return False
         else:
                 return True
-\end{sageCell}
+==============================
+\end{verbatim}
 	\end{hint}
 \end{question}
 
 \begin{question}
 	Suppose that you can rent a car for \$150 per day or buy it for \$3,500. Define a function called \verb|car_option| that, given an integer $n\geq 0$, determines if it is cheaper to rent the car for $n$ days or to buy it. If it is cheaper to rent the car, the function should return a 1. If it is cheaper to buy the car, the function should return a 0. Note that the hint for this problem is the solution.
 	\begin{hint}
-\begin{sageCell}
+\begin{verbatim}
+==============================
 def car_option(n):
         if 150*n < 3500:
                 option = 1
         else:
                 option = 0
         return option
-\end{sageCell}
+==============================
+\end{verbatim}
 	\end{hint}
 \end{question}
 
@@ -187,7 +207,8 @@ def car_option(n):
 	Consider having three inputs for this function, \verb|a|, \verb|b|, and \verb|c| and consider the quantity $b^2-4ac$. Note that the second hint for this problem is the solution.
 	\end{hint}
 	\begin{hint}
-\begin{sageCell}
+\begin{verbatim}
+==============================
 def num_real_roots(a,b,c):
         d = b**2 - 4*a*c
         if d > 0:
@@ -197,14 +218,9 @@ def num_real_roots(a,b,c):
         else:
                 real_root_count = 0
         return real_root_count
-\end{sageCell}
+==============================
+\end{verbatim}
 	\end{hint}
 \end{question}
-
-\section{Workspace}
-
-\begin{sageCell}
-# Use this cell to solve the above questions.
-\end{sageCell}
 
 \end{document}
