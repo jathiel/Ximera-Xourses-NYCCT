@@ -13,7 +13,7 @@ A list is an ordered sequence of comma separated values. Members of a list are o
 Below we give an example of a list and how to reference various elements in the list.
 
 \begin{verbatim}
-==============================
+===PSEUDOCODE=================
 a = [1, 3, 6, -1, 5]
 ==============================
 \end{verbatim}
@@ -37,7 +37,8 @@ Python comes equipped with functions and operators designed to work in a particu
 
 List slicing is a handy way of obtaining a portion of a list using the following notation. Given a list \verb|a|, \verb|a[start:stop]| will give all of the elements of \verb|a| starting with index \verb|start| and ending with index \verb|stop-1|. If either \verb|start| or \verb|stop| are omitted, then the longest list satisfying the contraints is given. Also, a third optional argument can be given to specify the step size taken. We illustrate various ways to slice a list below.
 
-\begin{sageCell}
+\begin{verbatim}
+==============================
 myList = ['cake', 'pie', 'ice cream', 'donut', 'brownie', 'fruit']
 
 print(myList[2:5])  # Contains elements with index 2,3,4.
@@ -45,13 +46,15 @@ print(myList[:3])   # Contains elements with index 0,1,2.
 print(myList[1:])   # Contains elements with index >= 1.
 print(myList[2::2]) # Contains every other element with index >= 2.
 print(myList[::-1]) # Reverses the list.
-\end{sageCell}
+==============================
+\end{verbatim}
 
 \section{Caution}
 
 Consider the following example:
 
-\begin{sageCell}
+\begin{verbatim}
+==============================
 a = [1,2,3]
 
 b = a
@@ -60,7 +63,8 @@ b[1] = -7
 
 print(a) # What do you expect to see here?
 print(b)
-\end{sageCell}
+==============================
+\end{verbatim}
 
 Note that \verb|b = a| does not create a new list \verb|b| with the same elements as \verb|a|. Rather, both are references to the same object. Any changes to \verb|b| will therefore be reflected by \verb|a| as well. To create a duplicate copy of a list that avoids this issue, use \verb|b = a[:]|.
 
@@ -72,7 +76,8 @@ A string is a sequence of characters. Strings can be used to read, process, and 
 
 Many of the list operators we saw above also work for strings.
 
-\begin{sageCell}
+\begin{verbatim}
+==============================
 a = 'foo'
 b = 'bar'
 
@@ -83,11 +88,13 @@ print('|')
 print(len(a))
 print('|')
 print('f' in a)
-\end{sageCell}
+==============================
+\end{verbatim}
 
 We give some examples of string slicing below.
 
-\begin{sageCell}
+\begin{verbatim}
+==============================
 myString = 'Hello, world!'
 
 print(myString[2:5])  # Contains characters with index 2,3,4.
@@ -99,7 +106,8 @@ print('|')
 print(myString[2::2]) # Contains every other character with index >= 2.
 print('|')
 print(myString[::-1]) # Reverses the string.
-\end{sageCell}
+==============================
+\end{verbatim}
 
 
 \section{Problems}
@@ -125,14 +133,16 @@ Consider the list \verb|a = [5,5,4,3,6]| and determine the values below.
 	\end{enumerate}
 	Note that the hint for this problem is the solution.
 	\begin{hint}
-\begin{sageCell}
+\begin{verbatim}
+==============================
 a = [4,5,2,1,6]
 
 print(a[2:])  # Solution to part a.
 print(a[:2])  # Solution to part b.
 print(a[::2]) # Solution to part c.
 print(a[::1]) # Solution to part d.
-\end{sageCell}
+==============================
+\end{verbatim}
 	\end{hint}
 \end{question}
 
@@ -142,24 +152,28 @@ print(a[::1]) # Solution to part d.
 	Use the contatenation operator \verb|+| to concatenate the first character from \verb|first| and the first character from \verb|last|. Note that the second hint for this problem is the solution.
 	\end{hint}
 	\begin{hint}
-\begin{sageCell}
+\begin{verbatim}
+==============================
 def initials(a,b):
 	return a[0] + b[0]
-\end{sageCell}
+==============================
+\end{verbatim}
 	\end{hint}
 \end{question}
 
 \begin{question}
 Define a function \verb|longer| that takes in two lists \verb|a| and \verb|b| as inputs and returns the length of the longer list. Note that the hint for this problem is the solution.
 	\begin{hint}
-\begin{sageCell}
+\begin{verbatim}
+==============================
 def longer(a,b):
         if len(a) >= len(b):
                 long = len(a)
         else:
                 long = len(b)
         return long
-\end{sageCell}
+==============================
+\end{verbatim}
 	\end{hint}
 \end{question}
 
@@ -170,26 +184,24 @@ A string is a palindrome if it is the same forwards and backwards, like \verb|ra
 	\end{hint}
 	\begin{hint}
 	This problem can be done without an if/else statement. A comparison, such as \verb|x > 2| will be equal to \verb|True| or \verb|False| depending on the value of \verb|x|. That is, if we simply want to know if \verb|x| really is larger than 2, we can use \verb|return x > 2|. See the example below. Note that the third hint for this problem is the solution.
-\begin{sageCell}
+\begin{verbatim}
+==============================
 def greater_than_2(x):
         return x > 2
 
 print(greater_than_2(3))
 print(greater_than_2(0))
-\end{sageCell}
+==============================
+\end{verbatim}
 	\end{hint}
 	\begin{hint}
-\begin{sageCell}
+\begin{verbatim}
+==============================
 def pal(a):
         return a == a[::-1]
-\end{sageCell}
+==============================
+\end{verbatim}
 	\end{hint}
 \end{question}
-
-\section{Workspace}
-
-\begin{sageCell}
-# Use this cell to solve the above questions.
-\end{sageCell}
 
 \end{document}
