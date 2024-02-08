@@ -48,7 +48,7 @@ The structure of the flowchart above is very suggestive of why we use the termin
 The Python syntax for a for loop is as follows:
 
 \begin{verbatim}
-==============================
+===PSEUDOCODE=================
 for variable in iterable:
         code
 ==============================
@@ -58,19 +58,24 @@ In the above code, \verb|for| indicates the start of a for loop, \verb|variable|
 
 The next few examples illustrate how \verb|variable| takes on the values of \verb|iterable|.
 
-\begin{sageCell}
+\begin{verbatim}
+==============================
 for n in [0,1,2,3]:
         print(n)
-\end{sageCell}
+==============================
+\end{verbatim}
 
-\begin{sageCell}
+\begin{verbatim}
+==============================
 for c in 'MAT1630':
         print(c)
-\end{sageCell}
+==============================
+\end{verbatim}
 
 Below is an example of how to compute $1+2+\cdots+10$ using a for loop.
 
-\begin{sageCell}
+\begin{verbatim}
+==============================
 n = 100
 s = 0
 
@@ -78,40 +83,50 @@ for i in [1,2,3,4,5,6,7,8,9,10]:
         s = s + i
 
 print(s)
-\end{sageCell}
+==============================
+\end{verbatim}
 
 If we wanted to compute $1+2+\cdots+n$ for some large or yet unknown value of $n$, we can already see that the previous example won't cut it. We need some general way of creating useful lists of numbers. We will use the \verb|range| function to help us with this. The \verb|range| function is commonly used in for loops. The inputs for the \verb|range| function are similar to those used for list slicing. See the SageCells below for examples of how to use the \verb|range| function.
 
 The range function with 1 argument.
-\begin{sageCell}
+\begin{verbatim}
+==============================
 for i in range(10):
      print(i)
-\end{sageCell}
+==============================
+\end{verbatim}
 
 The range function with 2 arguments.
-\begin{sageCell}
+\begin{verbatim}
+==============================
 for j in range(2,8):
      print(j)
-\end{sageCell}
+==============================
+\end{verbatim}
 
 The range function with 3 arguments.
-\begin{sageCell}
+\begin{verbatim}
+==============================
 for k in range(3,12,2):
      print(k)
-\end{sageCell}
+==============================
+\end{verbatim}
 
 Using the \verb|range| function, we can now write a for loop that computes $1+2+\cdots+100$.
 
-\begin{sageCell}
+\begin{verbatim}
+==============================
 s = 0
 for i in range(1,101):
         s = s + i
 print(s)
-\end{sageCell}
+==============================
+\end{verbatim}
 
 We can modify, improve, and generalize the loop above. We will change out the notation \verb|s = s + i| and use \verb|s += i| instead. (The \verb|+=| operator increments whatever is on the left by whatever is on the right.) We will also create a function to compute $1+2+\cdots+n$ for any integer $n>0$.
 
-\begin{sageCell}
+\begin{verbatim}
+==============================
 def mySum(n):
         s = 0
         for i in range(1,n+1):
@@ -119,14 +134,15 @@ def mySum(n):
         return s
 
 print(mySum(100))
-\end{sageCell}
+==============================
+\end{verbatim}
 
 \section{While Loops}
 
 The Python syntax for a while loop is as follows:
 
 \begin{verbatim}
-==============================
+===PSEUDOCODE=================
 while condition:
         code
 ==============================
@@ -136,7 +152,8 @@ In the above code, \verb|while| indicates the start of a while loop, \verb|condi
 
 Below is an example of how to compute $1+2+\cdots+100$ using a while loop.
 
-\begin{sageCell}
+\begin{verbatim}
+==============================
 n = 100
 s = 0
 i = 1
@@ -146,7 +163,8 @@ while i <= n:
         i += 1
 
 print(s)
-\end{sageCell}
+==============================
+\end{verbatim}
 
 Note that for a while loop, if \verb|condition| is always true, then your algorithm will never finish running. Unlike a for loop, you must be sure to update the variables associated with the condition being checked at each iteration. In the example above, omitting the line \verb|i += 1| would create an infinite loop.
 
@@ -158,7 +176,8 @@ For example, we have already seen that computing $1+2+\cdots+n$ for some integer
 
 In this case, a for loop may not be as helpful as a while loop since we do not know how many times to iterate. Using a while loop, we can track the value of the sum after each step. We can use the value of the sum as the condition that determines whether or not the while loop continues to iterate. See the code below.
 
-\begin{sageCell}
+\begin{verbatim}
+==============================
 s = 0
 i = 1
 
@@ -166,7 +185,8 @@ while s < 1000:
         s += i
         i += 1
 print(i-1)  # Why do we print i-1 and not i?
-\end{sageCell}
+==============================
+\end{verbatim}
 
 \section{Problems}
 
@@ -178,13 +198,15 @@ The goal of these problems is to convert several of the flowchart solutions to q
 	Consider using \verb|range(1,n+1)| in your for loop and the \verb|*=| operator for updating the value of the factorial variable. Note that the second hint for this problem is the solution.
 	\end{hint}
 	\begin{hint}
-\begin{sageCell}
+\begin{verbatim}
+==============================
 def fact(n):
         fac = 1
         for i in range(1,n+1):
                 fac *= i
         return fac
-\end{sageCell}
+==============================
+\end{verbatim}
 	\end{hint}
 \end{question}
 
@@ -194,14 +216,16 @@ def fact(n):
 	Consider using a for loop since the divisors of $n$ are in the interval $[1,n]$. Note that the second hint for this problem is the solution.
 	\end{hint}
 	\begin{hint}
-\begin{sageCell}
+\begin{verbatim}
+==============================
 def div(n):
         divCount = 0
         for i in range(1,n+1):
                 if n%i == 0:
                         divCount += 1
         return divCount
-\end{sageCell}
+==============================
+\end{verbatim}
 	\end{hint}
 \end{question}
 
@@ -216,7 +240,8 @@ def div(n):
 	Note that the second hint for this problem contains both solutions described above.
 	\end{hint}
 	\begin{hint}
-\begin{sageCell}
+\begin{verbatim}
+==============================
 def div(n):
         divCount = 0
         for i in range(1,n+1):
@@ -229,8 +254,10 @@ def prime(n):
         else:
                 p = False
         return p
-\end{sageCell}
-\begin{sageCell}
+==============================
+\end{verbatim}
+\begin{verbatim}
+==============================
 def prime(n):
         def div(n):
                 divCount = 0
@@ -244,7 +271,8 @@ def prime(n):
         else:
                 p = False
         return p
-\end{sageCell}
+==============================
+\end{verbatim}
 	\end{hint}
 \end{question}
 
@@ -254,13 +282,15 @@ def prime(n):
 	Consider using a while loop. Note that the second hint for this problem is the solution.
 	\end{hint}
 	\begin{hint}
-\begin{sageCell}
+\begin{verbatim}
+==============================
 def pos_floor(x):
         n = 0
         while n <= x:
                 n += 1
         return n-1
-\end{sageCell}
+==============================
+\end{verbatim}
 	\end{hint}
 \end{question}
 
@@ -270,13 +300,15 @@ def pos_floor(x):
 	This problem can be solved in a similar way to the previous one. Note that the second hint for this problem is the solution.
 	\end{hint}
 	\begin{hint}
-\begin{sageCell}
+\begin{verbatim}
+==============================
 def neg_floor(x):
         n = 0
         while n < -x:
                 n += 1
         return -n
-\end{sageCell}
+==============================
+\end{verbatim}
 	\end{hint}
 \end{question}
 
@@ -286,7 +318,8 @@ def neg_floor(x):
 	Combine the solutions to the previous two problems. Note that the second hint for this problem is the solution.
 	\end{hint}
 	\begin{hint}
-\begin{sageCell}
+\begin{verbatim}
+==============================
 def pos_floor(x):
         n = 0
         while n <= x:
@@ -303,14 +336,9 @@ def my_floor(x):
         else:
                 flr = neg_floor(x)
         return flr
-\end{sageCell}
+==============================
+\end{verbatim}
 	\end{hint}
 \end{question}
-
-\section{Workspace}
-
-\begin{sageCell}
-# Use this cell to solve the above questions.
-\end{sageCell}
 
 \end{document}
