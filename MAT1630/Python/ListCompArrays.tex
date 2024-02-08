@@ -10,32 +10,38 @@ We give an introduction to list comprehensions and NumPy arrays.
 
 List comprehentions give us a new way to create lists that is reminiscent of set builder notation. For example, suppose we wanted to create a list containing the positive squares from 1 to 100. That is, we want \verb|[1,4,9,...,100]|. This can be done using a list, a for loop, and the \verb|append| method.
 
-\begin{sageCell}
+\begin{verbatim}
+==============================
 squares = []
 for i in range(1,11):
         squares.append(i**2)
 squares
-\end{sageCell}
+==============================
+\end{verbatim}
 
 This same task can be accomplished using the \verb|+=| operator, which serves as concatenation here. Note that we must have brackets around \verb|i**2| for this to work.
 
-\begin{sageCell}
+\begin{verbatim}
+==============================
 squares = []
 for i in range(1,11):
         squares += [i**2]
 squares
-\end{sageCell}
+==============================
+\end{verbatim}
 
 A list comprehension allows us to create the same list in a compact and easy-to-read way that is similar to the notation $\{x^2:x\in\mathbb{Z},1\leq x\leq 10\}$.
 
-\begin{sageCell}
+\begin{verbatim}
+==============================
 [i**2 for i in range(1,11)]
-\end{sageCell}
+==============================
+\end{verbatim}
 
 The general syntax for a list comprehension has the following form:
 
 \begin{verbatim}
-==============================
+===PSEUDOCODE=================
 [expression(var) for var in iterable if condition]
 ==============================
 \end{verbatim}
@@ -45,7 +51,7 @@ The term \verb|expression| is some function or expression that is computed using
 The above list comprehension format generates a list that is equivalent to \verb|myList| (below) after running the following chunk of code:
 
 \begin{verbatim}
-==============================
+===PSEUDOCODE=================
 myList = []
 for var in iterable:
         if condition:
@@ -55,9 +61,11 @@ for var in iterable:
 
 The list comprehension below gives all of the nonnegative even cubes that are at most 1000.
 
-\begin{sageCell}
+\begin{verbatim}
+==============================
 [i**3 for i in range(11) if i%2 == 0]
-\end{sageCell}
+==============================
+\end{verbatim}
 
 We will use list comprehensions to generate lists containing desired elements without resorting to using a loop. The use of list comprehensions is intended to increase the readibility of the code.
 
@@ -67,13 +75,15 @@ The \link[NumPy]{https://numpy.org} library is a scientific computing library of
 
 In the next section, we will use arrays together with the Matplotlib library to create graphs. So, for now, our use of arrays will be limited to some basic functions.
 
-\begin{sageCell}
+\begin{verbatim}
+==============================
 import numpy as np
 
 x = np.arange(1,10)
 
 x**2
-\end{sageCell}
+==============================
+\end{verbatim}
 
 The example above showcases our main use of arrays in the next section. When performing a mathematical operation on an array, that operation is performed on each individual entry in the array. These vectorized functions will allow us to create data sets to be plotted with significantly less work while increasing code readibility.
 
@@ -100,9 +110,11 @@ Use a list comprehension to list the positive integers less than or equal to 20 
 	Use \verb|or| to determine if a number is divisble by 3 or 5. Note that the second hint for this problem is the solution.
 	\end{hint}
 	\begin{hint}
-\begin{sageCell}
-	[n for n in range(21) if n%3 == 0 or n%5 == 0]
-\end{sageCell}
+\begin{verbatim}
+==============================
+[n for n in range(21) if n%3 == 0 or n%5 == 0]
+==============================
+\end{verbatim}
 	\end{hint}
 \end{question}
 
@@ -120,10 +132,12 @@ Use a list comprehension or NumPy array to define a function in Python that retu
 	Your function should only be one line long. It should return a list comprehension. Note that the second hint for this problem is the solution.
 	\end{hint}
 	\begin{hint}
-\begin{sageCell}
+\begin{verbatim}
+==============================
 def divisors(n):
         return [d for d in range(1,n+1) if n%d==0]
-\end{sageCell}
+==============================
+\end{verbatim}
 	\end{hint}
 \end{question}
 
@@ -133,10 +147,12 @@ Use a list comprehension or NumPy array to define a function in Python that dete
 	You should be able to use your answer to the previous problem by applying the \verb|len| function. Note that the second hint for this problem is the solution.
 	\end{hint}
 	\begin{hint}
-\begin{sageCell}
+\begin{verbatim}
+==============================
 def prime(n):
         return len([d for d in range(1,n+1) if n%d==0]) == 2
-\end{sageCell}
+==============================
+\end{verbatim}
 	\end{hint}
 \end{question}
 
@@ -144,17 +160,21 @@ def prime(n):
 	Use a list comprehension or NumPy array to create a list containing the values $f(n)=3n^3+2$ for $n=0,1,2,\dots,5$. Note that the hint for this problem is the solution.
 	\begin{hint}
 A list comprehension solution:
-\begin{sageCell}
+\begin{verbatim}
+==============================
 [3*n**3+2 for n in range(6)]
-\end{sageCell}
+==============================
+\end{verbatim}
 A NumPy array solution:
-\begin{sageCell}
+\begin{verbatim}
+==============================
 import numpy as np
 
 x = np.arange(6)
 
 3*x**3+1
-\end{sageCell}
+==============================
+\end{verbatim}
 	\end{hint}
 \end{question}
 
@@ -164,16 +184,12 @@ x = np.arange(6)
 	Use a list comprehension with two variables and two \verb|for _ in _| statements. That is, write a list comprehension of list comprehensions without additional brackets. Note that the next hint for this problem is the solution. 
 	\end{hint}
 	\begin{hint}
-\begin{sageCell}
-	[[m,n] for m in range(5) for n in range(5)]
-\end{sageCell}
+\begin{verbatim}
+==============================
+[[m,n] for m in range(5) for n in range(5)]
+==============================
+\end{verbatim}
 	\end{hint}
 \end{question}
-
-\section{Workspace}
-
-\begin{sageCell}
-# Use this cell to solve the above questions.
-\end{sageCell}
 
 \end{document}
