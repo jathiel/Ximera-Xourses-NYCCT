@@ -91,7 +91,7 @@ else:
 ==============================
 \end{verbatim}
 
-The code above creates a variable \verb|absVal| that is assigned the absolute value of $x$ for any given $x$. The SageCell below shows how to use this code in practice. We assign the desired output to a variable so that we can use it later for whatever we want.
+The code above creates a variable \verb|absVal| that is assigned the absolute value of $x$ for any given $x$. The code below shows we to use this in practice. We assign the desired output to a variable so that we can use it later for whatever we want.
 
 \begin{verbatim}
 ==============================
@@ -105,7 +105,7 @@ print(absVal)        # this line prints the value of absVal to the screen to sho
 ==============================
 \end{verbatim}
 
-Note that in Python, whitespace (indentation) determines which lines of code belong to a particular code block. For example, the following code differs from that in the SageCell above in that the \verb|print| statement is only called if $x\leq 0$.
+Note that in Python, whitespace (indentation) determines which lines of code belong to a particular code block. For example, the following code differs from that above in that the \verb|print| statement is only called if $x\leq 0$.
 
 \begin{verbatim}
 ==============================
@@ -115,7 +115,7 @@ if x > 0:
         absVal = x
 else:
         absVal = -x
-print(absVal)
+        print(absVal)
 ==============================
 \end{verbatim}
 
