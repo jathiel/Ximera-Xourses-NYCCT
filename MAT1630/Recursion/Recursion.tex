@@ -42,7 +42,6 @@ Some advantages of using recursively defined functions:
 	\begin{itemize}
 		\item Recursively definied functions can be easy to implement in Python.
 		\item In many cases recursion is the only known way to define certain functions.
-
 	\end{itemize}
 
 A major dissadvantage of using a recursive definition is that it can require a lot of time to compute something. For example, computing $f_{100}$ in using the function above will take an extremely long period of time. This happens because the Python function `forgets' that it has already computed a certain quantity. In the case of $f_{100}$, the program will first attempt to compute $f_{99}$, but to compute that it will first attempt to compute $f_{98}$ and so on. After finally evaluating $f_{99}$ it will attempt to compute $f_{98}$ again, not realizing that it has done that before. In a future lesson we will discuss how we can reduce the time needed to compute such values.
@@ -122,3 +121,5 @@ def nugget(n):
 	\end{hint}
 The largest number of nuggets that cannot be ordered is $\answer{43}$.
 \end{question}
+
+\end{document}
