@@ -16,7 +16,8 @@ This new way of defining $n!$ highlights the idea that to solve the problem of c
 
 Another example of recursion is given by the \link[Fibonacci sequence]{https://plus.maths.org/content/fibonacci-sequence-brief-introduction}. We define $f_n$, the $n$th Fibonacci number, for $n\geq 0$ as $$f_n=\begin{cases} 1 & \text{if $n=0,1$}\\ f_{n-1}+f_{n-2} & \text{otherwise.}\end{cases}$$ Computing recursively, we see that this definition yields the sequence $1,1,2,3,5,8,\dots$. That is, for every $n\geq 2$, $f_n$ is the sum of the previous two terms in the sequence. We implement this function in Python below.
 
-\begin{sageCell}
+\begin{verbatim}
+==============================
 def fib(n):
         if n < 2:
                 return 1
@@ -24,7 +25,8 @@ def fib(n):
                 return fib(n-1) + fib(n-2)
 
 fib(5)
-\end{sageCell}
+==============================
+\end{verbatim}
 
 Every recursively defined function has two key ingredients:
 
@@ -59,13 +61,15 @@ Another well-known example of a problem with a recursive solution is the \link[T
 \begin{question}
 Implement the recursive definition of $H(n)$ in Python. Note that the hint for this problem is the solution.
 	\begin{hint}
-\begin{sageCell}
+\begin{verbatim}
+==============================
 def H(n):
         if n == 1:
                 return 1
         else:
-		return 2*H(n-1)+1
-\end{sageCell}
+                return 2*H(n-1)+1
+==============================
+\end{verbatim}
 	\end{hint}
 \end{question}
 
@@ -75,7 +79,8 @@ Suppose you can climb a set of stairs by either taking one stair or three stairs
 	One way to establish the base cases is to compute the number of ways to climb 1, 2, or 3 stairs. (Why 2?)
 	\end{hint}
 	\begin{hint}
-\begin{sageCell}
+\begin{verbatim}
+==============================
 def stair(n):
         if n == 1:
                 return 1
@@ -85,7 +90,8 @@ def stair(n):
                 return 2
         else:
                 return stair(n-3)+stair(n-1)
-\end{sageCell}
+==============================
+\end{verbatim}
 \end{hint}
 The number of ways to climb 9 stairs using this method is $\answer{19}$.
 \end{question}
@@ -102,7 +108,8 @@ Create a recursively defined function named \verb|nugget| that returns a 1 if $n
 	Once you find 6 consecutive numbers that can be ordered, we should be able to determine which is the largest number that cannot be ordered. (Why?) Note that the fourth hint for this problem contains the code for \verb|nugget|.
 	\end{hint}
 \begin{hint}
-\begin{sageCell}
+\begin{verbatim}
+==============================
 def nugget(n):
         if n < 6:
                 return 0
@@ -110,15 +117,8 @@ def nugget(n):
                 return 1
         else:
                 return max(nugget(n-6),nugget(n-9),nugget(n-20))
-\end{sageCell}
+==============================
+\end{verbatim}
 	\end{hint}
 The largest number of nuggets that cannot be ordered is $\answer{43}$.
 \end{question}
-
-\section{Workspace}
-
-\begin{sageCell}
-# Use this cell to solve the above questions.
-\end{sageCell}
-
-\end{document}
