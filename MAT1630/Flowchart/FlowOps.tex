@@ -138,8 +138,8 @@ Here is an example (see Figure 5) of an algorithm that computes the number of in
     \node [decision] at (0,-7) (decision1) {$i\leq n$};
     \node [decision] at (0,-11) (decision2) {$i\%6=0$};
     \node [io] at (-5,-7) (io2) {Output $count$};
-    \node [process] at (0,-14) (process2) {$count:=count+i$};
-    \node [process] at (5,-11) (process3) {$i:=i+i$};
+    \node [process] at (0,-14) (process2) {$count:=count+1$};
+    \node [process] at (5,-11) (process3) {$i:=i+1$};
     \node [startstop] at (-5,-9) (stop) {Stop};
     \draw [arrow] (start) -- (io1);
     \draw [arrow] (io1) -- (process1);
